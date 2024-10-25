@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.rna.gov.it/strumento_aiuto"
+            targetNamespace="http://www.rna.gov.it/strumento_aiuto" elementFormDefault="qualified">
+  <xsd:complexType name="STRUMENTO_AIUTO_TYPE">
+    <xsd:sequence>
+      
+      <xsd:element name="ID_STRUM_AIUTO_GEST" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="COD_TIPO_STRUMENTO_AIUTO" minOccurs="0" type="xsd:integer"/>
+      <xsd:element name="IMPORTO_NOMINALE" type="xsd:double" minOccurs="1"/>
+      <xsd:element name="IMPORTO_AGEVOLAZIONE" type="xsd:double" minOccurs="1"/>
+      <xsd:element name="INTENSITA_AIUTO" type="xsd:double" minOccurs="0"/>
+      <!-- <xsd:element name="COR_STRUM_AIUTO" type="xsd:integer" minOccurs="0"/> -->
+      
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

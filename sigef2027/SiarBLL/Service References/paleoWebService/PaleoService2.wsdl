@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://paleo.regione.marche.it/services2/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PaleoService2" targetNamespace="http://paleo.regione.marche.it/services2/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://tempuri.org/" location="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://paleo.regione.marche.it/services2/Imports">
+      <xsd:import schemaLocation="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd0" namespace="http://paleo.regione.marche.it/services2/" />
+      <xsd:import schemaLocation="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd2" namespace="http://paleo.regione.marche.it/services/" />
+      <xsd:import schemaLocation="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.Tipi.Digip.Protocollo" />
+      <xsd:import schemaLocation="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.Tipi" />
+      <xsd:import schemaLocation="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.TipiInterop" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPaleoService2_ProtocollazioneEntrata_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProtocollazioneEntrata" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_ProtocollazioneEntrata_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProtocollazioneEntrataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_ProtocollazionePartenza_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProtocollazionePartenza" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_ProtocollazionePartenza_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProtocollazionePartenzaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_ArchiviaDocumentoInterno_InputMessage">
+    <wsdl:part name="parameters" element="tns:ArchiviaDocumentoInterno" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_ArchiviaDocumentoInterno_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ArchiviaDocumentoInternoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_AddVersioneDocumento_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddVersioneDocumento" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_AddVersioneDocumento_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddVersioneDocumentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_AddAllegatiDocumentoProtocollo_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAllegatiDocumentoProtocollo" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_AddAllegatiDocumentoProtocollo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAllegatiDocumentoProtocolloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_CercaDocumentoProtocollo_InputMessage">
+    <wsdl:part name="parameters" element="tns:CercaDocumentoProtocollo" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_CercaDocumentoProtocollo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CercaDocumentoProtocolloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_CercaProtocolliCorrispondente_InputMessage">
+    <wsdl:part name="parameters" element="tns:CercaProtocolliCorrispondente" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_CercaProtocolliCorrispondente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CercaProtocolliCorrispondenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_SpedisciProtocollo_InputMessage">
+    <wsdl:part name="parameters" element="tns:SpedisciProtocollo" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_SpedisciProtocollo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SpedisciProtocolloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetDocumentiProtocolliInFascicolo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentiProtocolliInFascicolo" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetDocumentiProtocolliInFascicolo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentiProtocolliInFascicoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_FindOperatori_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindOperatori" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_FindOperatori_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindOperatoriResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_FindUtenti_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindUtenti" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_FindUtenti_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindUtentiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetRagioniTrasmissione_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRagioniTrasmissione" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetRagioniTrasmissione_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRagioniTrasmissioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetRegistri_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRegistri" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetRegistri_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRegistriResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetTitolarioClassificazione_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTitolarioClassificazione" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetTitolarioClassificazione_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTitolarioClassificazioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_FindRubrica_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindRubrica" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_FindRubrica_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindRubricaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_SaveVoceRubrica_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveVoceRubrica" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_SaveVoceRubrica_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveVoceRubricaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_ApriFascicolo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApriFascicolo" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_ApriFascicolo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApriFascicoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_ChiudiFascicolo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChiudiFascicolo" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_ChiudiFascicolo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChiudiFascicoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetTipiDatiFascicoli_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTipiDatiFascicoli" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetTipiDatiFascicoli_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTipiDatiFascicoliResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetSerieArchivisticheFascicoli_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSerieArchivisticheFascicoli" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetSerieArchivisticheFascicoli_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSerieArchivisticheFascicoliResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_EffettuaTrasmissioni_InputMessage">
+    <wsdl:part name="parameters" element="tns:EffettuaTrasmissioni" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_EffettuaTrasmissioni_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EffettuaTrasmissioniResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetUO_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUO" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetUO_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUOResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_InserisciClassificazione_InputMessage">
+    <wsdl:part name="parameters" element="tns:InserisciClassificazione" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_InserisciClassificazione_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InserisciClassificazioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_EliminaClassificazione_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminaClassificazione" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_EliminaClassificazione_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminaClassificazioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFile" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_CreaFascicolo_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreaFascicolo" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_CreaFascicolo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreaFascicoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetFascicolo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFascicolo" />
+  </wsdl:message>
+  <wsdl:message name="IPaleoService2_GetFascicolo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFascicoloResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPaleoService2">
+    <wsdl:operation name="ProtocollazioneEntrata">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/ProtocollazioneEntrata" message="tns:IPaleoService2_ProtocollazioneEntrata_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/ProtocollazioneEntrataResponse" message="tns:IPaleoService2_ProtocollazioneEntrata_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProtocollazionePartenza">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/ProtocollazionePartenza" message="tns:IPaleoService2_ProtocollazionePartenza_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/ProtocollazionePartenzaResponse" message="tns:IPaleoService2_ProtocollazionePartenza_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ArchiviaDocumentoInterno">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/ArchiviaDocumentoInterno" message="tns:IPaleoService2_ArchiviaDocumentoInterno_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/ArchiviaDocumentoInternoResponse" message="tns:IPaleoService2_ArchiviaDocumentoInterno_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddVersioneDocumento">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/AddVersioneDocumento" message="tns:IPaleoService2_AddVersioneDocumento_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/AddVersioneDocumentoResponse" message="tns:IPaleoService2_AddVersioneDocumento_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAllegatiDocumentoProtocollo">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/AddAllegatiDocumentoProtocollo" message="tns:IPaleoService2_AddAllegatiDocumentoProtocollo_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/AddAllegatiDocumentoProtocolloResponse" message="tns:IPaleoService2_AddAllegatiDocumentoProtocollo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CercaDocumentoProtocollo">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/CercaDocumentoProtocollo" message="tns:IPaleoService2_CercaDocumentoProtocollo_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/CercaDocumentoProtocolloResponse" message="tns:IPaleoService2_CercaDocumentoProtocollo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CercaProtocolliCorrispondente">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/CercaProtocolliCorrispondente" message="tns:IPaleoService2_CercaProtocolliCorrispondente_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/CercaProtocolliCorrispondenteResponse" message="tns:IPaleoService2_CercaProtocolliCorrispondente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SpedisciProtocollo">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/SpedisciProtocollo" message="tns:IPaleoService2_SpedisciProtocollo_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/SpedisciProtocolloResponse" message="tns:IPaleoService2_SpedisciProtocollo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentiProtocolliInFascicolo">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetDocumentiProtocolliInFascicolo" message="tns:IPaleoService2_GetDocumentiProtocolliInFascicolo_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetDocumentiProtocolliInFascicoloResponse" message="tns:IPaleoService2_GetDocumentiProtocolliInFascicolo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindOperatori">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/FindOperatori" message="tns:IPaleoService2_FindOperatori_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/FindOperatoriResponse" message="tns:IPaleoService2_FindOperatori_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindUtenti">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/FindUtenti" message="tns:IPaleoService2_FindUtenti_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/FindUtentiResponse" message="tns:IPaleoService2_FindUtenti_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRagioniTrasmissione">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetRagioniTrasmissione" message="tns:IPaleoService2_GetRagioniTrasmissione_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetRagioniTrasmissioneResponse" message="tns:IPaleoService2_GetRagioniTrasmissione_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRegistri">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetRegistri" message="tns:IPaleoService2_GetRegistri_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetRegistriResponse" message="tns:IPaleoService2_GetRegistri_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTitolarioClassificazione">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetTitolarioClassificazione" message="tns:IPaleoService2_GetTitolarioClassificazione_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetTitolarioClassificazioneResponse" message="tns:IPaleoService2_GetTitolarioClassificazione_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindRubrica">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/FindRubrica" message="tns:IPaleoService2_FindRubrica_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/FindRubricaResponse" message="tns:IPaleoService2_FindRubrica_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveVoceRubrica">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/SaveVoceRubrica" message="tns:IPaleoService2_SaveVoceRubrica_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/SaveVoceRubricaResponse" message="tns:IPaleoService2_SaveVoceRubrica_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApriFascicolo">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/ApriFascicolo" message="tns:IPaleoService2_ApriFascicolo_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/ApriFascicoloResponse" message="tns:IPaleoService2_ApriFascicolo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChiudiFascicolo">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/ChiudiFascicolo" message="tns:IPaleoService2_ChiudiFascicolo_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/ChiudiFascicoloResponse" message="tns:IPaleoService2_ChiudiFascicolo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTipiDatiFascicoli">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetTipiDatiFascicoli" message="tns:IPaleoService2_GetTipiDatiFascicoli_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetTipiDatiFascicoliResponse" message="tns:IPaleoService2_GetTipiDatiFascicoli_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSerieArchivisticheFascicoli">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetSerieArchivisticheFascicoli" message="tns:IPaleoService2_GetSerieArchivisticheFascicoli_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetSerieArchivisticheFascicoliResponse" message="tns:IPaleoService2_GetSerieArchivisticheFascicoli_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EffettuaTrasmissioni">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/EffettuaTrasmissioni" message="tns:IPaleoService2_EffettuaTrasmissioni_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/EffettuaTrasmissioniResponse" message="tns:IPaleoService2_EffettuaTrasmissioni_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUO">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetUO" message="tns:IPaleoService2_GetUO_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetUOResponse" message="tns:IPaleoService2_GetUO_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InserisciClassificazione">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/InserisciClassificazione" message="tns:IPaleoService2_InserisciClassificazione_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/InserisciClassificazioneResponse" message="tns:IPaleoService2_InserisciClassificazione_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminaClassificazione">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/EliminaClassificazione" message="tns:IPaleoService2_EliminaClassificazione_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/EliminaClassificazioneResponse" message="tns:IPaleoService2_EliminaClassificazione_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetFile" message="tns:IPaleoService2_GetFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetFileResponse" message="tns:IPaleoService2_GetFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreaFascicolo">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/CreaFascicolo" message="tns:IPaleoService2_CreaFascicolo_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/CreaFascicoloResponse" message="tns:IPaleoService2_CreaFascicolo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFascicolo">
+      <wsdl:input wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetFascicolo" message="tns:IPaleoService2_GetFascicolo_InputMessage" />
+      <wsdl:output wsaw:Action="http://paleo.regione.marche.it/services2/IPaleoService2/GetFascicoloResponse" message="tns:IPaleoService2_GetFascicolo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="PaleoService2">
+    <wsdl:port name="BasicHttpBinding_IPaleoService2" binding="i0:BasicHttpBinding_IPaleoService2">
+      <soap:address location="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IPaleoService21" binding="i0:BasicHttpBinding_IPaleoService21">
+      <soap:address location="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc/mtom" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

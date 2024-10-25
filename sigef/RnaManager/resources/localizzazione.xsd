@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.rna.gov.it/localizzazione"
+            targetNamespace="http://www.rna.gov.it/localizzazione" elementFormDefault="qualified">
+  <xsd:complexType name="LOCALIZZAZIONE_TYPE">
+    <xsd:sequence>
+      
+      <xsd:element name="ID_LOCA_GEST" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="COD_REGIONE" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="20"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="CHECK_LOCALIZZAZIONE" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="SI"/>
+            <xsd:enumeration value="NO"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="COD_COMUNE" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="COMUNE" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="256"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="CAP" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="5"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="INDIRIZZO" minOccurs="0" xdb:SQLName="INDIRIZZO" xdb:SQLTYPE="VARCHAR2"
+                   xmlns:xdb="http://xmlns.oracle.com/xdb">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="1000"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <!-- <xsd:element name="COR_LOCA" minOccurs="0" type="xsd:integer"/> -->
+
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

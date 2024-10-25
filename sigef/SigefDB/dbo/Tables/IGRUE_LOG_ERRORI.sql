@@ -1,0 +1,16 @@
+﻿CREATE TABLE [dbo].[IGRUE_LOG_ERRORI] (
+    [ID_IGRUE_LOG_ERRORI] INT             IDENTITY (1, 1) NOT NULL,
+    [ID_INVIO]            INT             NULL,
+    [ID_TICKET]           VARCHAR (50)    NULL,
+    [DATA_RICHIESTA]      DATETIME        NULL,
+    [FILE_ERRORI]         VARBINARY (MAX) NULL,
+    [ISTANZA_ERRORI]      XML             NULL,
+    [ID_OPERATORE]        INT             NULL,
+    [CODICE_ESITO]        INT             NULL,
+    [DESCRIZIONE_ESITO]   NVARCHAR (MAX)  NULL,
+    [DETTAGLIO_ESITO]     NVARCHAR (MAX)  NULL,
+    [TIMESTAMP_ESITO]     DATETIME        NULL,
+    [TIPO_FILE]           VARCHAR (200)   NULL,
+    CONSTRAINT [PK_IGRUE_LOG_ERRORI] PRIMARY KEY CLUSTERED ([ID_IGRUE_LOG_ERRORI] ASC)
+);
+

@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4EEDFE9A-2A88-45EA-8A1B-B3557329CF85}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RnaManager</RootNamespace>
+    <AssemblyName>RnaManager</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CallWS.cs" />
+    <Compile Include="Connected Services\svcRna\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="RnaCryptography.cs" />
+    <Compile Include="DALClass.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="RnaOperazioni.cs" />
+    <Compile Include="SqlHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.AnnullaConcessioneMassivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.AnnullaConcessioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.AnnullaVariazioneConcessioneMassivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.AnnullaVariazioneConcessioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.baseResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.ConfermaConcessioneMassivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.ConfermaConcessioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.ConfermaVariazioneConcessioneMassivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.ConfermaVariazioneConcessioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.DettaglioAiutoCorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.DettaglioAiutoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.dettaglioBandoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.DettaglioBandoResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.ElencoDeggendorfResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.EliminaDeggendorfResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.InserisciDeggendorfResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.ModificaErogazioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RecuperaIdRichiestaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RegistraAiutoAutomaticoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RegistraAiutoExPostResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RegistraAiutoInEmergenzaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RegistraAiutoNonDeMinimisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RegistraAiutoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RegistraErogazioneMassivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RegistraErogazioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.ReiteraRegistraAiutoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RicercaAiutoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RicercaErogazioniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RichiediListaAiutiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RichiediVisuraAiutiCumulativaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RichiediVisuraAiutiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RichiediVisuraDeggendorfResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.RichiediVisuraDeminimisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.rnasConcessioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.rnasListaAiutiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.rnasServiceDeggendorfAiutoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.rnasServiceRichiestaErogResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.rnasServiceRichiestaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.rnasServiceVisuraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.ScaricaCertificazioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.ScaricaEsitoRichiestaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.ScaricaListaAiutiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.ScaricaVisuraConcessioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.ScaricaVisuraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.statoConcessioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.StatoRichiestaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.validationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.VariazioneImportoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.VariazionePuntualeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.VariazioneRegolamentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.VariazioneSoggettoBeneficiarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnaManager.svcRna.VerificaVercorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcRna\RnasService.wsdl" />
+    <None Include="Connected Services\svcRna\RnasServiceImplService.wsdl" />
+    <None Include="resources\agevolazioni_erogate_restituite.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="resources\beneficiario.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="resources\componente_aiuto.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="resources\concessione.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="resources\costo.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="resources\dsAiuto_1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAiuto_1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="resources\info_cup.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="resources\invio.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="resources\localizzazione.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="resources\Mapping_Aiuto_rev7.mfd" />
+    <None Include="resources\rendicontazione.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="resources\rendicontazione_dettaglio.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="resources\strumento_aiuto.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\svcRna\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcRna\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcRna\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcRna\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\aiuto_transform.xslt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SiarBLL\SiarBLL.csproj">
+      <Project>{992aff8e-8685-4bda-b52b-be98ae58eba8}</Project>
+      <Name>SiarBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SiarLibrary\SiarLibrary.csproj">
+      <Project>{453f80c4-1553-4b57-ac77-58cede9f11cc}</Project>
+      <Name>SiarLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

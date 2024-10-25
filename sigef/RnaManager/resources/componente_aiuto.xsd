@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns="http://www.rna.gov.it/componente_aiuto"
+            xmlns:strum="http://www.rna.gov.it/strumento_aiuto"
+            xmlns:age="http://www.rna.gov.it/agevolazioni_erogate_restituite"
+            targetNamespace="http://www.rna.gov.it/componente_aiuto" 
+            elementFormDefault="qualified"> 
+  <xsd:import schemaLocation="strumento_aiuto.xsd" namespace="http://www.rna.gov.it/strumento_aiuto"/>
+  <xsd:import schemaLocation="agevolazioni_erogate_restituite.xsd" namespace="http://www.rna.gov.it/agevolazioni_erogate_restituite"/>
+  <xsd:complexType name="COMPONENTE_AIUTO_TYPE">
+    <xsd:sequence>
+     
+      <xsd:element name="ID_COMP_AIUTO_GEST" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="DESCR_BREVE" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="500"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="COD_TIPO_PROCEDIMENTO" type="xsd:integer" minOccurs="0"/>
+      <xsd:element name="CODICE_REGOLAMENTO" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="20"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="COD_OBIETTIVO" type="xsd:integer" minOccurs="0"/>
+      <xsd:element name="CODICE_SETTORE" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="20"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="CODICE_SIEG" type="xsd:integer" minOccurs="0"/>
+      <xsd:element name="CUMULABILITA" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="1"/>
+            <xsd:enumeration value="0"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FLAG_CE" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="SI"/>
+            <xsd:enumeration value="NO"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="CODICE_CE" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="SOGGETTO_INTERMEDIARIO" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ENTITA_DELEGATA" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <!-- <xsd:element name="COR_COMP_AIUTO" type="xsd:integer" minOccurs="0"/> -->
+      
+      <xsd:element name="COD_ATECO_LIST" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="COD_ATECO" minOccurs="1" maxOccurs="unbounded">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="20"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      
+      <xsd:element name="STRUMENTI_AIUTO" type="STRUMENTI_AIUTO_TYPE"/>
+      <xsd:element name="AGEVOLAZIONI_EROGATE_RESTITUITE" type="LISTA_AGEVOLAZIONI_EROGATE_RESTITUITE_TYPE" minOccurs="0"/>
+    
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="STRUMENTI_AIUTO_TYPE">
+    <xsd:sequence>
+      <xsd:element name="STRUMENTO_AIUTO" type="strum:STRUMENTO_AIUTO_TYPE" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="LISTA_AGEVOLAZIONI_EROGATE_RESTITUITE_TYPE">
+    <xsd:sequence>
+      <xsd:element name="AGEVOLAZIONI_EROGATE_RESTITUITE" type="age:AGEVOLAZIONI_EROGATE_RESTITUITE_TYPE"
+                   maxOccurs="unbounded" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

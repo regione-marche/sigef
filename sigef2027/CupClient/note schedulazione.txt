@@ -1,0 +1,30 @@
+﻿Note per la schedulazione del CUP Client
+
+Per utilizzare il tool di richiesta CUP:
+1) Copiare i file: CupClient.exe,  CupClient.exe.config e CupManager.dll in una directory sul server.
+2) Creare un task sullo scheduler del server di produzione assegnandoli il path della directory 
+	che contiene l'eseguibile CupClient.exe
+3) Aggiungere il parametro "s" alla configurazione del task per permettere l'avvio automatico 
+	della procedura di richiesta
+
+La richiesta viene effettuata per tutti i progetti del FESR in SIGEF che sono in stato 'F' (finanziabili) 
+	che non hanno il codice CUP e i cui beneficiari non siano enti pubblici diversi dalla regione marche
+Il tool può essere anche utilizzato manualmente da una qualsiasi postazione che veda 
+	in rete il db server e la porta di dominio regionale
+
+Log delle richieste:
+Sono presenti due log.
+Il log principale viene effettuato automaticamente dalla procedura per ogni richiesta 
+	e viene salvato nella tabella CUP_RICHIESTE del db di produzione; 
+	contiene tutti i messaggi di richiesta e di risposta al servizio CUP con relativo esito 
+Il log del client è un log di testo abilitato tramite parametro di configurazione; se nella directory 
+	dell'eseguibile non è presente, viene creata automaticamente la sottodirectory Log e il file Log.txt
+Il log del client serve a tenere traccia delle operazioni effettuate dal tool ed eventuali messaggi 
+	di errore in fase di richiesta.
+E' possibile anche inviare il log via email come notifica dell'esecuzione, nel file di configurazione
+	i parametri permettono di specificare se attivare o nno questa funzionalita' e le email mittente 
+	e destinatario della notifica
+
+
+
+

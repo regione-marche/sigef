@@ -1,0 +1,2103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="SIGEF_TEST">
+      <DataSourceReference>SIGEF</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>8d8de666-58e3-4341-b507-8bb19d1a11bf</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Intestazione">
+      <Query>
+        <DataSourceName>SIGEF_TEST</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdProgetto">
+            <Value>=Parameters!IdProgetto.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>exec RptIntestazioneModelloDomanda @IdProgetto</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID_PROGETTO">
+          <DataField>ID_PROGETTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ID_IMPRESA">
+          <DataField>ID_IMPRESA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="COD_AGEA">
+          <DataField>COD_AGEA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROVINCIA_DI_PRESENTAZIONE">
+          <DataField>PROVINCIA_DI_PRESENTAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROVINCIA_ESTESA">
+          <DataField>PROVINCIA_ESTESA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OPERATORE_PRESENTAZIONE">
+          <DataField>OPERATORE_PRESENTAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ENTE_OPERATORE_PRESENTAZIONE">
+          <DataField>ENTE_OPERATORE_PRESENTAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_ULTIMA_MODIFICA">
+          <DataField>DATA_ULTIMA_MODIFICA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID_BANDO">
+          <DataField>ID_BANDO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DESCRIZIONE_BANDO">
+          <DataField>DESCRIZIONE_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_ENTE_BANDO">
+          <DataField>COD_ENTE_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ENTE_BANDO">
+          <DataField>ENTE_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_SCADENZA_BANDO">
+          <DataField>DATA_SCADENZA_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_PROGRAMMAZIONE">
+          <DataField>COD_PROGRAMMAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROGRAMMAZIONE">
+          <DataField>PROGRAMMAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_PSR">
+          <DataField>COD_PSR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DESCRIZIONE_PSR">
+          <DataField>DESCRIZIONE_PSR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PSR_ANNO_DA">
+          <DataField>PSR_ANNO_DA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PSR_ANNO_A">
+          <DataField>PSR_ANNO_A</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SEGNATURA_RILASCIO">
+          <DataField>SEGNATURA_RILASCIO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_SCHEDA_VALIDAZIONE">
+          <DataField>DATA_SCHEDA_VALIDAZIONE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="BARCODE_SCHEDA_VALIDAZIONE">
+          <DataField>BARCODE_SCHEDA_VALIDAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_VALIDAZIONE_FASCICOLO">
+          <DataField>DATA_VALIDAZIONE_FASCICOLO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PROTOCOLLO_CLASSIFICAZIONE">
+          <DataField>PROTOCOLLO_CLASSIFICAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_DECRETO_APERTURA_BANDO">
+          <DataField>DATA_DECRETO_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="NUM_DECRETO_APERTURA_BANDO">
+          <DataField>NUM_DECRETO_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="REGISTRO_DECRETO_APERTURA_BANDO">
+          <DataField>REGISTRO_DECRETO_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NUM_BUR_APERTURA_BANDO">
+          <DataField>NUM_BUR_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DATA_BUR_APERTURA_BANDO">
+          <DataField>DATA_BUR_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DEFINIZIONE_DECRETO_APERTURA_BANDO">
+          <DataField>DEFINIZIONE_DECRETO_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SEGNATURA_ALLEGATI_AIUTO">
+          <DataField>SEGNATURA_ALLEGATI_AIUTO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PAROLE_CHIAVE">
+          <DataField>PAROLE_CHIAVE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsCovidAutocertificazione">
+      <Query>
+        <DataSourceName>SIGEF_TEST</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdProgetto">
+            <Value>=Parameters!IdProgetto.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT CA.*,
+	DI.DESCRIZIONE AS DIMENSIONE_IMPRESA_DESCRIZIONE,
+	UT.CF_UTENTE AS OPERATORE_INSERIMENTO_CF,
+	UT.NOMINATIVO AS OPERATORE_INSERIMENTO_DESCRIZIONE,
+	FG.DESCRIZIONE AS FORMA_GIURIDICA_DESCRIZIONE,
+	ISNULL(CA.CONTATTO_NOMINATIVO, CA.NOMINATIVO_RAPPRESENTANTE_LEGALE) AS CONTATTO_NOMINATIVO_REALE,
+	ISNULL(CA.CONTATTO_TELEFONO, CA.TELEFONO) AS CONTATTO_TELEFONO_REALE,
+	ISNULL(CA.CONTATTO_EMAIL, CA.EMAIL) AS CONTATTO_EMAIL_REALE,
+	ISNULL(CA.CONTATTO_PEC, CA.PEC) AS CONTATTO_PEC_REALE,
+	CO.DENOMINAZIONE AS LOCALIZZAZIONE_COMUNE_REALE
+FROM COVID_AUTODICHIARAZIONE CA
+	LEFT JOIN DIMENSIONE_IMPRESA DI ON CA.DIMENSIONE_IMPRESA = DI.ID_DIMENSIONE
+	JOIN vUTENTI UT ON CA.OPERATORE_INSERIMENTO = UT.ID_UTENTE
+	JOIN FORMA_GIURIDICA FG ON CA.FORMA_GIURIDICA = FG.COD_ISTAT
+	LEFT JOIN COMUNI CO ON CA.LOCALIZZAZIONE_COMUNE = CO.ID_COMUNE
+WHERE 1 = 1
+	AND CA.ID_PROGETTO = @IdProgetto</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID">
+          <DataField>ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OPERATORE_INSERIMENTO">
+          <DataField>OPERATORE_INSERIMENTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DATA_INSERIMENTO">
+          <DataField>DATA_INSERIMENTO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DATA_MODIFICA">
+          <DataField>DATA_MODIFICA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ID_PROGETTO">
+          <DataField>ID_PROGETTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CODICE_FISCALE">
+          <DataField>CODICE_FISCALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID_BANDO">
+          <DataField>ID_BANDO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PARTITA_IVA">
+          <DataField>PARTITA_IVA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID_IMPRESA">
+          <DataField>ID_IMPRESA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DATA_INIZIO_ATTIVITA">
+          <DataField>DATA_INIZIO_ATTIVITA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RAGIONE_SOCIALE">
+          <DataField>RAGIONE_SOCIALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FORMA_GIURIDICA">
+          <DataField>FORMA_GIURIDICA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CODICE_ATECO">
+          <DataField>CODICE_ATECO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DIMENSIONE_IMPRESA">
+          <DataField>DIMENSIONE_IMPRESA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NUMERO_REGISTRO_IMPRESE">
+          <DataField>NUMERO_REGISTRO_IMPRESE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NUMERO_REA">
+          <DataField>NUMERO_REA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ANNO_REA">
+          <DataField>ANNO_REA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="INDIRIZZO_SEDE_LEGALE">
+          <DataField>INDIRIZZO_SEDE_LEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COMUNE">
+          <DataField>COMUNE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DENOMINAZIONE_COMUNE">
+          <DataField>DENOMINAZIONE_COMUNE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROVINCIA">
+          <DataField>PROVINCIA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CAP">
+          <DataField>CAP</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TELEFONO">
+          <DataField>TELEFONO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EMAIL">
+          <DataField>EMAIL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PEC">
+          <DataField>PEC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NOMINATIVO_RAPPRESENTANTE_LEGALE">
+          <DataField>NOMINATIVO_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CF_RAPPRESENTANTE_LEGALE">
+          <DataField>CF_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_DI_NASCITA_RAPPRESENTANTE_LEGALE">
+          <DataField>DATA_DI_NASCITA_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="COMUNE_NASCITA_RAPPRESENTANTE_LEGALE">
+          <DataField>COMUNE_NASCITA_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DENOMINAZIONE_COMUNE_NASCITA_RAPPRESENTANTE_LEGALE">
+          <DataField>DENOMINAZIONE_COMUNE_NASCITA_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROVINCIA_NASCITA_RAPPRESENTANTE_LEGALE">
+          <DataField>PROVINCIA_NASCITA_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CAP_COMUNE_NASCITA_RAPPRESENTANTE_LEGALE">
+          <DataField>CAP_COMUNE_NASCITA_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IBAN">
+          <DataField>IBAN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_NOMINATIVO">
+          <DataField>CONTATTO_NOMINATIVO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_EMAIL">
+          <DataField>CONTATTO_EMAIL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_PEC">
+          <DataField>CONTATTO_PEC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_TELEFONO">
+          <DataField>CONTATTO_TELEFONO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_SITO_WEB">
+          <DataField>CONTATTO_SITO_WEB</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LOCALIZZAZIONE_COMUNE">
+          <DataField>LOCALIZZAZIONE_COMUNE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LOCALIZZAZIONE_PROVINCIA">
+          <DataField>LOCALIZZAZIONE_PROVINCIA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LOCALIZZAZIONE_CAP">
+          <DataField>LOCALIZZAZIONE_CAP</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LOCALIZZAZIONE_VIA">
+          <DataField>LOCALIZZAZIONE_VIA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MARCA_BOLLO_DATA">
+          <DataField>MARCA_BOLLO_DATA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="MARCA_BOLLO_ESTREMI">
+          <DataField>MARCA_BOLLO_ESTREMI</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DEFINITIVA">
+          <DataField>DEFINITIVA</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="DATA_DEFINITIVA">
+          <DataField>DATA_DEFINITIVA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DIMENSIONE_IMPRESA_DESCRIZIONE">
+          <DataField>DIMENSIONE_IMPRESA_DESCRIZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID_FILE_DOMANDA">
+          <DataField>ID_FILE_DOMANDA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="FLAG_DELEGATO_ABILITATO_SIGEF">
+          <DataField>FLAG_DELEGATO_ABILITATO_SIGEF</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="OPERATORE_INSERIMENTO_DESCRIZIONE">
+          <DataField>OPERATORE_INSERIMENTO_DESCRIZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TOKEN_COHESION">
+          <DataField>TOKEN_COHESION</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FORMA_GIURIDICA_DESCRIZIONE">
+          <DataField>FORMA_GIURIDICA_DESCRIZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_NOMINATIVO_REALE">
+          <DataField>CONTATTO_NOMINATIVO_REALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OPERATORE_INSERIMENTO_CF">
+          <DataField>OPERATORE_INSERIMENTO_CF</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_TELEFONO_REALE">
+          <DataField>CONTATTO_TELEFONO_REALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_EMAIL_REALE">
+          <DataField>CONTATTO_EMAIL_REALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_PEC_REALE">
+          <DataField>CONTATTO_PEC_REALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LOCALIZZAZIONE_COMUNE_REALE">
+          <DataField>LOCALIZZAZIONE_COMUNE_REALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DSInvestimenti">
+      <Query>
+        <DataSourceName>SIGEF_TEST</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdProgetto">
+            <Value>=Parameters!IdProgetto.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>EXEC RptQuadroKSelect @IdProgetto, 1 -- Tipo Investimento: INVESTIMENTO</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID_INVESTIMENTO">
+          <DataField>ID_INVESTIMENTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DESCRIZIONE">
+          <DataField>DESCRIZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTRIBUTO_AMMISSIBILE">
+          <DataField>CONTRIBUTO_AMMISSIBILE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="QUOTA_CONTRIBUTO_AMMISSIBILE">
+          <DataField>QUOTA_CONTRIBUTO_AMMISSIBILE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="QUANTITA">
+          <DataField>QUANTITA</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="CONTRIBUTO_ALTRE_FONTI_AMMISSIBILE">
+          <DataField>CONTRIBUTO_ALTRE_FONTI_AMMISSIBILE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="COSTO_INVESTIMENTO">
+          <DataField>COSTO_INVESTIMENTO</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SPESE_GENERALI">
+          <DataField>SPESE_GENERALI</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ROWS">
+          <DataField>ROWS</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="ID_PRIORITA_SETTORIALE">
+          <DataField>ID_PRIORITA_SETTORIALE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RATA_REINTEGRAZIONE">
+          <DataField>RATA_REINTEGRAZIONE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TOTALE_CONTRIBUTO">
+          <DataField>TOTALE_CONTRIBUTO</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TOTALE_CONTRIBUTO_ALTRE_FONTI">
+          <DataField>TOTALE_CONTRIBUTO_ALTRE_FONTI</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="CONTRIBUTO_QUOTA_FISSA">
+          <DataField>CONTRIBUTO_QUOTA_FISSA</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ID_INVESTIMENTO_ORIGINALE">
+          <DataField>ID_INVESTIMENTO_ORIGINALE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TOTALE_CONTRIBUTO_TRONCATO">
+          <DataField>TOTALE_CONTRIBUTO_TRONCATO</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="RENDIMENTO_GLOBALE">
+          <DataField>RENDIMENTO_GLOBALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UNITA_MISURA">
+          <DataField>UNITA_MISURA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CODIFICA_INVESTIMENTO">
+          <DataField>CODIFICA_INVESTIMENTO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="USO_FEM">
+          <DataField>USO_FEM</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="DETTAGLIO_INVESTIMENTI">
+          <DataField>DETTAGLIO_INVESTIMENTI</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SETTORE_PRODUTTIVO">
+          <DataField>SETTORE_PRODUTTIVO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_VARIAZIONE">
+          <DataField>COD_VARIAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MISURA">
+          <DataField>MISURA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NON_COFINANZIATO">
+          <DataField>NON_COFINANZIATO</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="QUOTA_CONTRIBUTO_ALTRE_FONTI">
+          <DataField>QUOTA_CONTRIBUTO_ALTRE_FONTI</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsAcquisizione">
+      <Query>
+        <DataSourceName>SIGEF_TEST</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdProgetto">
+            <Value>=Parameters!IdProgetto.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT *
+FROM vPROGETTO_STORICO
+WHERE 1 = 1
+AND ID_PROGETTO = @IdProgetto
+AND COD_STATO = 'L'
+AND DATA = (SELECT MAX(DATA)
+			FROM vPROGETTO_STORICO
+			WHERE 1 = 1
+			AND ID_PROGETTO = @IdProgetto
+			AND COD_STATO = 'L')</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID">
+          <DataField>ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ID_PROGETTO">
+          <DataField>ID_PROGETTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="COD_STATO">
+          <DataField>COD_STATO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA">
+          <DataField>DATA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="OPERATORE">
+          <DataField>OPERATORE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SEGNATURA">
+          <DataField>SEGNATURA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="REVISIONE">
+          <DataField>REVISIONE</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="RIESAME">
+          <DataField>RIESAME</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="RICORSO">
+          <DataField>RICORSO</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="RIAPERTURA_PROVINCIALE">
+          <DataField>RIAPERTURA_PROVINCIALE</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="DATA_RI">
+          <DataField>DATA_RI</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="OPERATORE_RI">
+          <DataField>OPERATORE_RI</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SEGNATURA_RI">
+          <DataField>SEGNATURA_RI</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="STATO">
+          <DataField>STATO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_FASE">
+          <DataField>COD_FASE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ORDINE_STATO">
+          <DataField>ORDINE_STATO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="FASE">
+          <DataField>FASE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ORDINE_FASE">
+          <DataField>ORDINE_FASE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NOMINATIVO">
+          <DataField>NOMINATIVO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_ENTE">
+          <DataField>COD_ENTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROVINCIA">
+          <DataField>PROVINCIA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID_PROFILO">
+          <DataField>ID_PROFILO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PROFILO">
+          <DataField>PROFILO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ENTE">
+          <DataField>ENTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_TIPO_ENTE">
+          <DataField>COD_TIPO_ENTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID_ATTO">
+          <DataField>ID_ATTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Rectangle Name="rectangle10">
+            <ReportItems>
+              <Textbox Name="textbox298">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>="Compilata da: " &amp; First(Fields!OPERATORE_INSERIMENTO_DESCRIZIONE.Value, "dsCovidAutocertificazione").ToString()
+&amp; ", Codice Fiscale: " &amp; First(Fields!OPERATORE_INSERIMENTO_CF.Value, "dsCovidAutocertificazione")</Value>
+                        <Style>
+                          <FontSize>8pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>2.63102cm</Top>
+                <Left>1.61cm</Left>
+                <Height>0.49264cm</Height>
+                <Width>16.88999cm</Width>
+                <Style>
+                  <Border>
+                    <Color>White</Color>
+                  </Border>
+                  <TopBorder>
+                    <Color>Black</Color>
+                  </TopBorder>
+                  <BottomBorder>
+                    <Color>Black</Color>
+                  </BottomBorder>
+                  <RightBorder>
+                    <Color>Black</Color>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox35">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>BANDO: </Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value>=First(Fields!DESCRIZIONE_BANDO.Value, "Intestazione")</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>1.9665cm</Top>
+                <Left>0.05659cm</Left>
+                <Height>0.48813cm</Height>
+                <Width>18.4434cm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox1411">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!ENTE_BANDO.Value, "Intestazione")</Value>
+                        <Style>
+                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.67425cm</Top>
+                <Left>1.61cm</Left>
+                <Height>0.9525cm</Height>
+                <Width>9.44004cm</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Image Name="image1">
+                <Source>Embedded</Source>
+                <Value>logomarche</Value>
+                <Height>1.93122cm</Height>
+                <Width>1.56085cm</Width>
+                <ZIndex>3</ZIndex>
+                <Style />
+              </Image>
+              <Textbox Name="textbox299">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>="Acquisita il: " &amp; IIF(IsNothing(First(Fields!DATA.Value, "dsAcquisizione")), "", First(Fields!DATA.Value, "dsAcquisizione"))</Value>
+                        <Style>
+                          <FontSize>8pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>3.30004cm</Top>
+                <Left>1.61cm</Left>
+                <Height>0.49264cm</Height>
+                <Width>16.88999cm</Width>
+                <ZIndex>4</ZIndex>
+                <Visibility>
+                  <Hidden>=IsNothing(First(Fields!DATA.Value, "dsAcquisizione"))</Hidden>
+                </Visibility>
+                <Style>
+                  <Border>
+                    <Color>White</Color>
+                  </Border>
+                  <TopBorder>
+                    <Color>Black</Color>
+                  </TopBorder>
+                  <BottomBorder>
+                    <Color>Black</Color>
+                  </BottomBorder>
+                  <RightBorder>
+                    <Color>Black</Color>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox429">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>DOMANDA n.</Value>
+                        <Style>
+                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.67425cm</Top>
+                <Left>11.90362cm</Left>
+                <Height>0.5291cm</Height>
+                <Width>5.08217cm</Width>
+                <ZIndex>5</ZIndex>
+                <Style>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox9">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!ID.Value, "dsCovidAutocertificazione")</Value>
+                        <Style>
+                          <FontSize>8pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.67425cm</Top>
+                <Left>17.09162cm</Left>
+                <Height>0.58201cm</Height>
+                <Width>1.40837cm</Width>
+                <ZIndex>6</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <TopBorder>
+                    <Style>Solid</Style>
+                  </TopBorder>
+                  <BottomBorder>
+                    <Style>Solid</Style>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Style>Solid</Style>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <DataElementOutput>ContentsOnly</DataElementOutput>
+            <Left>0.21876cm</Left>
+            <Height>3.88827cm</Height>
+            <Width>18.49999cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Subreport Name="rptCovidAnagrafica">
+            <ReportName>rptCovidAnagrafica</ReportName>
+            <Parameters>
+              <Parameter Name="IdAutodichiarazione">
+                <Value>=First(Fields!ID.Value, "dsCovidAutocertificazione")</Value>
+              </Parameter>
+            </Parameters>
+            <Top>4.06466cm</Top>
+            <Left>0.11653cm</Left>
+            <Height>1.18268cm</Height>
+            <Width>18.86314cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Subreport Name="rptCovidContatti">
+            <ReportName>rptCovidContatti</ReportName>
+            <Parameters>
+              <Parameter Name="IdAutodichiarazione">
+                <Value>=First(Fields!ID.Value, "dsCovidAutocertificazione")</Value>
+              </Parameter>
+            </Parameters>
+            <Top>6.78279cm</Top>
+            <Left>0.11653cm</Left>
+            <Height>1.18268cm</Height>
+            <Width>18.86314cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Subreport Name="rptCovidDichiarazioni">
+            <ReportName>rptCovidAutocertificazioneDichiarazioni</ReportName>
+            <Parameters>
+              <Parameter Name="IdAutocertificazione">
+                <Value>=First(Fields!ID.Value, "dsCovidAutocertificazione")</Value>
+              </Parameter>
+            </Parameters>
+            <Top>9.43037cm</Top>
+            <Left>0.11653cm</Left>
+            <Height>1.18268cm</Height>
+            <Width>18.86313cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Subreport Name="rptCovidRequisiti">
+            <ReportName>rptCovidAutocertificazioneRequisiti</ReportName>
+            <Parameters>
+              <Parameter Name="IdAutodichiarazione">
+                <Value>=First(Fields!ID.Value, "dsCovidAutocertificazione")</Value>
+              </Parameter>
+              <Parameter Name="IdProgetto">
+                <Value>=Parameters!IdProgetto.Value</Value>
+              </Parameter>
+              <Parameter Name="IdBando">
+                <Value>=First(Fields!ID_BANDO.Value, "dsCovidAutocertificazione")</Value>
+              </Parameter>
+            </Parameters>
+            <Top>8.14186cm</Top>
+            <Left>0.11653cm</Left>
+            <Height>1.18268cm</Height>
+            <Width>18.86313cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Subreport Name="rptCovidLocalizzazione">
+            <ReportName>rptCovidLocalizzazione</ReportName>
+            <Parameters>
+              <Parameter Name="IdAutodichiarazione">
+                <Value>=First(Fields!ID.Value, "dsCovidAutocertificazione")</Value>
+              </Parameter>
+            </Parameters>
+            <Top>5.38845cm</Top>
+            <Left>0.11653cm</Left>
+            <Height>1.18268cm</Height>
+            <Width>18.86314cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Rectangle Name="Rectangle1">
+            <ReportItems>
+              <Textbox Name="textbox316">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Formula di consenso</Value>
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Left>0.6174cm</Left>
+                <Height>0.5cm</Height>
+                <Width>3.99cm</Width>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox315">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Preso atto di quanto esposto nell'informativa rilasciata, acconsento al trattamento dei miei dati personali da parte della Regione Marche.</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>0.68344cm</Top>
+                <Left>0.05658cm</Left>
+                <Height>0.91001cm</Height>
+                <Width>18.69cm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <TopBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </TopBorder>
+                  <BottomBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </RightBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox317">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>IL SOGGETTO DICHIARA DI ESSERE TITOLARE DI CREDENZIALI CHE SOSTITUISCONO LA FIRMA AI SENSI DEL D.LGVO 82/2005</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontFamily>Calibri</FontFamily>
+                          <FontSize>11pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>1.7134cm</Top>
+                <Height>1.18517cm</Height>
+                <Width>18.69cm</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <TopBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </TopBorder>
+                  <BottomBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>1pt</Width>
+                  </RightBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>45.56521cm</Top>
+            <Left>0.11654cm</Left>
+            <Height>3.02557cm</Height>
+            <Width>18.80654cm</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Subreport Name="rptCovidPianoInvestimenti">
+            <ReportName>rptCovidPianoInvestimenti</ReportName>
+            <Parameters>
+              <Parameter Name="IdProgetto">
+                <Value>=Parameters!IdProgetto.Value</Value>
+              </Parameter>
+            </Parameters>
+            <Top>10.78944cm</Top>
+            <Left>0.11653cm</Left>
+            <Height>1.18268cm</Height>
+            <Width>18.86313cm</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+          <Rectangle Name="Rectangle2">
+            <ReportItems>
+              <Textbox Name="textbox8">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>INFORMATIVA SUL TRATTAMENTO DEI DATI PERSONALI AI SENSI DEGLI ARTT. 13 E 14 DEL REGOLAMENTO (UE) 2016/679</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Height>0.59956cm</Height>
+                <Width>18.86314cm</Width>
+                <Style>
+                  <BackgroundColor>Black</BackgroundColor>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox7">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Con questa informativa la Regione Marche spiega come tratta i dati raccolti e quali sono i diritti riconosciuti all’interessato ai sensi del Regolamento (UE) 2016/679, relativo alla protezione delle persone fisiche con riguardo al trattamento dei dati personali e del D.Lgs. 196/2003, in materia di protezione dei dati personali, così come modificato dal D.Lgs. 101/2018.</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox7</rd:DefaultName>
+                <Top>0.74067cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>1.69142cm</Height>
+                <Width>18.25cm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox318">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Finalità del trattamento</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>2.64375cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>0.5cm</Height>
+                <Width>8.07517cm</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox11">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>I dati forniti con questo modello verranno trattati dalla regione Marche per le finalità connesse al riconoscimento del contributo a fondo perduto, previsto dall’art. 54 del decreto-legge 19 maggio 2020, n. 34.</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox7</rd:DefaultName>
+                <Top>3.32014cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>1.09875cm</Height>
+                <Width>18.25cm</Width>
+                <ZIndex>3</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox319">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Conferimento dei dati</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>4.59529cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>0.5cm</Height>
+                <Width>8.07517cm</Width>
+                <ZIndex>4</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox14">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>I dati personali richiesti (ad es. codice fiscale, coordinate IBAN ecc.) devono essere forniti obbligatoriamente per potersi avvalere degli effetti della disposizione in materia di erogazione di un contributo a fondo perduto. L’omissione e/o l’indicazione non veritiera di dati può far incorrere in sanzioni amministrative o, in alcuni casi, penali.</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox7</rd:DefaultName>
+                <Top>5.27168cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>1.52208cm</Height>
+                <Width>18.25cm</Width>
+                <ZIndex>5</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox320">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Base giuridica</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>6.97015cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>0.55645cm</Height>
+                <Width>8.07517cm</Width>
+                <ZIndex>6</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox15">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>L’articolo 54 del decreto legge 19 maggio 2020, n. 34 ha previsto che le Regioni possono adottare misure di aiuto, a valere sulle proprie risorse, ai sensi della sezione 3.1 della Comunicazione della Commissione europea C (2020) 1863 final - "Quadro temporaneo per le misure di aiuto di Stato a sostegno dell'economia nell'attuale emergenza del COVID-19 " e successive modifiche e integrazioni, per sostenere le attività economiche colpite dall’emergenza epidemiologica “Covid-19”. I dati personali indicati in questo modello sono dunque trattati dalla Regione Marche nell'esecuzione dei propri compiti di interesse pubblico o comunque connessi all'esercizio dei propri pubblici poteri di cui è investito il Titolare del trattamento.</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox7</rd:DefaultName>
+                <Top>7.70298cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>2.74975cm</Height>
+                <Width>18.25cm</Width>
+                <ZIndex>7</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox321">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Periodo di conservazione dei dati</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>10.62912cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>0.55645cm</Height>
+                <Width>8.07517cm</Width>
+                <ZIndex>8</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox16">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>I dati saranno conservati per il tempo correlato alle predette finalità ovvero entro il maggior termine per la definizione di eventuali procedimenti giurisdizionali o per rispondere a richieste da parte dell’Autorità giudiziaria.</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox7</rd:DefaultName>
+                <Top>11.36195cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>1.18342cm</Height>
+                <Width>18.25cm</Width>
+                <ZIndex>9</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox322">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Categorie di destinatari dei dati personali</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>12.72175cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>0.55645cm</Height>
+                <Width>8.07517cm</Width>
+                <ZIndex>10</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox17">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>I dati personali non saranno oggetto di diffusione, tuttavia, se necessario potranno essere comunicati:
+–	a banche, Poste Italiane, Istituti di moneta elettronica, Istituti di pagamento, che, ai sensi dell’articolo 114-sexies del decreto legislativo 30 settembre 1993, n. 385 (Testo unico bancario), prestano servizi di pagamento per poter verificare che il richiedente il contributo sia intestatario o cointestatario del conto su cui verrà erogato il contributo stesso;
+–	ai soggetti cui la comunicazione dei dati debba essere effettuata in adempimento di un obbligo previsto dalla legge, da un regolamento o dalla normativa comunitaria, ovvero per adempiere ad un ordine dell’Autorità Giudiziaria;
+–	ai soggetti designati dal Titolare, in qualità di Responsabili, ovvero alle persone autorizzate al trattamento dei dati personali che operano sotto l’autorità diretta del titolare o del responsabile;
+–	ad altri eventuali soggetti terzi, nei casi espressamente previsti dalla legge, ovvero ancora se la comunicazione si renderà necessaria per la tutela dell’Agenzia in sede giudiziaria, nel rispetto delle vigenti disposizioni in materia di protezione dei dati personali.</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox7</rd:DefaultName>
+                <Top>13.45458cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>4.88759cm</Height>
+                <Width>18.25cm</Width>
+                <ZIndex>11</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox323">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Modalità del trattamento</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>18.51856cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>0.55645cm</Height>
+                <Width>8.07517cm</Width>
+                <ZIndex>12</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox18">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>I dati personali saranno trattati anche con strumenti automatizzati per il tempo strettamente necessario a conseguire gli scopi per cui sono stati raccolti. La Regione Marche attua idonee misure per garantire che i dati forniti vengano trattati in modo adeguato e conforme alle finalità per cui vengono gestiti; la Regione Marche impiega idonee misure di sicurezza, organizzative, tecniche e fisiche, per tutelare le informazioni dall’alterazione, dalla distruzione, dalla perdita, dal furto o dall’utilizzo improprio o illegittimo. Il modello può essere generato da un soggetto delegato che tratterà i dati esclusivamente per la finalità di presentazione del modello alla Regione Marche.</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox7</rd:DefaultName>
+                <Top>19.25139cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>2.77092cm</Height>
+                <Width>18.25cm</Width>
+                <ZIndex>13</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox324">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Titolare del trattamento</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>22.1987cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>0.55645cm</Height>
+                <Width>8.07517cm</Width>
+                <ZIndex>14</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox19">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Titolare del trattamento dei dati personali è la Regione Marche, con sede ad Ancona in via Gentile da Fabriano n. 9.</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox7</rd:DefaultName>
+                <Top>22.93153cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>0.76009cm</Height>
+                <Width>18.25cm</Width>
+                <ZIndex>15</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox325">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Responsabile del trattamento</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>23.868cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>0.55645cm</Height>
+                <Width>8.07517cm</Width>
+                <ZIndex>16</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox20">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Responsabile del trattamento dei dati è il Dirigente della struttura regionale competente per l’attuazione della misura di aiuto.
+</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox7</rd:DefaultName>
+                <Top>24.60083cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>0.76009cm</Height>
+                <Width>18.25cm</Width>
+                <ZIndex>17</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox326">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Responsabile della protezione dei dati</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>25.53731cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>0.55645cm</Height>
+                <Width>8.07517cm</Width>
+                <ZIndex>18</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox21">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Il Responsabile della Protezione dei Dati è l’Avv. Paolo Costanzi, nominato con DGR 681/2018, il quale ha sede in via Gentile da Fabriano, 9 – 60125 Ancona, casella di posta elettronica: rpd@regione.marche.it </Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox7</rd:DefaultName>
+                <Top>26.27014cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>1.18342cm</Height>
+                <Width>18.25cm</Width>
+                <ZIndex>19</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox327">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Diritti dell'interessato</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>27.62995cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>0.55645cm</Height>
+                <Width>8.07517cm</Width>
+                <ZIndex>20</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox22">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>L’interessato ha il diritto, in qualunque momento, di ottenere la conferma dell’esistenza o meno dei dati forniti anche attraverso la consultazione della propria area riservata del sito web dell’Agenzia delle Entrate. Ha inoltre il diritto di chiedere, nelle forme previste dall’ordinamento, la rettifica dei dati personali inesatti e l’integrazione di quelli incompleti e di esercitare ogni altro diritto ai sensi degli articoli da 18 a 22 del Regolamento laddove applicabili.
+Tali diritti possono essere esercitati con richiesta indirizzata a: Regione Marche, via Gentile da Fabriano, 9 – 60125 Ancona. Indirizzo di posta elettronica: rpd@regione.marche.it 
+Qualora l’interessato ritenga che il trattamento sia avvenuto in modo non conforme al Regolamento e al D.Lgs. 196/2003, potrà rivolgersi al Garante per la Protezione dei dati Personali, ai sensi dell’art. 77 del medesimo Regolamento. Ulteriori informazioni in ordine ai suoi diritti sulla protezione dei dati personali sono reperibili sul sito web del Garante per la Protezione dei Dati Personali all’indirizzo www.garanteprivacy.it.</Value>
+                        <Style>
+                          <FontStyle>Normal</FontStyle>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Normal</FontWeight>
+                          <TextDecoration>None</TextDecoration>
+                          <Color>#000000</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox7</rd:DefaultName>
+                <Top>28.36278cm</Top>
+                <Left>0.33484cm</Left>
+                <Height>4.57009cm</Height>
+                <Width>18.25cm</Width>
+                <ZIndex>21</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>12.19716cm</Top>
+            <Left>0.11654cm</Left>
+            <Height>33.19166cm</Height>
+            <Width>18.89142cm</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+        </ReportItems>
+        <Height>19.22749in</Height>
+        <Style />
+      </Body>
+      <Width>7.57073in</Width>
+      <Page>
+        <PageFooter>
+          <Height>0.8802cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="textbox13">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Pagina</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.12017cm</Top>
+              <Left>8.83338cm</Left>
+              <Height>0.63984cm</Height>
+              <Width>1.3cm</Width>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox12">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!PageNumber</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.12509cm</Top>
+              <Left>10.10338cm</Left>
+              <Height>0.63492cm</Height>
+              <Width>0.7cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox10">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>di</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.12509cm</Top>
+              <Left>10.70338cm</Left>
+              <Height>0.63492cm</Height>
+              <Width>0.5cm</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!TotalPages</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.12509cm</Top>
+              <Left>11.10338cm</Left>
+              <Height>0.63492cm</Height>
+              <Width>0.7cm</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>0.5cm</LeftMargin>
+        <RightMargin>0.5cm</RightMargin>
+        <TopMargin>0.5cm</TopMargin>
+        <BottomMargin>0.5cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="IdProgetto">
+      <DataType>String</DataType>
+      <Prompt>Id Progetto</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>1</NumberOfColumns>
+      <NumberOfRows>3</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>IdProgetto</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="regionemarchenew">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>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
+GCkZPNPF2lXbbJHeuJFV/wD1UuWPwdS57d532rX120TUFY0tjlipWn+xZx9Zypcyq6e0cER3bys68X63WKmM1dOGnHexji9/kCqPUupqvUlb0ko6KnjJ6GEHg3xntK1M009XOZJpJJpnni55LnOKmGmdntVXvZVXZrqal5iI8JJP/qPaq5tN+6GHJnzaueCkd3/dXToTSzrtXNuNXH/Mqd2QCPvrx1eQdfqVtLrp6eGlgZBTxtjijG6xjRgALsV1a8MOtp8EYKcMdfmKIbVH7mzm6DP0xGz1yNCl6rbaadUagt8+n7TpqofF0zHmsMzA2Ro77gCc88c+xSaE9loYq2yut87d6Kan6F48Rbgry9b7NcWatfpeOR8clRU9x1Abw3mh4znxd7n0L0XpW83q4xdz3jTs9skhhbvSvla9kjuR3ccfGtbDoJkW1GXVu9F0DqfvY+O8JiN0u7MbvtKDP1vTx0+zm700Td2OKge1gHUA3gPYq3+5+d/P72ztihPtd9qnOv6nUNXbqyw2fTkta2tp9w1nTsYxm9kEYJzkD3qC6CsGt9AXGoqZNLvroaqMMeyKqjDmkHIPMoLpqaiOlppamZ27HCwveewAZKgWyilFxtdz1JWRNfNeK+SUF7QcMBwB695duvK7VNztFTY7Jpqpc6qia2SqfNGGNa4AuaOPE82+tdmzma+W21UenbrpqooW0sTgKvpWOjeck8cHIJz40HzazYIrnoGskhgYJqIipYWtAOG/S/0k+pRjYHet+kuVjkdxjcKmIHsPeu9ob61Ymq62409tdTW+wzXc1cb43tjlYxrARjvi49eersVN6U0ZtB0dfoLxTWEzbgLZIe6I/nGHmPpf8ICD/9S5l5w2Zfjcp/1s/wALldly1BfoLRSVNv0pU1VVUNdv076iNhpyOW8c8c+JVLpvROu9Napg1CdOtqTG97nwtqowXBwIIHfcOaCVbdNPd22CmvkLMy0D9yUgf1bvsdj1lZWx
+LUfyppV9pmfmotj91uTxMTuLfUcj1KZmB2pdLyU11oH0JrYXRy08jw90ecjmOHYVTejdK670PqZ1fDYJKunaHQzMZOxomZnmMntAIQWTtS07JqPRNTDTsL6mlIqYWgcXFucgeVpPpwoNsEvkcctxsMrwHyYqYQTzI7149W6fQVcdFUSVVFDPNTSUskjA50MhBdGew4JCrDVuy+4Ul+bqjRUjYK1knSupCQ0F3WWE8MHraeHE+RBay1OqL/BpjTtXd6hu+IGd5HnHSPPBrfSVF6LabLT04i1Bpe80VawYe2GlMkbz2tP/ADyqK6lZq/apX09FSWaptNlhfvdJWN3N48t8jrwCcAZ580Fv26qNdbKWsczozUQslLM53d5oOM+lUht98JrZ5mfjcrsDH2yziOmhfVPpafdjjBDXSlreAyeAJwqa13pnXOvLvDXt0waGKCHomRvq4y4jJOTxHagtzS3gnaPMYfgC2M33iT9E+5RbRFdqJtFTWe96ckoBR0zWCrFQx7JC0BoGAcgkcfQs7VF1vdvhZFZdPyXWSZrgXidsbYj1b2eJ59XYgpHY7+MyH9VN8JXo1UHpLReu9Iajhvg04KsMDg+EVUYJDhg4OTgq6qe4V0th7vktE0NZ0Tn9wGRpeXDOG73Lj+9BTO33wntnmX8blcel/BS0eZQ/AFUevdN6313d4a9ml3UUUEPRMY+qjc48SSTxHaplY73rS0WKkt9XoeeolpYWxdLDXRAPDRgHGeB4IJNqC52rTFBVahrYWh8cbY3PY0dJIM96wHr4lbaGQTQslALQ9odg8xkKldX0+0HW9zoqeq03NQ26KZpELZGvGc8XOdnjgerirsADWgDkBgIPqIiAiIgIiINXddN2i8gmtoo3ydUre9ePSFF6vZXRPcTSXGaEdTZGB/2KeIozWJ6qMmnxZO+1Va/9Kane/C0WP1Jz71m0uyqkYQau5TSjrbGwM9pyp6i85dVUaHTx/VqbVpez2bDq
+OiYJB/Wv75/rPL0LbIinEbNVa1rG1Y2ERESEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQf/9W5kREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREH//1rmREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREH/9k=</ImageData>
+    </EmbeddedImage>
+    <EmbeddedImage Name="logomarche">
+      <MIMEType>image/gif</MIMEType>
+      <ImageData>R0lGODlhOwBJAMYBAAAAAP///0IsLyYeH9XR0sbExfz3+//7/7m3ufTv9t3W4KKgpMC+wuLg5bCvtMnIzRgYGvv7//X19pCQkdzd5czN1O3u9fX2+9bX24iLkllaXMbL0yElKu/0+tXd5eXp7WJqcff7/snU3Nzl687c43aHj8fa4qm2u73V2fr//57KyM7k4wx4cluloZOjokeak6vSz+nz8jCMfI3HuqKwrcfT0OL/9qnkzvD++Uq0jGS7mgSXW3zRrtj67KXXwczu3vn/+2KdcW94cD0+PYOFg1hqVImSh5eZlP//+/379nZlVKinpp6TiW9YRYRrVZiMgtvV0LSspjIkHLuxq09NTEc3MPny79fKxffr6DIsK/Xi3wYEBGVhYf719YJ9ff/7+/v7+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////yH+FUNyZWF0ZWQgd2l0aCBUaGUgR0lNUAAsAAAAADsASQAAB/6AAYKDhIWGh4iJiouMjY6PkJGSk5SVlpeYmZqbnJ2en6ChoqOkpaanqKmqq6ytrGCwsbKztLGbBzgBIQZAX1+DBwERKSmQxQcGB8QBKcnHAcGKuBFABzY4QGBfB9zcBr7g4N3jB0i+5SnaOMg4EhLVi7gHQEg+PPf4+DMzPPz++QAD3rtR7UMDCyEYKZuHQweLHRAjSpxIseJEHbkeFGgQQ2EzIDhyWBxJkiKLHLmmLHnQMR4QXiFLyiyJMoKDlSOQxEvxBaRIiDmCCh1KtGhRiSgNOIhSY0S0RPN6xtwhg4cNJDiwJUHCtSvXFEDAigUCJAkQGzxkAA1xIMqCB/4fwCxCcjVFkp87dADp8iVFLjASBMkVDOaCIMMBkKQ4AIZHxBzmbtZoIDjRFyQHLhzAy2PdlxEPKMiVINdW
+5QAWCnyQkNkx0MhLamhh9MVAFwlf8M4AguVIliFVQGAIYKu0oARHhigXoqDxY65RYn8IEDgRkiTcwPyU4SOGEwhCCiTnYoG4+eMSMgwYkqW9Fwuud0D+Ipny+UNINONI8XNGDyFZEAGWAQtkgYB5sAQGBhEctPcbB1VgEB9kSERXw3TUJQIWGPu9sIN/QmwhQAPZMJbFEcQZt2CD7LUogAcTwjbZaYfIpUxI/hWRhRdVOCCIAQ0MscBopRGRBQfstf6HZBYExFhhbLMNhog3zdzQgxJSLGEFFUM8IEEDXAzRACwpMrhki0lK+Bx9sdknDUhgIPEBCFkI0AQVGqDJAQiCVMdgkkMs2d4QNcywJg3S0WgIVtV08QARXmTgBQhDOODABBNosONgDP7m4KCemhDjFxZSRiYi7wTQxQE9/NBDDzgUIOYBVtQwBBUcEBEAF0cO2qKnvxW6pmSzxQOLAQ1BJMMMIgxBAWaUNjABBBlM4Cl7Z7KYRQ2j1nffIYxBM9UOPNiKQQhYDJEBcUIMQEQGDv4K7BAYGPrakxcyEhg7LURUbhU5FZAFA4N54S4RST74K6HdtqmoIYv1FIS/UP4IgEEKDAxRQIoSMDiBEOxpmnB7wt5rYbHVHWIANAbYoNsVVVCAAwYDkwmGBR574cUGVICqHLfDOpwyfkDoEgBnD0SIWoCCIUAFAh5L8IG8daoJVFknvFWslIsWXYxuSVMQgQSUwlIABlwi4AUHR0igsKdWy0fWTQ9okY4iSGTztb9JjxkAAwMsEMAQGjygKdQcCNEzoAJAMeHcS1TQwN3WpbM3RDxUIEBc1AHIAAGEGz4EA9YGeu22E6aABN12B5BA5coYwFkNWTSQ0OrtLYDAEEIQkOcCIgeappN0T871opg1M3sVYzLmQBZ0aqABBCBYux62v1IwYZysF1PelP7V0KNDRDrYKloASTgwBAEFgJykBkSor1ySVdQwPkQ6mLNA5JMPbcg8B2BLfF6w
+OwywBnecs0ADMNAA0gQpXuxBgIcwFwArHGEBFfhA0RSRDbIkAQUS4cEQmGAAv4BsZXHKDxLkkgBADYoGEiFACj5AhCjAJQKn0lA1ejDBvABId0ZCUWBWKBgJpGAJDVKSF+4nnw+kQDyRS8AvpAGWA3whWRHxgRc8RQTDlEYuBgCDX3CAsCxUQQgqQAoxFnCEJRDACg8jRAmr8Y4fqAV/NiABA+xjHEKIJQAfYAAGgMDEHaxATphyAAUUdDxC4IItFkiBDQrZmS4oxouGAKMVrf5hL/zljQFEOMIe/QeuFLAFC0b8gUSW9RVieBEZK6TVyvwSH6r8IAkfmAARMNiAJABmERHYTwKwsJ8bXOQapiwGGAOQjHnYYJITuUFfoDYBBGDAAjbTUAlx0AUtOMUAtdzBC2qwn7sNxhs4uMEd/YWDLzTAC0ZYwB59maJE9PEDFLAAssIpHx78QAJd+YIEfsADvERkBjZIAhaMEEoEEIA0jUQEmb6EASxIMi0VkcFQRqKCq/QmUkvYCGIcQaYvfAADNQCDNW7Qw5lA5AU+KMsHoPYEeV4zohJNESw+UAMGWOALVugBD1o6Eo3qwAYgGYELQPAEJjiAABbYSj0XMf4YMuGyBm4sBw564AMdEDUiMtCBD3rQjCTUoARemMARHAAXWOAQp4U4HhiAQAEoIGAJGPhCCm3wgxvsYx8w+AFStfEFBRyBCESoKQ1QsBpMgCEhDXjACVyAgCtggyyYzRs2uJKAK0QBsZFagA1HkARJVFVKBwjmCKDAgCUc4QhRKAABGoBKHFjhAwRorS5LQIQJMCEKDKgBFrAwiKpaYoVfqkBrjzCBDCAWUpDywnOr1UYEVCCfYIjAJtxKHKlFlgE3YSNzm6vW1y7BAQgIzQesANdMgCEJUqMAAR6AAATcxFLoZQADHgCFBqwmTqOIBXwtYJAGLBADBCAABhh4EBkrSKC0hNluhAmhV67AwsKJAXAO2+uKRwQCADs=</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <Language>it-IT</Language>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>7c8f344e-b65f-4fdd-bbfc-962e6129cc97</rd:ReportID>
+</Report>

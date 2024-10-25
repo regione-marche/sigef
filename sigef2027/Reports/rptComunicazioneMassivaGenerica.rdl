@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="SIGEF">
+      <DataSourceReference>SIGEF_SVIL</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>402d0d57-22f3-441d-9ce1-2271a523ec01</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="ProgettoComunicazione">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdComunicazione">
+            <Value>=Parameters!IdComunicazione.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@IdBando">
+            <Value>=Parameters!IdBando.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT        COMUNICAZIONI_MASSIVE.ID, COMUNICAZIONI_MASSIVE.OGGETTO, COMUNICAZIONI_MASSIVE.TESTO, COMUNICAZIONI_MASSIVE.COD_TIPO, TIPO_COMUNICAZIONE.DESCRIZIONE, 
+                         COMUNICAZIONI_MASSIVE.DATA_INSERIMENTO, COMUNICAZIONI_MASSIVE.DATA_MODIFICA, COMUNICAZIONI_MASSIVE.OPERATORE, 
+                         COMUNICAZIONI_MASSIVE.SEGNATURA, COMUNICAZIONI_MASSIVE.ID_NOTE, NOTE.TESTO AS TESTO_NOTE, BANDO.DESCRIZIONE AS INTESTAZIONE_BANDO
+FROM            COMUNICAZIONI_MASSIVE INNER JOIN
+                         TIPO_COMUNICAZIONE ON COMUNICAZIONI_MASSIVE.COD_TIPO = TIPO_COMUNICAZIONE.COD_TIPO LEFT OUTER JOIN
+                         NOTE ON COMUNICAZIONI_MASSIVE.ID_NOTE = NOTE.ID INNER JOIN
+                         BANDO ON BANDO.ID_BANDO = COMUNICAZIONI_MASSIVE.ID_BANDO
+WHERE        (COMUNICAZIONI_MASSIVE.ID = @IdComunicazione) AND (COMUNICAZIONI_MASSIVE.ID_BANDO = @IdBando)</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID">
+          <DataField>ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OGGETTO">
+          <DataField>OGGETTO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TESTO">
+          <DataField>TESTO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_TIPO">
+          <DataField>COD_TIPO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DESCRIZIONE">
+          <DataField>DESCRIZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_INSERIMENTO">
+          <DataField>DATA_INSERIMENTO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DATA_MODIFICA">
+          <DataField>DATA_MODIFICA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="OPERATORE">
+          <DataField>OPERATORE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SEGNATURA">
+          <DataField>SEGNATURA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID_NOTE">
+          <DataField>ID_NOTE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TESTO_NOTE">
+          <DataField>TESTO_NOTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="INTESTAZIONE_BANDO">
+          <DataField>INTESTAZIONE_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="ResponsabileBando">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdBando">
+            <Value>=Parameters!IdBando.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT TOP 1 vUTENTI.NOMINATIVO
+	FROM  BANDO_RESPONSABILI BR 
+	INNER JOIN vUTENTI ON BR.ID_UTENTE = vUTENTI.ID_UTENTE
+	WHERE ID_BANDO = @IdBando  AND BR.PROVINCIA IS NULL 
+	ORDER BY BR.ID DESC </CommandText>
+      </Query>
+      <Fields>
+        <Field Name="NOMINATIVO">
+          <DataField>NOMINATIVO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsIntestazione">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdComunicazione">
+            <Value>=Parameters!IdComunicazione.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@IdBando">
+            <Value>=Parameters!IdBando.Value</Value>
+            <rd:UserDefined>true</rd:UserDefined>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT B.ID_BANDO, B.DESCRIZIONE AS DESCRIZIONE_BANDO, B.COD_ENTE AS COD_ENTE_BANDO, 
+	B.ENTE AS ENTE_BANDO, CONVERT(VARCHAR(16), B.DATA_SCADENZA, 103) AS DATA_SCADENZA_BANDO, 
+	PR.CODICE AS COD_PROGRAMMAZIONE, PR.DESCRIZIONE AS PROGRAMMAZIONE, 
+	PSR.CODICE AS COD_PSR, PSR.DESCRIZIONE AS DESCRIZIONE_PSR, ANNO_DA AS PSR_ANNO_DA, ANNO_A AS PSR_ANNO_A, 
+	FP.FASCICOLO AS PROTOCOLLO_CLASSIFICAZIONE, 
+	A.DATA AS DATA_DECRETO_APERTURA_BANDO, 
+	A.NUMERO AS NUM_DECRETO_APERTURA_BANDO, 
+	A.REGISTRO AS REGISTRO_DECRETO_APERTURA_BANDO, 
+	A.NUMERO_BUR AS NUM_BUR_APERTURA_BANDO,
+	A.DATA_BUR AS DATA_BUR_APERTURA_BANDO, 
+	A.DEFINIZIONE_ATTO AS DEFINIZIONE_DECRETO_APERTURA_BANDO,
+	B.PAROLE_CHIAVE
+	--BC.VALORE as StrutturaBando,
+	--(Select VAL_TESTO From PRIORITA_X_PROGETTO PP Where PP.ID_PROGETTO = P.ID_PROGETTO and PP.ID_PRIORITA in (12, 9) and VAL_TESTO is not null) as BolloNumero,
+	--(Select VAL_DATA From PRIORITA_X_PROGETTO PP Where PP.ID_PROGETTO = P.ID_PROGETTO and PP.ID_PRIORITA in (13, 10) and VAL_DATA is not null) as BolloData
+	FROM COMUNICAZIONI_MASSIVE C 
+	INNER JOIN VBANDO B ON C.ID_BANDO = B.ID_BANDO
+	INNER JOIN vzPROGRAMMAZIONE PR ON B.ID_PROGRAMMAZIONE = PR.ID
+	INNER JOIN zPSR PSR ON PR.COD_PSR = PSR.CODICE
+	LEFT JOIN FASCICOLO_PALEO FP ON PSR.CODICE = FP.COD_TIPO
+	LEFT JOIN (SELECT  ID_BANDO, MIN(ID_ATTO) ID_ATTO-- MI PERMETTE DI PRENDERE IL PRIMO ATTO INSERITO PER LE COMUNICAZIONI
+						FROM BANDO_INTEGRAZIONI WHERE ID_ATTO IS NOT NULL 
+						GROUP BY ID_BANDO) AS BI ON B.ID_BANDO = BI.ID_BANDO
+	LEFT JOIN vATTO A ON BI.ID_ATTO = A.ID_ATTO
+	WHERE C.ID = @IdComunicazione AND B.ID_BANDO = @IdBando </CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID_BANDO">
+          <DataField>ID_BANDO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DESCRIZIONE_BANDO">
+          <DataField>DESCRIZIONE_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_ENTE_BANDO">
+          <DataField>COD_ENTE_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ENTE_BANDO">
+          <DataField>ENTE_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_SCADENZA_BANDO">
+          <DataField>DATA_SCADENZA_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_PROGRAMMAZIONE">
+          <DataField>COD_PROGRAMMAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROGRAMMAZIONE">
+          <DataField>PROGRAMMAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_PSR">
+          <DataField>COD_PSR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DESCRIZIONE_PSR">
+          <DataField>DESCRIZIONE_PSR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PSR_ANNO_DA">
+          <DataField>PSR_ANNO_DA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PSR_ANNO_A">
+          <DataField>PSR_ANNO_A</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PROTOCOLLO_CLASSIFICAZIONE">
+          <DataField>PROTOCOLLO_CLASSIFICAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_DECRETO_APERTURA_BANDO">
+          <DataField>DATA_DECRETO_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="NUM_DECRETO_APERTURA_BANDO">
+          <DataField>NUM_DECRETO_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="REGISTRO_DECRETO_APERTURA_BANDO">
+          <DataField>REGISTRO_DECRETO_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NUM_BUR_APERTURA_BANDO">
+          <DataField>NUM_BUR_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DATA_BUR_APERTURA_BANDO">
+          <DataField>DATA_BUR_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DEFINIZIONE_DECRETO_APERTURA_BANDO">
+          <DataField>DEFINIZIONE_DECRETO_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PAROLE_CHIAVE">
+          <DataField>PAROLE_CHIAVE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>REGIONE MARCHE </Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.63cm</Top>
+            <Left>1.83576cm</Left>
+            <Height>0.56472cm</Height>
+            <Width>16.44102cm</Width>
+            <Style>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="image1">
+            <Source>Embedded</Source>
+            <Value>logomarche</Value>
+            <Left>0.22576cm</Left>
+            <Height>1.93122cm</Height>
+            <Width>1.56085cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style />
+          </Image>
+          <Textbox Name="textbox12">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!ENTE_BANDO.Value, "dsIntestazione")</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.37111cm</Top>
+            <Left>1.85717cm</Left>
+            <Height>0.56011cm</Height>
+            <Width>16.41961cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox31">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>INFORMATIVA</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>14.23204cm</Top>
+            <Left>0.585cm</Left>
+            <Height>0.5cm</Height>
+            <Width>3.99cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox27">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Ai fini dell'inoltro al destinatario, il presente documento è copia conforme all'originale sottoscritto digitalmente e custodito agli atti della Regione Marche.</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>14.80002cm</Top>
+            <Height>0.50762cm</Height>
+            <Width>18.27678cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox24">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Distinti Saluti </Value>
+                    <Style>
+                      <FontSize>8.5pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox24</rd:DefaultName>
+            <Top>12.10154cm</Top>
+            <Left>0.22576cm</Left>
+            <Height>0.5131cm</Height>
+            <Width>3.84149cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox26">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Il responsabile del procedimento</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>12.45489cm</Top>
+            <Left>8.35278cm</Left>
+            <Height>0.59cm</Height>
+            <Width>9.594cm</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox25">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="(" &amp; First(Fields!NOMINATIVO.Value, "ResponsabileBando") &amp; ")"</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>13.08489cm</Top>
+            <Left>8.35278cm</Left>
+            <Height>0.5cm</Height>
+            <Width>9.524cm</Width>
+            <ZIndex>7</ZIndex>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox54">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Classificazione Documento: " &amp; First(Fields!PROTOCOLLO_CLASSIFICAZIONE.Value, "dsIntestazione")</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>13.69072cm</Top>
+            <Left>12.95678cm</Left>
+            <Height>0.49cm</Height>
+            <Width>5.32cm</Width>
+            <ZIndex>8</ZIndex>
+            <Visibility>
+              <Hidden>=iif(First(Fields!PROTOCOLLO_CLASSIFICAZIONE.Value, "dsIntestazione") = nothing, true, False)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox33">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!TESTO.Value, "ProgettoComunicazione")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox33</rd:DefaultName>
+            <Top>7.61683cm</Top>
+            <Left>0.22576cm</Left>
+            <Height>1.76417cm</Height>
+            <Width>18.05102cm</Width>
+            <ZIndex>9</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>OGGETTO:</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>6.38236cm</Top>
+            <Left>0.22576cm</Left>
+            <Height>0.4655cm</Height>
+            <Width>1.87671cm</Width>
+            <ZIndex>10</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox23">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!INTESTAZIONE_BANDO.Value, "ProgettoComunicazione")</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> - </Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!OGGETTO.Value, "ProgettoComunicazione")</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox23</rd:DefaultName>
+            <Top>6.38236cm</Top>
+            <Left>2.27886cm</Left>
+            <Height>0.4655cm</Height>
+            <Width>13.554cm</Width>
+            <ZIndex>11</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>6.04746in</Height>
+        <Style />
+      </Body>
+      <Width>7.316in</Width>
+      <Page>
+        <PageFooter>
+          <Height>0.89958cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="textbox55">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Pagina</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.17639cm</Top>
+              <Left>8.03769cm</Left>
+              <Height>0.63984cm</Height>
+              <Width>1.3cm</Width>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox45">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!PageNumber</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.18131cm</Top>
+              <Left>9.30769cm</Left>
+              <Height>0.63492cm</Height>
+              <Width>0.7cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox44">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>di</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.18131cm</Top>
+              <Left>9.90769cm</Left>
+              <Height>0.63492cm</Height>
+              <Width>0.5cm</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="textbox36">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!TotalPages</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.18131cm</Top>
+              <Left>10.30769cm</Left>
+              <Height>0.63492cm</Height>
+              <Width>0.7cm</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>1cm</LeftMargin>
+        <RightMargin>1cm</RightMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="IdComunicazione">
+      <DataType>Integer</DataType>
+      <Prompt>IdComunicazione</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="IdBando">
+      <DataType>String</DataType>
+      <Prompt>IdBando</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>IdComunicazione</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>IdBando</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="logomarche">
+      <MIMEType>image/gif</MIMEType>
+      <ImageData>R0lGODlhOwBJAMYBAAAAAP///0IsLyYeH9XR0sbExfz3+//7/7m3ufTv9t3W4KKgpMC+wuLg5bCvtMnIzRgYGvv7//X19pCQkdzd5czN1O3u9fX2+9bX24iLkllaXMbL0yElKu/0+tXd5eXp7WJqcff7/snU3Nzl687c43aHj8fa4qm2u73V2fr//57KyM7k4wx4cluloZOjokeak6vSz+nz8jCMfI3HuqKwrcfT0OL/9qnkzvD++Uq0jGS7mgSXW3zRrtj67KXXwczu3vn/+2KdcW94cD0+PYOFg1hqVImSh5eZlP//+/379nZlVKinpp6TiW9YRYRrVZiMgtvV0LSspjIkHLuxq09NTEc3MPny79fKxffr6DIsK/Xi3wYEBGVhYf719YJ9ff/7+/v7+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////yH+FUNyZWF0ZWQgd2l0aCBUaGUgR0lNUAAsAAAAADsASQAAB/6AAYKDhIWGh4iJiouMjY6PkJGSk5SVlpeYmZqbnJ2en6ChoqOkpaanqKmqq6ytrGCwsbKztLGbBzgBIQZAX1+DBwERKSmQxQcGB8QBKcnHAcGKuBFABzY4QGBfB9zcBr7g4N3jB0i+5SnaOMg4EhLVi7gHQEg+PPf4+DMzPPz++QAD3rtR7UMDCyEYKZuHQweLHRAjSpxIseJEHbkeFGgQQ2EzIDhyWBxJkiKLHLmmLHnQMR4QXiFLyiyJMoKDlSOQxEvxBaRIiDmCCh1KtGhRiSgNOIhSY0S0RPN6xtwhg4cNJDiwJUHCtSvXFEDAigUCJAkQGzxkAA1xIMqCB/4fwCxCcjVFkp87dADp8iVFLjASBMkVDOaCIMMBkKQ4AIZHxBzmbtZoIDjRFyQHLhzAy2PdlxEPKMiVINdW
+5QAWCnyQkNkx0MhLamhh9MVAFwlf8M4AguVIliFVQGAIYKu0oARHhigXoqDxY65RYn8IEDgRkiTcwPyU4SOGEwhCCiTnYoG4+eMSMgwYkqW9Fwuud0D+Ipny+UNINONI8XNGDyFZEAGWAQtkgYB5sAQGBhEctPcbB1VgEB9kSERXw3TUJQIWGPu9sIN/QmwhQAPZMJbFEcQZt2CD7LUogAcTwjbZaYfIpUxI/hWRhRdVOCCIAQ0MscBopRGRBQfstf6HZBYExFhhbLMNhog3zdzQgxJSLGEFFUM8IEEDXAzRACwpMrhki0lK+Bx9sdknDUhgIPEBCFkI0AQVGqDJAQiCVMdgkkMs2d4QNcywJg3S0WgIVtV08QARXmTgBQhDOODABBNosONgDP7m4KCemhDjFxZSRiYi7wTQxQE9/NBDDzgUIOYBVtQwBBUcEBEAF0cO2qKnvxW6pmSzxQOLAQ1BJMMMIgxBAWaUNjABBBlM4Cl7Z7KYRQ2j1nffIYxBM9UOPNiKQQhYDJEBcUIMQEQGDv4K7BAYGPrakxcyEhg7LURUbhU5FZAFA4N54S4RST74K6HdtqmoIYv1FIS/UP4IgEEKDAxRQIoSMDiBEOxpmnB7wt5rYbHVHWIANAbYoNsVVVCAAwYDkwmGBR574cUGVICqHLfDOpwyfkDoEgBnD0SIWoCCIUAFAh5L8IG8daoJVFknvFWslIsWXYxuSVMQgQSUwlIABlwi4AUHR0igsKdWy0fWTQ9okY4iSGTztb9JjxkAAwMsEMAQGjygKdQcCNEzoAJAMeHcS1TQwN3WpbM3RDxUIEBc1AHIAAGEGz4EA9YGeu22E6aABN12B5BA5coYwFkNWTSQ0OrtLYDAEEIQkOcCIgeappN0T871opg1M3sVYzLmQBZ0aqABBCBYux62v1IwYZysF1PelP7V0KNDRDrYKloASTgwBAEFgJykBkSor1ySVdQwPkQ6mLNA5JMPbcg8B2BLfF6w
+OwywBnecs0ADMNAA0gQpXuxBgIcwFwArHGEBFfhA0RSRDbIkAQUS4cEQmGAAv4BsZXHKDxLkkgBADYoGEiFACj5AhCjAJQKn0lA1ejDBvABId0ZCUWBWKBgJpGAJDVKSF+4nnw+kQDyRS8AvpAGWA3whWRHxgRc8RQTDlEYuBgCDX3CAsCxUQQgqQAoxFnCEJRDACg8jRAmr8Y4fqAV/NiABA+xjHEKIJQAfYAAGgMDEHaxATphyAAUUdDxC4IItFkiBDQrZmS4oxouGAKMVrf5hL/zljQFEOMIe/QeuFLAFC0b8gUSW9RVieBEZK6TVyvwSH6r8IAkfmAARMNiAJABmERHYTwKwsJ8bXOQapiwGGAOQjHnYYJITuUFfoDYBBGDAAjbTUAlx0AUtOMUAtdzBC2qwn7sNxhs4uMEd/YWDLzTAC0ZYwB59maJE9PEDFLAAssIpHx78QAJd+YIEfsADvERkBjZIAhaMEEoEEIA0jUQEmb6EASxIMi0VkcFQRqKCq/QmUkvYCGIcQaYvfAADNQCDNW7Qw5lA5AU+KMsHoPYEeV4zohJNESw+UAMGWOALVugBD1o6Eo3qwAYgGYELQPAEJjiAABbYSj0XMf4YMuGyBm4sBw564AMdEDUiMtCBD3rQjCTUoARemMARHAAXWOAQp4U4HhiAQAEoIGAJGPhCCm3wgxvsYx8w+AFStfEFBRyBCESoKQ1QsBpMgCEhDXjACVyAgCtggyyYzRs2uJKAK0QBsZFagA1HkARJVFVKBwjmCKDAgCUc4QhRKAABGoBKHFjhAwRorS5LQIQJMCEKDKgBFrAwiKpaYoVfqkBrjzCBDCAWUpDywnOr1UYEVCCfYIjAJtxKHKlFlgE3YSNzm6vW1y7BAQgIzQesANdMgCEJUqMAAR6AAATcxFLoZQADHgCFBqwmTqOIBXwtYJAGLBADBCAABhh4EBkrSKC0hNluhAmhV67AwsKJAXAO2+uKRwQCADs=</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>c44a84fa-9b24-4db4-88a2-f6076252b7ed</rd:ReportID>
+</Report>

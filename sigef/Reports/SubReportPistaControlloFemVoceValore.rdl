@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="SIGEF">
+      <DataSourceReference>SIGEF</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>676579fe-a8f7-4f2c-b692-c95810642e3a</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DsVoci">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdPistaControllo">
+            <Value>=Parameters!IdPistaControllo.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>declare @IdTipo int, @IdProgetto_val int;
+
+select @IdTipo = f.ID_TIPO_PISTA_CONTROLLO_VOCE,@IdProgetto_val = f.ID_PROGETTO
+FROM            
+PISTA_CONTROLLO_FEM F
+WHERE F.ID_PISTA_CONTROLLO  = @IdPistaControllo
+
+if(@IdTipo != 5) 
+begin
+	SELECT
+	case when (F.ID_TIPO_PISTA_CONTROLLO_VOCE =  1 ) 
+		THEN  'Num '+ convert(varchar, A.NUMERO)+ ' del '+convert(varchar, a.DATA, 103 )+ ' Registro ' +ISNULL(A.REGISTRO,'')
+		ELSE 
+			case when (F.ID_TIPO_PISTA_CONTROLLO_VOCE = 4) THEN FI.NOME_FILE
+			ELSE
+				F.TESTO
+			END
+		END AS 'VALORE' 
+	FROM            
+	PISTA_CONTROLLO_FEM F
+	LEFT OUTER JOIN ATTI A ON A.ID_ATTO = F.ID_ATTO
+	LEFT OUTER JOIN ARCHIVIO_FILE FI ON FI.ID = F.ID_FILE
+	WHERE F.ID_PISTA_CONTROLLO  = @IdPistaControllo
+end
+else
+begin 
+
+DECLARE @SQLString NVARCHAR(1000); 
+DECLARE @ParmDefinition NVARCHAR(500);  
+
+DECLARE @Temp TABLE
+( 
+    Tipo varchar(10), 
+    Valore varchar(100)
+) 
+ select @SQLString =  REPLACE(f.QUERY_SQL,'@IdProgetto',@IdProgetto_val)
+ FROM PISTA_CONTROLLO_FEM F
+WHERE F.ID_PISTA_CONTROLLO  = @IdPistaControllo
+     
+SET @ParmDefinition = N'@IdProgetto';  
+/* Execute the string with the first parameter value. */  
+ insert into @Temp (Tipo,Valore)
+EXEC sp_executesql @SQLString
+
+select 
+	case when (Tipo =  'Atto' ) 
+		THEN  
+			(Select 'Num '+ convert(varchar, A.NUMERO)+ ' del '+convert(varchar, a.DATA, 103 )+ ' Registro '+A.REGISTRO
+			from ATTI A where A.ID_ATTO = CONVERT(int, Valore))
+		ELSE 
+			case when (Tipo = 'File') 
+				THEN (select f.NOME_FILE from ARCHIVIO_FILE f where f.ID = CONVERT(int,Valore))
+			ELSE
+				Valore
+			END
+		END AS 'VALORE'  
+	from @Temp
+
+end</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="VALORE">
+          <DataField>VALORE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>13.69188cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="VALORE">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value xml:space="preserve">  </Value>
+                                  <Style>
+                                    <FontStyle>Normal</FontStyle>
+                                  </Style>
+                                </TextRun>
+                                <TextRun>
+                                  <Value>=Fields!VALORE.Value</Value>
+                                  <Style>
+                                    <FontStyle>Normal</FontStyle>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>VALORE</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>DimGray</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Dettagli" />
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>DsVoci</DataSetName>
+            <Height>0.6cm</Height>
+            <Width>13.69188cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>0.23622in</Height>
+        <Style />
+      </Body>
+      <Width>13.69188cm</Width>
+      <Page>
+        <PageHeight>21cm</PageHeight>
+        <PageWidth>29.7cm</PageWidth>
+        <LeftMargin>1cm</LeftMargin>
+        <RightMargin>1cm</RightMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="IdPistaControllo">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>IdPistaControllo</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>1</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>IdPistaControllo</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>5751d881-9554-4f42-a24d-eae255164e88</rd:ReportID>
+</Report>

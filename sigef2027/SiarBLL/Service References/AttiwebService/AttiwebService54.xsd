@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfDecretoInfoR">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DecretoInfoR" nillable="true" type="tns:DecretoInfoR" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDecretoInfoR" nillable="true" type="tns:ArrayOfDecretoInfoR" />
+  <xs:complexType name="DecretoInfoR">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivitiProcessId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodiceRepertorio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodiceUOPadreTipoProcesso" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContieneDatiSensibili" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DataAnnullamento" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataCreazione" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataInvioBur" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataPubblicazioneBur" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataRepertorio" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DescTipoProcesso" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DescrizioneRepertorio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdDecreto" type="xs:int" />
+      <xs:element minOccurs="0" name="IdTipoProcesso" type="xs:int" />
+      <xs:element minOccurs="0" name="NumRepertorio" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroBur" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RecNo" type="xs:long" />
+      <xs:element minOccurs="0" name="TipoPubblicazione" nillable="true" type="tns:TipoPubblicazione" />
+      <xs:element minOccurs="0" name="TipoPubblicazioneNorme" nillable="true" type="tns:TipoPubblicazione" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DecretoInfoR" nillable="true" type="tns:DecretoInfoR" />
+  <xs:simpleType name="TipoPubblicazione">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Integrale" />
+      <xs:enumeration value="PerEstratto" />
+      <xs:enumeration value="PerEstremi" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoPubblicazione" nillable="true" type="tns:TipoPubblicazione" />
+  <xs:complexType name="ArrayOfAllegato">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Allegato" nillable="true" type="tns:Allegato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAllegato" nillable="true" type="tns:ArrayOfAllegato" />
+  <xs:complexType name="Allegato">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="File" nillable="true" type="tns:File" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="tns:TipoAllegato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Allegato" nillable="true" type="tns:Allegato" />
+  <xs:complexType name="File">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Content" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Dimensione" type="xs:float" />
+      <xs:element minOccurs="0" name="Encoding" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdFile" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Impronta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MediaType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomeFile" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="File" nillable="true" type="tns:File" />
+  <xs:simpleType name="TipoAllegato">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="VistoContabile" />
+      <xs:enumeration value="Art27" />
+      <xs:enumeration value="RispettoTempi" />
+      <xs:enumeration value="RiepFi" />
+      <xs:enumeration value="Copertina" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoAllegato" nillable="true" type="tns:TipoAllegato" />
+  <xs:complexType name="ArrayOfFile">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="File" nillable="true" type="tns:File" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFile" nillable="true" type="tns:ArrayOfFile" />
+  <xs:complexType name="ArrayOfDeliberaInfoR">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeliberaInfoR" nillable="true" type="tns:DeliberaInfoR" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDeliberaInfoR" nillable="true" type="tns:ArrayOfDeliberaInfoR" />
+  <xs:complexType name="DeliberaInfoR">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DecretoInfoR">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Delibera" nillable="true" type="tns:Delibera" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeliberaInfoR" nillable="true" type="tns:DeliberaInfoR" />
+  <xs:complexType name="Delibera">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Assessore" nillable="true" type="tns:Assessore" />
+      <xs:element minOccurs="0" name="CodiceGruppoDirigenteUlterioreServizio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataOdg" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataSeduta" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FlagControllata" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FlagModificataDopoRepertoriazione" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FlagModificataInSeduta" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FlagSoggettaAPubblicazione" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GruppiDirigentiParere" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GruppiDirigentiProposta" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="IdAssessore" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdDecreto" type="xs:int" />
+      <xs:element minOccurs="0" name="IdDocAutorizzazioniCapitoli" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdDocRichiestaIscrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdDocRichiestaModifica" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdGruppoDirigenteUlterioreServizio" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdTipologiaDelibera" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdUtenteSegretarioFirmatario" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdVersioneSeduta" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Legislatura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NoteIstruttoria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroOdg" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroSeduta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatoProposta" nillable="true" type="tns:StatoProposta" />
+      <xs:element minOccurs="0" name="TipoProposta" type="tns:TipoProposta" />
+      <xs:element minOccurs="0" name="TipologiaDelibera" nillable="true" type="tns:TipologiaDelibera" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Delibera" nillable="true" type="tns:Delibera" />
+  <xs:complexType name="Assessore">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cognome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataFineValidita" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataInizioValidita" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdAssessore" type="xs:int" />
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ordine" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Assessore" nillable="true" type="tns:Assessore" />
+  <xs:simpleType name="StatoProposta">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Approvata" />
+      <xs:enumeration value="NonApprovata" />
+      <xs:enumeration value="Ritirata" />
+      <xs:enumeration value="ModificataInSeduta" />
+      <xs:enumeration value="Rimandata" />
+      <xs:enumeration value="Rinviata" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StatoProposta" nillable="true" type="tns:StatoProposta" />
+  <xs:simpleType name="TipoProposta">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ordinaria" />
+      <xs:enumeration value="FuoriSacco" />
+      <xs:enumeration value="InCarenza" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoProposta" nillable="true" type="tns:TipoProposta" />
+  <xs:complexType name="TipologiaDelibera">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataFineValidita" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataInizioValidita" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdTipologiaDelibera" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipologiaDelibera" nillable="true" type="tns:TipologiaDelibera" />
+  <xs:complexType name="ArrayOfTipologiaDelibera">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TipologiaDelibera" nillable="true" type="tns:TipologiaDelibera" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTipologiaDelibera" nillable="true" type="tns:ArrayOfTipologiaDelibera" />
+  <xs:complexType name="ArrayOfAssessore">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Assessore" nillable="true" type="tns:Assessore" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAssessore" nillable="true" type="tns:ArrayOfAssessore" />
+</xs:schema>

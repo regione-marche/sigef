@@ -1,0 +1,49 @@
+﻿CREATE   PROCEDURE [dbo].[calcoloStep111_5 ]
+@IdProgetto int,
+@FASE_ISTRUTTORIA INT  = 0
+AS
+BEGIN
+
+-- MASSIMALE PER CORSO FORMATIVO - 111 A AZIONE B
+
+DECLARE @Result int, @CODICE CHAR(2) , @COSTO DECIMAL (18,2)
+SET @Result = 1 -- Impongo lo Step verificato
+--------------------------------------------------------------------------------------------------------------
+    
+ DECLARE CORSO CURSOR FOR
+  ( 
+		SELECT SUM(COSTO_INVESTIMENTO) AS COSTO , CODICE
+		FROM VPIANO_INVESTIMENTI PI  
+		WHERE ID_PROGETTO =@IdProgetto AND (( ID_INVESTIMENTO_ORIGINALE IS NULL AND @FASE_ISTRUTTORIA =0  ) OR ( ID_INVESTIMENTO_ORIGINALE IS NOT NULL AND @FASE_ISTRUTTORIA =1 )  )
+		GROUP BY CODICE
+   ) 
+ 
+ OPEN CORSO
+FETCH NEXT FROM CORSO 
+INTO   @COSTO   ,  @CODICE 
+WHILE @@FETCH_STATUS = 0
+	BEGIN
+	IF (@CODICE IN ( 1,2 )) -- MIN 400;  MAX  750
+		BEGIN 
+			IF(@COSTO<400 OR @COSTO >750 ) SET @Result =0
+		END
+	 ELSE 
+		BEGIN
+						IF (@CODICE IN (3))
+							BEGIN
+								IF(@COSTO<160.00 OR @COSTO > 300.00) SET @Result =0
+							END
+  		
+		END 			
+
+	FETCH NEXT FROM CORSO
+INTO @COSTO   ,  @CODICE 
+END
+
+CLOSE CORSO
+DEALLOCATE CORSO 
+ 
+SELECT @Result AS RESULT
+
+
+END

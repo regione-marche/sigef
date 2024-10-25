@@ -1,0 +1,38 @@
+﻿CREATE  PROCEDURE [dbo].[calcoloStep123_FIL_5]
+@IdProgetto int
+AS
+BEGIN
+-- Controllo Materia Prima La Quantita_totale almeno il 50% del totale.
+
+DECLARE @Result int,@DATA datetime , @QUANTITA_TOT decimal(15,2) , @QUANTITA_EXTRA decimal(10,2)
+
+SET @Result = 1 -- Impongo lo Step  verificato
+
+ SELECT @DATA=DATA
+ FROM PROGETTO P  INNER JOIN PROGETTO_STORICO S ON  P.ID_PROGETTO = S.ID_PROGETTO 
+ where P.ID_PROGETTO = @IdProgetto AND COD_STATO IN ('P','L')
+ ORDER BY S.ID DESC 
+
+DECLARE MATERIA_PRIMA CURSOR  FOR 
+(select SUM( isnull(QUANTITA_PROPRIA,0) + isnull(QUANTITA_EXTRA,0)) , isnull( SUM ( QUANTITA_EXTRA) ,0) 
+from PRODOTTI_VENDITE where MATERIA_PRIMA=1 and Id_Progetto =@IdProgetto 
+and anno >= year(@DATA) group by anno )
+
+OPEN MATERIA_PRIMA
+FETCH NEXT FROM MATERIA_PRIMA 
+INTO @QUANTITA_TOT , @QUANTITA_EXTRA 
+WHILE @@FETCH_STATUS = 0
+	BEGIN
+		IF( @QUANTITA_EXTRA < ((@QUANTITA_TOT )*0.5) )	
+		BEGIN Set @Result =0 END
+	FETCH NEXT FROM MATERIA_PRIMA 
+	INTO @QUANTITA_TOT , @QUANTITA_EXTRA 
+END
+
+CLOSE MATERIA_PRIMA
+DEALLOCATE MATERIA_PRIMA 
+
+
+SELECT @Result AS RESULT
+
+END

@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="SIGEF">
+      <DataSourceReference>SIGEF</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>556b86f7-7fe6-4a0d-b0ab-c86753fead30</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dsDataFinale">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@dataLotto">
+            <Value>=Parameters!dataLotto.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT TOP 1 CONVERT(Varchar(10), DATEADD(day, 1, DataFine), 103) AS DataFinale
+FROM CertSp_Testa 
+WHERE Tipo = 'F' 
+AND CONVERT(Varchar(8), DataFine, 112) &lt; @dataLotto 
+ORDER BY DataFine DESC</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="DataFinale">
+          <DataField>DataFinale</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsDataLotto">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@dataLotto">
+            <Value>=Parameters!dataLotto.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT CONVERT(datetime, CONVERT(varchar(8), @dataLotto, 112)) AS DataLotto</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="DataLotto">
+          <DataField>DataLotto</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="Textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="Dati lotto" + IIF(Parameters!soloDefinitivi.Value = 1, " ", " NON ") + "definitivi - Periodo dal " + First(Fields!DataFinale.Value, "dsDataFinale") + " al " + Format(First(Fields!DataLotto.Value, "dsDataLotto"), "dd/MM/yyyy")</Value>
+                    <Style>
+                      <FontSize>14pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Height>0.29389in</Height>
+            <Width>10.76042in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Subreport Name="SubreportSpesa">
+            <ReportName>SubReportCertificazioneSpesaXAsse</ReportName>
+            <Parameters>
+              <Parameter Name="dataLotto">
+                <Value>=Parameters!dataLotto.Value</Value>
+              </Parameter>
+              <Parameter Name="codPsr">
+                <Value>=Parameters!codPsr.Value</Value>
+              </Parameter>
+              <Parameter Name="soloDefinitivi">
+                <Value>=Parameters!soloDefinitivi.Value</Value>
+              </Parameter>
+              <Parameter Name="complessivi">
+                <Value>=Parameters!complessivi.Value</Value>
+              </Parameter>
+            </Parameters>
+            <Top>0.54042in</Top>
+            <Height>0.625in</Height>
+            <Width>10.76042in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+        </ReportItems>
+        <Height>1.33208in</Height>
+        <Style />
+      </Body>
+      <Width>10.76042in</Width>
+      <Page>
+        <LeftMargin>1in</LeftMargin>
+        <RightMargin>1in</RightMargin>
+        <TopMargin>1in</TopMargin>
+        <BottomMargin>1in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="dataLotto">
+      <DataType>String</DataType>
+      <Prompt>dataLotto</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="codPsr">
+      <DataType>String</DataType>
+      <Prompt>codPsr</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="soloDefinitivi">
+      <DataType>String</DataType>
+      <Prompt>soloDefinitivi</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="complessivi">
+      <DataType>String</DataType>
+      <Prompt>complessivi</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>dataLotto</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>codPsr</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>soloDefinitivi</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>complessivi</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>390d815d-2026-4d85-8ca7-6909695e9fdc</rd:ReportID>
+</Report>

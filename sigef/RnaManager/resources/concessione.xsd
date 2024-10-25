@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.rna.gov.it/concessione" xmlns:costo="http://www.rna.gov.it/costo" xmlns:comp="http://www.rna.gov.it/componente_aiuto" xmlns:local="http://www.rna.gov.it/localizzazione" xmlns:rend="http://www.rna.gov.it/rendicontazione" xmlns:benef="http://www.rna.gov.it/beneficiario" xmlns:cup="http://www.rna.gov.it/info_cup" targetNamespace="http://www.rna.gov.it/concessione" elementFormDefault="qualified">
+  <xsd:import schemaLocation="costo.xsd" namespace="http://www.rna.gov.it/costo"/>
+  <xsd:import schemaLocation="componente_aiuto.xsd" namespace="http://www.rna.gov.it/componente_aiuto"/>
+  <xsd:import schemaLocation="localizzazione.xsd" namespace="http://www.rna.gov.it/localizzazione"/>
+  <xsd:import schemaLocation="rendicontazione.xsd" namespace="http://www.rna.gov.it/rendicontazione"/>
+  <xsd:import schemaLocation="beneficiario.xsd" namespace="http://www.rna.gov.it/beneficiario"/>
+  <xsd:import schemaLocation="info_cup.xsd" namespace="http://www.rna.gov.it/info_cup"/>
+  <xsd:complexType name="CONCESSIONE_TYPE">
+    <xsd:sequence>
+      <xsd:element name="TITOLO_PROGETTO" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="256"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="DESCRIZIONE_PROGETTO" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="1300"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="COD_TIPO_INIZIATIVA" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="CUP_CHECK_RICHIESTA" minOccurs="0" default="3">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:integer">
+            <xsd:enumeration value="1"/>
+            <xsd:enumeration value="2"/>
+            <xsd:enumeration value="3"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="CUP" minOccurs="0" >
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="15"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="DATA_DOMANDA" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="DATA_INIZIO_PROGETTO" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="DATA_FINE_PROGETTO" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="LINK_TRASPARENZA" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="500"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ID_CONCESSIONE_GEST" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="60"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FLAG_ATTO_CONCESSIONE" minOccurs="0" default="SI">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="SI"/>
+            <xsd:enumeration value="NO"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="DATA_CONCESSIONE" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="DATA_COMPETENZA" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="ATTO_CONCESSIONE" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="LINK_ATTO_CONCESSIONE" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="500"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="CODICE_LOCALE_PROGETTO" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="60"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FLAG_AIUTO_FORZATO" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="SI"/>
+            <xsd:enumeration value="NO"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="COR_COLLEGATO" type="xsd:integer" minOccurs="0"/>
+      <xsd:element name="NOTE_CONCESSIONE" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="500"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="COVAR" type="xsd:integer" minOccurs="0"/>
+      <xsd:element name="COR" type="xsd:integer" minOccurs="0"/>
+      <xsd:element name="COD_STATO_CONCESSIONE_GEST" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="STATO_CONCESSIONE_AIUTO" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="50"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ATTO_VARIAZIONE" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="LINK_ATTO_VARIAZIONE" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="500"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="MOTIVAZIONE_VARIAZIONE" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="2000"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="DATA_VARIAZIONE" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="BENEFICIARIO" type="benef:BENEFICIARIO_TYPE" minOccurs="0"/>
+      <xsd:element name="LOCALIZZAZIONI" type="LOCALIZZAZIONI_TYPE" minOccurs="0"/>
+      <xsd:element name="COSTI" type="COSTI_TYPE" minOccurs="0"/>
+      <xsd:element name="COMPONENTI_AIUTI" type="COMPONENTI_AIUTI_TYPE" minOccurs="0"/>
+      <xsd:element name="RENDICONTAZIONI" type="RENDICONTAZIONI_TYPE" minOccurs="0"/>
+      <xsd:element name="INFO_CUP" type="cup:INFO_CUP_TYPE" minOccurs="0" maxOccurs="1"/>
+      
+      <xsd:element name="DATA_REGISTRAZIONE_VARIAZIONE" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="COD_STATO_CONCESSIONE" type="xsd:integer" minOccurs="0"/>
+      
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="COSTI_TYPE">
+    <xsd:sequence>
+      <xsd:element name="COSTO" type="costo:COSTO_TYPE" maxOccurs="unbounded" minOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="COMPONENTI_AIUTI_TYPE">
+    <xsd:sequence>
+      <xsd:element name="COMPONENTE_AIUTO" maxOccurs="unbounded" type="comp:COMPONENTE_AIUTO_TYPE" minOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="LOCALIZZAZIONI_TYPE">
+    <xsd:sequence>
+      <xsd:element name="LOCALIZZAZIONE" type="local:LOCALIZZAZIONE_TYPE" maxOccurs="unbounded" minOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RENDICONTAZIONI_TYPE">
+    <xsd:sequence>
+      <xsd:element name="RENDICONTAZIONE" type="rend:RENDICONTAZIONE_TYPE" maxOccurs="unbounded" minOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

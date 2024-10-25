@@ -1,0 +1,9 @@
+﻿CREATE PROCEDURE [dbo].[ZQuadrodomandaGetById]
+(
+	@ID_QUADRO INT
+)
+AS
+	SELECT *
+	FROM QUADRO_DOMANDA
+	WHERE 
+		(ID_QUADRO = @ID_QUADRO)

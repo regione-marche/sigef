@@ -1,0 +1,44 @@
+﻿CREATE  PROCEDURE [dbo].[calcoloStepVarianteNumSog_B220]
+(
+@ID_VARIANTE int
+)
+AS
+BEGIN
+-- almeno 10 privati o 5 enti locali
+-- nel caso partecipino entrambi almeno 10 privati e 5 enti locali 
+
+
+DECLARE @N_PRIVATI DECIMAL (10,2),
+@N_ENTI_LOCALI DECIMAL (10,2),
+@RESULT INT,
+@IdProgetto INT
+
+SET @IdProgetto= (SELECT ID_PROGETTO FROM VARIANTI WHERE ID_VARIANTE= @ID_VARIANTE )
+
+ 
+SET @RESULT = 0
+
+SET @N_PRIVATI = (SELECT VALORE FROM PRIORITA_X_PROGETTO WHERE ID_PRIORITA = 502 AND ID_PROGETTO = @IdProgetto)
+SET @N_ENTI_LOCALI = (SELECT VALORE FROM PRIORITA_X_PROGETTO WHERE ID_PRIORITA = 503 AND ID_PROGETTO = @IdProgetto)
+
+--Numero Partecipanti Privati
+	IF (@N_PRIVATI > 9 ) BEGIN
+		SET @RESULT = 1
+		
+		IF (@N_ENTI_LOCALI > 4 OR @N_ENTI_LOCALI = 0 OR @N_ENTI_LOCALI IS NULL) SET @RESULT = 1
+			ELSE
+			SET @RESULT = 0
+	END
+
+
+--Numero Partecipanti Enti Locali
+	IF (@N_ENTI_LOCALI > 4 ) BEGIN
+		SET @RESULT = 1
+
+		IF (@N_PRIVATI > 9 OR @N_PRIVATI = 0 OR @N_PRIVATI IS NULL ) SET @RESULT = 1
+			ELSE
+			SET @RESULT = 0
+	END
+
+	SELECT @RESULT
+END

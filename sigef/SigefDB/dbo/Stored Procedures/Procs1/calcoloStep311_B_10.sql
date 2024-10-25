@@ -1,0 +1,33 @@
+﻿CREATE PROCEDURE [dbo].[calcoloStep311_B_10]
+(
+@IdProgetto int,
+@fase_istruttoria bit=0
+)
+AS
+BEGIN
+
+ 
+--   (311 - investimenti destinati a creare occupazione)  psr  azione d
+-- 311 - VERIFICA AUMENTO OCCUPAZIONE
+ 
+DECLARE @ORE_ATTIVITA_ANTE decimal(20,2),
+		@ORE_ATTIVITA_POST decimal(20,2),
+		@PUNTEGGIO decimal(10,2), 
+		@OREINCREMENTO decimal(20,2)
+ 
+-- Calcolo delle ore totali per le attività connesse
+
+ SET @ORE_ATTIVITA_ANTE = (SELECT ISNULL(SUM(ISNULL(SAU,0) * ISNULL(ORE_UNITARIE,0)),0) 
+                          FROM PLV_IMPRESA WHERE ID_PROGETTO = @IdProgetto AND PREVISIONALE = 0 AND ID_ATTIVITA_CONNESSA IS NOT NULL)
+ 
+  SET @ORE_ATTIVITA_POST = (SELECT ISNULL(SUM(ISNULL(SAU,0) * ISNULL(ORE_UNITARIE,0)),0) 
+                     FROM PLV_IMPRESA WHERE ID_PROGETTO = @IdProgetto AND PREVISIONALE = 1 AND ID_ATTIVITA_CONNESSA IS NOT NULL)
+ 
+SET @OREINCREMENTO = ISNULL(@ORE_ATTIVITA_POST,0 ) - ISNULL(@ORE_ATTIVITA_ANTE,0)
+  
+IF (@OREINCREMENTO >  0) SET @PUNTEGGIO = 1
+ELSE  SET @PUNTEGGIO = 0
+
+SELECT @Punteggio AS PUNTEGGIO
+
+END

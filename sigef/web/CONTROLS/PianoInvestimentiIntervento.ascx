@@ -1,0 +1,84 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="PianoInvestimentiIntervento.ascx.cs"
+    Inherits="web.CONTROLS.PianoInvestimentiIntervento" %>
+<%@ Register Src="SiarNewToolTip.ascx" TagName="SiarNewToolTip" TagPrefix="uc1" %>
+
+<script type="text/javascript">
+
+    function espandiInterventiPost() { var codici_espansi = $('[id$=hdnDgInterventiEspansione]').val().split('|'); $('[id$=hdnDgInterventiEspansione]').val(''); for (var i = 0; i < codici_espansi.length; i++) espandiInterventi(codici_espansi[i]); }
+    function espandiInterventi(path_label) {
+        var tr = $('[PathLabel=' + path_label + ']'), espandi = !eval($(tr).attr("ElemEspanso")); var arr = $('[PathLabel^=' + path_label + '][PathLabel!=' + path_label + ']');
+        for (var i = 0; i < arr.length; i++) { var pl = $(arr[i]).attr('PathLabel'); if (espandi == true) { if (pl.length > path_label.length) arr[i].style.display = ''; } else { arr[i].style.display = 'none'; $(arr[i]).attr("ElemEspanso", false); aggiornaHiddenEspansioneInt($(arr[i]).attr("PathLabel"), false); } }
+        $(tr).attr("ElemEspanso", espandi); aggiornaHiddenEspansioneInt(path_label, espandi);
+    }
+    function aggiornaHiddenEspansioneInt(path_label, insert) { if (path_label != '') { var codici_espansi = $('[id$=hdnDgInterventiEspansione]').val().split('|'); if (insert == true) codici_espansi.push(path_label); else if (codici_espansi.indexOf(path_label) >= 0) codici_espansi.splice(codici_espansi.indexOf(path_label), 1); $('[id$=hdnDgInterventiEspansione]').val(codici_espansi.join('|')); } }
+
+    function MostraNascondiDivInterv() {
+        var div;
+        var img;
+        div = $('[id$=divMostraInterventi]')[0];
+        img = $('[id$=imgMostraInterventi]')[0];
+
+
+        if (img.style.transform == "")
+            img.style.transform = "rotate(180deg)";
+        else
+            img.style.transform = "";
+
+        if (div.style.display === "none") {
+            div.style.display = "block";
+        } else {
+            div.style.display = "none";
+        }
+    }
+
+</script>
+
+<div style="display: none">
+    <asp:HiddenField ID="hdnDgInterventiEspansione" runat="server" />
+</div>
+
+<div class="dBox" id="dBoxIntervento" runat="server">
+    <div class="separatore" style="cursor: pointer; padding-bottom: 3px;" onclick="MostraNascondiDivInterv();">
+        <img id="imgMostraInterventi" runat="server" style="width: 23px; height: 23px;" />
+        Piano degli investimenti raggruppato per intervento
+    </div>
+    <div class="dSezione" id="divMostraInterventi">
+        <div class="dContenutoFloat">
+            <div>
+                <Siar:DataGrid ID="dgInterventi" runat="server" AutoGenerateColumns="False" Width="100%" ShowFooter="true">
+                    <ItemStyle Height="32px" />
+                    <FooterStyle CssClass="coda" HorizontalAlign="Right" />
+                    <Columns>
+                        <asp:BoundColumn HeaderText="Descrizione"></asp:BoundColumn>
+                        <asp:BoundColumn HeaderText="Costo" DataField="Costo"
+                            DataFormatString="{0:c}">
+                            <ItemStyle HorizontalAlign="right" Width="120px" />
+                        </asp:BoundColumn>
+                        <asp:BoundColumn HeaderText="Contributo" DataField="Contributo"
+                            DataFormatString="{0:c}">
+                            <ItemStyle HorizontalAlign="right" Width="120px" />
+                        </asp:BoundColumn>
+                        <asp:BoundColumn HeaderText="% Quota contributo">
+                            <ItemStyle Width="50px" HorizontalAlign="Center" />
+                        </asp:BoundColumn>
+                        <asp:BoundColumn>
+                            <ItemStyle Width="50px" HorizontalAlign="Center" />
+                        </asp:BoundColumn>
+                        <%--<Siar:JsButtonColumn Arguments="Id" JsFunction="mostraDettaglioProgrammazione" ButtonType="ImageButton"
+                            ButtonText="Dettaglio elemento" ButtonImage="lente.png">
+                            <ItemStyle Width="50px" HorizontalAlign="Center" />
+                        </Siar:JsButtonColumn>--%>
+                    </Columns>
+                </Siar:DataGrid>
+                <table width="100%" id="tbLegendaInvestimenti" runat="server" visible="false">
+                    <tr>
+                        <td>(**) = contributo troncato per superamento <b>massimali</b> di domanda
+                                                </td>
+                        <td align="right">(***) = contributo a <b>quota fissa</b>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

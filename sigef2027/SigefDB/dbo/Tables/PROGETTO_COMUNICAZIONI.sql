@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[PROGETTO_COMUNICAZIONI] (
+    [ID]                           INT           IDENTITY (1, 1) NOT NULL,
+    [ID_PROGETTO]                  INT           NOT NULL,
+    [ID_DOMANDA_PAGAMENTO]         INT           NULL,
+    [ID_VARIANTE]                  INT           NULL,
+    [COD_TIPO]                     CHAR (3)      NOT NULL,
+    [DATA]                         DATETIME      NOT NULL,
+    [COD_ENTE_EMETTITORE]          VARCHAR (10)  NULL,
+    [ID_COMUNE]                    INT           NULL,
+    [OPERATORE]                    INT           NOT NULL,
+    [PREDISPOSTA_ALLA_FIRMA]       BIT           CONSTRAINT [DF_PROGETTO_COMUNICAZIONI_PREDISPOSTA_ALLA_FIRMA] DEFAULT ((0)) NOT NULL,
+    [SEGNATURA]                    VARCHAR (100) NULL,
+    [ID_NOTE]                      INT           NULL,
+    [ISTRUTTORE]                   INT           NULL,
+    [DATA_ISTRUTTORIA]             DATETIME      NULL,
+    [SEGNATURA_ISTRUTTORIA]        VARCHAR (100) NULL,
+    [ID_NOTE_ISTRUTTORIA]          INT           NULL,
+    [ESITO]                        CHAR (2)      NULL,
+    [ID_DECRETO]                   INT           NULL,
+    [ID_COMUNICAZIONE_RIFERIMENTO] INT           NULL,
+    [DIREZIONE]                    CHAR (1)      NULL,
+    CONSTRAINT [PK_PROGETTO_COMUNICAZIONI] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 80),
+    CONSTRAINT [FK_PROGETTO_COMUNICAZIONI_PROGETTO_COMUNICAZIONI] FOREIGN KEY ([ID_COMUNICAZIONE_RIFERIMENTO]) REFERENCES [dbo].[PROGETTO_COMUNICAZIONI] ([ID]),
+    CONSTRAINT [FK_PROGETTO_COMUNICAZIONI_TIPO_SEGNATURA] FOREIGN KEY ([COD_TIPO]) REFERENCES [dbo].[TIPO_SEGNATURA] ([COD_TIPO])
+);
+

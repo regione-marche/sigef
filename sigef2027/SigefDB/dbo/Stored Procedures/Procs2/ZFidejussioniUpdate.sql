@@ -1,0 +1,133 @@
+﻿CREATE PROCEDURE [dbo].[ZFidejussioniUpdate]
+(
+	@IdFidejussione INT, 
+	@Numero VARCHAR(25), 
+	@Barcode VARCHAR(11), 
+	@DataSottoscrizione DATETIME, 
+	@LuogoSottoscrizione VARCHAR(128), 
+	@Importo DECIMAL(18,2), 
+	@AmmontareRichiesto DECIMAL(18,2), 
+	@DataFineLavori DATETIME, 
+	@DataScadenza DATETIME, 
+	@ProrogaScadenza BIT, 
+	@PivaGarante VARCHAR(11), 
+	@RagioneSocialeGarante VARCHAR(150), 
+	@LocalitaGarante VARCHAR(128), 
+	@NumeroRegistroImprese VARCHAR(10), 
+	@CognomeRapplegale VARCHAR(30), 
+	@NomeRapplegale VARCHAR(20), 
+	@CfRapplegale VARCHAR(16), 
+	@DataNascitaRapplegale DATETIME, 
+	@StampaEffettuata BIT, 
+	@DataRichiestaValidita DATETIME, 
+	@DataRicevimentoValidita DATETIME, 
+	@ProtocolloFaxValidita VARCHAR(100), 
+	@DataDecorrenzaGaranzia DATETIME, 
+	@CodiceAbiEnteGarante VARCHAR(5), 
+	@CodiceCabEnteGarante VARCHAR(5), 
+	@BarcodeConfermaValidita VARCHAR(11), 
+	@CodTipo CHAR(3), 
+	@UfficioApprovazione VARCHAR(120), 
+	@NumDecretoApprovazione INT, 
+	@DataDecretoApprovazione DATETIME
+)
+AS
+	UPDATE FIDEJUSSIONI
+	SET
+		NUMERO = @Numero, 
+		BARCODE = @Barcode, 
+		DATA_SOTTOSCRIZIONE = @DataSottoscrizione, 
+		LUOGO_SOTTOSCRIZIONE = @LuogoSottoscrizione, 
+		IMPORTO = @Importo, 
+		AMMONTARE_RICHIESTO = @AmmontareRichiesto, 
+		DATA_FINE_LAVORI = @DataFineLavori, 
+		DATA_SCADENZA = @DataScadenza, 
+		PROROGA_SCADENZA = @ProrogaScadenza, 
+		PIVA_GARANTE = @PivaGarante, 
+		RAGIONE_SOCIALE_GARANTE = @RagioneSocialeGarante, 
+		LOCALITA_GARANTE = @LocalitaGarante, 
+		NUMERO_REGISTRO_IMPRESE = @NumeroRegistroImprese, 
+		COGNOME_RAPPLEGALE = @CognomeRapplegale, 
+		NOME_RAPPLEGALE = @NomeRapplegale, 
+		CF_RAPPLEGALE = @CfRapplegale, 
+		DATA_NASCITA_RAPPLEGALE = @DataNascitaRapplegale, 
+		STAMPA_EFFETTUATA = @StampaEffettuata, 
+		DATA_RICHIESTA_VALIDITA = @DataRichiestaValidita, 
+		DATA_RICEVIMENTO_VALIDITA = @DataRicevimentoValidita, 
+		PROTOCOLLO_FAX_VALIDITA = @ProtocolloFaxValidita, 
+		DATA_DECORRENZA_GARANZIA = @DataDecorrenzaGaranzia, 
+		CODICE_ABI_ENTE_GARANTE = @CodiceAbiEnteGarante, 
+		CODICE_CAB_ENTE_GARANTE = @CodiceCabEnteGarante, 
+		BARCODE_CONFERMA_VALIDITA = @BarcodeConfermaValidita, 
+		COD_TIPO = @CodTipo, 
+		UFFICIO_APPROVAZIONE = @UfficioApprovazione, 
+		NUM_DECRETO_APPROVAZIONE = @NumDecretoApprovazione, 
+		DATA_DECRETO_APPROVAZIONE = @DataDecretoApprovazione
+	WHERE 
+		(ID_FIDEJUSSIONE = @IdFidejussione)
+
+GO
+EXECUTE sp_addextendedproperty @name = N'backup', @value = N'CREATE PROCEDURE [dbo].[ZFidejussioniUpdate]
+(
+	@IdFidejussione INT, 
+	@Numero VARCHAR(25), 
+	@Barcode VARCHAR(11), 
+	@DataSottoscrizione DATETIME, 
+	@LuogoSottoscrizione VARCHAR(128), 
+	@Importo DECIMAL(18,2), 
+	@AmmontareRichiesto DECIMAL(18,2), 
+	@DataFineLavori DATETIME, 
+	@DataScadenza DATETIME, 
+	@ProrogaScadenza BIT, 
+	@PivaGarante VARCHAR(11), 
+	@RagioneSocialeGarante VARCHAR(150), 
+	@LocalitaGarante VARCHAR(128), 
+	@NumeroRegistroImprese VARCHAR(10), 
+	@CognomeRapplegale VARCHAR(30), 
+	@NomeRapplegale VARCHAR(20), 
+	@CfRapplegale VARCHAR(16), 
+	@DataNascitaRapplegale DATETIME, 
+	@StampaEffettuata BIT, 
+	@DataRichiestaValidita DATETIME, 
+	@DataRicevimentoValidita DATETIME, 
+	@ProtocolloFaxValidita VARCHAR(100), 
+	@DataDecorrenzaGaranzia DATETIME, 
+	@CodiceAbiEnteGarante VARCHAR(5), 
+	@CodiceCabEnteGarante VARCHAR(5), 
+	@BarcodeConfermaValidita VARCHAR(11), 
+	@CodTipo CHAR(3)
+)
+AS
+	UPDATE FIDEJUSSIONI
+	SET
+		NUMERO = @Numero, 
+		BARCODE = @Barcode, 
+		DATA_SOTTOSCRIZIONE = @DataSottoscrizione, 
+		LUOGO_SOTTOSCRIZIONE = @LuogoSottoscrizione, 
+		IMPORTO = @Importo, 
+		AMMONTARE_RICHIESTO = @AmmontareRichiesto, 
+		DATA_FINE_LAVORI = @DataFineLavori, 
+		DATA_SCADENZA = @DataScadenza, 
+		PROROGA_SCADENZA = @ProrogaScadenza, 
+		PIVA_GARANTE = @PivaGarante, 
+		RAGIONE_SOCIALE_GARANTE = @RagioneSocialeGarante, 
+		LOCALITA_GARANTE = @LocalitaGarante, 
+		NUMERO_REGISTRO_IMPRESE = @NumeroRegistroImprese, 
+		COGNOME_RAPPLEGALE = @CognomeRapplegale, 
+		NOME_RAPPLEGALE = @NomeRapplegale, 
+		CF_RAPPLEGALE = @CfRapplegale, 
+		DATA_NASCITA_RAPPLEGALE = @DataNascitaRapplegale, 
+		STAMPA_EFFETTUATA = @StampaEffettuata, 
+		DATA_RICHIESTA_VALIDITA = @DataRichiestaValidita, 
+		DATA_RICEVIMENTO_VALIDITA = @DataRicevimentoValidita, 
+		PROTOCOLLO_FAX_VALIDITA = @ProtocolloFaxValidita, 
+		DATA_DECORRENZA_GARANZIA = @DataDecorrenzaGaranzia, 
+		CODICE_ABI_ENTE_GARANTE = @CodiceAbiEnteGarante, 
+		CODICE_CAB_ENTE_GARANTE = @CodiceCabEnteGarante, 
+		BARCODE_CONFERMA_VALIDITA = @BarcodeConfermaValidita, 
+		COD_TIPO = @CodTipo
+	WHERE 
+		(ID_FIDEJUSSIONE = @IdFidejussione)
+
+', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'PROCEDURE', @level1name = N'ZFidejussioniUpdate';
+

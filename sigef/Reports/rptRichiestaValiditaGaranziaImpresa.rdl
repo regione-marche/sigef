@@ -1,0 +1,1475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="SIGEF">
+      <DataSourceReference>SIGEF_SVIL</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>c150d5b1-f633-4bc9-bafa-081e931013af</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="VisualizzaAppendice">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdDomandaPagamento">
+            <Value>=Parameters!IdDomandaPagamento.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>DECLARE @ID_BANDO INT, @conta INT
+SET @ID_BANDO=(
+SELECT ID_BANDO
+FROM PROGETTO
+WHERE ID_PROGETTO = (SELECT ID_PROGETTO 
+FROM DOMANDA_DI_PAGAMENTO
+WHERE ID_DOMANDA_PAGAMENTO = @IdDomandaPagamento))
+
+SET @conta =(SELECT COUNT(ID_BANDO) FROM BANDO_TIPO_INVESTIMENTI WHERE ID_BANDO = @ID_BANDO AND COD_TIPO_INVESTIMENTO = 3)
+SELECT @conta as CONTA</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="CONTA">
+          <DataField>CONTA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DatiFidejussione">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdDomandaPagamento">
+            <Value>=Parameters!IdDomandaPagamento.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@IdImpresa">
+            <Value>=Parameters!IdImpresa.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>EXEC RptDP_DatiPolizzaImpresa @IdDomandaPagamento , @IdImpresa</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="ID_FIDEJUSSIONE">
+          <DataField>ID_FIDEJUSSIONE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ID_DOMANDA_PAGAMENTO">
+          <DataField>ID_DOMANDA_PAGAMENTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NUMERO">
+          <DataField>NUMERO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID_PROGETTO">
+          <DataField>ID_PROGETTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DATA_SOTTOSCRIZIONE">
+          <DataField>DATA_SOTTOSCRIZIONE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DATA_INSERIMENTO">
+          <DataField>DATA_INSERIMENTO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LUOGO_SOTTOSCRIZIONE">
+          <DataField>LUOGO_SOTTOSCRIZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OPERATORE">
+          <DataField>OPERATORE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_MODIFICA">
+          <DataField>DATA_MODIFICA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="IMPORTO">
+          <DataField>IMPORTO</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="COD_ENTE">
+          <DataField>COD_ENTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="AMMONTARE_RICHIESTO">
+          <DataField>AMMONTARE_RICHIESTO</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DATA_FINE_LAVORI">
+          <DataField>DATA_FINE_LAVORI</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="SEGNATURA">
+          <DataField>SEGNATURA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DESCRIZIONE">
+          <DataField>DESCRIZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_SCADENZA">
+          <DataField>DATA_SCADENZA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="COD_FASE">
+          <DataField>COD_FASE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FASE">
+          <DataField>FASE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PIVA_GARANTE">
+          <DataField>PIVA_GARANTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ORDINE">
+          <DataField>ORDINE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RAGIONE_SOCIALE_GARANTE">
+          <DataField>RAGIONE_SOCIALE_GARANTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LOCALITA_GARANTE">
+          <DataField>LOCALITA_GARANTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NUMERO_REGISTRO_IMPRESE">
+          <DataField>NUMERO_REGISTRO_IMPRESE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COGNOME_RAPPLEGALE">
+          <DataField>COGNOME_RAPPLEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NOME_RAPPLEGALE">
+          <DataField>NOME_RAPPLEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CF_RAPPLEGALE">
+          <DataField>CF_RAPPLEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_NASCITA_RAPPLEGALE">
+          <DataField>DATA_NASCITA_RAPPLEGALE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="STAMPA_EFFETTUATA">
+          <DataField>STAMPA_EFFETTUATA</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="IMPORTO_LETTERE">
+          <DataField>IMPORTO_LETTERE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_RICHIESTA_VALIDITA">
+          <DataField>DATA_RICHIESTA_VALIDITA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DATA_RICEVIMENTO_VALIDITA">
+          <DataField>DATA_RICEVIMENTO_VALIDITA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="AMMONTARE_RICHIESTO_LETTERE">
+          <DataField>AMMONTARE_RICHIESTO_LETTERE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROTOCOLLO_FAX_VALIDITA">
+          <DataField>PROTOCOLLO_FAX_VALIDITA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_DECORRENZA_GARANZIA">
+          <DataField>DATA_DECORRENZA_GARANZIA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CODICE_ABI_ENTE_GARANTE">
+          <DataField>CODICE_ABI_ENTE_GARANTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CODICE_CAB_ENTE_GARANTE">
+          <DataField>CODICE_CAB_ENTE_GARANTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_TIPO">
+          <DataField>COD_TIPO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TIPO_POLIZZA">
+          <DataField>TIPO_POLIZZA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_SCADENZA2">
+          <DataField>DATA_SCADENZA2</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="QUOTA_IMPORTO_GARANTITO">
+          <DataField>QUOTA_IMPORTO_GARANTITO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTRIBUTO_AMMESSO">
+          <DataField>CONTRIBUTO_AMMESSO</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="SPESA_AMMESSA">
+          <DataField>SPESA_AMMESSA</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="NOMINATIVO">
+          <DataField>NOMINATIVO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="AnagraficaAzienda">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdImpresa">
+            <Value>=Parameters!IdImpresa.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT 
+V.CUAA,
+V.CODICE_FISCALE AS PIVA_CF,
+V.RAGIONE_SOCIALE,
+V.REGISTRO_IMPRESE_NUMERO,
+V.DIMENSIONE_IMPRESA,
+V.CODICE_INPS,
+V.DESCRIZIONE,
+V.REA_NUMERO,
+V.REA_ANNO,
+V.COD_FORMA_GIURIDICA,
+IND.VIA,
+IND.LOCALITA,
+IND.TELEFONO,
+IND.FAX,
+IND.EMAIL,
+IND.COMUNE AS COMUNE, 
+IND.CAP,
+IND.ISTAT AS ISTAT_COMUNE,
+IND.COD_PROVINCIA AS ISTAT_PROVINCIA,
+IND.SIGLA AS PROVINCIA,
+IND.PEC        
+FROM VIMPRESA V
+INNER JOIN VINDIRIZZARIO IND ON V.ID_SEDELEGALE_ULTIMO = IND.ID_INDIRIZZARIO
+WHERE V.ID_IMPRESA = @IdImpresa</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="CUAA">
+          <DataField>CUAA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PIVA_CF">
+          <DataField>PIVA_CF</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="REGISTRO_IMPRESE_NUMERO">
+          <DataField>REGISTRO_IMPRESE_NUMERO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CODICE_INPS">
+          <DataField>CODICE_INPS</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RAGIONE_SOCIALE">
+          <DataField>RAGIONE_SOCIALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_FORMA_GIURIDICA">
+          <DataField>COD_FORMA_GIURIDICA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DESCRIZIONE">
+          <DataField>DESCRIZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DIMENSIONE_IMPRESA">
+          <DataField>DIMENSIONE_IMPRESA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="REA_NUMERO">
+          <DataField>REA_NUMERO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="REA_ANNO">
+          <DataField>REA_ANNO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="VIA">
+          <DataField>VIA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LOCALITA">
+          <DataField>LOCALITA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TELEFONO">
+          <DataField>TELEFONO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FAX">
+          <DataField>FAX</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EMAIL">
+          <DataField>EMAIL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COMUNE">
+          <DataField>COMUNE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CAP">
+          <DataField>CAP</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ISTAT_COMUNE">
+          <DataField>ISTAT_COMUNE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ISTAT_PROVINCIA">
+          <DataField>ISTAT_PROVINCIA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROVINCIA">
+          <DataField>PROVINCIA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PEC">
+          <DataField>PEC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Misura">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdDomandaPagamento">
+            <Value>=Parameters!IdDomandaPagamento.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>
+declare @ID_PROGETTO INT = (SELECT ID_PROGETTO FROM DOMANDA_DI_PAGAMENTO WHERE ID_DOMANDA_PAGAMENTO = @IdDomandaPagamento)
+
+exec RptIntestazioneModelloDomanda @ID_PROGETTO</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID_PROGETTO">
+          <DataField>ID_PROGETTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ID_IMPRESA">
+          <DataField>ID_IMPRESA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="COD_AGEA">
+          <DataField>COD_AGEA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROVINCIA_DI_PRESENTAZIONE">
+          <DataField>PROVINCIA_DI_PRESENTAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROVINCIA_ESTESA">
+          <DataField>PROVINCIA_ESTESA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OPERATORE_PRESENTAZIONE">
+          <DataField>OPERATORE_PRESENTAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ENTE_OPERATORE_PRESENTAZIONE">
+          <DataField>ENTE_OPERATORE_PRESENTAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_ULTIMA_MODIFICA">
+          <DataField>DATA_ULTIMA_MODIFICA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID_BANDO">
+          <DataField>ID_BANDO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DESCRIZIONE_BANDO">
+          <DataField>DESCRIZIONE_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_ENTE_BANDO">
+          <DataField>COD_ENTE_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ENTE_BANDO">
+          <DataField>ENTE_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_SCADENZA_BANDO">
+          <DataField>DATA_SCADENZA_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_PROGRAMMAZIONE">
+          <DataField>COD_PROGRAMMAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROGRAMMAZIONE">
+          <DataField>PROGRAMMAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_PSR">
+          <DataField>COD_PSR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DESCRIZIONE_PSR">
+          <DataField>DESCRIZIONE_PSR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PSR_ANNO_DA">
+          <DataField>PSR_ANNO_DA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PSR_ANNO_A">
+          <DataField>PSR_ANNO_A</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SEGNATURA_RILASCIO">
+          <DataField>SEGNATURA_RILASCIO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_SCHEDA_VALIDAZIONE">
+          <DataField>DATA_SCHEDA_VALIDAZIONE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="BARCODE_SCHEDA_VALIDAZIONE">
+          <DataField>BARCODE_SCHEDA_VALIDAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_VALIDAZIONE_FASCICOLO">
+          <DataField>DATA_VALIDAZIONE_FASCICOLO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PROTOCOLLO_CLASSIFICAZIONE">
+          <DataField>PROTOCOLLO_CLASSIFICAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_DECRETO_APERTURA_BANDO">
+          <DataField>DATA_DECRETO_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="NUM_DECRETO_APERTURA_BANDO">
+          <DataField>NUM_DECRETO_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="REGISTRO_DECRETO_APERTURA_BANDO">
+          <DataField>REGISTRO_DECRETO_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NUM_BUR_APERTURA_BANDO">
+          <DataField>NUM_BUR_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DATA_BUR_APERTURA_BANDO">
+          <DataField>DATA_BUR_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DEFINIZIONE_DECRETO_APERTURA_BANDO">
+          <DataField>DEFINIZIONE_DECRETO_APERTURA_BANDO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SEGNATURA_ALLEGATI_AIUTO">
+          <DataField>SEGNATURA_ALLEGATI_AIUTO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PAROLE_CHIAVE">
+          <DataField>PAROLE_CHIAVE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsSDA">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdDomandaPagamento">
+            <Value>=Parameters!IdDomandaPagamento.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>declare @ENTE VARchar(10) 
+select @ENTE = b.COD_ENTE from BANDO B 
+inner join PROGETTO p on B.ID_BANDO = P.ID_BANDO
+INNER JOIN DOMANDA_DI_PAGAMENTO D ON P.ID_PROGETTO = D.ID_PROGETTO
+where ID_DOMANDA_PAGAMENTO = @IdDomandaPagamento
+
+select * from UFFICI_DECENTRATI
+where CODICE = @ENTE and attivo = 1</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="CODICE">
+          <DataField>CODICE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DENOMINAZIONE">
+          <DataField>DENOMINAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROVINCIA">
+          <DataField>PROVINCIA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PEC">
+          <DataField>PEC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ATTIVO">
+          <DataField>ATTIVO</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="DATA_FINE_VALIDITA">
+          <DataField>DATA_FINE_VALIDITA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Regione Marche - Conferma Validità Garanzia</Value>
+                    <Style>
+                      <FontSize>15pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox1</rd:DefaultName>
+            <Top>1.2025cm</Top>
+            <Height>0.75cm</Height>
+            <Width>17.25001cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="image1">
+            <Source>Embedded</Source>
+            <Value>logoregionemarche</Value>
+            <Height>1.24339cm</Height>
+            <Width>2.56614cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style />
+          </Image>
+          <Textbox Name="textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Spett. Compagnia di Assicurazioni/Banca</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox2</rd:DefaultName>
+            <Top>2.99825cm</Top>
+            <Left>9.5cm</Left>
+            <Height>0.63492cm</Height>
+            <Width>7.75001cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>alla c.a. del Dirigente Responsabile del Ramo Cauzioni</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>6.21675cm</Top>
+            <Left>7.54208cm</Left>
+            <Height>0.63492cm</Height>
+            <Width>9.70793cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Prot. n.</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>5.111cm</Top>
+            <Height>0.63492cm</Height>
+            <Width>8cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>OGGETTO: Conferma validità Garanzia n. </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!NUMERO.Value, "DatiFidejussione")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> del </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!DATA_SOTTOSCRIZIONE.Value, "DatiFidejussione")</Value>
+                    <Style>
+                      <Format>dd/MM/yyyy</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>7.016cm</Top>
+            <Height>0.63492cm</Height>
+            <Width>17.25001cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox6">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Spettabile Direzione Generale</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>8.016cm</Top>
+            <Left>0.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Width>7.25cm</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>abbiamo ricevuto la garanzia in oggetto emessa dall'Agenzia </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!RAGIONE_SOCIALE_GARANTE.Value, "DatiFidejussione")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> a favore della Regione Marche su richiesta della Ditta </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!RAGIONE_SOCIALE.Value, "AnagraficaAzienda")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> per l'importo di </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>=FIRST(Fields!AMMONTARE_RICHIESTO.Value, "DatiFidejussione")</Value>
+                    <Style>
+                      <Format>C2</Format>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> valida fino al </Value>
+                    <Style>
+                      <Format>C2</Format>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!DATA_SCADENZA2.Value, "DatiFidejussione")</Value>
+                    <Style>
+                      <Format>d</Format>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> con proroga automatica semestrale per non più di 4 semestri. 
+In merito a quanto sopra si chiede conferma della validità della garanzia in questione e del potere dell'Agente firmatario ad impegnare codesto Ente </Value>
+                    <Style>
+                      <Format>C2</Format>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>tramite la trasmissione via PEC alla </Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!DENOMINAZIONE.Value, "dsSDA")</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> all’indirizzo </Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!PEC.Value, "dsSDA")</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> della presente compilata nello spazio sottostante entro 3 giorni dal ricevimento</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>.
+Al riguardo si fa presente che </Value>
+                    <Style>
+                      <Format>C2</Format>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>il mancato invio di quanto richiesto osta il completamento del procedimento di liquidazione dell’anticipazione alla ditta beneficiaria</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>. </Value>
+                    <Style>
+                      <Format>C2</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>9.016cm</Top>
+            <Height>2.205cm</Height>
+            <Width>17.25001cm</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Distinti Saluti</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>11.416cm</Top>
+            <Left>0.5cm</Left>
+            <Height>0.63492cm</Height>
+            <Width>7.25cm</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox10">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Il responsabile del procedimento</Value>
+                    <Style>
+                      <FontSize>11pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>(</Value>
+                    <Style>
+                      <FontSize>11pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=FIRST(Fields!NOMINATIVO.Value, "DatiFidejussione")</Value>
+                    <Style>
+                      <FontSize>11pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>)</Value>
+                    <Style>
+                      <FontSize>11pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>12.261cm</Top>
+            <Left>9.815cm</Left>
+            <Height>1.0318cm</Height>
+            <Width>5.77cm</Width>
+            <ZIndex>9</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="line1">
+            <Top>14.751cm</Top>
+            <Left>0.01cm</Left>
+            <Height>0cm</Height>
+            <Width>17.25001cm</Width>
+            <ZIndex>10</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Prot n.</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox8</rd:DefaultName>
+            <Top>15.251cm</Top>
+            <Left>0.26cm</Left>
+            <Height>0.63492cm</Height>
+            <Width>5.5cm</Width>
+            <ZIndex>11</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Rectangle Name="rectangle1">
+            <ReportItems>
+              <Textbox Name="textbox11">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Si conferma che la garanzia n. </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value>=First(Fields!NUMERO.Value, "DatiFidejussione")</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value> del </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value>=First(Fields!DATA_SOTTOSCRIZIONE.Value, "DatiFidejussione")</Value>
+                        <Style>
+                          <Format>dd/MM/yyyy</Format>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value> emessa da </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value>=First(Fields!RAGIONE_SOCIALE_GARANTE.Value, "DatiFidejussione")</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value> per conto della Ditta </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value>=First(Fields!RAGIONE_SOCIALE.Value, "AnagraficaAzienda")</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value> risulta valida ed operante per l'importo di </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value>=First(Fields!AMMONTARE_RICHIESTO.Value, "DatiFidejussione")</Value>
+                        <Style>
+                          <Format>C2</Format>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value>. </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value>=iif(FIRST(Fields!CONTA.Value, "VisualizzaAppendice") &gt; 0, "Dettaglio in appendice nel caso di ''Pacchetto Giovani''.", "")</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value>
+Tale comunicazione è valida per la conferma della garanzia in questione ai fini dell'assunzione di responsabilità direttamente da parte di questo Ente garante.</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox11</rd:DefaultName>
+                <Top>0.25cm</Top>
+                <Left>0.25cm</Left>
+                <Height>1.75cm</Height>
+                <Width>16.69708cm</Width>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>10pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <DataElementOutput>ContentsOnly</DataElementOutput>
+            <Top>16.226cm</Top>
+            <Left>0.01cm</Left>
+            <Height>2.25cm</Height>
+            <Width>17.25001cm</Width>
+            <ZIndex>12</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Textbox Name="textbox15">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!DESCRIZIONE_PSR.Value, "Misura")</Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value> - </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>="Misura: " &amp; First(Fields!COD_PROGRAMMAZIONE.Value, "Misura")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>2.3475cm</Top>
+            <Left>9.5cm</Left>
+            <Height>0.63492cm</Height>
+            <Width>7.75001cm</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox41">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Compagnia di Assicurazioni/Banca Direzione generale</Value>
+                    <Style>
+                      <FontSize>11pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>18.826cm</Top>
+            <Left>9.815cm</Left>
+            <Height>1.22cm</Height>
+            <Width>6.39cm</Width>
+            <ZIndex>14</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox40">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>19.411cm</Top>
+            <Left>6.89cm</Left>
+            <Height>1.95cm</Height>
+            <Width>2.86cm</Width>
+            <ZIndex>15</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+              <VerticalAlign>Bottom</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox13">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontSize>11pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>20.181cm</Top>
+            <Left>10.4cm</Left>
+            <Height>0.63492cm</Height>
+            <Width>5.25cm</Width>
+            <ZIndex>16</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox12">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontSize>11pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>20.776cm</Top>
+            <Left>10.4cm</Left>
+            <Height>0.63492cm</Height>
+            <Width>5.25cm</Width>
+            <ZIndex>17</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox45">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>(timbro Direzione Ente garante)</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>21.296cm</Top>
+            <Left>6.63cm</Left>
+            <Height>0.41496cm</Height>
+            <Width>3.185cm</Width>
+            <ZIndex>18</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox48">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>(nome cognome)</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>20.256cm</Top>
+            <Left>15.665cm</Left>
+            <Height>0.41496cm</Height>
+            <Width>1.755cm</Width>
+            <ZIndex>19</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox47">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>(firma)</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <Top>20.906cm</Top>
+            <Left>15.6cm</Left>
+            <Height>0.41496cm</Height>
+            <Width>1.625cm</Width>
+            <ZIndex>20</ZIndex>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="RAGIONE_SOCIALE_GARANTE">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!RAGIONE_SOCIALE_GARANTE.Value, "DatiFidejussione")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>RAGIONE_SOCIALE_GARANTE</rd:DefaultName>
+            <Top>3.64023cm</Top>
+            <Left>9.5cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.75001cm</Width>
+            <ZIndex>21</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="LOCALITA_GARANTE">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!LOCALITA_GARANTE.Value, "DatiFidejussione")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>LOCALITA_GARANTE</rd:DefaultName>
+            <Top>4.28256cm</Top>
+            <Left>9.5cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.75001cm</Width>
+            <ZIndex>22</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="PIVA_GARANTE">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>="P.IVA: "+First(Fields!PIVA_GARANTE.Value, "DatiFidejussione")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>PIVA_GARANTE</rd:DefaultName>
+            <Top>4.88961cm</Top>
+            <Left>9.5cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.76001cm</Width>
+            <ZIndex>23</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>21.71096cm</Height>
+        <Style />
+      </Body>
+      <Width>17.42cm</Width>
+      <Page>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>1.5cm</LeftMargin>
+        <RightMargin>1.5cm</RightMargin>
+        <TopMargin>2.5cm</TopMargin>
+        <BottomMargin>2.5cm</BottomMargin>
+        <ColumnSpacing>1cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="IdDomandaPagamento">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+        </Values>
+      </DefaultValue>
+      <Prompt>IdDomandaPagamento</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="IdImpresa">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>IdImpresa</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>1</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>IdDomandaPagamento</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>IdImpresa</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="logoregionemarche">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <Language>it-IT</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>e83eb306-1e20-4942-99e9-856420322e46</rd:ReportID>
+</Report>

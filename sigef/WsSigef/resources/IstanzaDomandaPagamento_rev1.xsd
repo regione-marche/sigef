@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 rel. 3 sp1 (x64) (http://www.altova.com) by fda (LOGIX) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="DomandaPagamento">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DatiGenerali" type="DatiGeneraliDomandaPagamentoType"/>
+				<xs:element name="Rendicontazione">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="VoceSpesa">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Giustificativi">
+											<xs:complexType>
+												<xs:sequence maxOccurs="unbounded">
+													<xs:element name="Giustificativo" type="GiustificativoType"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ImportoPagamentoRichiestoVoceSpesa" type="xs:decimal"/>
+										<xs:element name="ImportoContributoRichiestoVoceSpesa" type="xs:decimal"/>
+										<xs:element name="ProgressivoInvestimento" type="xs:int"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RequisitiDomandaPagamento">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="RequisitoDomandaPagamento" type="RequisitoDPType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="IndicatoriMonitoraggio">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="Indicatore" type="IndicatoreDPType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="DatiGeneraliDomandaPagamentoType">
+		<xs:sequence>
+			<xs:element name="SistemaMittente" type="xs:string"/>
+			<xs:element name="DataPresentazione" type="xs:date"/>
+			<xs:element name="SegnaturaProtocollo" type="xs:string"/>
+			<xs:element name="IdProgettoSigef" type="xs:int"/>
+			<xs:element name="TipoDomanda" nillable="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="SAL"/>
+						<xs:enumeration value="SLD"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ImportoDomandaPagamento" type="xs:decimal"/>
+			<xs:element name="CodiceFondo" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IndicatoreDPType">
+		<xs:sequence>
+			<xs:element name="CodiceProgrammazione" type="xs:string"/>
+			<xs:element name="Codice" type="xs:string"/>
+			<xs:element name="Valore" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequisitoDPType">
+		<xs:sequence>
+			<xs:element name="ChiaveDescrizione" type="xs:string"/>
+			<xs:element name="Valore" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GiustificativoType">
+		<xs:sequence>
+			<xs:element name="Numero" type="xs:string"/>
+			<xs:element name="Data" type="xs:date"/>
+			<xs:element name="TipoGiustificativo" type="xs:string"/>
+			<xs:element name="CodiceFiscaleFornitore" type="xs:string"/>
+			<xs:element name="DescrizioneFornitore" type="xs:string"/>
+			<xs:element name="ImportoImponibile" type="xs:decimal"/>
+			<xs:element name="IVA" type="xs:decimal"/>
+			<xs:element name="Descrizione" type="xs:string"/>
+			<xs:element name="FlagIvaNonRecuperabile" type="xs:boolean"/>
+			<xs:element name="FileGiustificativo" type="xs:base64Binary" minOccurs="0"/>
+			<xs:element name="SpeseSostenute">
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="SpesaSostenuta" type="SpesaSostenutaType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ImportoRichiestoGiustificativo" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SpesaSostenutaType">
+		<xs:sequence>
+			<xs:element name="EstremiSpesaSostenuta" type="xs:string"/>
+			<xs:element name="DataSpesaSostenuta" type="xs:date"/>
+			<xs:element name="ImportoSpesaSostenuta" type="xs:decimal"/>
+			<xs:element name="ImportoNettoSpesaSostenuta" type="xs:decimal"/>
+			<xs:element name="TipoSpesa" type="xs:string"/>
+			<xs:element name="FileSpesaSostenuta" type="xs:base64Binary" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

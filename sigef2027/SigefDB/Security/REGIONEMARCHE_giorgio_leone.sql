@@ -1,0 +1,2 @@
+﻿CREATE USER [REGIONEMARCHE\giorgio_leone] FOR LOGIN [REGIONEMARCHE\giorgio_leone];
+

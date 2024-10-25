@@ -1,0 +1,181 @@
+﻿CREATE PROCEDURE SpPsrRevisioneSelezioneDomandeXLotto
+(
+    @ID_LOTTO INT,
+    @REVISORE CHAR(16)
+)
+AS
+/*
+DECLARE @ID_LOTTO       INT = 1,
+        @CF_OPERATORE   CHAR(16)=''
+*/
+	
+DECLARE @ID_BANDO               INT,
+        @MAX_ORDINE             INT = 0, 
+        @ID_DOMANDA_PAGAMENTO   INT 
+
+SELECT  @ID_BANDO = ID_BANDO 
+FROM LOTTO_DI_REVISIONE 
+WHERE ID_LOTTO = @ID_LOTTO
+
+SELECT @MAX_ORDINE = ISNULL(MAX(ORDINE), 0) 
+FROM CTE_TESTATA_VALIDAZIONE 
+WHERE ID_LOTTO = @ID_LOTTO
+	
+DECLARE DOMPAG CURSOR FOR 
+    SELECT D.ID_DOMANDA_PAGAMENTO
+    FROM DOMANDA_DI_PAGAMENTO D 
+         INNER JOIN 
+         PROGETTO P ON D.ID_PROGETTO = P.ID_PROGETTO
+		 LEFT JOIN 
+         CTE_TESTATA_VALIDAZIONE R ON D.ID_DOMANDA_PAGAMENTO = R.ID_DOMANDA_PAGAMENTO 
+                                    --AND R.ID_LOTTO = @ID_LOTTO
+    WHERE P.ID_BANDO                = @ID_BANDO 
+      AND D.ANNULLATA               = 0 
+      AND D.SEGNATURA_APPROVAZIONE  IS NOT NULL 
+	  AND R.ID_DOMANDA_PAGAMENTO    IS NULL
+	  AND D.APPROVATA               = 1
+    ORDER BY D.DATA_MODIFICA ASC
+
+OPEN DOMPAG
+	FETCH NEXT FROM DOMPAG INTO @ID_DOMANDA_PAGAMENTO
+	WHILE @@FETCH_STATUS = 0 
+    BEGIN
+		DECLARE @COUNT_TIPOENTE INT -- PUBBLICO = 1 ; PRIVATO = 0
+		SELECT @COUNT_TIPOENTE = count(*)
+        from vIMPRESA i 
+			 INNER JOIN 
+             PROGETTO P ON P.ID_IMPRESA = I.ID_IMPRESA
+             INNER JOIN 
+             DATI_MONITORAGGIO_FESR DMF ON DMF.ID_PROGETTO = P.ID_PROGETTO
+			 INNER JOIN 
+             DOMANDA_DI_PAGAMENTO DPAG ON DPAG.ID_PROGETTO          = P.ID_PROGETTO 
+                                      AND DPAG.ID_DOMANDA_PAGAMENTO = @ID_DOMANDA_PAGAMENTO
+        where 
+			DMF.CUP_NATURA NOT IN ('06','07')
+        --I.COD_FORMA_GIURIDICA  IN	(--'1.6',
+        --                                '2',
+        --                                '2.1',
+        --                                '2.2',
+        --                                '2.3.',
+        --                                '2.4',
+        --                                '2.4.10',
+        --                                '2.4.20',
+        --                                '2.4.30',
+        --                                '2.4.40',
+        --                                '2.4.50',
+        --                                '2.4.60',
+        --                                '2.5',
+        --                                '2.6.10',
+        --                                '2.6.20',
+        --                                '2.7',
+        --                                '2.7.11',
+        --                                '2.7.12',
+        --                                '2.7.40',
+        --                                '2.7.51',
+        --                                '2.7.52',
+        --                                '2.7.53',
+        --                                '2.7.54',
+        --                                '2.7.55',
+        --                                '2.7.56',
+        --                                '2.7.90'
+        --                                ) or P.ID_BANDO in (121)
+		IF @COUNT_TIPOENTE > 0
+		BEGIN
+			SET @MAX_ORDINE = @MAX_ORDINE+1;
+			
+            INSERT INTO TESTATA_VALIDAZIONE (Id_Lotto,
+                                                     Id_Domanda_Pagamento,
+                                                     Data_Inserimento,
+                                                     Data_Modifica,
+                                                     CF_VALIDATORE,
+                                                     Selezionata_x_Revisione,
+                                                     Approvata,
+                                                     Numero_Estrazione,
+                                                     Ordine,
+                                                     Segnatura_Revisione,
+                                                     Segnatura_Seconda_Revisione)
+			SELECT  @ID_LOTTO,
+                    @ID_DOMANDA_PAGAMENTO,
+                    GETDATE(),
+                    GETDATE(),
+                    @REVISORE,
+                    0,
+                    NULL,
+                    0,
+                    @MAX_ORDINE,
+                    NULL,
+                    NULL
+		END
+		ELSE
+		BEGIN
+			DECLARE @COUNT_B INT
+			SELECT @COUNT_B = COUNT(*) 
+			FROM DOMANDA_DI_PAGAMENTO D 
+                 LEFT OUTER JOIN 
+                 (  SELECT  Q.ID_DOMANDA_PAGAMENTO, 
+                            SUM(ISNULL(Q.MANDATO_IMPORTO, 0))   AS IMPORTO_LIQUIDATO,
+                            SUM(ISNULL(Q.QUIETANZA_IMPORTO, 0)) AS IMPORTO_QUIETANZA
+                    FROM DOMANDA_PAGAMENTO_LIQUIDAZIONE Q
+                    WHERE Q.ID_DOMANDA_PAGAMENTO = @ID_DOMANDA_PAGAMENTO
+                    -- AND PROG.ID_BANDO = @ID_BANDO
+                    GROUP BY Q.ID_DOMANDA_PAGAMENTO
+                ) MANDATI on MANDATI.ID_DOMANDA_PAGAMENTO = D.ID_DOMANDA_PAGAMENTO 
+                LEFT OUTER JOIN 
+                (   SELECT  F.ID_DOMANDA_PAGAMENTO, 
+                            SUM(ISNULL(F.IMPORTO, 0))   AS IMPORTO_DECRETO
+					FROM DECRETI_X_DOM_PAG_ESPORTAZIONE F
+					WHERE F.ID_DOMANDA_PAGAMENTO = @ID_DOMANDA_PAGAMENTO
+					-- AND F.ID_BANDO = @ID_BANDO
+					GROUP BY F.ID_DOMANDA_PAGAMENTO
+                ) DECRETI on DECRETI.ID_DOMANDA_PAGAMENTO = D.ID_DOMANDA_PAGAMENTO
+                INNER JOIN 
+                DOMANDA_DI_PAGAMENTO_ESPORTAZIONE ESP ON ESP.ID_DOMANDA_PAGAMENTO = D.ID_DOMANDA_PAGAMENTO
+			WHERE D.ID_DOMANDA_PAGAMENTO    = @ID_DOMANDA_PAGAMENTO
+			  and (
+					  (MANDATI.IMPORTO_LIQUIDATO > 0 
+					  and MANDATI.IMPORTO_QUIETANZA > 0 
+					  AND DECRETI.IMPORTO_DECRETO   > 0
+					  AND ESP.IMPORTO_AMMESSO       IS NOT NULL 
+					  AND ESP.IMPORTO_AMMESSO       > 0
+					  and MANDATI.IMPORTO_LIQUIDATO = MANDATI.IMPORTO_QUIETANZA 
+					  AND MANDATI.IMPORTO_LIQUIDATO = DECRETI.IMPORTO_DECRETO
+					  AND ESP.IMPORTO_AMMESSO       = MANDATI.IMPORTO_LIQUIDATO)
+				  OR
+					  (ESP.IMPORTO_AMMESSO			= 0
+					  AND MANDATI.IMPORTO_QUIETANZA IS NULL
+					  AND DECRETI.IMPORTO_DECRETO   IS NULL)
+				  )
+			IF @COUNT_B >0
+			BEGIN
+				SET @MAX_ORDINE = @MAX_ORDINE +1;
+				INSERT INTO TESTATA_VALIDAZIONE (   Id_Lotto,
+                                                            Id_Domanda_Pagamento,
+                                                            Data_Inserimento,
+                                                            Data_Modifica,
+                                                            CF_VALIDATORE,
+                                                            Selezionata_x_Revisione,
+                                                            Approvata,
+                                                            Numero_Estrazione,
+                                                            Ordine,
+                                                            Segnatura_Revisione,
+                                                            Segnatura_Seconda_Revisione)
+				SELECT  @ID_LOTTO,
+                        @ID_DOMANDA_PAGAMENTO,
+                        GETDATE(),
+                        GETDATE(),
+                        @REVISORE,
+                        0,
+                        NULL,
+                        0,
+                        @MAX_ORDINE,
+                        NULL,
+                        NULL
+			END
+		END
+        FETCH NEXT FROM DOMPAG INTO @ID_DOMANDA_PAGAMENTO
+	END	
+	CLOSE DOMPAG
+	DEALLOCATE DOMPAG
+
+	SELECT @MAX_ORDINE
+GO

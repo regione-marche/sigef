@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="LogRoot">
+    <xs:annotation>
+      <xs:documentation>Comment describing your root element</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IdTicket" type="xs:string"/>
+        <xs:element name="IdInvio" type="xs:int"/>
+        <xs:element name="LogEntry">
+          <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+              <xs:element name="LogRecord" type="LogRecordType"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="LogRecordType">
+    <xs:sequence>
+      <xs:element name="TipoFile" type="xs:string"/>
+      <xs:element name="IdBando" type="xs:string" minOccurs="0"/>
+      <xs:element name="IdProgetto" type="xs:string" minOccurs="0"/>
+      <xs:element name="NumeroRiga" type="xs:string"/>
+      <xs:element name="CodiceGruppo" type="xs:string"/>
+      <xs:element name="CodiceErrore" type="xs:string"/>
+      <xs:element name="DescrizioneErrore" type="xs:string"/>
+      <xs:element name="CampoTracciato" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

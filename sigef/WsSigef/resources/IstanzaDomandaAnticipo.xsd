@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 rel. 3 sp1 (x64) (http://www.altova.com) by fda (LOGIX) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="DomandaAnticipo">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DatiGenerali" type="DatiGeneraliDomandaAnticipoType"/>
+				<xs:element name="FidejussioniImpresa">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="FidejussioneImpresa">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PartitaIvaImpresa" type="xs:string"/>
+										<xs:element name="FlagRichiestaAnticipo" type="xs:boolean"/>
+										<xs:element name="Fidejussione" type="FidejussioneType" nillable="true" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RequisitiDomandaAnticipo">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="RequisitoDomandaAnticipo" type="RequisitoDAType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="IndicatoriMonitoraggio">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="Indicatore" type="IndicatoreDAType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="DatiGeneraliDomandaAnticipoType">
+		<xs:sequence>
+			<xs:element name="SistemaMittente" type="xs:string"/>
+			<xs:element name="DataPresentazione" type="xs:date"/>
+			<xs:element name="SegnaturaProtocollo" type="xs:string"/>
+			<xs:element name="IdProgettoSigef" type="xs:int"/>
+			<xs:element name="ImportoAnticipo" type="xs:decimal"/>
+			<xs:element name="CodiceFondo" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FidejussioneType">
+		<xs:sequence>
+			<xs:element name="Numero" type="xs:string"/>
+			<xs:element name="Barcode" type="xs:string"/>
+			<xs:element name="DataSottoscrizione" type="xs:date"/>
+			<xs:element name="LuogoSottoscrizione" type="xs:string"/>
+			<xs:element name="Importo" type="xs:decimal"/>
+			<xs:element name="AmmontareRichiesto" type="xs:decimal"/>
+			<xs:element name="DataFineLavori" type="xs:date"/>
+			<xs:element name="DataScadenza" type="xs:date"/>
+			<xs:element name="PartitaIvaGarante" type="xs:string"/>
+			<xs:element name="RagioneSocialeGarante" type="xs:string"/>
+			<xs:element name="LocalitaGarante" type="xs:string"/>
+			<xs:element name="NomeRappresentanteLegaleGarante" type="xs:string"/>
+			<xs:element name="CognomeRappresentanteLegaleGarante" type="xs:string"/>
+			<xs:element name="CodiceFiscaleRappresentanteLegaleGarante" type="xs:string"/>
+			<xs:element name="DataNascitaRappresentanteLegaleGarante" type="xs:date"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequisitoDAType">
+		<xs:sequence>
+			<xs:element name="ChiaveDescrizione" type="xs:string"/>
+			<xs:element name="Valore" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IndicatoreDAType">
+		<xs:sequence>
+			<xs:element name="CodiceProgrammazione" type="xs:string"/>
+			<xs:element name="Codice" type="xs:string"/>
+			<xs:element name="Valore" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

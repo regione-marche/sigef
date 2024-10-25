@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.Tipi.Digip.Protocollo" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.Tipi.Digip.Protocollo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://paleotest2020.regione.marche.it/PaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="SoggettiXml">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Ruolo" nillable="true" type="tns:ArrayOfRuoloType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SoggettiXml" nillable="true" type="tns:SoggettiXml" />
+  <xs:complexType name="ArrayOfRuoloType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RuoloType" nillable="true" type="tns:RuoloType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRuoloType" nillable="true" type="tns:ArrayOfRuoloType" />
+  <xs:complexType name="RuoloType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Item" nillable="true" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RuoloType" nillable="true" type="tns:RuoloType" />
+  <xs:complexType name="TipoSoggetto1Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PAI" nillable="true" type="tns:PAIType" />
+      <xs:element minOccurs="0" name="TipoRuolo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoSoggetto1Type" nillable="true" type="tns:TipoSoggetto1Type" />
+  <xs:complexType name="PAIType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IPAAOO" nillable="true" type="tns:CodiceIPAType" />
+      <xs:element minOccurs="0" name="IPAAmm" nillable="true" type="tns:CodiceIPAType" />
+      <xs:element minOccurs="0" name="IPAUOR" nillable="true" type="tns:CodiceIPAType" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IndirizziDigitaliDiRiferimento" nillable="true" type="q1:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PAIType" nillable="true" type="tns:PAIType" />
+  <xs:complexType name="CodiceIPAType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceIPA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Denominazione" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CodiceIPAType" nillable="true" type="tns:CodiceIPAType" />
+  <xs:complexType name="TipoSoggetto2Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AS" nillable="true" type="tns:ASType" />
+      <xs:element minOccurs="0" name="TipoRuolo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoSoggetto2Type" nillable="true" type="tns:TipoSoggetto2Type" />
+  <xs:complexType name="ASType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceFiscale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cognome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IPAAOO" nillable="true" type="tns:CodiceIPAType" />
+      <xs:element minOccurs="0" name="IPAAmm" nillable="true" type="tns:CodiceIPAType" />
+      <xs:element minOccurs="0" name="IPAUOR" nillable="true" type="tns:CodiceIPAType" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IndirizziDigitaliDiRiferimento" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ASType" nillable="true" type="tns:ASType" />
+  <xs:complexType name="TipoSoggetto41Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Item" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="TipoRuolo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoSoggetto41Type" nillable="true" type="tns:TipoSoggetto41Type" />
+  <xs:complexType name="TipoSoggetto31Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Item" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="TipoRuolo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoSoggetto31Type" nillable="true" type="tns:TipoSoggetto31Type" />
+  <xs:complexType name="TipoSoggetto32Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Item" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="TipoRuolo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoSoggetto32Type" nillable="true" type="tns:TipoSoggetto32Type" />
+  <xs:complexType name="TipoSoggetto42Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PF" nillable="true" type="tns:PFType" />
+      <xs:element minOccurs="0" name="TipoRuolo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoSoggetto42Type" nillable="true" type="tns:TipoSoggetto42Type" />
+  <xs:complexType name="PFType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceFiscale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cognome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IPAAOO" nillable="true" type="tns:CodiceIPAType" />
+      <xs:element minOccurs="0" name="IPAAmm" nillable="true" type="tns:CodiceIPAType" />
+      <xs:element minOccurs="0" name="IPAUOR" nillable="true" type="tns:CodiceIPAType" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IndirizziDigitaliDiRiferimento" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PFType" nillable="true" type="tns:PFType" />
+  <xs:complexType name="TipoSoggetto5Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SW" nillable="true" type="tns:SWType" />
+      <xs:element minOccurs="0" name="TipoRuolo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoSoggetto5Type" nillable="true" type="tns:TipoSoggetto5Type" />
+  <xs:complexType name="SWType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DenominazioneSistema" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SWType" nillable="true" type="tns:SWType" />
+  <xs:complexType name="TipoSoggetto6Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RUP" nillable="true" type="tns:RUPType" />
+      <xs:element minOccurs="0" name="TipoRuolo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoSoggetto6Type" nillable="true" type="tns:TipoSoggetto6Type" />
+  <xs:complexType name="RUPType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceFiscale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cognome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IPAAOO" nillable="true" type="tns:CodiceIPAType" />
+      <xs:element minOccurs="0" name="IPAAmm" nillable="true" type="tns:CodiceIPAType" />
+      <xs:element minOccurs="0" name="IPAUOR" nillable="true" type="tns:CodiceIPAType" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IndirizziDigitaliDiRiferimento" nillable="true" type="q4:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RUPType" nillable="true" type="tns:RUPType" />
+  <xs:complexType name="TipoSoggetto43Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PF" nillable="true" type="tns:PFType" />
+      <xs:element minOccurs="0" name="TipoRuolo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoSoggetto43Type" nillable="true" type="tns:TipoSoggetto43Type" />
+  <xs:complexType name="TipoSoggetto44Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PF" nillable="true" type="tns:PFType" />
+      <xs:element minOccurs="0" name="TipoRuolo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoSoggetto44Type" nillable="true" type="tns:TipoSoggetto44Type" />
+  <xs:complexType name="PAEType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DenominazioneAmministrazione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DenominazioneUfficio" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IndirizziDigitaliDiRiferimento" nillable="true" type="q5:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PAEType" nillable="true" type="tns:PAEType" />
+  <xs:complexType name="PGType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceFiscale_PartitaIva" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DenominazioneOrganizzazione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DenominazioneUfficio" nillable="true" type="xs:string" />
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IndirizziDigitaliDiRiferimento" nillable="true" type="q6:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PGType" nillable="true" type="tns:PGType" />
+</xs:schema>

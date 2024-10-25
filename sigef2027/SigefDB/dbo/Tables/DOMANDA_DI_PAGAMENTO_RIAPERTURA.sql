@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[DOMANDA_DI_PAGAMENTO_RIAPERTURA] (
+    [ID_DOMANDA_PAGAMENTO]           INT           NOT NULL,
+    [COD_TIPO]                       CHAR (3)      NOT NULL,
+    [ID_PROGETTO]                    INT           NOT NULL,
+    [DATA_INSERIMENTO]               DATETIME      NOT NULL,
+    [CF_OPERATORE]                   VARCHAR (16)  NOT NULL,
+    [DATA_MODIFICA]                  DATETIME      NOT NULL,
+    [COD_ENTE]                       VARCHAR (10)  NULL,
+    [SEGNATURA]                      VARCHAR (100) NULL,
+    [SEGNATURA_ALLEGATI]             VARCHAR (100) NULL,
+    [ID_FIDEJUSSIONE]                INT           NULL,
+    [DATA_CERTIFICAZIONE_ANTIMAFIA]  DATETIME      NULL,
+    [APPROVATA]                      BIT           NULL,
+    [SEGNATURA_APPROVAZIONE]         VARCHAR (100) NULL,
+    [SEGNATURA_SECONDA_APPROVAZIONE] VARCHAR (100) NULL,
+    [CF_ISTRUTTORE]                  VARCHAR (16)  NULL,
+    [DATA_APPROVAZIONE]              DATETIME      NULL,
+    [ANNULLATA]                      BIT           NULL,
+    [SEGNATURA_ANNULLAMENTO]         VARCHAR (100) NULL,
+    [CF_OPERATORE_ANNULLAMENTO]      VARCHAR (16)  NULL,
+    [DATA_ANNULLAMENTO]              DATETIME      NULL,
+    [DATA_RIAPERTURA]                DATETIME      CONSTRAINT [DF_DOMANDA_DI_PAGAMENTO_RIAPERTURA_DATA_RIAPERTURA] DEFAULT (getdate()) NULL,
+    [SEGNATURA_RIAPERTURA]           VARCHAR (100) NULL
+);
+

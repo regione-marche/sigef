@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns="http://actalisVol/" targetNamespace="http://actalisVol/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://www.w3.org/2005/05/xmlmime" namespace="http://www.w3.org/2005/05/xmlmime" />
+  <xs:element name="Verification" type="tns:Verification" />
+  <xs:element name="VerificationResponse" type="tns:VerificationResponse" />
+  <xs:element name="VerificationV2" nillable="true" type="tns:VerificationV2" />
+  <xs:element name="VerificationV2Local" nillable="true" type="tns:VerificationV2Local" />
+  <xs:element name="VerificationV2LocalResponse" nillable="true" type="tns:VerificationV2LocalResponse" />
+  <xs:element name="VerificationV2Response" nillable="true" type="tns:VerificationV2Response" />
+  <xs:element name="VerificationV3" nillable="true" type="tns:VerificationV3" />
+  <xs:element name="VerificationV3Local" nillable="true" type="tns:VerificationV3Local" />
+  <xs:element name="VerificationV3LocalResponse" nillable="true" type="tns:VerificationV3LocalResponse" />
+  <xs:element name="VerificationV3Response" nillable="true" type="tns:VerificationV3Response" />
+  <xs:element name="VerificationV3Transient" nillable="true" type="tns:VerificationV3Transient" />
+  <xs:element name="VerificationV3TransientResponse" nillable="true" type="tns:VerificationV3TransientResponse" />
+  <xs:element name="VerifyCertificate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Certificate" type="xs:string" />
+        <xs:element minOccurs="0" name="verifAllaData" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyCertificateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return" type="tns:ReturnCertificateValidation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyP7M">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmime:expectedContentTypes="application/octet-stream" name="fileContent" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="verifAllaData" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyP7MDetached">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmime:expectedContentTypes="application/octet-stream" name="fileContent" type="xs:base64Binary" />
+        <xs:element xmime:expectedContentTypes="application/octet-stream" name="fileOrig" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="verifAllaData" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyP7MDetachedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return" type="tns:Return" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyP7MResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return" type="tns:Return" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyP7MSubLevel">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmime:expectedContentTypes="application/octet-stream" name="fileContent" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="verifAllaData" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyP7MSubLevelResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return" type="tns:ReturnSL" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyPDF">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmime:expectedContentTypes="application/octet-stream" name="fileContent" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="verifAllaData" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyPDFResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return" type="tns:Return" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyRevocation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="revocationRequest" type="tns:revocationInfoRequest" />
+        <xs:element minOccurs="0" name="verifAllaData" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyRevocationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return" type="tns:ReturnVerifyRevocation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyTimeStampData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmime:expectedContentTypes="application/octet-stream" name="fileContent" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyTimeStampDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return" type="tns:ReturnTimeStampDataValidation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyTimeStampDataResponseV2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return" type="tns:ReturnTimeStampDataValidationSL" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyTimeStampDataV2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="fileInfo" type="tns:fileInfo" />
+        <xs:element xmime:expectedContentTypes="application/octet-stream" name="fileContent" type="xs:base64Binary" />
+        <xs:element name="pdfReport" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyTimeStampToken">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="timeStampToken" type="xs:string" />
+        <xs:element xmime:expectedContentTypes="application/octet-stream" name="fileTimeStamped" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyTimeStampTokenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return" type="tns:ReturnTimeStampValidation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyTimeStampTokenResponseV2" type="tns:VerifyTimeStampTokenResponseV2" />
+  <xs:element name="VerifyTimeStampTokenV2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="timeStampToken" type="xs:string" />
+        <xs:element name="fileInfo" type="tns:fileInfo" />
+        <xs:element xmime:expectedContentTypes="application/octet-stream" name="fileTimeStamped" type="xs:base64Binary" />
+        <xs:element name="pdfReport" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyTimeStampTokenV2Local">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="timeStampToken" type="tns:fileInfo" />
+        <xs:element name="fileInfo" type="tns:fileInfo" />
+        <xs:element name="pdfReport" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyTimeStampTokenV2LocalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return" type="tns:ReturnTimeStampValidationSL" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyXML">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmime:expectedContentTypes="application/octet-stream" name="fileContent" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="verifAllaData" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyXMLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="return" type="tns:Return" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ReturnSL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="error" type="xs:string" />
+      <xs:element minOccurs="0" name="operation" type="xs:string" />
+      <xs:element minOccurs="0" name="answerCurrentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="verificaAllaData" type="xs:dateTime" />
+      <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="originalFile" type="xs:base64Binary" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="signers" nillable="true" type="tns:signerV2" />
+      <xs:element minOccurs="0" name="subLevel" type="tns:ReturnSL" />
+      <xs:element minOccurs="0" name="pdfReport" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="pdfReportPath" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signerV2">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:signer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="htmlMessage" type="tns:HTMLMessage" />
+          <xs:element minOccurs="0" name="validationStatus" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="signer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sigType" type="xs:string" />
+      <xs:element minOccurs="0" name="sigValidation" type="xs:string" />
+      <xs:element minOccurs="0" name="sigValidationMessage" type="xs:string" />
+      <xs:element minOccurs="0" name="signatureInfo" type="tns:signatureInfo" />
+      <xs:element minOccurs="0" name="certificate" type="tns:certificateVOL" />
+      <xs:element minOccurs="0" name="timeStamp" type="tns:signerTimeStamp" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="counterSignature" nillable="true" type="tns:signer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HTMLMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="messages" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signatureInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="sigValid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="sigCorrupted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="sigTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="sigCertV2" type="xs:boolean" />
+      <xs:element minOccurs="0" name="sigAlgorithm" type="xs:string" />
+      <xs:element minOccurs="0" name="sigValue" type="xs:string" />
+      <xs:element minOccurs="0" name="sigMessageDigest" type="xs:string" />
+      <xs:element minOccurs="0" name="sigDelib45Valid" type="tns:delib45Valid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="delib45Valid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="warnDelib45" type="xs:boolean" />
+      <xs:element minOccurs="0" name="warnDelib45Cause" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certificateVOL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="certName" type="xs:string" />
+      <xs:element minOccurs="0" name="certVersion" type="xs:string" />
+      <xs:element minOccurs="0" name="certSerialNo" type="xs:string" />
+      <xs:element minOccurs="0" name="certQualified" type="xs:boolean" />
+      <xs:element minOccurs="0" name="certValFrom" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="certValUntil" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="certKeyUsage" type="xs:string" />
+      <xs:element minOccurs="0" name="certSubject" type="tns:certSubject" />
+      <xs:element minOccurs="0" name="certIssuer" type="tns:certIssuer" />
+      <xs:element minOccurs="0" name="certPublicKey" type="tns:certPublicKey" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="certPolicy" nillable="true" type="tns:certPolicy" />
+      <xs:element minOccurs="0" name="certRevocation" type="tns:certRevocationInfo" />
+      <xs:element minOccurs="0" name="certFinger256" type="xs:string" />
+      <xs:element minOccurs="0" name="certValid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="certTimeValid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="certTrusted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="certCert" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="certQc" nillable="true" type="tns:certQc" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certSubject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="subjectDistinguishedName" type="xs:string" />
+      <xs:element minOccurs="0" name="commonName" type="xs:string" />
+      <xs:element minOccurs="0" name="codiceFiscale" type="xs:string" />
+      <xs:element minOccurs="0" name="role" type="xs:string" />
+      <xs:element minOccurs="0" name="country" type="xs:string" />
+      <xs:element minOccurs="0" name="organization" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certIssuer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="issuerDistinguishName" type="xs:string" />
+      <xs:element minOccurs="0" name="issuerName" type="xs:string" />
+      <xs:element minOccurs="0" name="issuerPartitaIva" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certPublicKey">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="certPublicKey" type="xs:string" />
+      <xs:element minOccurs="0" name="certPublicKeyLength" type="xs:integer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certPolicy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="certCpsUri" type="xs:string" />
+      <xs:element minOccurs="0" name="certPolText" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certRevocationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="certRevoked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="revocationReason" type="xs:string" />
+      <xs:element minOccurs="0" name="revocationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="crlInfo" type="tns:crlInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="crlInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="crlStatus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="clStatusInfo" type="xs:string" />
+      <xs:element minOccurs="0" name="crlThisUpdate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="crlNextUpdate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="serial" type="xs:string" />
+      <xs:element minOccurs="0" name="expiredCertsOnCrl" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certQc">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="oid" type="xs:string" />
+      <xs:element minOccurs="0" name="value" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signerTimeStamp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tsSignVaild" type="xs:boolean" />
+      <xs:element minOccurs="0" name="tsSignCertV2" type="xs:boolean" />
+      <xs:element minOccurs="0" name="tsSignDigestAlg" type="xs:string" />
+      <xs:element minOccurs="0" name="tsSignDelib45Valid" type="tns:delib45Valid" />
+      <xs:element minOccurs="0" name="tsDelib45Valid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="tsDigestMessageImprint" type="xs:string" />
+      <xs:element minOccurs="0" name="tsGenTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="tsSerialNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="tsPolicyOid" type="xs:string" />
+      <xs:element minOccurs="0" name="tsTsaName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signerTimeStampV2">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:signerTimeStamp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="certificate" type="tns:certificateVOL" />
+          <xs:element minOccurs="0" name="htmlMessage" type="tns:HTMLMessage" />
+          <xs:element minOccurs="0" name="validationStatus" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Return">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="error" type="xs:string" />
+      <xs:element minOccurs="0" name="operation" type="xs:string" />
+      <xs:element minOccurs="0" name="answerCurrentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="verificaAllaData" type="xs:dateTime" />
+      <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="originalFile" type="xs:base64Binary" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="signers" nillable="true" type="tns:signer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VerificationResponse">
+    <xs:sequence>
+      <xs:element name="Return" type="tns:Return" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="revocationInfoRequest">
+    <xs:sequence>
+      <xs:element name="serialnumber" type="xs:string" />
+      <xs:element name="issuerdn" type="xs:string" />
+      <xs:element maxOccurs="unbounded" name="crldistributionpoint" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Verification">
+    <xs:sequence>
+      <xs:element name="fileInfo" type="tns:fileInfo" />
+      <xs:element xmime:expectedContentTypes="application/octet-stream" name="fileContent" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="verifAllaData" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fileInfo">
+    <xs:sequence>
+      <xs:element name="fileName" type="xs:string" />
+      <xs:element name="fileExtension" type="xs:string" />
+      <xs:element default="false" name="autoDetectType" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReturnVerifyRevocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="error" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="serialRevocationInfo" nillable="true" type="tns:serialRevocationInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="serialRevocationInfo">
+    <xs:sequence>
+      <xs:element name="serialnumber" type="xs:string" />
+      <xs:element minOccurs="0" name="certRevoked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="invalidityReason" type="xs:string" />
+      <xs:element minOccurs="0" name="revocationReason" type="xs:string" />
+      <xs:element minOccurs="0" name="revocationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="crlInfo" type="tns:crlInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReturnCertificateValidation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="error" type="xs:string" />
+      <xs:element minOccurs="0" name="sigValidation" type="xs:string" />
+      <xs:element minOccurs="0" name="sigValidationMessage" type="xs:string" />
+      <xs:element minOccurs="0" name="answerCurrentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="certificate" type="tns:certificateVOL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReturnTimeStampDataValidation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="error" type="xs:string" />
+      <xs:element minOccurs="0" name="sigValidation" type="xs:string" />
+      <xs:element minOccurs="0" name="sigValidationMessage" type="xs:string" />
+      <xs:element minOccurs="0" name="answerCurrentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="verificaAllaData" type="xs:dateTime" />
+      <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="originalFile" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="certificate" type="tns:certificateVOL" />
+      <xs:element minOccurs="0" name="timeStamp" type="tns:signerTimeStamp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReturnTimeStampDataValidationSL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="error" type="xs:string" />
+      <xs:element minOccurs="0" name="sigValidation" type="xs:string" />
+      <xs:element minOccurs="0" name="sigValidationMessage" type="xs:string" />
+      <xs:element minOccurs="0" name="answerCurrentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="verificaAllaData" type="xs:dateTime" />
+      <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="originalFile" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="certificate" type="tns:certificateVOL" />
+      <xs:element minOccurs="0" name="timeStamp" type="tns:signerTimeStampV2" />
+      <xs:element minOccurs="0" name="pdfReport" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="pdfReportPath" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReturnTimeStampValidation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="error" type="xs:string" />
+      <xs:element minOccurs="0" name="sigValidation" type="xs:string" />
+      <xs:element minOccurs="0" name="sigValidationMessage" type="xs:string" />
+      <xs:element minOccurs="0" name="answerCurrentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="certificate" type="tns:certificateVOL" />
+      <xs:element minOccurs="0" name="timeStamp" type="tns:signerTimeStamp" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReturnTimeStampValidationSL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="error" type="xs:string" />
+      <xs:element minOccurs="0" name="sigValidation" type="xs:string" />
+      <xs:element minOccurs="0" name="sigValidationMessage" type="xs:string" />
+      <xs:element minOccurs="0" name="answerCurrentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="certificate" type="tns:certificateVOL" />
+      <xs:element minOccurs="0" name="timeStamp" type="tns:signerTimeStampV2" />
+      <xs:element minOccurs="0" name="pdfReport" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="pdfReportPath" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VerificationV2Local">
+    <xs:sequence>
+      <xs:element name="fileInfo" type="tns:fileInfo" />
+      <xs:element minOccurs="0" name="verifAllaData" type="xs:dateTime" />
+      <xs:element name="pdfReport" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VerificationV2LocalResponse">
+    <xs:sequence>
+      <xs:element name="ReturnSL" type="tns:ReturnSL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VerificationV2">
+    <xs:sequence>
+      <xs:element name="fileInfo" type="tns:fileInfo" />
+      <xs:element xmime:expectedContentTypes="application/octet-stream" name="fileContent" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="verifAllaData" type="xs:dateTime" />
+      <xs:element name="pdfReport" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VerificationV2Response">
+    <xs:sequence>
+      <xs:element name="ReturnSL" type="tns:ReturnSL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VerificationV3">
+    <xs:sequence>
+      <xs:element name="fileInfo" type="tns:fileInfo" />
+      <xs:element xmime:expectedContentTypes="application/octet-stream" name="fileContent" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="verifAllaData" type="xs:dateTime" />
+      <xs:element name="pdfReport" type="xs:boolean" />
+      <xs:element minOccurs="0" name="profile" type="tns:validationProfile" />
+      <xs:element name="qcStatements" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VerificationV3Response">
+    <xs:sequence>
+      <xs:element name="ReturnSL" type="tns:ReturnSL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VerifyTimeStampTokenResponseV2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:ReturnTimeStampValidationSL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VerificationV3Local">
+    <xs:sequence>
+      <xs:element name="fileInfo" type="tns:fileInfo" />
+      <xs:element minOccurs="0" name="verifAllaData" type="xs:dateTime" />
+      <xs:element name="pdfReport" type="xs:boolean" />
+      <xs:element minOccurs="0" name="profile" type="tns:validationProfile" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VerificationV3LocalResponse">
+    <xs:sequence>
+      <xs:element name="ReturnSL" type="tns:ReturnSL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VerificationV3Transient">
+    <xs:sequence>
+      <xs:element name="transientDocument" type="tns:transientDocument" />
+      <xs:element minOccurs="0" name="verifAllaData" type="xs:dateTime" />
+      <xs:element name="pdfReport" type="xs:boolean" />
+      <xs:element minOccurs="0" name="profile" type="tns:validationProfile" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="transientDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="certs" nillable="true" type="tns:refCertificate" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="crls" nillable="true" type="tns:refCRL" />
+      <xs:element minOccurs="0" name="id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ocspresps" nillable="true" type="tns:refOcsp" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="refsDocs" nillable="true" type="tns:transientDocument" />
+      <xs:element minOccurs="0" name="shortName" type="xs:string" />
+      <xs:element name="signed" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="signerInfo" nillable="true" type="tns:signatureInformation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refCertificate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="capiCertificate" type="tns:certificate" />
+      <xs:element minOccurs="0" name="content" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="id" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certificate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="validatedChain" nillable="true" type="tns:certDBItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certDBItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string" />
+      <xs:element name="revoked" type="xs:boolean" />
+      <xs:element name="source" type="xs:int" />
+      <xs:element minOccurs="0" name="status" type="xs:string" />
+      <xs:element name="trust" type="xs:int" />
+      <xs:element minOccurs="0" name="tslId" type="xs:string" />
+      <xs:element name="type" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refCRL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="idps" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="issuerDn" type="xs:string" />
+      <xs:element minOccurs="0" name="nextUpdate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="updateDate" type="xs:dateTime" />
+      <xs:element name="valid" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="verifiedSerial" nillable="true" type="tns:verifiedSerial" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifiedSerial">
+    <xs:sequence>
+      <xs:element name="reasonCode" type="xs:int" />
+      <xs:element minOccurs="0" name="revocationDate" type="xs:dateTime" />
+      <xs:element name="revoked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="serial" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="refOcsp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="content" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="id" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signatureInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="containerFormat" type="tns:containerFormat" />
+      <xs:element name="containsGraphometricInfo" type="xs:boolean" />
+      <xs:element name="corrupted" type="xs:boolean" />
+      <xs:element name="counterSignature" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="counterSignaturesInformation" nillable="true" type="tns:signatureInformation" />
+      <xs:element minOccurs="0" name="format" type="tns:signatureFormat" />
+      <xs:element minOccurs="0" name="padesSpecific" type="tns:padesSpecific" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="refDocs" nillable="true" type="tns:referenceDoc" />
+      <xs:element minOccurs="0" name="refsCertId" type="xs:string" />
+      <xs:element minOccurs="0" name="signatureDate" type="xs:string" />
+      <xs:element minOccurs="0" name="signatureInfo" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="signerName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="timeStampTokens" nillable="true" type="tns:signatureInformation" />
+      <xs:element minOccurs="0" name="tstSpecific" type="tns:tstSpecific" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="padesSpecific">
+    <xs:sequence>
+      <xs:element name="allRevisionsCovered" type="xs:boolean" />
+      <xs:element name="certInDictionary" type="xs:boolean" />
+      <xs:element minOccurs="0" name="certificationLevel" type="tns:padesCertificationLevel" />
+      <xs:element minOccurs="0" name="location" type="xs:string" />
+      <xs:element name="multipleSigners" type="xs:boolean" />
+      <xs:element name="nextRevisionsSigned" type="xs:boolean" />
+      <xs:element name="nextRevisionsUpdateAnnotation" type="xs:boolean" />
+      <xs:element name="nextRevisionsUpdateForm" type="xs:boolean" />
+      <xs:element name="nextRevisionsUpdateObject" type="xs:boolean" />
+      <xs:element minOccurs="0" name="reason" type="xs:string" />
+      <xs:element minOccurs="0" name="signatureDate" type="xs:string" />
+      <xs:element minOccurs="0" name="subFilter" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="referenceDoc">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:string" />
+      <xs:element name="messageDigestMatch" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tstSpecific">
+    <xs:sequence>
+      <xs:element name="relatedToDoc" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VerificationV3TransientResponse">
+    <xs:sequence>
+      <xs:element name="ReturnSL" type="tns:ReturnSL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="validationProfile">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ALL_PROFILES" />
+      <xs:enumeration value="QUALIFIED_ELECTRONIC_SIGNATURE_PROFILE" />
+      <xs:enumeration value="CNS_ADVANCED_ELECTRONIC_SIGNATURE_PROFILE" />
+      <xs:enumeration value="ADVANCED_ELECTRONIC_SIGNATURE_PROFILE" />
+      <xs:enumeration value="GRAPHOMETRIC_SIGNATURE_PROFILE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="containerFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SELF" />
+      <xs:enumeration value="ASIC" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="signatureFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CADES" />
+      <xs:enumeration value="PADES" />
+      <xs:enumeration value="XADES" />
+      <xs:enumeration value="TST" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="padesCertificationLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CERTIFIED_NO_CHANGES_ALLOWED" />
+      <xs:enumeration value="CERTIFIED_SIGN_FORM_FILLING" />
+      <xs:enumeration value="CERTIFIED_SIGN_FORM_FILLING_AND_ANNOTATIONS" />
+      <xs:enumeration value="NOT_CERTIFIED" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

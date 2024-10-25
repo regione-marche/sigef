@@ -1,0 +1,74 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+name: SIGEF
+releaseDate: '2024-01-31'
+developmentStatus: stable
+softwareType: standalone/web
+platforms:
+  - windows
+dependsOn:
+  proprietary:
+    - name: Windows Server
+      versionMin: '2012'
+    - name: 'Microsoft SQL Server '
+      versionMin: '2008'
+    - name: Microsoft Visual Studio 2019
+      versionMin: '2019'
+    - name: 'Microsoft Reporting Services '
+      versionMin: '2008'
+  open:
+    - name: Paleo
+    - name: OpenAct
+categories:
+  - business-process-management
+landingURL: 'https://github.com/regione-marche/sigef'
+url: 'https://github.com/regione-marche/sigef'
+maintenance:
+  type: contract
+  contractors:
+    - name: GPI SpA
+      until: '2024-12-31'
+    - name: Horsa Link S.r.l.
+      until: '2024-12-31'
+  contacts:
+    - name: Giovanni Capaldo
+      phone: +0718063851
+      email: giovanni.capaldo@regione.marche.it
+legal:
+  license: AGPL-3.0-only
+intendedAudience:
+  countries:
+    - it
+localisation:
+  localisationReady: false
+  availableLanguages:
+    - it
+it:
+  riuso:
+    codiceIPA: r_marche
+  piattaforme:
+    spid: true
+    cie: true
+description:
+  it:
+    genericName: Sistema Gestione Fondi
+    longDescription: |2
+       Il SIGEF ha la funzione di supportare la gestione dei procedimenti amministrativi a vario titolo connessi con l’attuazione del POR FESR 2014-2020, 2021-2027 e di altri interventi attuati con fondi della Regione Marche.
+
+      SIGEF espone un front-end WEB con il quale interagiscono i cittadini che
+      devono presentare istanze di contributo e i funzionari della P.A. che
+      istruiscono le pratiche.
+
+      L’applicativo interagisce con vari altri sistemi di valenza Regionale e
+      Nazionale: FedCohesion (autenticazione), paleo (protocollo informatico),
+      Atti Web (decreti e delibere regionali), OpenAct (gestione amministrativa
+      atti Regionale), CIPE (Dipartimento per la programmazione e il
+      coordinamento della politica economica per richiesta codice CUP), IGRUE
+      (Ispettorato Generale per i Rapporti finanziari con l'Unione Europea), RNA
+      (Registro Nazionale Aiuti di stato).
+    shortDescription: 'Sistema gestione Fondi comunitari, nazionali e regionalei'
+    features:
+      - Acquisizione richieste di contributo di aziende ed enti

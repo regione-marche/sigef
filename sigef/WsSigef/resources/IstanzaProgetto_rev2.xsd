@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 rel. 3 sp1 (x64) (http://www.altova.com) by fda (LOGIX) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Progetto">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DatiGenerali" type="DatiGeneraliProgettoType"/>
+				<xs:element name="Beneficiari">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="Beneficiario" type="BeneficiarioType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RelazioneTecnica">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="Compilazione">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Paragrafo" type="ParagrafoType"/>
+										<xs:element name="Contenuto" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PianoInvestimenti">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="Investimento" type="InvestimentoType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DatiMonitoraggio">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ClassificazioneCUP" type="xs:string"/>
+							<xs:element name="CategoriaSoggettoCUP" type="xs:string"/>
+							<xs:element name="CodiceNaturaCUP" type="xs:string"/>
+							<xs:element name="TemaPrioritario" type="xs:string"/>
+							<xs:element name="CodiceATECO2007" type="xs:string"/>
+							<xs:element name="AttivitaEconomica" type="xs:string"/>
+							<xs:element name="SettoreCPT" type="xs:string"/>
+							<xs:element name="DimensioneTerritoriale" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RequisitiProgetto">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="RequisitoSoggettivo" type="RequisitoType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="AllegatiProgetto">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="Allegato" type="AllegatoType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DichiarazioniProgetto">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="DescrizioneDichiarazione" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="IndicatoriMonitoraggio">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="Indicatore" type="IndicatoreType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Localizzazioni">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="Localizzazione" type="LocalizzazioneType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="BeneficiarioType">
+		<xs:sequence>
+			<xs:element name="RagioneSociale" type="xs:string"/>
+			<xs:element name="CodiceFiscale" type="xs:string"/>
+			<xs:element name="PartitaIva" type="xs:string"/>
+			<xs:element name="DataInizioAttivita" type="xs:date"/>
+			<xs:element name="CodiceFormaGiuridica" type="xs:string"/>
+			<xs:element name="CodiceATECO2007" type="xs:string"/>
+			<xs:element name="DimensioneImpresa" type="xs:int"/>
+			<xs:element name="NumeroRegistroImprese" type="xs:string" minOccurs="0"/>
+			<xs:element name="NumeroREA" type="xs:string" minOccurs="0"/>
+			<xs:element name="AnnoIscrizioneREA" type="xs:int" minOccurs="0"/>
+			<xs:element name="Email" type="xs:string"/>
+			<xs:element name="Pec" type="xs:string"/>
+			<xs:element name="Telefono" type="xs:string"/>
+			<xs:element name="IsSoggettoPrincipale" type="xs:boolean"/>
+			<xs:element name="SedeLegale" type="IndirizzoType"/>
+			<xs:element name="RappresentanteLegale" type="PersonaType"/>
+			<xs:element name="IBAN" type="xs:string" minOccurs="0"/>
+			<xs:element name="RequisitiImpresa" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="RequisitoImpresa" type="RequisitoType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ParagrafoType">
+		<xs:sequence>
+			<xs:element name="Titolo" type="xs:string"/>
+			<xs:element name="Descrizione" type="xs:string"/>
+			<xs:element name="IsTitoloProgetto" type="xs:boolean"/>
+			<xs:element name="IsDescrizioneProgetto" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InvestimentoType">
+		<xs:sequence>
+			<xs:element name="CodiceProgrammazione" type="xs:string"/>
+			<xs:element name="CodiceInvestimento" type="xs:string"/>
+			<xs:element name="CostoInvestimento" type="xs:decimal"/>
+			<xs:element name="ContributoRichiesto" type="xs:decimal"/>
+			<xs:element name="QuotaContributoRIchiesto" type="xs:decimal"/>
+			<xs:element name="CodiceDettaglioInvestimento" type="xs:string"/>
+			<xs:element name="CodiceSpecificaInvestimento" type="xs:string" minOccurs="0"/>
+			<xs:element name="CodiceSottotipologiaCUP" type="xs:string"/>
+			<xs:element name="PartitaIvaImpresa" type="xs:string"/>
+			<xs:element name="DescrizioneInvestimento" type="xs:string"/>
+			<xs:element name="ProgressivoInvestimento" type="xs:int"/>
+			<xs:element name="RequisitiInvestimento" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="RequisitoInvestimento" type="RequisitoType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequisitoType">
+		<xs:sequence>
+			<xs:element name="ChiaveDescrizione" type="xs:string"/>
+			<xs:element name="Valore" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AllegatoType">
+		<xs:sequence>
+			<xs:element name="Categoria" type="xs:string"/>
+			<xs:element name="Descrizione" type="xs:string"/>
+			<xs:element name="NomeFile" type="xs:string"/>
+			<xs:element name="Content" type="xs:base64Binary"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IndicatoreType">
+		<xs:sequence>
+			<xs:element name="CodiceProgrammazione" type="xs:string"/>
+			<xs:element name="Codice" type="xs:string"/>
+			<xs:element name="Valore" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LocalizzazioneType">
+		<xs:sequence>
+			<xs:element name="ISTAT6" type="xs:string"/>
+			<xs:element name="Indirizzo" type="xs:string"/>
+			<xs:element name="CAP" type="xs:string"/>
+			<xs:element name="Numero" type="xs:string"/>
+			<xs:element name="DUG" type="xs:string"/>
+			<xs:element name="PartitaIvaImpresa">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="11"/>
+						<xs:maxLength value="16"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DatiGeneraliProgettoType">
+		<xs:sequence>
+			<xs:element name="SistemaMittente" type="xs:string"/>
+			<xs:element name="CodiceCUP" type="xs:string" nillable="true" minOccurs="0"/>
+			<xs:element name="DataPresentazione" type="xs:date"/>
+			<xs:element name="SegnaturaProtocollo" type="xs:string"/>
+			<xs:element name="IdBandoSigef" type="xs:int"/>
+			<xs:element name="CodiceFondo" type="xs:string"/>
+			<xs:element name="TipoAggregazione" nillable="1" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="A"/>
+						<xs:enumeration value="ATS"/>
+						<xs:enumeration value="C"/>
+						<xs:enumeration value="F"/>
+						<xs:enumeration value="R"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PersonaType">
+		<xs:sequence>
+			<xs:element name="Nome" type="xs:string"/>
+			<xs:element name="Cognome" type="xs:string"/>
+			<xs:element name="DataNascita" type="xs:date"/>
+			<xs:element name="ISTAT6Nascita" type="xs:string"/>
+			<xs:element name="CodiceFiscale" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IndirizzoType">
+		<xs:sequence>
+			<xs:element name="ISTAT6" type="xs:string"/>
+			<xs:element name="Indirizzo" type="xs:string"/>
+			<xs:element name="CAP" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

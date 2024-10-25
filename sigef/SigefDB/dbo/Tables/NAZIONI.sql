@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[NAZIONI] (
+    [ID]           INT           IDENTITY (1, 1) NOT NULL,
+    [DESCRIZIONE]  VARCHAR (100) NOT NULL,
+    [ISO_A2]       CHAR (2)      NOT NULL,
+    [ISO_A3]       CHAR (3)      NOT NULL,
+    [ISO_N3]       CHAR (3)      NOT NULL,
+    [PREFISSO_TEL] VARCHAR (10)  NULL,
+    CONSTRAINT [PK_NAZIONI] PRIMARY KEY CLUSTERED ([ID] ASC) WITH (FILLFACTOR = 100)
+);
+

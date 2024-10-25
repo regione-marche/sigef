@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 rel. 3 sp1 (x64) (http://www.altova.com) by fda (LOGIX) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ProceduraAttivazione">
+		<xs:annotation>
+			<xs:documentation>Istanza Procedura di Attivazione del Mittente</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DatiGenerali">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="SistemaMittente" type="xs:string"/>
+							<xs:element name="CodiceStruttura" type="xs:string"/>
+							<xs:element name="Descrizione" type="xs:string"/>
+							<xs:element name="DataOraApertura" type="xs:date"/>
+							<xs:element name="DataOraScadenza" type="xs:date"/>
+							<xs:element name="Programmazione">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Fondo" type="xs:string"/>
+										<xs:element name="Interventi">
+											<xs:complexType>
+												<xs:sequence maxOccurs="unbounded">
+													<xs:element name="Intervento" type="InterventoType"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Fascicolo" type="xs:string"/>
+							<xs:element name="IsAmmessaAggregazione" type="xs:boolean"/>
+							<xs:element name="IsFirmaRichiesta" type="xs:boolean"/>
+							<xs:element name="DatiProtocollo">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Atto" type="AttoType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Importo" type="xs:decimal"/>
+							<xs:element name="ImportoMinimoSpesa" type="xs:decimal" nillable="true" minOccurs="0"/>
+							<xs:element name="ImportoMassimoSpesa" type="xs:decimal" nillable="true" minOccurs="0"/>
+							<xs:element name="ImportoMinimoContributo" type="xs:decimal" nillable="true" minOccurs="0"/>
+							<xs:element name="ImportoMassimoContributo" type="xs:decimal" nillable="true" minOccurs="0"/>
+							<xs:element name="CodiceFiscaleResponsabileProcedura" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Investimenti">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="CodificaInvestimento" type="CodificaInvestimentoType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ConfigurazioneProceduraAttivazione">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ParametriConfigurazioneProcedura" nillable="1" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="ParametroConfigurazioneProcedura" type="ParametroConfigurazioneProceduraType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ParametriProcedurali" nillable="1" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="CodiceChecklistPresentazione" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Localizzazioni" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="ISTAT6" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="CodiciATECO2007" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="CodiceATECO2007" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="AllegatiProcedura" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="AllegatoProcedura" type="AllegatoProceduraType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="DichiarazioniProcedura">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="DichiarazioneProcedura" type="DichiarazioneProceduraType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RequisitiSoggettiviProcedura" nillable="1">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="RequisitoSoggettivo" type="RequisitoSoggettivoType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ConfigurazioneDomandePagamento">
+								<xs:complexType>
+									<xs:sequence maxOccurs="3">
+										<xs:element name="ConfigurazioneDomandaPagamento" type="ConfigurazioneDomandaPagamentoType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RequisitiSoggettiviProceduraPagamento">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="RequisitoSoggettivoPagamento" type="RequisitoSoggettivoPagamentoType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RequisitiSoggettiviVariante">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="RequisitoSoggettivoVariante" type="RequisitoSoggettivoVarianteType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RelazioneTecnicaProcedura">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="Paragrafo" type="ConfigurazioneParagrafoType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="InterventoType">
+		<xs:sequence>
+			<xs:element name="CodiceIntervento" type="xs:string"/>
+			<xs:element name="ImportoMassimale" type="xs:decimal" nillable="true" minOccurs="0"/>
+			<xs:element name="QuotaImporto" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MassimaleType">
+		<xs:sequence>
+			<xs:element name="Importo"/>
+			<xs:element name="Intervento" type="InterventoType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ConfigurazioneParagrafoType">
+		<xs:sequence>
+			<xs:element name="Titolo" type="xs:string"/>
+			<xs:element name="Descrizione" type="xs:string"/>
+			<xs:element name="IsTitoloProgetto" type="xs:boolean"/>
+			<xs:element name="IsDescrizioneProgetto" type="xs:boolean"/>
+			<xs:element name="Ordine" type="xs:int" nillable="1" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AttoType">
+		<xs:sequence>
+			<xs:element name="NumeroAtto" type="xs:string"/>
+			<xs:element name="DataAtto" type="xs:date"/>
+			<xs:element name="CodiceStruttura" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DettaglioInvestimentoType">
+		<xs:sequence>
+			<xs:element name="CodiceDettaglioInvestimento" type="xs:string"/>
+			<xs:element name="DescrizioneDettaglioInvestimento" type="xs:string"/>
+			<xs:element name="SpecificheInvestimento" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="SpecificaInvestimento" type="SpecificaInvestimentoType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CodificaInvestimentoType">
+		<xs:sequence>
+			<xs:element name="CodiceInvestimento" type="xs:string"/>
+			<xs:element name="DescrizioneInvestimento" type="xs:string"/>
+			<xs:element name="QuotaPercentuale" type="xs:decimal"/>
+			<xs:element name="Intervento" type="InterventoType"/>
+			<xs:element name="DettagliInvestimento">
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="DettaglioInvestimento" type="DettaglioInvestimentoType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequisitoSoggettivoType">
+		<xs:sequence>
+			<xs:element name="ChiaveDescrizione" type="xs:string"/>
+			<xs:element name="TipoValore">
+				<xs:annotation>
+					<xs:documentation>boolean, string, number, date</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="boolean"/>
+						<xs:enumeration value="string"/>
+						<xs:enumeration value="number"/>
+						<xs:enumeration value="date"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AllegatoProceduraType">
+		<xs:sequence>
+			<xs:element name="Categoria" type="xs:string"/>
+			<xs:element name="Descrizione" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ParametroConfigurazioneProceduraType">
+		<xs:sequence>
+			<xs:element name="Chiave" type="xs:string"/>
+			<xs:element name="Valore" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DichiarazioneProceduraType">
+		<xs:sequence>
+			<xs:element name="DescrizioneDichiarazione" type="xs:string"/>
+			<xs:element name="Ordine" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SpecificaInvestimentoType">
+		<xs:sequence>
+			<xs:element name="CodiceSpecificaInvestimento" type="xs:string"/>
+			<xs:element name="DescrizioneSpecificaInvestimento" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequisitoSoggettivoPagamentoType">
+		<xs:sequence>
+			<xs:element name="TipoPagamento">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ANT"/>
+						<xs:enumeration value="SAL"/>
+						<xs:enumeration value="SLD"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ChiaveDescrizione" type="xs:string"/>
+			<xs:element name="TipoValore">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="boolean"/>
+						<xs:enumeration value="string"/>
+						<xs:enumeration value="number"/>
+						<xs:enumeration value="date"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ConfigurazioneDomandaPagamentoType">
+		<xs:sequence>
+			<xs:element name="TipoPagamento">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ANT"/>
+						<xs:enumeration value="SAL"/>
+						<xs:enumeration value="SLD"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="QuotaMax" type="xs:decimal" nillable="true" minOccurs="0"/>
+			<xs:element name="QuotaMin" type="xs:decimal" nillable="true" minOccurs="0"/>
+			<xs:element name="ImportoMax" type="xs:decimal" nillable="true" minOccurs="0"/>
+			<xs:element name="ImportoMin" type="xs:decimal" nillable="true" minOccurs="0"/>
+			<xs:element name="NumeroTipoPagamento" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RequisitoSoggettivoVarianteType">
+		<xs:sequence>
+			<xs:element name="ChiaveDescrizione" type="xs:string"/>
+			<xs:element name="FlagPresentazione" type="xs:boolean"/>
+			<xs:element name="FlagIstruttoria" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

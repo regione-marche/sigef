@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns3="http://messages.webservices.csp.mef.it" xmlns:intf="http://webservices.csp.eng.it" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns4="http://dto.webservices.csp.mef.it" xmlns:tns2="http://esitoelaborazione.messages.webservices.csp.mef.it" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:impl="http://webservices.csp.eng.it" targetNamespace="http://webservices.csp.eng.it" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://esitoelaborazione.messages.webservices.csp.mef.it">
+      <xsd:import namespace="http://messages.webservices.csp.mef.it" />
+      <xsd:complexType name="StatisticheElaborazioniInAsAttachments">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns3:GenericTicketInMessage">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="StatisticheElaborazioniInAsAttachments" nillable="true" type="tns2:StatisticheElaborazioniInAsAttachments" />
+      <xsd:complexType name="StatisticheElaborazioniOutAsAttachment">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns3:GenericOutMessage">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="StatisticheElaborazioniOutAsAttachment" nillable="true" type="tns2:StatisticheElaborazioniOutAsAttachment" />
+      <xsd:complexType name="EsitoAnagraficaRiferimentoIn">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns3:GenericTicketInMessage">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="EsitoAnagraficaRiferimentoIn" nillable="true" type="tns2:EsitoAnagraficaRiferimentoIn" />
+      <xsd:complexType name="EsitoAnagraficaRiferimentoOut">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns3:GenericOutMessage">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="EsitoAnagraficaRiferimentoOut" nillable="true" type="tns2:EsitoAnagraficaRiferimentoOut" />
+      <xsd:complexType name="LogErroriIn">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns3:GenericTicketInMessage">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="LogErroriIn" nillable="true" type="tns2:LogErroriIn" />
+      <xsd:complexType name="LogErroriOut">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns3:GenericOutMessage">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="LogErroriOut" nillable="true" type="tns2:LogErroriOut" />
+      <xsd:complexType name="StatisticheScartiInAsAttachment">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns3:GenericTicketInMessage">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="StatisticheScartiInAsAttachment" nillable="true" type="tns2:StatisticheScartiInAsAttachment" />
+      <xsd:complexType name="StatisticheScartiOutAsAttachment">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns3:GenericOutMessage">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:element name="StatisticheScartiOutAsAttachment" nillable="true" type="tns2:StatisticheScartiOutAsAttachment" />
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://messages.webservices.csp.mef.it">
+      <xsd:import namespace="http://dto.webservices.csp.mef.it" />
+      <xsd:complexType name="GenericTicketInMessage">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns3:GenericInMessage">
+            <xsd:sequence>
+              <xsd:element name="ticket" nillable="true" type="tns4:Ticket" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="GenericInMessage">
+        <xsd:sequence>
+          <xsd:element name="credenziali" nillable="true" type="tns4:Credenziali" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GenericOutMessage">
+        <xsd:sequence>
+          <xsd:element name="esitoOperazione" nillable="true" type="tns4:EsitoOperazione" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dto.webservices.csp.mef.it">
+      <xsd:complexType name="Credenziali">
+        <xsd:sequence>
+          <xsd:element name="idAmministrazione" nillable="true" type="xsd:string" />
+          <xsd:element name="idSistema" type="xsd:int" />
+          <xsd:element name="password" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Ticket">
+        <xsd:sequence>
+          <xsd:element name="dataAssegnazione" nillable="true" type="xsd:dateTime" />
+          <xsd:element name="dataFineTrasmissione" nillable="true" type="xsd:dateTime" />
+          <xsd:element name="fileRicevuto" type="xsd:boolean" />
+          <xsd:element name="idAmministrazione" nillable="true" type="xsd:string" />
+          <xsd:element name="idSistema" type="xsd:int" />
+          <xsd:element name="idTicket" type="xsd:long" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="EsitoOperazione">
+        <xsd:sequence>
+          <xsd:element name="codiceEsito" type="xsd:int" />
+          <xsd:element name="descrizioneEsito" nillable="true" type="xsd:string" />
+          <xsd:element name="dettaglio" nillable="true" type="xsd:string" />
+          <xsd:element name="timeStamp" nillable="true" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Content">
+        <xsd:attribute name="href" type="xsd:anyURI" />
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="statisticheElaborazioniAsAttachmentResponse">
+    <wsdl:part name="statisticheElaborazioniAsAttachmentReturn" type="tns2:StatisticheElaborazioniOutAsAttachment" />
+    <wsdl:part name="content" type="tns4:Content" />
+  </wsdl:message>
+  <wsdl:message name="statisticheElaborazioniAsAttachmentRequest">
+    <wsdl:part name="inMessage" type="tns2:StatisticheElaborazioniInAsAttachments" />
+    <wsdl:part name="content" type="tns4:Content" />
+  </wsdl:message>
+  <wsdl:message name="statisticheScartiAsAttachmentResponse">
+    <wsdl:part name="statisticheScartiAsAttachmentReturn" type="tns2:StatisticheScartiOutAsAttachment" />
+    <wsdl:part name="content" type="tns4:Content" />
+  </wsdl:message>
+  <wsdl:message name="logErroriRequest">
+    <wsdl:part name="inMessage" type="tns2:LogErroriIn" />
+    <wsdl:part name="content" type="tns4:Content" />
+  </wsdl:message>
+  <wsdl:message name="esitoAnagraficaRiferimentoResponse">
+    <wsdl:part name="esitoAnagraficaRiferimentoReturn" type="tns2:EsitoAnagraficaRiferimentoOut" />
+    <wsdl:part name="content" type="tns4:Content" />
+  </wsdl:message>
+  <wsdl:message name="esitoAnagraficaRiferimentoRequest">
+    <wsdl:part name="inMessage" type="tns2:EsitoAnagraficaRiferimentoIn" />
+    <wsdl:part name="content" type="tns4:Content" />
+  </wsdl:message>
+  <wsdl:message name="logErroriResponse">
+    <wsdl:part name="logErroriReturn" type="tns2:LogErroriOut" />
+    <wsdl:part name="content" type="tns4:Content" />
+  </wsdl:message>
+  <wsdl:message name="statisticheScartiAsAttachmentRequest">
+    <wsdl:part name="inMessage" type="tns2:StatisticheScartiInAsAttachment" />
+    <wsdl:part name="content" type="tns4:Content" />
+  </wsdl:message>
+  <wsdl:portType name="EsitoElaborazione">
+    <wsdl:operation name="statisticheElaborazioniAsAttachment">
+      <wsdl:input name="statisticheElaborazioniAsAttachmentRequest" message="impl:statisticheElaborazioniAsAttachmentRequest" />
+      <wsdl:output name="statisticheElaborazioniAsAttachmentResponse" message="impl:statisticheElaborazioniAsAttachmentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="esitoAnagraficaRiferimento">
+      <wsdl:input name="esitoAnagraficaRiferimentoRequest" message="impl:esitoAnagraficaRiferimentoRequest" />
+      <wsdl:output name="esitoAnagraficaRiferimentoResponse" message="impl:esitoAnagraficaRiferimentoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="logErrori">
+      <wsdl:input name="logErroriRequest" message="impl:logErroriRequest" />
+      <wsdl:output name="logErroriResponse" message="impl:logErroriResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="statisticheScartiAsAttachment">
+      <wsdl:input name="statisticheScartiAsAttachmentRequest" message="impl:statisticheScartiAsAttachmentRequest" />
+      <wsdl:output name="statisticheScartiAsAttachmentResponse" message="impl:statisticheScartiAsAttachmentResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EsitoElaborazioneSoapBinding" type="impl:EsitoElaborazione">
+    <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" wsdl:required="false" />
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="statisticheElaborazioniAsAttachment">
+      <wsdlsoap:operation soapAction="statisticheElaborazioniAsAttachment" />
+      <wsdl:input name="statisticheElaborazioniAsAttachmentRequest">
+        <mime:multipartRelated>
+          <mime:part>
+            <wsdlsoap:body use="literal" namespace="http://webservices.csp.eng.it" />
+          </mime:part>
+          <mime:part>
+            <mime:content part="content" type="application/zip" />
+          </mime:part>
+        </mime:multipartRelated>
+      </wsdl:input>
+      <wsdl:output name="statisticheElaborazioniAsAttachmentResponse">
+        <mime:multipartRelated>
+          <mime:part>
+            <wsdlsoap:body use="literal" namespace="http://webservices.csp.eng.it" />
+          </mime:part>
+          <mime:part>
+            <mime:content part="content" type="application/zip" />
+          </mime:part>
+        </mime:multipartRelated>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="esitoAnagraficaRiferimento">
+      <wsdlsoap:operation soapAction="esitoAnagraficaRiferimento" />
+      <wsdl:input name="esitoAnagraficaRiferimentoRequest">
+        <mime:multipartRelated>
+          <mime:part>
+            <wsdlsoap:body use="literal" namespace="http://webservices.csp.eng.it" />
+          </mime:part>
+          <mime:part>
+            <mime:content part="content" type="application/zip" />
+          </mime:part>
+        </mime:multipartRelated>
+      </wsdl:input>
+      <wsdl:output name="esitoAnagraficaRiferimentoResponse">
+        <mime:multipartRelated>
+          <mime:part>
+            <wsdlsoap:body use="literal" namespace="http://webservices.csp.eng.it" />
+          </mime:part>
+          <mime:part>
+            <mime:content part="content" type="application/zip" />
+          </mime:part>
+        </mime:multipartRelated>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logErrori">
+      <wsdlsoap:operation soapAction="logErrori" />
+      <wsdl:input name="logErroriRequest">
+        <mime:multipartRelated>
+          <mime:part>
+            <wsdlsoap:body use="literal" namespace="http://webservices.csp.eng.it" />
+          </mime:part>
+          <mime:part>
+            <mime:content part="content" type="application/zip" />
+          </mime:part>
+        </mime:multipartRelated>
+      </wsdl:input>
+      <wsdl:output name="logErroriResponse">
+        <mime:multipartRelated>
+          <mime:part>
+            <wsdlsoap:body use="literal" namespace="http://webservices.csp.eng.it" />
+          </mime:part>
+          <mime:part>
+            <mime:content part="content" type="application/zip" />
+          </mime:part>
+        </mime:multipartRelated>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="statisticheScartiAsAttachment">
+      <wsdlsoap:operation soapAction="statisticheScartiAsAttachment" />
+      <wsdl:input name="statisticheScartiAsAttachmentRequest">
+        <mime:multipartRelated>
+          <mime:part>
+            <wsdlsoap:body use="literal" namespace="http://webservices.csp.eng.it" />
+          </mime:part>
+          <mime:part>
+            <mime:content part="content" type="application/zip" />
+          </mime:part>
+        </mime:multipartRelated>
+      </wsdl:input>
+      <wsdl:output name="statisticheScartiAsAttachmentResponse">
+        <mime:multipartRelated>
+          <mime:part>
+            <wsdlsoap:body use="literal" namespace="http://webservices.csp.eng.it" />
+          </mime:part>
+          <mime:part>
+            <mime:content part="content" type="application/zip" />
+          </mime:part>
+        </mime:multipartRelated>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EsitoElaborazioneService">
+    <wsdl:port name="EsitoElaborazione" binding="impl:EsitoElaborazioneSoapBinding">
+      <wsdlsoap:address location="http://1.1.1.1/openspcoop/PA" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

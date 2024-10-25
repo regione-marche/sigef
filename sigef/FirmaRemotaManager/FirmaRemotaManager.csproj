@@ -1,0 +1,646 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BE79C6E0-9E76-45DA-AD9C-A1CE3567F596}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FirmaRemotaManager</RootNamespace>
+    <AssemblyName>FirmaRemotaManager</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CallWS.cs" />
+    <Compile Include="Connected Services\svcArubaSignProduzione\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\svcArubaSignTest\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\svcArubaVolProduzione\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\svcArubaVolTest\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\svcCalamaioRemoteSign\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DALClass.cs" />
+    <Compile Include="FirmaRemotaOperazioni.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="SqlHelper.cs" />
+    <Compile Include="FirmaEsternaAruba.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\svcArubaSignProduzione\ArubaSignService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\ArubaSignServiceService.wsdl" />
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.addpkcs7signResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.arssReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.authMethodsReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.auth_methodsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.change_passwordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.closesessionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.credentialListReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.credentials_queryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.encryptedEnvelopeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.encryptedEnvelopReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.getVersionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.gwReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.listCertAuthResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.listCertResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.listprocessResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.m7mResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.markReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.opensessionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.pdfsignatureDTSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.pdfsignatureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.pdfsignatureV2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.pdfsignatureV2_multipleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.pingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.pkcs7signhashResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.pkcs7signhash_multipleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.pkcs7signResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.pkcs7signV2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.pkcs7signV2_multipleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.retriveCredentialResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.retriveCredentialReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.sendCredentialAuthResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.sendCredentialResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.signhashResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.signHashReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.signReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.signReturnV2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.signReturnV2Multiple.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.test_otpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.tsdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.tsrResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.updateSignatureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.userCertList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.userCertListAuth.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.verifyOtpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.verifyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.verifyReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.xmlsignatureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\FirmaRemotaManager.svcArubaSignProduzione.xmlsignature_multipleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignProduzione\xmlmime.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\ArubaSignService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\ArubaSignServiceService.wsdl" />
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.addpkcs7signResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.arssReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.authMethodsReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.auth_methodsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.change_passwordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.closesessionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.credentialListReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.credentials_queryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.encryptedEnvelopeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.encryptedEnvelopReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.getVersionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.gwReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.jwsSignatureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.jwsSignature_multipleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.listCertAuthResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.listCertResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.listprocessResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.m7mResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.markReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.opensessionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.pdfsignatureDTSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.pdfsignatureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.pdfsignatureV2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.pdfsignatureV2_multipleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.pingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.pkcs7signhashResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.pkcs7signhash_multipleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.pkcs7signResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.pkcs7signV2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.pkcs7signV2_multipleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.retriveCredentialResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.retriveCredentialReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.sendCredentialAuthResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.sendCredentialResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.signhashResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.signHashReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.signReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.signReturnV2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.signReturnV2Multiple.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.test_otpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.tsdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.tsrResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.updateSignatureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.userCertList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.userCertListAuth.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.verifyOtpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.verifyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.verifyReturn.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.xmlsignatureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\FirmaRemotaManager.svcArubaSignTest.xmlsignature_multipleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaSignTest\xmlmime.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.Return.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.ReturnCertificateValidation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.ReturnSL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.ReturnTimeStampDataValidation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.ReturnTimeStampDataValidationSL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.ReturnTimeStampValidation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.ReturnTimeStampValidationSL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.ReturnVerifyRevocation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerificationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerificationV2LocalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerificationV2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerificationV3LocalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerificationV3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerificationV3TransientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerifyCertificateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerifyP7MDetachedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerifyP7MResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerifyP7MSubLevelResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerifyPDFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerifyRevocationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerifyTimeStampDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerifyTimeStampDataV2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerifyTimeStampTokenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerifyTimeStampTokenV2LocalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerifyTimeStampTokenV2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\FirmaRemotaManager.svcArubaVolProduzione.VerifyXMLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\verificationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcArubaVolProduzione\VerificationServiceService.wsdl" />
+    <None Include="Connected Services\svcArubaVolProduzione\xmlmime.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.Return.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.ReturnCertificateValidation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.ReturnSL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.ReturnTimeStampDataValidation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.ReturnTimeStampDataValidationSL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.ReturnTimeStampValidation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.ReturnTimeStampValidationSL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.ReturnVerifyRevocation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerificationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerificationV2LocalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerificationV2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerificationV3LocalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerificationV3Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerificationV3TransientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerifyCertificateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerifyP7MDetachedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerifyP7MResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerifyP7MSubLevelResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerifyPDFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerifyRevocationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerifyTimeStampDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerifyTimeStampDataV2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerifyTimeStampTokenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerifyTimeStampTokenV2LocalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerifyTimeStampTokenV2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\FirmaRemotaManager.svcArubaVolTest.VerifyXMLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\VerificationServiceService.wsdl" />
+    <None Include="Connected Services\svcArubaVolTest\VerificationServiceSOAP.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcArubaVolTest\xmlmime.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\svcCalamaioRemoteSign\FirmaRemotaManager.svcCalamaioRemoteSign.hsmMultiSignatureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcCalamaioRemoteSign\FirmaRemotaManager.svcCalamaioRemoteSign.hsmSignatureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcCalamaioRemoteSign\FirmaRemotaManager.svcCalamaioRemoteSign.multiSignResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcCalamaioRemoteSign\FirmaRemotaManager.svcCalamaioRemoteSign.signResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\svcCalamaioRemoteSign\SignServices.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\svcArubaSignProduzione\" />
+    <WCFMetadataStorage Include="Connected Services\svcArubaSignTest\" />
+    <WCFMetadataStorage Include="Connected Services\svcArubaVolProduzione\" />
+    <WCFMetadataStorage Include="Connected Services\svcArubaVolTest\" />
+    <WCFMetadataStorage Include="Connected Services\svcCalamaioRemoteSign\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcCalamaioRemoteSign\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcCalamaioRemoteSign\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcCalamaioRemoteSign\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcArubaSignTest\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcArubaSignTest\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcArubaSignTest\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcArubaVolTest\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcArubaVolTest\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcArubaVolTest\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcArubaSignProduzione\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcArubaSignProduzione\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcArubaSignProduzione\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcArubaVolProduzione\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcArubaVolProduzione\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\svcArubaVolProduzione\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

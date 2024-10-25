@@ -1,0 +1,1268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://paleo.regione.marche.it/services2/" elementFormDefault="qualified" targetNamespace="http://paleo.regione.marche.it/services2/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd2" namespace="http://paleo.regione.marche.it/services/" />
+  <xs:import schemaLocation="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.Tipi.Digip.Protocollo" />
+  <xs:import schemaLocation="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="https://paleotest2020.regione.marche.it/AgidPaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.Tipi" />
+  <xs:element name="ProtocollazioneEntrata">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:reqProtocolloArrivo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="reqProtocolloArrivo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:reqProtocollo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodiceRubricaMittente" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DataArrivo" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataProtocolloMittente" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ProtocolloMittente" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="reqProtocolloArrivo" nillable="true" type="tns:reqProtocolloArrivo" />
+  <xs:complexType name="reqProtocollo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:reqDocumento">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodiceRegistro" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="http://paleo.regione.marche.it/services/" minOccurs="0" name="Emergenza" nillable="true" type="q1:DatiEmergenza" />
+          <xs:element minOccurs="0" name="SegnaturaProtocolloPrecedente" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="reqProtocollo" nillable="true" type="tns:reqProtocollo" />
+  <xs:complexType name="reqDocumento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Classificazioni" nillable="true" type="tns:ArrayOfClassificazione" />
+      <xs:element minOccurs="0" name="DocumentiAllegati" nillable="true" type="tns:ArrayOfAllegato" />
+      <xs:element minOccurs="0" name="DocumentoPrincipale" nillable="true" type="tns:File" />
+      <xs:element minOccurs="0" name="DocumentoPrincipaleAcquisitoIntegralmente" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DocumentoPrincipaleConformitaCopieImmagineSuSupportoInformatico" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DocumentoPrincipaleFirmatoDigitalmente" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DocumentoPrincipaleMarcaturaTemporale" nillable="true" type="xs:boolean" />
+      <xs:element xmlns:q2="http://paleo.regione.marche.it/services/" minOccurs="0" name="DocumentoPrincipaleModalitaFormazione" type="q2:TipoOriginale" />
+      <xs:element minOccurs="0" name="DocumentoPrincipaleSigillatoElettronicamente" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Operatore" nillable="true" type="tns:OperatorePaleo" />
+      <xs:element minOccurs="0" name="Privato" type="xs:boolean" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.Tipi.Digip.Protocollo" minOccurs="0" name="SoggettiAgid" nillable="true" type="q3:SoggettiXml" />
+      <xs:element minOccurs="0" name="TempoDiConservazione" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TipoDocumento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Trasmissione" nillable="true" type="tns:Trasmissione" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="reqDocumento" nillable="true" type="tns:reqDocumento" />
+  <xs:complexType name="ArrayOfClassificazione">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Classificazione" nillable="true" type="tns:Classificazione" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClassificazione" nillable="true" type="tns:ArrayOfClassificazione" />
+  <xs:complexType name="Classificazione">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceFascicolo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NuovoFascicolo" nillable="true" type="tns:DatiNuovoFascicolo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Classificazione" nillable="true" type="tns:Classificazione" />
+  <xs:complexType name="DatiNuovoFascicolo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AnniConservazione" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CodiceClassifica" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodiceFaldone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Custode" nillable="true" type="tns:OperatorePaleo" />
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdSerieArchivistica" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdTipoDati" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DatiNuovoFascicolo" nillable="true" type="tns:DatiNuovoFascicolo" />
+  <xs:complexType name="OperatorePaleo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceFiscale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodiceRuolo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodiceUO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cognome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperatorePaleo" nillable="true" type="tns:OperatorePaleo" />
+  <xs:complexType name="ArrayOfAllegato">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Allegato" nillable="true" type="tns:Allegato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAllegato" nillable="true" type="tns:ArrayOfAllegato" />
+  <xs:complexType name="Allegato">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConformitaCopieImmagineSuSupportoInformatico" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Documento" nillable="true" type="tns:File" />
+      <xs:element minOccurs="0" name="FirmatoDigitalmente" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MarcaturaTemporale" nillable="true" type="xs:boolean" />
+      <xs:element xmlns:q4="http://paleo.regione.marche.it/services/" minOccurs="0" name="ModalitaFormazione" type="q4:TipoOriginale" />
+      <xs:element minOccurs="0" name="NumeroPagine" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SigillatoElettronicamente" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Allegato" nillable="true" type="tns:Allegato" />
+  <xs:complexType name="File">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdFile" type="xs:int" />
+      <xs:element minOccurs="0" name="Impronta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MimeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomeFile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Stream" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="File" nillable="true" type="tns:File" />
+  <xs:complexType name="Trasmissione">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="InvioOriginaleCartaceo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NoteGenerali" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TrasmissioniRuolo" nillable="true" type="tns:ArrayOfTrasmissioneRuolo" />
+      <xs:element minOccurs="0" name="TrasmissioniUtente" nillable="true" type="tns:ArrayOfTrasmissioneUtente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Trasmissione" nillable="true" type="tns:Trasmissione" />
+  <xs:complexType name="ArrayOfTrasmissioneRuolo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TrasmissioneRuolo" nillable="true" type="tns:TrasmissioneRuolo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTrasmissioneRuolo" nillable="true" type="tns:ArrayOfTrasmissioneRuolo" />
+  <xs:complexType name="TrasmissioneRuolo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceRagione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodiceRuoloDestinatario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodiceUODestinataria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataScadenza" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrasmissioneRuolo" nillable="true" type="tns:TrasmissioneRuolo" />
+  <xs:complexType name="ArrayOfTrasmissioneUtente">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TrasmissioneUtente" nillable="true" type="tns:TrasmissioneUtente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTrasmissioneUtente" nillable="true" type="tns:ArrayOfTrasmissioneUtente" />
+  <xs:complexType name="TrasmissioneUtente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceRagione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataScadenza" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperatoreDestinatario" nillable="true" type="tns:OperatorePaleo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TrasmissioneUtente" nillable="true" type="tns:TrasmissioneUtente" />
+  <xs:element name="ProtocollazioneEntrataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProtocollazioneEntrataResult" nillable="true" type="tns:BEBaseOfrespProtocolloArrivoc14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEBaseOfrespProtocolloArrivoc14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="respProtocolloArrivo" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="tns:respProtocolloArrivo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfrespProtocolloArrivoc14f1rMd" nillable="true" type="tns:BEBaseOfrespProtocolloArrivoc14f1rMd" />
+  <xs:complexType name="MessaggioRisultato">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="http://paleo.regione.marche.it/services/" minOccurs="0" name="TipoRisultato" type="q5:TipoRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+  <xs:complexType name="respProtocolloArrivo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:respProtocollo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataArrivo" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Mittente" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProtocolloMittente" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="respProtocolloArrivo" nillable="true" type="tns:respProtocolloArrivo" />
+  <xs:complexType name="respProtocollo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:respDocumento">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Annullato" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Data" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataProtocollazione" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Numero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Registro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Segnatura" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="respProtocollo" nillable="true" type="tns:respProtocollo" />
+  <xs:complexType name="respDocumento">
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Classificazioni" nillable="true" type="q6:ArrayOfstring" />
+      <xs:element minOccurs="0" name="DataDocumento" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DocNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Proprietario" nillable="true" type="tns:OperatorePaleo" />
+      <xs:element minOccurs="0" name="SegnaturaDocumento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDocumento" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="respDocumento" nillable="true" type="tns:respDocumento" />
+  <xs:complexType name="RespDocumentoExt">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:respDocumento">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Allegati" nillable="true" type="tns:ArrayOfAllegato" />
+          <xs:element minOccurs="0" name="DocumentoPrincipale" nillable="true" type="tns:File" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RespDocumentoExt" nillable="true" type="tns:RespDocumentoExt" />
+  <xs:complexType name="respProtocolloExt">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RespDocumentoExt">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Annullato" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Data" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DataProtocollazione" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Numero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Registro" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Segnatura" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="respProtocolloExt" nillable="true" type="tns:respProtocolloExt" />
+  <xs:complexType name="respProtocolloArrivoExt">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:respProtocolloExt">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataArrivo" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Mittente" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProtocolloMittente" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="respProtocolloArrivoExt" nillable="true" type="tns:respProtocolloArrivoExt" />
+  <xs:complexType name="respProtocolloPartenzaExt">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:respProtocolloExt">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Destinatari" nillable="true" type="tns:ArrayOfDestinatarioInfo" />
+          <xs:element minOccurs="0" name="DestinatariCC" nillable="true" type="tns:ArrayOfDestinatarioInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="respProtocolloPartenzaExt" nillable="true" type="tns:respProtocolloPartenzaExt" />
+  <xs:complexType name="ArrayOfDestinatarioInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DestinatarioInfo" nillable="true" type="tns:DestinatarioInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDestinatarioInfo" nillable="true" type="tns:ArrayOfDestinatarioInfo" />
+  <xs:complexType name="DestinatarioInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PerConoscenza" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DestinatarioInfo" nillable="true" type="tns:DestinatarioInfo" />
+  <xs:complexType name="respProtocolloPartenza">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:respProtocollo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Destinatari" nillable="true" type="tns:ArrayOfDestinatarioInfo" />
+          <xs:element minOccurs="0" name="DestinatariCC" nillable="true" type="tns:ArrayOfDestinatarioInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="respProtocolloPartenza" nillable="true" type="tns:respProtocolloPartenza" />
+  <xs:element name="ProtocollazionePartenza">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:reqProtocolloPartenza" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="reqProtocolloPartenza">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:reqProtocollo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DestinatariRubrica" nillable="true" type="tns:ArrayOfDestinatario" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="reqProtocolloPartenza" nillable="true" type="tns:reqProtocolloPartenza" />
+  <xs:complexType name="ArrayOfDestinatario">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Destinatario" nillable="true" type="tns:Destinatario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDestinatario" nillable="true" type="tns:ArrayOfDestinatario" />
+  <xs:complexType name="Destinatario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceRubrica" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PerConoscenza" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Destinatario" nillable="true" type="tns:Destinatario" />
+  <xs:element name="ProtocollazionePartenzaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ProtocollazionePartenzaResult" nillable="true" type="tns:BEBaseOfrespProtocolloPartenzac14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEBaseOfrespProtocolloPartenzac14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="respProtocolloPartenza" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="tns:respProtocolloPartenza" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfrespProtocolloPartenzac14f1rMd" nillable="true" type="tns:BEBaseOfrespProtocolloPartenzac14f1rMd" />
+  <xs:element name="ArchiviaDocumentoInterno">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:reqDocumento" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ArchiviaDocumentoInternoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ArchiviaDocumentoInternoResult" nillable="true" type="tns:BEBaseOfrespDocumentoc14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEBaseOfrespDocumentoc14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="respDocumento" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="tns:respDocumento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfrespDocumentoc14f1rMd" nillable="true" type="tns:BEBaseOfrespDocumentoc14f1rMd" />
+  <xs:element name="AddVersioneDocumento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="req" nillable="true" type="tns:reqAddVersione" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="reqAddVersione">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="DocumentoPrincipale" nillable="true" type="tns:File" />
+      <xs:element minOccurs="0" name="DocumentoPrincipaleConformitaCopieImmagineSuSupportoInformatico" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DocumentoPrincipaleFirmatoDigitalmente" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DocumentoPrincipaleMarcaturaTemporale" nillable="true" type="xs:boolean" />
+      <xs:element xmlns:q7="http://paleo.regione.marche.it/services/" minOccurs="0" name="DocumentoPrincipaleModalitaFormazione" type="q7:TipoOriginale" />
+      <xs:element minOccurs="0" name="DocumentoPrincipaleSigillatoElettronicamente" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NoteVersione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Operatore" nillable="true" type="tns:OperatorePaleo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="reqAddVersione" nillable="true" type="tns:reqAddVersione" />
+  <xs:element name="AddVersioneDocumentoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddVersioneDocumentoResult" nillable="true" type="tns:BEBaseOfRespAddVersionec14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEBaseOfRespAddVersionec14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="RespAddVersione" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="tns:RespAddVersione" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfRespAddVersionec14f1rMd" nillable="true" type="tns:BEBaseOfRespAddVersionec14f1rMd" />
+  <xs:complexType name="RespAddVersione">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdFile" type="xs:int" />
+      <xs:element minOccurs="0" name="IdVersione" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RespAddVersione" nillable="true" type="tns:RespAddVersione" />
+  <xs:element name="AddAllegatiDocumentoProtocollo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:reqAddAllegati" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="reqAddAllegati">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Allegati" nillable="true" type="tns:ArrayOfAllegato" />
+      <xs:element minOccurs="0" name="DocNumber" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Operatore" nillable="true" type="tns:OperatorePaleo" />
+      <xs:element minOccurs="0" name="SegnaturaProtocollo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="reqAddAllegati" nillable="true" type="tns:reqAddAllegati" />
+  <xs:element name="AddAllegatiDocumentoProtocolloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddAllegatiDocumentoProtocolloResult" nillable="true" type="tns:BEBaseOfrespAddAllegatic14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEBaseOfrespAddAllegatic14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="respAddAllegati" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="tns:respAddAllegati" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfrespAddAllegatic14f1rMd" nillable="true" type="tns:BEBaseOfrespAddAllegatic14f1rMd" />
+  <xs:complexType name="respAddAllegati">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Allegati" nillable="true" type="tns:ArrayOfAllegatoInfo" />
+      <xs:element minOccurs="0" name="DocNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="SegnaturaProtocollo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="respAddAllegati" nillable="true" type="tns:respAddAllegati" />
+  <xs:complexType name="ArrayOfAllegatoInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AllegatoInfo" nillable="true" type="tns:AllegatoInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAllegatoInfo" nillable="true" type="tns:ArrayOfAllegatoInfo" />
+  <xs:complexType name="AllegatoInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdFile" type="xs:int" />
+      <xs:element minOccurs="0" name="Impronta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomeFile" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AllegatoInfo" nillable="true" type="tns:AllegatoInfo" />
+  <xs:element name="CercaDocumentoProtocollo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:reqCercaProtocollo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="reqCercaProtocollo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocNumber" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Operatore" nillable="true" type="tns:OperatorePaleo" />
+      <xs:element minOccurs="0" name="Segnatura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WithoutStream" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="reqCercaProtocollo" nillable="true" type="tns:reqCercaProtocollo" />
+  <xs:element name="CercaDocumentoProtocolloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CercaDocumentoProtocolloResult" nillable="true" type="tns:BEBaseOfRespDocumentoExtc14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEBaseOfRespDocumentoExtc14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="RespDocumentoExt" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="tns:RespDocumentoExt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfRespDocumentoExtc14f1rMd" nillable="true" type="tns:BEBaseOfRespDocumentoExtc14f1rMd" />
+  <xs:element name="CercaProtocolliCorrispondente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:reqCercaProtocolliCorrispondente" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="reqCercaProtocolliCorrispondente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdFiscaleCorrispondente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Operatore" nillable="true" type="tns:OperatorePaleo" />
+      <xs:element minOccurs="0" name="TipoDocumento" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="reqCercaProtocolliCorrispondente" nillable="true" type="tns:reqCercaProtocolliCorrispondente" />
+  <xs:element name="CercaProtocolliCorrispondenteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CercaProtocolliCorrispondenteResult" nillable="true" type="tns:BEListOfrespProtocolloInfoc14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEListOfrespProtocolloInfoc14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEListOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="respProtocolloInfo" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Lista" nillable="true" type="tns:ArrayOfrespProtocolloInfo" />
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEListOfrespProtocolloInfoc14f1rMd" nillable="true" type="tns:BEListOfrespProtocolloInfoc14f1rMd" />
+  <xs:complexType name="ArrayOfrespProtocolloInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="respProtocolloInfo" nillable="true" type="tns:respProtocolloInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfrespProtocolloInfo" nillable="true" type="tns:ArrayOfrespProtocolloInfo" />
+  <xs:complexType name="respProtocolloInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceRegistro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodiceUO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataProtocollo" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DocNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroProtocollo" type="xs:int" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SegnaturaProtocollo" nillable="true" type="xs:string" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.Tipi" minOccurs="0" name="StatoProtocollo" type="q8:TipoStatoProtocollo" />
+      <xs:element minOccurs="0" name="TipoDocumento" nillable="true" type="xs:string" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.Tipi" minOccurs="0" name="TipoProtocollo" type="q9:TipoProtocollo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="respProtocolloInfo" nillable="true" type="tns:respProtocolloInfo" />
+  <xs:element name="SpedisciProtocollo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:reqSpedisciProtocollo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="reqSpedisciProtocollo">
+    <xs:sequence>
+      <xs:element name="Operatore" nillable="true" type="tns:OperatorePaleo" />
+      <xs:element minOccurs="0" name="Segnatura" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="reqSpedisciProtocollo" nillable="true" type="tns:reqSpedisciProtocollo" />
+  <xs:element name="SpedisciProtocolloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SpedisciProtocolloResult" nillable="true" type="tns:BEBaseOfrespSpedisciProtocolloc14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEBaseOfrespSpedisciProtocolloc14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="respSpedisciProtocollo" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="tns:respSpedisciProtocollo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfrespSpedisciProtocolloc14f1rMd" nillable="true" type="tns:BEBaseOfrespSpedisciProtocolloc14f1rMd" />
+  <xs:complexType name="respSpedisciProtocollo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Destinatari" nillable="true" type="tns:ArrayOfDestinatarioInfoInterop" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="respSpedisciProtocollo" nillable="true" type="tns:respSpedisciProtocollo" />
+  <xs:complexType name="ArrayOfDestinatarioInfoInterop">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DestinatarioInfoInterop" nillable="true" type="tns:DestinatarioInfoInterop" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDestinatarioInfoInterop" nillable="true" type="tns:ArrayOfDestinatarioInfoInterop" />
+  <xs:complexType name="DestinatarioInfoInterop">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DestinatarioInfo">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://paleo.regione.marche.it/services/" minOccurs="0" name="MessaggiInterop" nillable="true" type="q10:ArrayOfMessaggioInteropInfo2" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DestinatarioInfoInterop" nillable="true" type="tns:DestinatarioInfoInterop" />
+  <xs:element name="GetDocumentiProtocolliInFascicolo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:reqDocProtocolliInFascicolo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="reqDocProtocolliInFascicolo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceFascicolo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Operatore" nillable="true" type="tns:OperatorePaleo" />
+      <xs:element minOccurs="0" name="SoloPubblici" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SoloVerificaFascicolo" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="reqDocProtocolliInFascicolo" nillable="true" type="tns:reqDocProtocolliInFascicolo" />
+  <xs:element name="GetDocumentiProtocolliInFascicoloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDocumentiProtocolliInFascicoloResult" nillable="true" type="tns:BEListOfrespDocProtocolliInfoc14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEListOfrespDocProtocolliInfoc14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEListOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="respDocProtocolliInfo" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Lista" nillable="true" type="tns:ArrayOfrespDocProtocolliInfo" />
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEListOfrespDocProtocolliInfoc14f1rMd" nillable="true" type="tns:BEListOfrespDocProtocolliInfoc14f1rMd" />
+  <xs:complexType name="ArrayOfrespDocProtocolliInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="respDocProtocolliInfo" nillable="true" type="tns:respDocProtocolliInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfrespDocProtocolliInfo" nillable="true" type="tns:ArrayOfrespDocProtocolliInfo" />
+  <xs:complexType name="respDocProtocolliInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceRegistro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Corrispondenti" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataCreazione" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataProtocollo" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DocNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroProtocollo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Privato" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Pubblico" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SegnaturaProtocollo" nillable="true" type="xs:string" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.Tipi" minOccurs="0" name="StatoProtocollo" nillable="true" type="q11:TipoStatoProtocollo" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.Tipi" minOccurs="0" name="TipoProtocollo" nillable="true" type="q12:TipoProtocollo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="respDocProtocolliInfo" nillable="true" type="tns:respDocProtocolliInfo" />
+  <xs:element name="FindOperatori">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cognome" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codiceFiscale" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindOperatoriResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FindOperatoriResult" nillable="true" type="tns:BEListOfOperatorePaleoc14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEListOfOperatorePaleoc14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEListOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="OperatorePaleo" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Lista" nillable="true" type="tns:ArrayOfOperatorePaleo" />
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEListOfOperatorePaleoc14f1rMd" nillable="true" type="tns:BEListOfOperatorePaleoc14f1rMd" />
+  <xs:complexType name="ArrayOfOperatorePaleo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OperatorePaleo" nillable="true" type="tns:OperatorePaleo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOperatorePaleo" nillable="true" type="tns:ArrayOfOperatorePaleo" />
+  <xs:element name="FindUtenti">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cognome" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codiceFiscale" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindUtentiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FindUtentiResult" nillable="true" type="tns:BEListOfUtentePaleoc14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEListOfUtentePaleoc14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEListOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UtentePaleo" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Lista" nillable="true" type="tns:ArrayOfUtentePaleo" />
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEListOfUtentePaleoc14f1rMd" nillable="true" type="tns:BEListOfUtentePaleoc14f1rMd" />
+  <xs:complexType name="ArrayOfUtentePaleo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UtentePaleo" nillable="true" type="tns:UtentePaleo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUtentePaleo" nillable="true" type="tns:ArrayOfUtentePaleo" />
+  <xs:complexType name="UtentePaleo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceFiscale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cognome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UtentePaleo" nillable="true" type="tns:UtentePaleo" />
+  <xs:element name="GetRagioniTrasmissione">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRagioniTrasmissioneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRagioniTrasmissioneResult" nillable="true" type="tns:BEListOfRagioneInfoZA0hwLp5" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEListOfRagioneInfoZA0hwLp5">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEListOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="RagioneInfo" Namespace="http://paleo.regione.marche.it/services/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q13="http://paleo.regione.marche.it/services/" minOccurs="0" name="Lista" nillable="true" type="q13:ArrayOfRagioneInfo" />
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEListOfRagioneInfoZA0hwLp5" nillable="true" type="tns:BEListOfRagioneInfoZA0hwLp5" />
+  <xs:element name="GetRegistri">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="operatore" nillable="true" type="tns:OperatorePaleo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRegistriResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRegistriResult" nillable="true" type="tns:BEListOfRegistroInfoZA0hwLp5" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEListOfRegistroInfoZA0hwLp5">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEListOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="RegistroInfo" Namespace="http://paleo.regione.marche.it/services/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q14="http://paleo.regione.marche.it/services/" minOccurs="0" name="Lista" nillable="true" type="q14:ArrayOfRegistroInfo" />
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEListOfRegistroInfoZA0hwLp5" nillable="true" type="tns:BEListOfRegistroInfoZA0hwLp5" />
+  <xs:element name="GetTitolarioClassificazione">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="operatore" nillable="true" type="tns:OperatorePaleo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTitolarioClassificazioneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTitolarioClassificazioneResult" nillable="true" type="tns:BEListOfTitolarioInfoc14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEListOfTitolarioInfoc14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEListOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TitolarioInfo" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Lista" nillable="true" type="tns:ArrayOfTitolarioInfo" />
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEListOfTitolarioInfoc14f1rMd" nillable="true" type="tns:BEListOfTitolarioInfoc14f1rMd" />
+  <xs:complexType name="ArrayOfTitolarioInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TitolarioInfo" nillable="true" type="tns:TitolarioInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTitolarioInfo" nillable="true" type="tns:ArrayOfTitolarioInfo" />
+  <xs:complexType name="TitolarioInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceClassifica" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodiceFascicolo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Custode" nillable="true" type="tns:OperatorePaleo" />
+      <xs:element minOccurs="0" name="DescrizioneClassifica" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DescrizioneFascicolo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TitolarioInfo" nillable="true" type="tns:TitolarioInfo" />
+  <xs:element name="FindRubrica">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:reqFindRubrica" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="reqFindRubrica">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdFiscale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IstatComune" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Operatore" nillable="true" type="tns:OperatorePaleo" />
+      <xs:element xmlns:q15="http://paleo.regione.marche.it/services/" minOccurs="0" name="Tipo" nillable="true" type="q15:TipoVoceRubrica" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="reqFindRubrica" nillable="true" type="tns:reqFindRubrica" />
+  <xs:element name="FindRubricaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FindRubricaResult" nillable="true" type="tns:BEListOfRubricaZA0hwLp5" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEListOfRubricaZA0hwLp5">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEListOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Rubrica" Namespace="http://paleo.regione.marche.it/services/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q16="http://paleo.regione.marche.it/services/" minOccurs="0" name="Lista" nillable="true" type="q16:ArrayOfRubrica" />
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEListOfRubricaZA0hwLp5" nillable="true" type="tns:BEListOfRubricaZA0hwLp5" />
+  <xs:element name="SaveVoceRubrica">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="operatore" nillable="true" type="tns:OperatorePaleo" />
+        <xs:element xmlns:q17="http://paleo.regione.marche.it/services/" minOccurs="0" name="voce" nillable="true" type="q17:Rubrica" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveVoceRubricaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveVoceRubricaResult" nillable="true" type="tns:BEBaseOfRubricaZA0hwLp5" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEBaseOfRubricaZA0hwLp5">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Rubrica" Namespace="http://paleo.regione.marche.it/services/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+      <xs:element xmlns:q18="http://paleo.regione.marche.it/services/" minOccurs="0" name="Oggetto" nillable="true" type="q18:Rubrica" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfRubricaZA0hwLp5" nillable="true" type="tns:BEBaseOfRubricaZA0hwLp5" />
+  <xs:element name="ApriFascicolo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:reqApriChiudiFascicolo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="reqApriChiudiFascicolo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Custode" nillable="true" type="tns:OperatorePaleo" />
+      <xs:element minOccurs="0" name="Operatore" nillable="true" type="tns:OperatorePaleo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="reqApriChiudiFascicolo" nillable="true" type="tns:reqApriChiudiFascicolo" />
+  <xs:element name="ApriFascicoloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ApriFascicoloResult" nillable="true" type="tns:BEBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBase" nillable="true" type="tns:BEBase" />
+  <xs:element name="ChiudiFascicolo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:reqApriChiudiFascicolo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChiudiFascicoloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ChiudiFascicoloResult" nillable="true" type="tns:BEBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTipiDatiFascicoli">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="opp" nillable="true" type="tns:OperatorePaleo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTipiDatiFascicoliResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTipiDatiFascicoliResult" nillable="true" type="tns:BEListOfTipoDatiFascicoloZA0hwLp5" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEListOfTipoDatiFascicoloZA0hwLp5">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEListOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TipoDatiFascicolo" Namespace="http://paleo.regione.marche.it/services/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q19="http://paleo.regione.marche.it/services/" minOccurs="0" name="Lista" nillable="true" type="q19:ArrayOfTipoDatiFascicolo" />
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEListOfTipoDatiFascicoloZA0hwLp5" nillable="true" type="tns:BEListOfTipoDatiFascicoloZA0hwLp5" />
+  <xs:element name="GetSerieArchivisticheFascicoli">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="opp" nillable="true" type="tns:OperatorePaleo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSerieArchivisticheFascicoliResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSerieArchivisticheFascicoliResult" nillable="true" type="tns:BEListOfSerieArchivisticaZA0hwLp5" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEListOfSerieArchivisticaZA0hwLp5">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEListOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="SerieArchivistica" Namespace="http://paleo.regione.marche.it/services/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q20="http://paleo.regione.marche.it/services/" minOccurs="0" name="Lista" nillable="true" type="q20:ArrayOfSerieArchivistica" />
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEListOfSerieArchivisticaZA0hwLp5" nillable="true" type="tns:BEListOfSerieArchivisticaZA0hwLp5" />
+  <xs:element name="EffettuaTrasmissioni">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:ReqEffettuaTrasmissioni" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ReqEffettuaTrasmissioni">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="InviaEmail" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Operatore" nillable="true" type="tns:OperatorePaleo" />
+      <xs:element minOccurs="0" name="Trasmissioni" nillable="true" type="tns:ArrayOfTrasmissioneDoc" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReqEffettuaTrasmissioni" nillable="true" type="tns:ReqEffettuaTrasmissioni" />
+  <xs:complexType name="ArrayOfTrasmissioneDoc">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TrasmissioneDoc" nillable="true" type="tns:TrasmissioneDoc" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTrasmissioneDoc" nillable="true" type="tns:ArrayOfTrasmissioneDoc" />
+  <xs:complexType name="TrasmissioneDoc">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Trasmissione">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DocNumber" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TrasmissioneDoc" nillable="true" type="tns:TrasmissioneDoc" />
+  <xs:element name="EffettuaTrasmissioniResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EffettuaTrasmissioniResult" nillable="true" type="tns:BEBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUO">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceRegistro" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUOResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUOResult" nillable="true" type="tns:BEListOfUOInfoZA0hwLp5" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEListOfUOInfoZA0hwLp5">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEListOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="UOInfo" Namespace="http://paleo.regione.marche.it/services/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q21="http://paleo.regione.marche.it/services/" minOccurs="0" name="Lista" nillable="true" type="q21:ArrayOfUOInfo" />
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEListOfUOInfoZA0hwLp5" nillable="true" type="tns:BEListOfUOInfoZA0hwLp5" />
+  <xs:element name="InserisciClassificazione">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:ReqInserisciClassificazione" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ReqInserisciClassificazione">
+    <xs:sequence>
+      <xs:element xmlns:q22="http://paleo.regione.marche.it/services/" minOccurs="0" name="Classificazione" nillable="true" type="q22:Classificazione2" />
+      <xs:element minOccurs="0" name="DocNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="Operatore" nillable="true" type="tns:OperatorePaleo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReqInserisciClassificazione" nillable="true" type="tns:ReqInserisciClassificazione" />
+  <xs:element name="InserisciClassificazioneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InserisciClassificazioneResult" nillable="true" type="tns:BEListOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEListOfstring">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEListOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Lista" nillable="true" type="q23:ArrayOfstring" />
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEListOfstring" nillable="true" type="tns:BEListOfstring" />
+  <xs:element name="EliminaClassificazione">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:ReqEliminaClassificazione" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ReqEliminaClassificazione">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceFascicolo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="Operatore" nillable="true" type="tns:OperatorePaleo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReqEliminaClassificazione" nillable="true" type="tns:ReqEliminaClassificazione" />
+  <xs:element name="EliminaClassificazioneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EliminaClassificazioneResult" nillable="true" type="tns:BEListOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="op" nillable="true" type="tns:OperatorePaleo" />
+        <xs:element minOccurs="0" name="idFile" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFileResult" nillable="true" type="tns:BEBaseOfFilec14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEBaseOfFilec14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="File" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="tns:File" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfFilec14f1rMd" nillable="true" type="tns:BEBaseOfFilec14f1rMd" />
+  <xs:element name="CreaFascicolo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="richiesta" nillable="true" type="tns:reqCreaFascicolo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="reqCreaFascicolo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DatiNuovoFascicolo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Numero" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Operatore" nillable="true" type="tns:OperatorePaleo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="reqCreaFascicolo" nillable="true" type="tns:reqCreaFascicolo" />
+  <xs:element name="CreaFascicoloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreaFascicoloResult" nillable="true" type="tns:BEBaseOfFascicoloInfoc14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BEBaseOfFascicoloInfoc14f1rMd">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://paleo.regione.marche.it/services2/" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="FascicoloInfo" Namespace="http://paleo.regione.marche.it/services2/" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MessaggioRisultato" nillable="true" type="tns:MessaggioRisultato" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="tns:FascicoloInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfFascicoloInfoc14f1rMd" nillable="true" type="tns:BEBaseOfFascicoloInfoc14f1rMd" />
+  <xs:complexType name="FascicoloInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Custode" nillable="true" type="tns:OperatorePaleo" />
+      <xs:element minOccurs="0" name="DataApertura" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataChiusura" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataCreazione" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FascicoloInfo" nillable="true" type="tns:FascicoloInfo" />
+  <xs:element name="GetFascicolo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="op" nillable="true" type="tns:OperatorePaleo" />
+        <xs:element minOccurs="0" name="codiceFascicolo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFascicoloResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFascicoloResult" nillable="true" type="tns:BEBaseOfFascicoloInfoc14f1rMd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

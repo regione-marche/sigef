@@ -1,0 +1,21 @@
+﻿CREATE TABLE [dbo].[CODIFICA_GENERICA] (
+    [ID]                   INT             NOT NULL,
+    [ID_TIPO_CODIFICA]     INT             NOT NULL,
+    [DESCRIZIONE]          NVARCHAR (4000) NULL,
+    [VALORE_TXT]           NTEXT           NULL,
+    [CODICE_TXT]           NVARCHAR (50)   NULL,
+    [VALORE_INT1]          INT             NULL,
+    [VALORE_INT2]          INT             NULL,
+    [VALORE_DEC1]          DECIMAL (20, 2) NULL,
+    [VALORE_DEC2]          DECIMAL (20, 2) NULL,
+    [FLAG]                 CHAR (1)        NULL,
+    [DATA_INIZIO_VALIDITA] DATETIME        NULL,
+    [DATA_FINE_VALIDITA]   DATETIME        NULL,
+    [ID_PADRE]             INT             NULL,
+    [VALORE_TXT2]          NTEXT           NULL,
+    [VALORE_TXT3]          NTEXT           NULL,
+    CONSTRAINT [PK_CODIFICA_GENERICA] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [FK_CODIFICA_GENERICA_CODIFICA_GENERICA] FOREIGN KEY ([ID_TIPO_CODIFICA]) REFERENCES [dbo].[CODIFICA_GENERICA] ([ID]),
+    CONSTRAINT [FK_CODIFICA_GENERICA_CODIFICA_GENERICA1] FOREIGN KEY ([ID_PADRE]) REFERENCES [dbo].[CODIFICA_GENERICA] ([ID])
+);
+

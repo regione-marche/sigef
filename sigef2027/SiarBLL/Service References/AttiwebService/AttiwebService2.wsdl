@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://regione.marche.it/DemaServices/Attiweb" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://regione.marche.it/DemaServices/Attiweb" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://regione.marche.it/DemaServices/Attiweb/Imports">
+      <xsd:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd0" namespace="http://regione.marche.it/DemaServices/Attiweb" />
+      <xsd:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" />
+      <xsd:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/CommonLibrary" />
+      <xsd:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" />
+      <xsd:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAttiwebService_SearchAtti_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchAtti" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_SearchAtti_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchAttiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetAtto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAtto" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetAtto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAttoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetFileAtto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileAtto" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetFileAtto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileAttoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetAttiDaFirmare_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAttiDaFirmare" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetAttiDaFirmare_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAttiDaFirmareResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetFilesDaFirmare_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilesDaFirmare" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetFilesDaFirmare_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilesDaFirmareResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_CompletaFirmaAtto_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompletaFirmaAtto" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_CompletaFirmaAtto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompletaFirmaAttoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_RegistraPubblicazioneBur_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistraPubblicazioneBur" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_RegistraPubblicazioneBur_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistraPubblicazioneBurResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_CreaProcesso_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreaProcesso" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_CreaProcesso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreaProcessoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_AggiornaProcesso_InputMessage">
+    <wsdl:part name="parameters" element="tns:AggiornaProcesso" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_AggiornaProcesso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AggiornaProcessoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_SearchDelibere_InputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDelibere" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_SearchDelibere_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchDelibereResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetTipologieDelibera_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTipologieDelibera" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetTipologieDelibera_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTipologieDeliberaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetAssessori_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssessori" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetAssessori_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAssessoriResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetSeduteDelibere_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeduteDelibere" />
+  </wsdl:message>
+  <wsdl:message name="IAttiwebService_GetSeduteDelibere_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeduteDelibereResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAttiwebService">
+    <wsdl:operation name="SearchAtti">
+      <wsdl:input wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/SearchAtti" message="tns:IAttiwebService_SearchAtti_InputMessage" />
+      <wsdl:output wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/SearchAttiResponse" message="tns:IAttiwebService_SearchAtti_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAtto">
+      <wsdl:input wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetAtto" message="tns:IAttiwebService_GetAtto_InputMessage" />
+      <wsdl:output wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetAttoResponse" message="tns:IAttiwebService_GetAtto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileAtto">
+      <wsdl:input wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetFileAtto" message="tns:IAttiwebService_GetFileAtto_InputMessage" />
+      <wsdl:output wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetFileAttoResponse" message="tns:IAttiwebService_GetFileAtto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAttiDaFirmare">
+      <wsdl:input wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetAttiDaFirmare" message="tns:IAttiwebService_GetAttiDaFirmare_InputMessage" />
+      <wsdl:output wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetAttiDaFirmareResponse" message="tns:IAttiwebService_GetAttiDaFirmare_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilesDaFirmare">
+      <wsdl:input wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetFilesDaFirmare" message="tns:IAttiwebService_GetFilesDaFirmare_InputMessage" />
+      <wsdl:output wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetFilesDaFirmareResponse" message="tns:IAttiwebService_GetFilesDaFirmare_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompletaFirmaAtto">
+      <wsdl:input wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/CompletaFirmaAtto" message="tns:IAttiwebService_CompletaFirmaAtto_InputMessage" />
+      <wsdl:output wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/CompletaFirmaAttoResponse" message="tns:IAttiwebService_CompletaFirmaAtto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistraPubblicazioneBur">
+      <wsdl:input wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/RegistraPubblicazioneBur" message="tns:IAttiwebService_RegistraPubblicazioneBur_InputMessage" />
+      <wsdl:output wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/RegistraPubblicazioneBurResponse" message="tns:IAttiwebService_RegistraPubblicazioneBur_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreaProcesso">
+      <wsdl:input wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/CreaProcesso" message="tns:IAttiwebService_CreaProcesso_InputMessage" />
+      <wsdl:output wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/CreaProcessoResponse" message="tns:IAttiwebService_CreaProcesso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaProcesso">
+      <wsdl:input wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/AggiornaProcesso" message="tns:IAttiwebService_AggiornaProcesso_InputMessage" />
+      <wsdl:output wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/AggiornaProcessoResponse" message="tns:IAttiwebService_AggiornaProcesso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchDelibere">
+      <wsdl:input wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/SearchDelibere" message="tns:IAttiwebService_SearchDelibere_InputMessage" />
+      <wsdl:output wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/SearchDelibereResponse" message="tns:IAttiwebService_SearchDelibere_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTipologieDelibera">
+      <wsdl:input wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetTipologieDelibera" message="tns:IAttiwebService_GetTipologieDelibera_InputMessage" />
+      <wsdl:output wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetTipologieDeliberaResponse" message="tns:IAttiwebService_GetTipologieDelibera_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssessori">
+      <wsdl:input wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetAssessori" message="tns:IAttiwebService_GetAssessori_InputMessage" />
+      <wsdl:output wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetAssessoriResponse" message="tns:IAttiwebService_GetAssessori_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeduteDelibere">
+      <wsdl:input wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetSeduteDelibere" message="tns:IAttiwebService_GetSeduteDelibere_InputMessage" />
+      <wsdl:output wsaw:Action="http://regione.marche.it/DemaServices/Attiweb/IAttiwebService/GetSeduteDelibereResponse" message="tns:IAttiwebService_GetSeduteDelibere_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

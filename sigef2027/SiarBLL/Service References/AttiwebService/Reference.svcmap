@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="61476833-fb3e-4945-ac7f-da006a8cde84" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AttiwebService2.wsdl" MetadataType="Wsdl" ID="deab5a3e-3653-4d42-be7b-629b5a69604a" SourceId="1" SourceUrl="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="AttiwebService5.xsd" MetadataType="Schema" ID="6a33846e-5647-431f-8c75-d88732fe8760" SourceId="1" SourceUrl="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AttiwebService51.xsd" MetadataType="Schema" ID="85dc9726-7fff-46b6-b662-21f1d76928bf" SourceId="1" SourceUrl="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AttiwebService52.xsd" MetadataType="Schema" ID="440461af-9171-4021-81f4-eef8e25a7fd5" SourceId="1" SourceUrl="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AttiwebService53.xsd" MetadataType="Schema" ID="5c4547ae-d769-4595-8723-d3c3803070e9" SourceId="1" SourceUrl="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AttiwebService21.wsdl" MetadataType="Wsdl" ID="0f26b7ed-671e-4dde-930f-612ae1486558" SourceId="1" SourceUrl="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?wsdl" />
+    <MetadataFile FileName="AttiwebService1.disco" MetadataType="Disco" ID="631ab7f2-af51-4cd3-8b7f-0f7dbf159a29" SourceId="1" SourceUrl="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?disco" />
+    <MetadataFile FileName="AttiwebService54.xsd" MetadataType="Schema" ID="ea5e9ec8-4b64-4413-b799-766fac7a947a" SourceId="1" SourceUrl="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd4" />
+    <MetadataFile FileName="AttiwebService55.xsd" MetadataType="Schema" ID="f6034e22-0805-4b99-ae8d-b032382e0fab" SourceId="1" SourceUrl="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

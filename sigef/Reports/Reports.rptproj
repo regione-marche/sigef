@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <FullPath>Debug</FullPath>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorLevel>2</ErrorLevel>
+    <OverwriteDatasets>False</OverwriteDatasets>
+    <OverwriteDataSources>False</OverwriteDataSources>
+    <TargetServerVersion>SSRS2016</TargetServerVersion>
+    <Platform>Win32</Platform>
+    <TargetReportFolder>Reports</TargetReportFolder>
+    <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+    <TargetDatasourceFolder>Data Sources</TargetDatasourceFolder>
+    <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+    <TargetServerURL>http://localhost/reportserver</TargetServerURL>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'DebugLocal' ">
+    <FullPath>DebugLocal</FullPath>
+    <OutputPath>bin\DebugLocal</OutputPath>
+    <ErrorLevel>2</ErrorLevel>
+    <OverwriteDatasets>False</OverwriteDatasets>
+    <OverwriteDataSources>False</OverwriteDataSources>
+    <TargetServerVersion>SSRS2016</TargetServerVersion>
+    <Platform>Win32</Platform>
+    <TargetReportFolder>Reports</TargetReportFolder>
+    <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+    <TargetDatasourceFolder>Data Sources</TargetDatasourceFolder>
+    <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+    <TargetServerURL>http://localhost/reportserver</TargetServerURL>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <FullPath>Release</FullPath>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorLevel>2</ErrorLevel>
+    <OverwriteDatasets>False</OverwriteDatasets>
+    <OverwriteDataSources>False</OverwriteDataSources>
+    <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+    <Platform>Win32</Platform>
+    <TargetReportFolder>Reports</TargetReportFolder>
+    <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+    <TargetDatasourceFolder>Data Sources</TargetDatasourceFolder>
+    <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
+    <TargetServerURL>http://localhost/reportserver</TargetServerURL>
+  </PropertyGroup>
+  <PropertyGroup>
+    <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkZGwzMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAiIHhtbG5zOmRkbDMwMF8zMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAvMzAwIiB4bWxuczpkZGw0MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAiIHhtbG5zOmRkbDQwMF80MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEyL2VuZ2luZS80MDAvNDAwIiB4bWxuczpkZGw1MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAiIHhtbG5zOmRkbDUwMF81MDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEzL2VuZ2luZS81MDAvNTAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD50cnVlPC9FbmFibGVkPg0KICA8UHJvamVjdE5hbWU+U3ZuPC9Qcm9qZWN0TmFtZT4NCiAgPEF1eFBhdGg+U3ZuPC9BdXhQYXRoPg0KICA8TG9jYWxQYXRoPlN2bjwvTG9jYWxQYXRoPg0KICA8UHJvdmlkZXI+U3VidmVyc2lvblNjYzwvUHJvdmlkZXI+DQo8L1NvdXJjZUNvbnRyb2xJbmZvPg==</State>
+    <DataSources>@(DataSource)</DataSources>
+    <DataSets>@(DataSet)</DataSets>
+    <Reports>@(Report)</Reports>
+  </PropertyGroup>
+  <ItemGroup>
+    <Report Include="IntestazioneModelloDomanda.rdl" />
+    <Report Include="rptAcquisizioneEsitoRicorso.rdl" />
+    <Report Include="rptAntimafia.rdl" />
+    <Report Include="rptAutovalutazioneValidazione.rdl" />
+    <Report Include="rptBando.rdl" />
+    <Report Include="rptBandoPagamento.rdl" />
+    <Report Include="rptBandoPagamentoAll.rdl" />
+    <Report Include="rptBandoVariante.rdl" />
+    <Report Include="rptBusinessPlan_BilancioIndustriale.rdl" />
+    <Report Include="rptBusinessPlan_BilancioIndustrialePrevisionale.rdl" />
+    <Report Include="rptBusinessPlan_Descrizione.rdl" />
+    <Report Include="rptBusinessPlan_Fatturato.rdl" />
+    <Report Include="rptBusinessPlan_LocalizzazioneProgetto.rdl" />
+    <Report Include="rptBusinessPlan_MateriePrime.rdl" />
+    <Report Include="rptBusinessPlan_MonitoraggioFesr.rdl" />
+    <Report Include="rptBusinessPlan_PianoColturale.rdl" />
+    <Report Include="rptBusinessPlan_PlvAnnoCorrente.rdl" />
+    <Report Include="rptBusinessPlan_PlvPagamento.rdl" />
+    <Report Include="rptBusinessPlan_PlvPostInvestimento.rdl" />
+    <Report Include="rptBusinessPlan_ProdottiTrasformati.rdl" />
+    <Report Include="rptBusinessPlan_TerreniConduzione.rdl" />
+    <Report Include="rptBusinessPlan_ValutazionePianoSviluppo.rdl" />
+    <Report Include="rptCertificazioneAnomalieQuietanza.rdl" />
+    <Report Include="rptCertificazioneAnticipiDettaglio.rdl" />
+    <Report Include="rptCertificazioneConti.rdl" />
+    <Report Include="rptCertificazioneContiAppendice1Dettaglio.rdl" />
+    <Report Include="rptCertificazioneContiAppendice2Dettaglio.rdl" />
+    <Report Include="rptCertificazioneContiAppendice3Dettaglio.rdl" />
+    <Report Include="rptCertificazioneContiAppendice4Dettaglio.rdl" />
+    <Report Include="rptCertificazioneContiAppendice5Dettaglio.rdl" />
+    <Report Include="rptCertificazioneContiAppendice6Dettaglio.rdl" />
+    <Report Include="rptCertificazioneContiAppendice7Dettaglio.rdl" />
+    <Report Include="rptCertificazioneContiAppendice8Dettaglio.rdl" />
+    <Report Include="rptCertificazioneDiRendicontazioneXLS.rdl" />
+    <Report Include="rptCertificazioneQuietanze.rdl" />
+    <Report Include="rptCertificazioneSpesaDettaglio.rdl" />
+    <Report Include="rptCertificazioneSpesaDettaglioDelta.rdl" />
+    <Report Include="rptCertificazioneSpesaLotto.rdl" />
+    <Report Include="rptCertificazioneSpesaProgramma.rdl" />
+    <Report Include="rptCertificazioneSpeseDettaglio.rdl" />
+    <Report Include="rptCertificazioneStrumentiFinanziariDettaglio.rdl" />
+    <Report Include="rptCertificazioniRiepilogoSpesa.rdl" />
+    <Report Include="rptChecklist.rdl" />
+    <Report Include="rptChecklistControlliLoco.rdl" />
+    <Report Include="RptChecklistPagamento.rdl" />
+    <Report Include="RptChecklistPagamentoFem.rdl" />
+    <Report Include="RptChecklistPagamentoRettificaSaldo.rdl" />
+    <Report Include="rptChecklistRevisione.rdl" />
+    <Report Include="rptChecklistRevisionePagamento.rdl" />
+    <Report Include="rptChecklistXStep.rdl" />
+    <Report Include="rptCntrLocoDettaglio.rdl" />
+    <Report Include="rptComunicazioneAvvioLavori.rdl" />
+    <Report Include="rptComunicazioneCertificazione.rdl" />
+    <Report Include="rptComunicazioneDomandaPagamento.rdl" />
+    <Report Include="rptComunicazioneEsitoIstruttorio.rdl" />
+    <Report Include="rptComunicazioneFinanziabilita.rdl" />
+    <Report Include="rptComunicazioneMassivaGenerica.rdl" />
+    <Report Include="RptComunicazioneNonAmmissibilita.rdl" />
+    <Report Include="rptComunicazioneNonFinanziabilita.rdl" />
+    <Report Include="rptComunicazioneRichiestaIntegrazioniDomandaDiPagamento.rdl" />
+    <Report Include="rptComunicazioneRispostaIntegrazioniDomandaDiPagamento.rdl" />
+    <Report Include="rptComunicazioneVariante.rdl" />
+    <Report Include="rptComunicazionGenerica.rdl" />
+    <Report Include="rptComunicazionGenericaBeneficiario.rdl" />
+    <Report Include="rptContrattiFem.rdl" />
+    <Report Include="rptControlliSecondoLivello.rdl" />
+    <Report Include="rptCovidAnagrafica.rdl" />
+    <Report Include="rptCovidAutocertificazioneDichiarazioni.rdl" />
+    <Report Include="rptCovidAutocertificazioneRequisiti.rdl" />
+    <Report Include="rptCovidAutodichiarazione.rdl" />
+    <Report Include="rptCovidContatti.rdl" />
+    <Report Include="rptCovidDomanda.rdl" />
+    <Report Include="rptCovidDomanda_Modello.rdl" />
+    <Report Include="rptCovidDomanda_SIGEF_472.rdl" />
+    <Report Include="rptCovidDomanda_Sviluppo_47.rdl" />
+    <Report Include="rptCovidDomanda_Test_217.rdl" />
+    <Report Include="rptCovidEstrazioneBando420.rdl" />
+    <Report Include="rptCovidEstrazioneBando421.rdl" />
+    <Report Include="rptCovidEstrazioneBando422.rdl" />
+    <Report Include="rptCovidEstrazioneBando423.rdl" />
+    <Report Include="rptCovidEstrazioneBando424.rdl" />
+    <Report Include="rptCovidEstrazioneBando425.rdl" />
+    <Report Include="rptCovidEstrazioneBando426.rdl" />
+    <Report Include="rptCovidEstrazioneBando427.rdl" />
+    <Report Include="rptCovidEstrazioneBando428.rdl" />
+    <Report Include="rptCovidEstrazioneBando429.rdl" />
+    <Report Include="rptCovidEstrazioneBando430.rdl" />
+    <Report Include="rptCovidEstrazioneBando458.rdl" />
+    <Report Include="rptCovidEstrazioneBando459.rdl" />
+    <Report Include="rptCovidEstrazioneBando472.rdl" />
+    <Report Include="rptCovidEstrazioneRagioneriaGiuridiche.rdl" />
+    <Report Include="rptCovidEstrazioneRagioneriaIndividuali.rdl" />
+    <Report Include="rptCovidFrontespizio.rdl" />
+    <Report Include="rptCovidLiquidazioni.rdl" />
+    <Report Include="rptCovidLiquidazioni2.rdl" />
+    <Report Include="rptCovidLocalizzazione.rdl" />
+    <Report Include="rptCovidMarcaDaBollo.rdl" />
+    <Report Include="rptCovidPianoInvestimenti.rdl" />
+    <Report Include="rptCovidPrivacy.rdl" />
+    <Report Include="rptCruscottoAssi.rdl" />
+    <Report Include="rptDecretiPagamento.rdl" />
+    <Report Include="RptDomandaPagamento.rdl" />
+    <Report Include="RptDomandaPagamentoFem.rdl" />
+    <Report Include="rptErogazioneFem.rdl" />
+    <Report Include="rptEsitoIstruttorio.rdl" />
+    <Report Include="rptEstrazioneAsseXls.rdl" />
+    <Report Include="rptEstrazioneBandiProgettiXAsseXls.rdl" />
+    <Report Include="rptEstrazioneBeneficiariXls.rdl" />
+    <Report Include="rptEstrazioneBeneficiariXlsProvvisori.rdl" />
+    <Report Include="rptEstrazioneContrattiFemArtigiancassaXls.rdl" />
+    <Report Include="rptEstrazioneContrattiFemFondoConfidiXls.rdl" />
+    <Report Include="rptEstrazioneContrattiFemFondoCovidPocXls.rdl" />
+    <Report Include="rptEstrazioneContrattiFemFondoCovidXls.rdl" />
+    <Report Include="rptEstrazioneErogazioneContrattiFemXls.rdl" />
+    <Report Include="rptEstrazioneProgettiXls.rdl" />
+    <Report Include="rptEstrazioneProgettiXlsProvvisori.rdl" />
+    <Report Include="rptEstrazioneRupValidatoriXls.rdl" />
+    <Report Include="rptFrontespizio.rdl" />
+    <Report Include="rptGantt_CertificabilePerAnno.rdl" />
+    <Report Include="rptGantt_CertificabilePerAnnoXls.rdl" />
+    <Report Include="rptGantt_StepRitardo.rdl" />
+    <Report Include="rptGantt_UltimoAggiornamento.rdl" />
+    <Report Include="rptGestioneRichiestaConsulente.rdl" />
+    <Report Include="rptGestioneRichiestaProcura.rdl" />
+    <Report Include="rptGraduatoria.rdl" />
+    <Report Include="rptGraduatoriaIndividuale.rdl" />
+    <Report Include="rptGraduatoriaxls.rdl" />
+    <Report Include="rptImportiCertificati.rdl" />
+    <Report Include="rptIN01_Output.rdl" />
+    <Report Include="rptIN01_Output_2127.rdl" />
+    <Report Include="rptIntegrazioniSingoleDomandaPerBeneficiario.rdl" />
+    <Report Include="rptIntegrazioniSingoleDomandaPerIstruttore.rdl" />
+    <Report Include="rptInvestimentoOriginale.rdl" />
+    <Report Include="rptIrregolarita.rdl" />
+    <Report Include="RptIstruttoriaDomande.rdl" />
+    <Report Include="rptIstruttoriaSpeseSostenute.rdl" />
+    <Report Include="rptIstruttoriaVariante.rdl" />
+    <Report Include="rptLogErroriTrasmissioneIgrue.rdl" />
+    <Report Include="rptLottiChecklistControlliLoco.rdl" />
+    <Report Include="rptModelloDomanda.rdl" />
+    <Report Include="RptNonRicevibilita.rdl" />
+    <Report Include="rptPianoInvestimenti.rdl" />
+    <Report Include="rptPianoInvestimentiBeneficiario.rdl" />
+    <Report Include="rptPistaControlloFem.rdl" />
+    <Report Include="rptPistaControlloFinanziario.rdl" />
+    <Report Include="rptPisteControllo.rdl" />
+    <Report Include="rptPolizza.rdl" />
+    <Report Include="rptPolizzaImpresa.rdl" />
+    <Report Include="rptPrevisioneCertificabili.rdl" />
+    <Report Include="rptProvvedimentoNonAmmissibilita.rdl" />
+    <Report Include="rptQuadroA.rdl" />
+    <Report Include="rptQuadroB.rdl" />
+    <Report Include="rptQuadroC.rdl" />
+    <Report Include="rptQuadroChecklistGenerica.rdl" />
+    <Report Include="rptQuadroChecklistScheda.rdl" />
+    <Report Include="rptQuadroD.rdl" />
+    <Report Include="rptQuadroE.rdl" />
+    <Report Include="rptQuadroI.rdl" />
+    <Report Include="rptQuadroInsediamentoPlurimo.rdl" />
+    <Report Include="rptQuadroK.rdl" />
+    <Report Include="rptQuadroP.rdl" />
+    <Report Include="rptQuadroProduzioneStandardAnte.rdl" />
+    <Report Include="rptQuadroProduzioneStandardPost.rdl" />
+    <Report Include="rptQuadroR.rdl" />
+    <Report Include="rptQuadroRI.rdl" />
+    <Report Include="rptQuadroRIsub.rdl" />
+    <Report Include="rptQuadroS.rdl" />
+    <Report Include="rptQuadroSoci.rdl" />
+    <Report Include="rptQuadroT.rdl" />
+    <Report Include="rptRapportoIstruttorio.rdl" />
+    <Report Include="rptRegistroControlli.rdl" />
+    <Report Include="rptRegistroRecuperiRitiri.rdl" />
+    <Report Include="rptRegistroRitiri.rdl" />
+    <Report Include="rptRicercaGeneraleDomande.rdl" />
+    <Report Include="rptRicercaGeneraleDomandeOperePubbliche.rdl" />
+    <Report Include="rptRicevutaProtocollazioneDomandaPagamento.rdl" />
+    <Report Include="rptRicevutaProtocollazioneVariante.rdl" />
+    <Report Include="rptRichiestaCertificazione.rdl" />
+    <Report Include="rptRichiestaConsulente.rdl" />
+    <Report Include="rptRichiestaDocumentazioneIntegrativa.rdl" />
+    <Report Include="rptRichiestaProcura.rdl" />
+    <Report Include="rptRichiestaProfilazione.rdl" />
+    <Report Include="rptRichiestaValiditaGaranzia.rdl" />
+    <Report Include="rptRichiestaValiditaGaranziaImpresa.rdl" />
+    <Report Include="rptRnaCovidDettaglio.rdl" />
+    <Report Include="rptVariante.rdl" />
+    <Report Include="rptVerbaleControlloInLoco.rdl" />
+    <Report Include="rptVerbaleValutazioneDomanda.rdl" />
+    <Report Include="rptVerbaleValutazioneVariante.rdl" />
+    <Report Include="rptVerbaleVIS.rdl" />
+    <Report Include="SubReportAnagraficaXRicevutaProtocollazione.rdl" />
+    <Report Include="SubReportAntimafia.rdl" />
+    <Report Include="SubReportCertificazioneSpesaAnticipi.rdl" />
+    <Report Include="SubReportCertificazioneSpesaStrumentiFinanziari.rdl" />
+    <Report Include="SubReportCertificazioneSpesaXAsse.rdl" />
+    <Report Include="SubReportDettaglioInvestimentiDP.rdl" />
+    <Report Include="SubReportDettaglioInvestimentiIstruttoriaDP.rdl" />
+    <Report Include="SubReportDettaglioInvestimentiIstruttoriaDPFem.rdl" />
+    <Report Include="SubReportDettaglioInvestimentiIstruttoriaDPRettificaSaldo.rdl" />
+    <Report Include="SubReportDettaglioInvestimentoVariante.rdl" />
+    <Report Include="SubReportEstrazioneErogazioneFemDecreti.rdl" />
+    <Report Include="SubReportFascicoloAziendale.rdl" />
+    <Report Include="SubReportFidejussione.rdl" />
+    <Report Include="SubReportInvAmmesso.rdl" />
+    <Report Include="SubReportInvOriginale.rdl" />
+    <Report Include="SubReportLiquidazione.rdl" />
+    <Report Include="SubReportPistaControlloFem.rdl" />
+    <Report Include="SubReportPistaControlloFemVoce.rdl" />
+    <Report Include="SubReportPistaControlloFemVoceValore.rdl" />
+    <Report Include="SubReportPistaControlloFinanziarioControlliAda.rdl" />
+    <Report Include="SubReportPistaControlloFinanziarioDecretiContributo.rdl" />
+    <Report Include="SubReportPistaControlloFinanziarioEventualiDecertificazioni.rdl" />
+    <Report Include="SubReportPistaControlloFinanziarioGiustificativiSpese.rdl" />
+    <Report Include="SubReportPisteControlloDomandePagDecreti.rdl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
+</Project>

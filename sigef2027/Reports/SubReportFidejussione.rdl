@@ -1,0 +1,1507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="SIGEF_TEST">
+      <DataSourceReference>SIGEF</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>1e13e95d-c4cc-4c4a-b25a-bfec3c185609</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DSPagamentoFidejussioniImpresa">
+      <Query>
+        <DataSourceName>SIGEF_TEST</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdDomandaPagamentoFidejussioneImpresa">
+            <Value>=Parameters!IdDomandaPagamentoFidejussioneImpresa.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT
+  vIMPRESA.ID_IMPRESA AS [vIMPRESA ID_IMPRESA]
+  ,vIMPRESA.CUAA
+  ,vIMPRESA.CODICE_FISCALE
+  ,vIMPRESA.RAGIONE_SOCIALE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.ID_DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.ID_DOMANDA_PAGAMENTO_FIDEJUSSIONE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.ID_DOMANDA_PAGAMENTO
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.ID_PROGETTO
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.ID_IMPRESA AS [DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA ID_IMPRESA]
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.IMPORTO
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.AMMONTARE_RICHIESTO
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.DATA_FINE_LAVORI
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.DATA_SCADENZA
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.STAMPATO
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.NUMERO
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.DATA_SOTTOSCRIZIONE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.LUOGO_SOTTOSCRIZIONE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.PIVA_GARANTE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.RAGIONE_SOCIALE_GARANTE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.LOCALITA_GARANTE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.NUMERO_REGISTRO_IMPRESE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.COGNOME_RAPPLEGALE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.NOME_RAPPLEGALE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.CF_RAPPLEGALE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.DATA_NASCITA_RAPPLEGALE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.STAMPA_EFFETTUATA
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.DATA_RICHIESTA_VALIDITA
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.DATA_RICEVIMENTO_VALIDITA
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.PROTOCOLLO_FAX_VALIDITA
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.DATA_DECORRENZA_GARANZIA
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.CODICE_ABI_ENTE_GARANTE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.CODICE_CAB_ENTE_GARANTE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.COD_TIPO
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.UFFICIO_APPROVAZIONE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.NUM_DECRETO_APPROVAZIONE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.DATA_DECRETO_APPROVAZIONE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.ESENTE
+  ,DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.NO_ANTICIPO
+FROM
+  DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA
+  INNER JOIN vIMPRESA
+    ON DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.ID_IMPRESA = vIMPRESA.ID_IMPRESA
+WHERE DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA.ID_DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA = @IdDomandaPagamentoFidejussioneImpresa</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational">
+            <AutoJoin>False</AutoJoin>
+            <SelectedColumns>
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="ID_IMPRESA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="CUAA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="CODICE_FISCALE" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="RAGIONE_SOCIALE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="ID_DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="ID_DOMANDA_PAGAMENTO_FIDEJUSSIONE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="ID_DOMANDA_PAGAMENTO" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="ID_PROGETTO" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="ID_IMPRESA" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="IMPORTO" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="AMMONTARE_RICHIESTO" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="DATA_FINE_LAVORI" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="DATA_SCADENZA" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="STAMPATO" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="NUMERO" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="DATA_SOTTOSCRIZIONE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="LUOGO_SOTTOSCRIZIONE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="PIVA_GARANTE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="RAGIONE_SOCIALE_GARANTE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="LOCALITA_GARANTE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="NUMERO_REGISTRO_IMPRESE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="COGNOME_RAPPLEGALE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="NOME_RAPPLEGALE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="CF_RAPPLEGALE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="DATA_NASCITA_RAPPLEGALE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="STAMPA_EFFETTUATA" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="DATA_RICHIESTA_VALIDITA" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="DATA_RICEVIMENTO_VALIDITA" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="PROTOCOLLO_FAX_VALIDITA" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="DATA_DECORRENZA_GARANZIA" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="CODICE_ABI_ENTE_GARANTE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="CODICE_CAB_ENTE_GARANTE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="COD_TIPO" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="UFFICIO_APPROVAZIONE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="NUM_DECRETO_APPROVAZIONE" />
+              <ColumnExpression ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="DATA_DECRETO_APPROVAZIONE" />
+            </SelectedColumns>
+            <Joins>
+              <Join Type="CROSS JOIN" ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" />
+              <Join Type="INNER JOIN" ColumnOwner="vIMPRESA">
+                <On>
+                  <From ColumnOwner="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA" ColumnName="ID_IMPRESA" />
+                  <To ColumnOwner="vIMPRESA" ColumnName="ID_IMPRESA" />
+                </On>
+              </Join>
+            </Joins>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="vIMPRESA_ID_IMPRESA">
+          <DataField>vIMPRESA ID_IMPRESA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CUAA">
+          <DataField>CUAA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CODICE_FISCALE">
+          <DataField>CODICE_FISCALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RAGIONE_SOCIALE">
+          <DataField>RAGIONE_SOCIALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID_DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA">
+          <DataField>ID_DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ID_DOMANDA_PAGAMENTO_FIDEJUSSIONE">
+          <DataField>ID_DOMANDA_PAGAMENTO_FIDEJUSSIONE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ID_DOMANDA_PAGAMENTO">
+          <DataField>ID_DOMANDA_PAGAMENTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ID_PROGETTO">
+          <DataField>ID_PROGETTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA_ID_IMPRESA">
+          <DataField>DOMANDA_PAGAMENTO_FIDEJUSSIONE_IMPRESA ID_IMPRESA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IMPORTO">
+          <DataField>IMPORTO</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AMMONTARE_RICHIESTO">
+          <DataField>AMMONTARE_RICHIESTO</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DATA_FINE_LAVORI">
+          <DataField>DATA_FINE_LAVORI</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DATA_SCADENZA">
+          <DataField>DATA_SCADENZA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="STAMPATO">
+          <DataField>STAMPATO</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="NUMERO">
+          <DataField>NUMERO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_SOTTOSCRIZIONE">
+          <DataField>DATA_SOTTOSCRIZIONE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LUOGO_SOTTOSCRIZIONE">
+          <DataField>LUOGO_SOTTOSCRIZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PIVA_GARANTE">
+          <DataField>PIVA_GARANTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RAGIONE_SOCIALE_GARANTE">
+          <DataField>RAGIONE_SOCIALE_GARANTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LOCALITA_GARANTE">
+          <DataField>LOCALITA_GARANTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NUMERO_REGISTRO_IMPRESE">
+          <DataField>NUMERO_REGISTRO_IMPRESE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COGNOME_RAPPLEGALE">
+          <DataField>COGNOME_RAPPLEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NOME_RAPPLEGALE">
+          <DataField>NOME_RAPPLEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CF_RAPPLEGALE">
+          <DataField>CF_RAPPLEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_NASCITA_RAPPLEGALE">
+          <DataField>DATA_NASCITA_RAPPLEGALE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="STAMPA_EFFETTUATA">
+          <DataField>STAMPA_EFFETTUATA</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="DATA_RICHIESTA_VALIDITA">
+          <DataField>DATA_RICHIESTA_VALIDITA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DATA_RICEVIMENTO_VALIDITA">
+          <DataField>DATA_RICEVIMENTO_VALIDITA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="PROTOCOLLO_FAX_VALIDITA">
+          <DataField>PROTOCOLLO_FAX_VALIDITA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_DECORRENZA_GARANZIA">
+          <DataField>DATA_DECORRENZA_GARANZIA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CODICE_ABI_ENTE_GARANTE">
+          <DataField>CODICE_ABI_ENTE_GARANTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CODICE_CAB_ENTE_GARANTE">
+          <DataField>CODICE_CAB_ENTE_GARANTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_TIPO">
+          <DataField>COD_TIPO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="UFFICIO_APPROVAZIONE">
+          <DataField>UFFICIO_APPROVAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NUM_DECRETO_APPROVAZIONE">
+          <DataField>NUM_DECRETO_APPROVAZIONE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DATA_DECRETO_APPROVAZIONE">
+          <DataField>DATA_DECRETO_APPROVAZIONE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ESENTE">
+          <DataField>ESENTE</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="NO_ANTICIPO">
+          <DataField>NO_ANTICIPO</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Rectangle Name="Rectangle1">
+            <ReportItems>
+              <Rectangle Name="Rectangle2">
+                <ReportItems>
+                  <Textbox Name="textbox60">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Luogo Sottoscrizione</Value>
+                            <Style>
+                              <FontStyle>Italic</FontStyle>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>0.18521cm</Top>
+                    <Left>0.0097cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>11.32208cm</Width>
+                    <Style>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox58">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=First(Fields!LUOGO_SOTTOSCRIZIONE.Value, "DSPagamentoFidejussioniImpresa")</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>0.68521cm</Top>
+                    <Left>0.0097cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>11.32208cm</Width>
+                    <ZIndex>1</ZIndex>
+                    <Style>
+                      <BottomBorder>
+                        <Style>Solid</Style>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Style>Solid</Style>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Style>Solid</Style>
+                      </RightBorder>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox57">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Dati anagrafici dell'ente garante</Value>
+                            <Style>
+                              <FontSize>11pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>1.52882cm</Top>
+                    <Left>0.0097cm</Left>
+                    <Height>0.48389cm</Height>
+                    <Width>18.0275cm</Width>
+                    <ZIndex>2</ZIndex>
+                    <Style>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox63">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>P. Iva</Value>
+                            <Style>
+                              <FontStyle>Italic</FontStyle>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>2.15382cm</Top>
+                    <Left>0.0097cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>7.25cm</Width>
+                    <ZIndex>3</ZIndex>
+                    <Style>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox62">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Denominazione</Value>
+                            <Style>
+                              <FontStyle>Italic</FontStyle>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>2.15382cm</Top>
+                    <Left>7.7597cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>10.75cm</Width>
+                    <ZIndex>4</ZIndex>
+                    <Style>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox61">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=First(Fields!PIVA_GARANTE.Value, "DSPagamentoFidejussioniImpresa")</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>2.65382cm</Top>
+                    <Left>0.0097cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>4cm</Width>
+                    <ZIndex>5</ZIndex>
+                    <Style>
+                      <BottomBorder>
+                        <Style>Solid</Style>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Style>Solid</Style>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Style>Solid</Style>
+                      </RightBorder>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox59">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=First(Fields!RAGIONE_SOCIALE_GARANTE.Value, "DSPagamentoFidejussioniImpresa")</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>2.65382cm</Top>
+                    <Left>7.7597cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>10.75cm</Width>
+                    <ZIndex>6</ZIndex>
+                    <Style>
+                      <BottomBorder>
+                        <Style>Solid</Style>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Style>Solid</Style>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Style>Solid</Style>
+                      </RightBorder>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox67">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Numero registro imprese</Value>
+                            <Style>
+                              <FontStyle>Italic</FontStyle>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>3.40382cm</Top>
+                    <Left>0.0097cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>7.25cm</Width>
+                    <ZIndex>7</ZIndex>
+                    <Style>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox66">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Località</Value>
+                            <Style>
+                              <FontStyle>Italic</FontStyle>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>3.40382cm</Top>
+                    <Left>7.7597cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>10.75cm</Width>
+                    <ZIndex>8</ZIndex>
+                    <Style>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox65">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=First(Fields!NUMERO_REGISTRO_IMPRESE.Value, "DSPagamentoFidejussioniImpresa")</Value>
+                            <Style>
+                              <FontSize>11pt</FontSize>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>3.90382cm</Top>
+                    <Left>0.0097cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>4cm</Width>
+                    <ZIndex>9</ZIndex>
+                    <Style>
+                      <BottomBorder>
+                        <Style>Solid</Style>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Style>Solid</Style>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Style>Solid</Style>
+                      </RightBorder>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox64">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=First(Fields!LOCALITA_GARANTE.Value, "DSPagamentoFidejussioniImpresa")</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>3.90382cm</Top>
+                    <Left>7.7597cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>10.75cm</Width>
+                    <ZIndex>10</ZIndex>
+                    <Style>
+                      <BottomBorder>
+                        <Style>Solid</Style>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Style>Solid</Style>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Style>Solid</Style>
+                      </RightBorder>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox71">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Nome Rappresentante Legale</Value>
+                            <Style>
+                              <FontStyle>Italic</FontStyle>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>4.65382cm</Top>
+                    <Left>0.0097cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>7.25cm</Width>
+                    <ZIndex>11</ZIndex>
+                    <Style>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox70">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Cognome Rappresentante Legale</Value>
+                            <Style>
+                              <FontStyle>Italic</FontStyle>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>4.65382cm</Top>
+                    <Left>7.7597cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>10.75cm</Width>
+                    <ZIndex>12</ZIndex>
+                    <Style>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox69">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=First(Fields!NOME_RAPPLEGALE.Value, "DSPagamentoFidejussioniImpresa")</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>5.15382cm</Top>
+                    <Left>0.0097cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>7.25cm</Width>
+                    <ZIndex>13</ZIndex>
+                    <Style>
+                      <BottomBorder>
+                        <Style>Solid</Style>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Style>Solid</Style>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Style>Solid</Style>
+                      </RightBorder>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox68">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=First(Fields!COGNOME_RAPPLEGALE.Value, "DSPagamentoFidejussioniImpresa")</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>5.15382cm</Top>
+                    <Left>7.7597cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>10.75cm</Width>
+                    <ZIndex>14</ZIndex>
+                    <Style>
+                      <BottomBorder>
+                        <Style>Solid</Style>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Style>Solid</Style>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Style>Solid</Style>
+                      </RightBorder>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox75">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Data di Nascita</Value>
+                            <Style>
+                              <FontStyle>Italic</FontStyle>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>5.90382cm</Top>
+                    <Left>0.0097cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>7.25cm</Width>
+                    <ZIndex>15</ZIndex>
+                    <Style>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox74">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Codice Fiscale</Value>
+                            <Style>
+                              <FontStyle>Italic</FontStyle>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>5.90382cm</Top>
+                    <Left>7.7597cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>10.75cm</Width>
+                    <ZIndex>16</ZIndex>
+                    <Style>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox73">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=Format(First(Fields!DATA_NASCITA_RAPPLEGALE.Value, "DSPagamentoFidejussioniImpresa"), "dd/MM/yyyy")</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>6.40382cm</Top>
+                    <Left>0.0097cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>3.75cm</Width>
+                    <ZIndex>17</ZIndex>
+                    <Style>
+                      <BottomBorder>
+                        <Style>Solid</Style>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Style>Solid</Style>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Style>Solid</Style>
+                      </RightBorder>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <Textbox Name="textbox72">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=First(Fields!CF_RAPPLEGALE.Value, "DSPagamentoFidejussioniImpresa")</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Top>6.40382cm</Top>
+                    <Left>7.7597cm</Left>
+                    <Height>0.5cm</Height>
+                    <Width>4.75cm</Width>
+                    <ZIndex>18</ZIndex>
+                    <Style>
+                      <BottomBorder>
+                        <Style>Solid</Style>
+                      </BottomBorder>
+                      <LeftBorder>
+                        <Style>Solid</Style>
+                      </LeftBorder>
+                      <RightBorder>
+                        <Style>Solid</Style>
+                      </RightBorder>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </ReportItems>
+                <Top>1.74267in</Top>
+                <Left>0.0337cm</Left>
+                <Height>2.77849in</Height>
+                <Width>7.33192in</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+              </Rectangle>
+              <Textbox Name="textbox42">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Importo garantito</Value>
+                        <Style>
+                          <FontStyle>Italic</FontStyle>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox42</rd:DefaultName>
+                <Top>0.75cm</Top>
+                <Left>0.03855cm</Left>
+                <Height>0.5cm</Height>
+                <Width>4cm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox43">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Ammontare richiesto </Value>
+                        <Style>
+                          <FontStyle>Italic</FontStyle>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox43</rd:DefaultName>
+                <Top>0.75cm</Top>
+                <Left>4.39876cm</Left>
+                <Height>0.5cm</Height>
+                <Width>4.5cm</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox45">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=FormatCurrency(First(Fields!IMPORTO.Value, "DSPagamentoFidejussioniImpresa"), 2)</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>1.25cm</Top>
+                <Left>0.03855cm</Left>
+                <Height>0.5cm</Height>
+                <Width>4cm</Width>
+                <ZIndex>3</ZIndex>
+                <Style>
+                  <BottomBorder>
+                    <Style>Solid</Style>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Style>Solid</Style>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox46">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=FormatCurrency(First(Fields!AMMONTARE_RICHIESTO.Value, "DSPagamentoFidejussioniImpresa"), 2)</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Right</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>1.25cm</Top>
+                <Left>4.39876cm</Left>
+                <Height>0.5cm</Height>
+                <Width>4.5cm</Width>
+                <ZIndex>4</ZIndex>
+                <Style>
+                  <BottomBorder>
+                    <Style>Solid</Style>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Style>Solid</Style>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox53">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Data fine lavori</Value>
+                        <Style>
+                          <FontStyle>Italic</FontStyle>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>2cm</Top>
+                <Left>0.03855cm</Left>
+                <Height>0.5cm</Height>
+                <Width>4cm</Width>
+                <ZIndex>5</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox52">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Data scadenza garanzia</Value>
+                        <Style>
+                          <FontStyle>Italic</FontStyle>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>2cm</Top>
+                <Left>4.39876cm</Left>
+                <Height>0.5cm</Height>
+                <Width>4.5cm</Width>
+                <ZIndex>6</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox50">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Format(First(Fields!DATA_FINE_LAVORI.Value, "DSPagamentoFidejussioniImpresa"), "dd/MM/yyyy")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>2.5cm</Top>
+                <Left>0.03855cm</Left>
+                <Height>0.5cm</Height>
+                <Width>4cm</Width>
+                <ZIndex>7</ZIndex>
+                <Style>
+                  <BottomBorder>
+                    <Style>Solid</Style>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Style>Solid</Style>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox49">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Format(First(Fields!DATA_SCADENZA.Value, "DSPagamentoFidejussioniImpresa"), "dd/MM/yyyy")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>2.5cm</Top>
+                <Left>4.39876cm</Left>
+                <Height>0.5cm</Height>
+                <Width>4.5cm</Width>
+                <ZIndex>8</ZIndex>
+                <Style>
+                  <BottomBorder>
+                    <Style>Solid</Style>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Style>Solid</Style>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox56">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Numero</Value>
+                        <Style>
+                          <FontStyle>Italic</FontStyle>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>3.25cm</Top>
+                <Left>0.03855cm</Left>
+                <Height>0.5cm</Height>
+                <Width>4cm</Width>
+                <ZIndex>9</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox55">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Data sottoscrizione</Value>
+                        <Style>
+                          <FontStyle>Italic</FontStyle>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>3.25cm</Top>
+                <Left>4.39876cm</Left>
+                <Height>0.5cm</Height>
+                <Width>4.5cm</Width>
+                <ZIndex>10</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox54">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!NUMERO.Value, "DSPagamentoFidejussioniImpresa")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>3.75cm</Top>
+                <Left>0.03855cm</Left>
+                <Height>0.5cm</Height>
+                <Width>4cm</Width>
+                <ZIndex>11</ZIndex>
+                <Style>
+                  <BottomBorder>
+                    <Style>Solid</Style>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Style>Solid</Style>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox51">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Format(First(Fields!DATA_SOTTOSCRIZIONE.Value, "DSPagamentoFidejussioniImpresa"), "dd/MM/yyyy")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Top>3.75cm</Top>
+                <Left>4.39876cm</Left>
+                <Height>0.5cm</Height>
+                <Width>4.5cm</Width>
+                <ZIndex>12</ZIndex>
+                <Style>
+                  <BottomBorder>
+                    <Style>Solid</Style>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Style>Solid</Style>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox3">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>="DATI FIDEJUSSIONE "+First(Fields!RAGIONE_SOCIALE.Value, "DSPagamentoFidejussioniImpresa")</Value>
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Height>0.63492cm</Height>
+                <Width>18.06605cm</Width>
+                <ZIndex>13</ZIndex>
+                <Style>
+                  <BackgroundColor>Black</BackgroundColor>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Height>11.69272cm</Height>
+            <Width>18.65679cm</Width>
+            <Visibility>
+              <Hidden>=IIF(First(Fields!ESENTE.Value, "DSPagamentoFidejussioniImpresa")= True OR First(Fields!NO_ANTICIPO.Value, "DSPagamentoFidejussioniImpresa")= True,True,False)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Rectangle Name="Rectangle3">
+            <ReportItems>
+              <Textbox Name="textbox44">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Beneficiario esente dalla presentazione di polizza fidejussoria</Value>
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox42</rd:DefaultName>
+                <Top>0.75cm</Top>
+                <Left>0.03855cm</Left>
+                <Height>0.60583cm</Height>
+                <Width>16.56771cm</Width>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox4">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>="DATI FIDEJUSSIONE " + First(Fields!RAGIONE_SOCIALE.Value, "DSPagamentoFidejussioniImpresa")</Value>
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Height>0.63492cm</Height>
+                <Width>18.06605cm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <BackgroundColor>Black</BackgroundColor>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>11.8745cm</Top>
+            <Height>1.42689cm</Height>
+            <Width>18.06605cm</Width>
+            <ZIndex>1</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(First(Fields!ESENTE.Value, "DSPagamentoFidejussioniImpresa")= True,False,True)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Rectangle Name="Rectangle4">
+            <ReportItems>
+              <Textbox Name="textbox47">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Beneficiario non richiedente anticipo</Value>
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox42</rd:DefaultName>
+                <Top>0.75cm</Top>
+                <Left>0.03855cm</Left>
+                <Height>0.60583cm</Height>
+                <Width>16.56771cm</Width>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox5">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>="DATI FIDEJUSSIONE " + First(Fields!RAGIONE_SOCIALE.Value, "DSPagamentoFidejussioniImpresa")</Value>
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Height>0.63492cm</Height>
+                <Width>18.06605cm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <BackgroundColor>Black</BackgroundColor>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>13.4425cm</Top>
+            <Left>0.0337cm</Left>
+            <Height>1.42689cm</Height>
+            <Width>18.06605cm</Width>
+            <ZIndex>2</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(First(Fields!NO_ANTICIPO.Value, "DSPagamentoFidejussioniImpresa") = True, False, True)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+        </ReportItems>
+        <Height>15.08997cm</Height>
+        <Style />
+      </Body>
+      <Width>18.65679cm</Width>
+      <Page>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>1cm</LeftMargin>
+        <RightMargin>1cm</RightMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
+        <ColumnSpacing>1.27cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="IdDomandaPagamentoFidejussioneImpresa">
+      <DataType>String</DataType>
+      <Prompt>IdDomandaPagamentoFidejussioneImpresa</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>1</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>IdDomandaPagamentoFidejussioneImpresa</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <Language>it-IT</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>303a6036-c29b-45f1-9fea-5a9d465eb2c5</rd:ReportID>
+</Report>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://rnas.infocamere.it" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://webServices.raseWeb.rase.rnas.infocamere.it/" name="RnasServiceImplService" targetNamespace="http://rnas.infocamere.it" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://webServices.raseWeb.rase.rnas.infocamere.it/" location="https://rasecl.infocamere.it/raseWeb/wssoap/rnas?wsdl=RnasService.wsdl" />
+  <wsdl:types />
+  <wsdl:binding name="RnasServiceImplServiceSoapBinding" type="ns1:RnasService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistraAiutoExPost">
+      <soap:operation soapAction="Action" style="document" />
+      <wsdl:input name="RegistraAiutoExPost">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RegistraAiutoExPostResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnnullaConcessioneMassivo">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="AnnullaConcessioneMassivo">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AnnullaConcessioneMassivoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificaVercor">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="VerificaVercor">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VerificaVercorResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ScaricaCertificazione">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="ScaricaCertificazione">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ScaricaCertificazioneResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistraAiuto">
+      <soap:operation soapAction="Action" style="document" />
+      <wsdl:input name="RegistraAiuto">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RegistraAiutoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VariazioneImporto">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="VariazioneImporto">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VariazioneImportoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserisciDeggendorf">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="InserisciDeggendorf">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="InserisciDeggendorfResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfermaVariazioneConcessioneMassivo">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="ConfermaVariazioneConcessioneMassivo">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ConfermaVariazioneConcessioneMassivoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VariazioneSoggettoBeneficiario">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="VariazioneSoggettoBeneficiario">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VariazioneSoggettoBeneficiarioResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ScaricaVisura">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="ScaricaVisura">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ScaricaVisuraResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnnullaVariazioneConcessione">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="AnnullaVariazioneConcessione">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AnnullaVariazioneConcessioneResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReiteraRegistraAiuto">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="ReiteraRegistraAiuto">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReiteraRegistraAiutoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfermaVariazioneConcessione">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="ConfermaVariazioneConcessione">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ConfermaVariazioneConcessioneResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ElencoDeggendorf">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="ElencoDeggendorf">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ElencoDeggendorfResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ScaricaEsitoRichiesta">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="ScaricaEsitoRichiesta">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ScaricaEsitoRichiestaResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RichiediVisuraAiuti">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="RichiediVisuraAiuti">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RichiediVisuraAiutiResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ScaricaVisuraConcessione">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="ScaricaVisuraConcessione">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ScaricaVisuraConcessioneResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperaIdRichiesta">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="RecuperaIdRichiesta">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RecuperaIdRichiestaResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DettaglioAiuto">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="DettaglioAiuto">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DettaglioAiutoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistraAiutoInEmergenza">
+      <soap:operation soapAction="Action" style="document" />
+      <wsdl:input name="RegistraAiutoInEmergenza">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RegistraAiutoInEmergenzaResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RichiediVisuraDeggendorf">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="RichiediVisuraDeggendorf">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RichiediVisuraDeggendorfResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RicercaAiuto">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="RicercaAiuto">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RicercaAiutoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StatoRichiesta">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="StatoRichiesta">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="StatoRichiestaResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RichiediVisuraDeminimis">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="RichiediVisuraDeminimis">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RichiediVisuraDeminimisResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfermaConcessioneMassivo">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="ConfermaConcessioneMassivo">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ConfermaConcessioneMassivoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnnullaConcessione">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="AnnullaConcessione">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AnnullaConcessioneResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnnullaVariazioneConcessioneMassivo">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="AnnullaVariazioneConcessioneMassivo">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AnnullaVariazioneConcessioneMassivoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminaDeggendorf">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="EliminaDeggendorf">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="EliminaDeggendorfResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfermaConcessione">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="ConfermaConcessione">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ConfermaConcessioneResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RnasServiceImplService">
+    <wsdl:port name="rnasWSPort" binding="tns:RnasServiceImplServiceSoapBinding">
+      <soap:address location="https://rasecl.infocamere.it/raseWeb/wssoap/rnas" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[TIPO_CUP_CATEGORIE_TIPIOPERAZIONI] (
+    [COD_CUP_CATEGORIE_TIPIOPERAZIONI] CHAR (4)       NOT NULL,
+    [Natura]                           CHAR (2)       NOT NULL,
+    [Tipologia]                        CHAR (2)       NULL,
+    [Descrizione]                      NVARCHAR (255) NOT NULL,
+    [IdTipoOperazioneQsn]              INT            NULL,
+    [ELIMINATO]                        BIT            NOT NULL,
+    CONSTRAINT [PK_TIPO_CUP_CATEGORIE_TIPIOPERAZIONI] PRIMARY KEY CLUSTERED ([COD_CUP_CATEGORIE_TIPIOPERAZIONI] ASC),
+    CONSTRAINT [FK_TIPO_CUP_CATEGORIE_TIPIOPERAZIONI_TIPO_QSN_TIPO_OPERAZIONE] FOREIGN KEY ([IdTipoOperazioneQsn]) REFERENCES [dbo].[TIPO_QSN_TIPO_OPERAZIONE] ([COD_TIPO_QSN_OPERAZIONE]) ON UPDATE CASCADE
+);
+

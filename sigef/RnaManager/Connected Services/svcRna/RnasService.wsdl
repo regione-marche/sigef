@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://webServices.raseWeb.rase.rnas.infocamere.it/" name="RnasService" targetNamespace="http://webServices.raseWeb.rase.rnas.infocamere.it/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:tns="http://webServices.raseWeb.rase.rnas.infocamere.it/" elementFormDefault="unqualified" targetNamespace="http://webServices.raseWeb.rase.rnas.infocamere.it/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="AnnullaConcessione" type="tns:AnnullaConcessione" />
+      <xs:element name="AnnullaConcessioneMassivo" type="tns:AnnullaConcessioneMassivo" />
+      <xs:element name="AnnullaConcessioneMassivoResponse" type="tns:AnnullaConcessioneMassivoResponse" />
+      <xs:element name="AnnullaConcessioneResponse" type="tns:AnnullaConcessioneResponse" />
+      <xs:element name="AnnullaVariazioneConcessione" type="tns:AnnullaVariazioneConcessione" />
+      <xs:element name="AnnullaVariazioneConcessioneMassivo" type="tns:AnnullaVariazioneConcessioneMassivo" />
+      <xs:element name="AnnullaVariazioneConcessioneMassivoResponse" type="tns:AnnullaVariazioneConcessioneMassivoResponse" />
+      <xs:element name="AnnullaVariazioneConcessioneResponse" type="tns:AnnullaVariazioneConcessioneResponse" />
+      <xs:element name="ConfermaConcessione" type="tns:ConfermaConcessione" />
+      <xs:element name="ConfermaConcessioneMassivo" type="tns:ConfermaConcessioneMassivo" />
+      <xs:element name="ConfermaConcessioneMassivoResponse" type="tns:ConfermaConcessioneMassivoResponse" />
+      <xs:element name="ConfermaConcessioneResponse" type="tns:ConfermaConcessioneResponse" />
+      <xs:element name="ConfermaVariazioneConcessione" type="tns:ConfermaVariazioneConcessione" />
+      <xs:element name="ConfermaVariazioneConcessioneMassivo" type="tns:ConfermaVariazioneConcessioneMassivo" />
+      <xs:element name="ConfermaVariazioneConcessioneMassivoResponse" type="tns:ConfermaVariazioneConcessioneMassivoResponse" />
+      <xs:element name="ConfermaVariazioneConcessioneResponse" type="tns:ConfermaVariazioneConcessioneResponse" />
+      <xs:element name="DettaglioAiuto" type="tns:DettaglioAiuto" />
+      <xs:element name="DettaglioAiutoResponse" type="tns:DettaglioAiutoResponse" />
+      <xs:element name="ElencoDeggendorf" type="tns:ElencoDeggendorf" />
+      <xs:element name="ElencoDeggendorfResponse" type="tns:ElencoDeggendorfResponse" />
+      <xs:element name="EliminaDeggendorf" type="tns:EliminaDeggendorf" />
+      <xs:element name="EliminaDeggendorfResponse" type="tns:EliminaDeggendorfResponse" />
+      <xs:element name="InserisciDeggendorf" type="tns:InserisciDeggendorf" />
+      <xs:element name="InserisciDeggendorfResponse" type="tns:InserisciDeggendorfResponse" />
+      <xs:element name="RecuperaIdRichiesta" type="tns:RecuperaIdRichiesta" />
+      <xs:element name="RecuperaIdRichiestaResponse" type="tns:RecuperaIdRichiestaResponse" />
+      <xs:element name="RegistraAiuto" type="tns:RegistraAiuto" />
+      <xs:element name="RegistraAiutoExPost" type="tns:RegistraAiutoExPost" />
+      <xs:element name="RegistraAiutoExPostResponse" type="tns:RegistraAiutoExPostResponse" />
+      <xs:element name="RegistraAiutoInEmergenza" type="tns:RegistraAiutoInEmergenza" />
+      <xs:element name="RegistraAiutoInEmergenzaResponse" type="tns:RegistraAiutoInEmergenzaResponse" />
+      <xs:element name="RegistraAiutoResponse" type="tns:RegistraAiutoResponse" />
+      <xs:element name="ReiteraRegistraAiuto" type="tns:ReiteraRegistraAiuto" />
+      <xs:element name="ReiteraRegistraAiutoResponse" type="tns:ReiteraRegistraAiutoResponse" />
+      <xs:element name="RicercaAiuto" type="tns:RicercaAiuto" />
+      <xs:element name="RicercaAiutoResponse" type="tns:RicercaAiutoResponse" />
+      <xs:element name="RichiediVisuraAiuti" type="tns:RichiediVisuraAiuti" />
+      <xs:element name="RichiediVisuraAiutiResponse" type="tns:RichiediVisuraAiutiResponse" />
+      <xs:element name="RichiediVisuraDeggendorf" type="tns:RichiediVisuraDeggendorf" />
+      <xs:element name="RichiediVisuraDeggendorfResponse" type="tns:RichiediVisuraDeggendorfResponse" />
+      <xs:element name="RichiediVisuraDeminimis" type="tns:RichiediVisuraDeminimis" />
+      <xs:element name="RichiediVisuraDeminimisResponse" type="tns:RichiediVisuraDeminimisResponse" />
+      <xs:element name="ScaricaCertificazione" type="tns:ScaricaCertificazione" />
+      <xs:element name="ScaricaCertificazioneResponse" type="tns:ScaricaCertificazioneResponse" />
+      <xs:element name="ScaricaEsitoRichiesta" type="tns:ScaricaEsitoRichiesta" />
+      <xs:element name="ScaricaEsitoRichiestaResponse" type="tns:ScaricaEsitoRichiestaResponse" />
+      <xs:element name="ScaricaVisura" type="tns:ScaricaVisura" />
+      <xs:element name="ScaricaVisuraConcessione" type="tns:ScaricaVisuraConcessione" />
+      <xs:element name="ScaricaVisuraConcessioneResponse" type="tns:ScaricaVisuraConcessioneResponse" />
+      <xs:element name="ScaricaVisuraResponse" type="tns:ScaricaVisuraResponse" />
+      <xs:element name="StatoRichiesta" type="tns:StatoRichiesta" />
+      <xs:element name="StatoRichiestaResponse" type="tns:StatoRichiestaResponse" />
+      <xs:element name="VariazioneImporto" type="tns:VariazioneImporto" />
+      <xs:element name="VariazioneImportoResponse" type="tns:VariazioneImportoResponse" />
+      <xs:element name="VariazioneSoggettoBeneficiario" type="tns:VariazioneSoggettoBeneficiario" />
+      <xs:element name="VariazioneSoggettoBeneficiarioResponse" type="tns:VariazioneSoggettoBeneficiarioResponse" />
+      <xs:element name="VerificaVercor" type="tns:VerificaVercor" />
+      <xs:element name="VerificaVercorResponse" type="tns:VerificaVercorResponse" />
+      <xs:complexType name="RegistraAiutoExPost">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="codiceBando" type="xs:long" />
+          <xs:element minOccurs="0" name="fileXml" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RegistraAiutoExPostResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Result" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="rnasServiceRichiestaResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="certificazione" type="xs:base64Binary" />
+              <xs:element minOccurs="0" name="esito" type="xs:base64Binary" />
+              <xs:element minOccurs="0" name="idRichiesta" type="xs:long" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="listaIdRich" nillable="true" type="tns:infoRichiesta" />
+              <xs:element minOccurs="0" name="risultatoRicerca" type="xs:base64Binary" />
+              <xs:element minOccurs="0" name="visura" type="xs:base64Binary" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="baseResponse">
+        <xs:sequence>
+          <xs:element name="retCode" type="xs:int" />
+          <xs:element minOccurs="0" name="retMessage" type="xs:string" />
+          <xs:element name="success" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="infoRichiesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dataInserimento" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="idRichiesta" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AnnullaConcessioneMassivo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="codiceBando" type="xs:long" />
+          <xs:element minOccurs="0" name="fileXml" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AnnullaConcessioneMassivoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="VerificaVercor">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element minOccurs="0" name="codiceFiscale" type="xs:string" />
+          <xs:element name="vercor" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="VerificaVercorResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceVisuraResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="rnasServiceVisuraResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="codiceVerifica" type="xs:string" />
+              <xs:element minOccurs="0" name="dataVisura" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="idRichiesta" type="xs:long" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ScaricaCertificazione">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="idRichiesta" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ScaricaCertificazioneResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RegistraAiuto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="codiceBando" type="xs:long" />
+          <xs:element minOccurs="0" name="fileXml" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RegistraAiutoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Result" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InserisciDeggendorf">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element minOccurs="0" name="fileXml" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InserisciDeggendorfResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="VariazioneImporto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="codiceBando" type="xs:long" />
+          <xs:element minOccurs="0" name="fileXml" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="VariazioneImportoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ConfermaVariazioneConcessioneMassivo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="codiceBando" type="xs:long" />
+          <xs:element minOccurs="0" name="fileXml" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ConfermaVariazioneConcessioneMassivoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="VariazioneSoggettoBeneficiario">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="codiceBando" type="xs:long" />
+          <xs:element minOccurs="0" name="fileXml" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="VariazioneSoggettoBeneficiarioResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AnnullaVariazioneConcessione">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="cor" type="xs:long" />
+          <xs:element name="varcor" type="xs:long" />
+          <xs:element minOccurs="0" name="notifica" type="tns:notificaElaborazioneRichiestaEnum" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AnnullaVariazioneConcessioneResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:statoConcessioneResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="statoConcessioneResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="cor" type="xs:decimal" />
+              <xs:element minOccurs="0" name="covar" type="xs:decimal" />
+              <xs:element minOccurs="0" name="statoConcessione" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ScaricaVisura">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element minOccurs="0" name="idRichiesta" type="xs:long" />
+          <xs:element minOccurs="0" name="outputVisura" type="tns:outputVisuraEnum" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ScaricaVisuraResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ReiteraRegistraAiuto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element minOccurs="0" name="idRichiesta" type="xs:long" />
+          <xs:element minOccurs="0" name="idConcessioneGest" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ReiteraRegistraAiutoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ConfermaVariazioneConcessione">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="cor" type="xs:long" />
+          <xs:element name="varcor" type="xs:long" />
+          <xs:element minOccurs="0" name="notifica" type="tns:notificaElaborazioneRichiestaEnum" />
+          <xs:element minOccurs="0" name="attoVariazione" type="xs:string" />
+          <xs:element minOccurs="0" name="linkAttoVariazione" type="xs:string" />
+          <xs:element minOccurs="0" name="dataVariazione" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ConfermaVariazioneConcessioneResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:statoConcessioneResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ElencoDeggendorf">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ElencoDeggendorfResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceDeggendorfAiutoResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="rnasServiceDeggendorfAiutoResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="dettaglioAiutoDeggendorf" type="tns:bdaDeggendorfBean" />
+              <xs:element minOccurs="0" name="idRichiesta" type="xs:long" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="listaAiutiDeggendorf" nillable="true" type="tns:bdaDeggendorfBean" />
+              <xs:element minOccurs="0" name="xml" type="xs:base64Binary" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="bdaDeggendorfBean">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ATTO_CONCESSIONE" type="xs:string" />
+          <xs:element minOccurs="0" name="CODICE_FISCALE" type="xs:string" />
+          <xs:element minOccurs="0" name="CODICE_LOCALE_PROGETTO" type="xs:string" />
+          <xs:element minOccurs="0" name="CODICE_REGISTRO" type="xs:string" />
+          <xs:element minOccurs="0" name="COD_TIPO_SOGGETTO" type="xs:string" />
+          <xs:element minOccurs="0" name="COR" type="xs:string" />
+          <xs:element minOccurs="0" name="COR_ESTERNO" type="xs:string" />
+          <xs:element minOccurs="0" name="DATA_CONCESSIONE" type="xs:date" />
+          <xs:element minOccurs="0" name="DATA_DECISIONE" type="xs:date" />
+          <xs:element minOccurs="0" name="DENOMINAZIONE" type="xs:string" />
+          <xs:element minOccurs="0" name="ID_DEGGENDORF" type="xs:string" />
+          <xs:element minOccurs="0" name="ID_DEGGENDORF_GEST" type="xs:string" />
+          <xs:element minOccurs="0" name="ID_MISURA_ESTERNA" type="xs:string" />
+          <xs:element minOccurs="0" name="IMPORTO_AGEVOLAZIONE" type="xs:double" />
+          <xs:element minOccurs="0" name="IMPORTO_RESTITUZIONE" type="xs:double" />
+          <xs:element minOccurs="0" name="NUMERO_DECISIONE" type="xs:string" />
+          <xs:element minOccurs="0" name="TITOLO_PROGETTO" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ScaricaEsitoRichiesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="idRichiesta" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ScaricaEsitoRichiestaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RichiediVisuraAiuti">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element minOccurs="0" name="codiceFiscale" type="xs:string" />
+          <xs:element minOccurs="0" name="dataInizioAnalisi" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RichiediVisuraAiutiResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ScaricaVisuraConcessione">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element minOccurs="0" name="idRichiesta" type="xs:long" />
+          <xs:element minOccurs="0" name="idConcessioneGest" type="xs:string" />
+          <xs:element minOccurs="0" name="cor" type="xs:decimal" />
+          <xs:element minOccurs="0" name="covar" type="xs:decimal" />
+          <xs:element minOccurs="0" name="outputVisura" type="tns:outputVisuraEnum" />
+          <xs:element minOccurs="0" name="tipoVisura" type="tns:tipoBdaIcVisuraEnum" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ScaricaVisuraConcessioneResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RecuperaIdRichiesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element minOccurs="0" name="idConcessioneGest" type="xs:string" />
+          <xs:element minOccurs="0" name="cor" type="xs:decimal" />
+          <xs:element minOccurs="0" name="idDeggendorfGest" type="xs:string" />
+          <xs:element minOccurs="0" name="dataInizioRichiesta" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dataFineRichiesta" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RecuperaIdRichiestaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DettaglioAiuto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element minOccurs="0" name="idRichiesta" type="xs:long" />
+          <xs:element minOccurs="0" name="idConcessioneGest" type="xs:string" />
+          <xs:element minOccurs="0" name="cor" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DettaglioAiutoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasConcessioneResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="rnasConcessioneResponse">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:baseResponse">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="xml" type="xs:base64Binary" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RegistraAiutoInEmergenza">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="codiceBando" type="xs:long" />
+          <xs:element minOccurs="0" name="fileXml" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RegistraAiutoInEmergenzaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Result" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RichiediVisuraDeggendorf">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element minOccurs="0" name="codiceFiscale" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RichiediVisuraDeggendorfResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RicercaAiuto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element minOccurs="0" name="car" type="xs:string" />
+          <xs:element minOccurs="0" name="idBando" type="xs:long" />
+          <xs:element minOccurs="0" name="dataConcessioneInizio" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dataConcessioneFine" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="codiceFiscaleBeneficiario" type="xs:string" />
+          <xs:element minOccurs="0" name="idUfficioGestore" type="xs:long" />
+          <xs:element name="idUtenteRuolo" type="xs:int" />
+          <xs:element minOccurs="0" name="statoConcessione" type="tns:statoConcessione" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RicercaAiutoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="StatoRichiesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="idRichiesta" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="StatoRichiestaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:baseResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RichiediVisuraDeminimis">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element minOccurs="0" name="codiceFiscale" type="xs:string" />
+          <xs:element minOccurs="0" name="dataFineEsercizioFinanziario" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dataConcessionePrevista" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="impresaPartecipante" type="tns:impresaPartecipante" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="impresaPartecipante">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codiceFiscale" type="xs:string" />
+          <xs:element minOccurs="0" name="denominazione" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RichiediVisuraDeminimisResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ConfermaConcessioneMassivo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="codiceBando" type="xs:long" />
+          <xs:element minOccurs="0" name="fileXml" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ConfermaConcessioneMassivoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AnnullaConcessione">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="cor" type="xs:long" />
+          <xs:element minOccurs="0" name="notifica" type="tns:notificaElaborazioneRichiestaEnum" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AnnullaConcessioneResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:statoConcessioneResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AnnullaVariazioneConcessioneMassivo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="codiceBando" type="xs:long" />
+          <xs:element minOccurs="0" name="fileXml" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AnnullaVariazioneConcessioneMassivoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EliminaDeggendorf">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element minOccurs="0" name="fileXml" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="EliminaDeggendorfResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:rnasServiceRichiestaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ConfermaConcessione">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="caller" type="xs:string" />
+          <xs:element name="cor" type="xs:long" />
+          <xs:element minOccurs="0" name="notifica" type="tns:notificaElaborazioneRichiestaEnum" />
+          <xs:element minOccurs="0" name="attoConcessione" type="xs:string" />
+          <xs:element minOccurs="0" name="linkAttoConcessione" type="xs:string" />
+          <xs:element minOccurs="0" name="dataConcessione" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ConfermaConcessioneResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:statoConcessioneResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="notificaElaborazioneRichiestaEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SI" />
+          <xs:enumeration value="NO" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="outputVisuraEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="PDF_VISURA" />
+          <xs:enumeration value="XML_VISURA" />
+          <xs:enumeration value="ZIP_VISURA" />
+          <xs:enumeration value="pdf" />
+          <xs:enumeration value="xml" />
+          <xs:enumeration value="PDF" />
+          <xs:enumeration value="XML" />
+          <xs:enumeration value="ZIP" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="tipoBdaIcVisuraEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="AIUTI_E_DE_MINIMIS_E_DEGGENDORF" />
+          <xs:enumeration value="AIUTI_E_DEGGENDORF" />
+          <xs:enumeration value="AIUTI_E_DE_MINIMIS" />
+          <xs:enumeration value="AIUTI" />
+          <xs:enumeration value="DEGGENDORF" />
+          <xs:enumeration value="DE_MINIMIS" />
+          <xs:enumeration value="A" />
+          <xs:enumeration value="D" />
+          <xs:enumeration value="V" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="statoConcessione">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="COMPLETATA" />
+          <xs:enumeration value="IN_VERIFICA" />
+          <xs:enumeration value="RIFIUTATA_PER_INDISPONIBILITA" />
+          <xs:enumeration value="ANNULLATA" />
+          <xs:enumeration value="RIFIUTATA" />
+          <xs:enumeration value="DA_CONFERMARE" />
+          <xs:enumeration value="CONFERMATA" />
+          <xs:enumeration value="REVOCATA" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ConfermaVariazioneConcessioneMassivoResponse">
+    <wsdl:part name="parameters" element="ns1:ConfermaVariazioneConcessioneMassivoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RichiediVisuraDeminimisResponse">
+    <wsdl:part name="parameters" element="ns1:RichiediVisuraDeminimisResponse" />
+  </wsdl:message>
+  <wsdl:message name="AnnullaConcessioneMassivo">
+    <wsdl:part name="parameters" element="ns1:AnnullaConcessioneMassivo" />
+  </wsdl:message>
+  <wsdl:message name="RegistraAiuto">
+    <wsdl:part name="parameters" element="ns1:RegistraAiuto" />
+  </wsdl:message>
+  <wsdl:message name="RegistraAiutoExPostResponse">
+    <wsdl:part name="parameters" element="ns1:RegistraAiutoExPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="InserisciDeggendorf">
+    <wsdl:part name="parameters" element="ns1:InserisciDeggendorf" />
+  </wsdl:message>
+  <wsdl:message name="AnnullaVariazioneConcessioneResponse">
+    <wsdl:part name="parameters" element="ns1:AnnullaVariazioneConcessioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="AnnullaVariazioneConcessione">
+    <wsdl:part name="parameters" element="ns1:AnnullaVariazioneConcessione" />
+  </wsdl:message>
+  <wsdl:message name="ScaricaVisura">
+    <wsdl:part name="parameters" element="ns1:ScaricaVisura" />
+  </wsdl:message>
+  <wsdl:message name="VariazioneSoggettoBeneficiarioResponse">
+    <wsdl:part name="parameters" element="ns1:VariazioneSoggettoBeneficiarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecuperaIdRichiestaResponse">
+    <wsdl:part name="parameters" element="ns1:RecuperaIdRichiestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistraAiutoInEmergenzaResponse">
+    <wsdl:part name="parameters" element="ns1:RegistraAiutoInEmergenzaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfermaVariazioneConcessione">
+    <wsdl:part name="parameters" element="ns1:ConfermaVariazioneConcessione" />
+  </wsdl:message>
+  <wsdl:message name="ElencoDeggendorf">
+    <wsdl:part name="parameters" element="ns1:ElencoDeggendorf" />
+  </wsdl:message>
+  <wsdl:message name="ConfermaVariazioneConcessioneResponse">
+    <wsdl:part name="parameters" element="ns1:ConfermaVariazioneConcessioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="RichiediVisuraAiuti">
+    <wsdl:part name="parameters" element="ns1:RichiediVisuraAiuti" />
+  </wsdl:message>
+  <wsdl:message name="ConfermaConcessioneResponse">
+    <wsdl:part name="parameters" element="ns1:ConfermaConcessioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistraAiutoResponse">
+    <wsdl:part name="parameters" element="ns1:RegistraAiutoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistraAiutoInEmergenza">
+    <wsdl:part name="parameters" element="ns1:RegistraAiutoInEmergenza" />
+  </wsdl:message>
+  <wsdl:message name="RichiediVisuraDeggendorf">
+    <wsdl:part name="parameters" element="ns1:RichiediVisuraDeggendorf" />
+  </wsdl:message>
+  <wsdl:message name="RicercaAiuto">
+    <wsdl:part name="parameters" element="ns1:RicercaAiuto" />
+  </wsdl:message>
+  <wsdl:message name="RichiediVisuraAiutiResponse">
+    <wsdl:part name="parameters" element="ns1:RichiediVisuraAiutiResponse" />
+  </wsdl:message>
+  <wsdl:message name="StatoRichiesta">
+    <wsdl:part name="parameters" element="ns1:StatoRichiesta" />
+  </wsdl:message>
+  <wsdl:message name="RichiediVisuraDeminimis">
+    <wsdl:part name="parameters" element="ns1:RichiediVisuraDeminimis" />
+  </wsdl:message>
+  <wsdl:message name="AnnullaConcessione">
+    <wsdl:part name="parameters" element="ns1:AnnullaConcessione" />
+  </wsdl:message>
+  <wsdl:message name="ScaricaVisuraResponse">
+    <wsdl:part name="parameters" element="ns1:ScaricaVisuraResponse" />
+  </wsdl:message>
+  <wsdl:message name="RichiediVisuraDeggendorfResponse">
+    <wsdl:part name="parameters" element="ns1:RichiediVisuraDeggendorfResponse" />
+  </wsdl:message>
+  <wsdl:message name="AnnullaVariazioneConcessioneMassivo">
+    <wsdl:part name="parameters" element="ns1:AnnullaVariazioneConcessioneMassivo" />
+  </wsdl:message>
+  <wsdl:message name="ConfermaConcessione">
+    <wsdl:part name="parameters" element="ns1:ConfermaConcessione" />
+  </wsdl:message>
+  <wsdl:message name="StatoRichiestaResponse">
+    <wsdl:part name="parameters" element="ns1:StatoRichiestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistraAiutoExPost">
+    <wsdl:part name="parameters" element="ns1:RegistraAiutoExPost" />
+  </wsdl:message>
+  <wsdl:message name="ConfermaConcessioneMassivoResponse">
+    <wsdl:part name="parameters" element="ns1:ConfermaConcessioneMassivoResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerificaVercor">
+    <wsdl:part name="parameters" element="ns1:VerificaVercor" />
+  </wsdl:message>
+  <wsdl:message name="ScaricaCertificazione">
+    <wsdl:part name="parameters" element="ns1:ScaricaCertificazione" />
+  </wsdl:message>
+  <wsdl:message name="ElencoDeggendorfResponse">
+    <wsdl:part name="parameters" element="ns1:ElencoDeggendorfResponse" />
+  </wsdl:message>
+  <wsdl:message name="ScaricaEsitoRichiestaResponse">
+    <wsdl:part name="parameters" element="ns1:ScaricaEsitoRichiestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="VariazioneImporto">
+    <wsdl:part name="parameters" element="ns1:VariazioneImporto" />
+  </wsdl:message>
+  <wsdl:message name="AnnullaConcessioneResponse">
+    <wsdl:part name="parameters" element="ns1:AnnullaConcessioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="ScaricaVisuraConcessioneResponse">
+    <wsdl:part name="parameters" element="ns1:ScaricaVisuraConcessioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfermaVariazioneConcessioneMassivo">
+    <wsdl:part name="parameters" element="ns1:ConfermaVariazioneConcessioneMassivo" />
+  </wsdl:message>
+  <wsdl:message name="VariazioneSoggettoBeneficiario">
+    <wsdl:part name="parameters" element="ns1:VariazioneSoggettoBeneficiario" />
+  </wsdl:message>
+  <wsdl:message name="VerificaVercorResponse">
+    <wsdl:part name="parameters" element="ns1:VerificaVercorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReiteraRegistraAiuto">
+    <wsdl:part name="parameters" element="ns1:ReiteraRegistraAiuto" />
+  </wsdl:message>
+  <wsdl:message name="RicercaAiutoResponse">
+    <wsdl:part name="parameters" element="ns1:RicercaAiutoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ScaricaEsitoRichiesta">
+    <wsdl:part name="parameters" element="ns1:ScaricaEsitoRichiesta" />
+  </wsdl:message>
+  <wsdl:message name="DettaglioAiutoResponse">
+    <wsdl:part name="parameters" element="ns1:DettaglioAiutoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InserisciDeggendorfResponse">
+    <wsdl:part name="parameters" element="ns1:InserisciDeggendorfResponse" />
+  </wsdl:message>
+  <wsdl:message name="ScaricaCertificazioneResponse">
+    <wsdl:part name="parameters" element="ns1:ScaricaCertificazioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="ScaricaVisuraConcessione">
+    <wsdl:part name="parameters" element="ns1:ScaricaVisuraConcessione" />
+  </wsdl:message>
+  <wsdl:message name="RecuperaIdRichiesta">
+    <wsdl:part name="parameters" element="ns1:RecuperaIdRichiesta" />
+  </wsdl:message>
+  <wsdl:message name="ReiteraRegistraAiutoResponse">
+    <wsdl:part name="parameters" element="ns1:ReiteraRegistraAiutoResponse" />
+  </wsdl:message>
+  <wsdl:message name="VariazioneImportoResponse">
+    <wsdl:part name="parameters" element="ns1:VariazioneImportoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DettaglioAiuto">
+    <wsdl:part name="parameters" element="ns1:DettaglioAiuto" />
+  </wsdl:message>
+  <wsdl:message name="ConfermaConcessioneMassivo">
+    <wsdl:part name="parameters" element="ns1:ConfermaConcessioneMassivo" />
+  </wsdl:message>
+  <wsdl:message name="AnnullaVariazioneConcessioneMassivoResponse">
+    <wsdl:part name="parameters" element="ns1:AnnullaVariazioneConcessioneMassivoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminaDeggendorf">
+    <wsdl:part name="parameters" element="ns1:EliminaDeggendorf" />
+  </wsdl:message>
+  <wsdl:message name="EliminaDeggendorfResponse">
+    <wsdl:part name="parameters" element="ns1:EliminaDeggendorfResponse" />
+  </wsdl:message>
+  <wsdl:message name="AnnullaConcessioneMassivoResponse">
+    <wsdl:part name="parameters" element="ns1:AnnullaConcessioneMassivoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RnasService">
+    <wsdl:operation name="RegistraAiutoExPost">
+      <wsdl:input name="RegistraAiutoExPost" message="ns1:RegistraAiutoExPost" />
+      <wsdl:output name="RegistraAiutoExPostResponse" message="ns1:RegistraAiutoExPostResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AnnullaConcessioneMassivo">
+      <wsdl:input name="AnnullaConcessioneMassivo" message="ns1:AnnullaConcessioneMassivo" />
+      <wsdl:output name="AnnullaConcessioneMassivoResponse" message="ns1:AnnullaConcessioneMassivoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificaVercor">
+      <wsdl:input name="VerificaVercor" message="ns1:VerificaVercor" />
+      <wsdl:output name="VerificaVercorResponse" message="ns1:VerificaVercorResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ScaricaCertificazione">
+      <wsdl:input name="ScaricaCertificazione" message="ns1:ScaricaCertificazione" />
+      <wsdl:output name="ScaricaCertificazioneResponse" message="ns1:ScaricaCertificazioneResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistraAiuto">
+      <wsdl:input name="RegistraAiuto" message="ns1:RegistraAiuto" />
+      <wsdl:output name="RegistraAiutoResponse" message="ns1:RegistraAiutoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="InserisciDeggendorf">
+      <wsdl:input name="InserisciDeggendorf" message="ns1:InserisciDeggendorf" />
+      <wsdl:output name="InserisciDeggendorfResponse" message="ns1:InserisciDeggendorfResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VariazioneImporto">
+      <wsdl:input name="VariazioneImporto" message="ns1:VariazioneImporto" />
+      <wsdl:output name="VariazioneImportoResponse" message="ns1:VariazioneImportoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfermaVariazioneConcessioneMassivo">
+      <wsdl:input name="ConfermaVariazioneConcessioneMassivo" message="ns1:ConfermaVariazioneConcessioneMassivo" />
+      <wsdl:output name="ConfermaVariazioneConcessioneMassivoResponse" message="ns1:ConfermaVariazioneConcessioneMassivoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="VariazioneSoggettoBeneficiario">
+      <wsdl:input name="VariazioneSoggettoBeneficiario" message="ns1:VariazioneSoggettoBeneficiario" />
+      <wsdl:output name="VariazioneSoggettoBeneficiarioResponse" message="ns1:VariazioneSoggettoBeneficiarioResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AnnullaVariazioneConcessione">
+      <wsdl:input name="AnnullaVariazioneConcessione" message="ns1:AnnullaVariazioneConcessione" />
+      <wsdl:output name="AnnullaVariazioneConcessioneResponse" message="ns1:AnnullaVariazioneConcessioneResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ScaricaVisura">
+      <wsdl:input name="ScaricaVisura" message="ns1:ScaricaVisura" />
+      <wsdl:output name="ScaricaVisuraResponse" message="ns1:ScaricaVisuraResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ReiteraRegistraAiuto">
+      <wsdl:input name="ReiteraRegistraAiuto" message="ns1:ReiteraRegistraAiuto" />
+      <wsdl:output name="ReiteraRegistraAiutoResponse" message="ns1:ReiteraRegistraAiutoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfermaVariazioneConcessione">
+      <wsdl:input name="ConfermaVariazioneConcessione" message="ns1:ConfermaVariazioneConcessione" />
+      <wsdl:output name="ConfermaVariazioneConcessioneResponse" message="ns1:ConfermaVariazioneConcessioneResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ElencoDeggendorf">
+      <wsdl:input name="ElencoDeggendorf" message="ns1:ElencoDeggendorf" />
+      <wsdl:output name="ElencoDeggendorfResponse" message="ns1:ElencoDeggendorfResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ScaricaEsitoRichiesta">
+      <wsdl:input name="ScaricaEsitoRichiesta" message="ns1:ScaricaEsitoRichiesta" />
+      <wsdl:output name="ScaricaEsitoRichiestaResponse" message="ns1:ScaricaEsitoRichiestaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RichiediVisuraAiuti">
+      <wsdl:input name="RichiediVisuraAiuti" message="ns1:RichiediVisuraAiuti" />
+      <wsdl:output name="RichiediVisuraAiutiResponse" message="ns1:RichiediVisuraAiutiResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ScaricaVisuraConcessione">
+      <wsdl:input name="ScaricaVisuraConcessione" message="ns1:ScaricaVisuraConcessione" />
+      <wsdl:output name="ScaricaVisuraConcessioneResponse" message="ns1:ScaricaVisuraConcessioneResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperaIdRichiesta">
+      <wsdl:input name="RecuperaIdRichiesta" message="ns1:RecuperaIdRichiesta" />
+      <wsdl:output name="RecuperaIdRichiestaResponse" message="ns1:RecuperaIdRichiestaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="DettaglioAiuto">
+      <wsdl:input name="DettaglioAiuto" message="ns1:DettaglioAiuto" />
+      <wsdl:output name="DettaglioAiutoResponse" message="ns1:DettaglioAiutoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistraAiutoInEmergenza">
+      <wsdl:input name="RegistraAiutoInEmergenza" message="ns1:RegistraAiutoInEmergenza" />
+      <wsdl:output name="RegistraAiutoInEmergenzaResponse" message="ns1:RegistraAiutoInEmergenzaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RichiediVisuraDeggendorf">
+      <wsdl:input name="RichiediVisuraDeggendorf" message="ns1:RichiediVisuraDeggendorf" />
+      <wsdl:output name="RichiediVisuraDeggendorfResponse" message="ns1:RichiediVisuraDeggendorfResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RicercaAiuto">
+      <wsdl:input name="RicercaAiuto" message="ns1:RicercaAiuto" />
+      <wsdl:output name="RicercaAiutoResponse" message="ns1:RicercaAiutoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="StatoRichiesta">
+      <wsdl:input name="StatoRichiesta" message="ns1:StatoRichiesta" />
+      <wsdl:output name="StatoRichiestaResponse" message="ns1:StatoRichiestaResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RichiediVisuraDeminimis">
+      <wsdl:input name="RichiediVisuraDeminimis" message="ns1:RichiediVisuraDeminimis" />
+      <wsdl:output name="RichiediVisuraDeminimisResponse" message="ns1:RichiediVisuraDeminimisResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfermaConcessioneMassivo">
+      <wsdl:input name="ConfermaConcessioneMassivo" message="ns1:ConfermaConcessioneMassivo" />
+      <wsdl:output name="ConfermaConcessioneMassivoResponse" message="ns1:ConfermaConcessioneMassivoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AnnullaConcessione">
+      <wsdl:input name="AnnullaConcessione" message="ns1:AnnullaConcessione" />
+      <wsdl:output name="AnnullaConcessioneResponse" message="ns1:AnnullaConcessioneResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="AnnullaVariazioneConcessioneMassivo">
+      <wsdl:input name="AnnullaVariazioneConcessioneMassivo" message="ns1:AnnullaVariazioneConcessioneMassivo" />
+      <wsdl:output name="AnnullaVariazioneConcessioneMassivoResponse" message="ns1:AnnullaVariazioneConcessioneMassivoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminaDeggendorf">
+      <wsdl:input name="EliminaDeggendorf" message="ns1:EliminaDeggendorf" />
+      <wsdl:output name="EliminaDeggendorfResponse" message="ns1:EliminaDeggendorfResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfermaConcessione">
+      <wsdl:input name="ConfermaConcessione" message="ns1:ConfermaConcessione" />
+      <wsdl:output name="ConfermaConcessioneResponse" message="ns1:ConfermaConcessioneResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

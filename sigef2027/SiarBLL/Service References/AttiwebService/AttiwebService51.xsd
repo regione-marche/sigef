@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CommonLibrary" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CommonLibrary" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" />
+  <xs:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" />
+  <xs:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="BEBaseOfArrayOfDecretoInfoR4ik9mXKc">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/CommonLibrary" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfDecretoInfoR" Namespace="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="Result" nillable="true" type="q1:ArrayOfDecretoInfoR" />
+      <xs:element minOccurs="0" name="ResultInfo" nillable="true" type="tns:ResultInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfArrayOfDecretoInfoR4ik9mXKc" nillable="true" type="tns:BEBaseOfArrayOfDecretoInfoR4ik9mXKc" />
+  <xs:complexType name="ResultInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" type="tns:TipoRisultato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultInfo" nillable="true" type="tns:ResultInfo" />
+  <xs:simpleType name="TipoRisultato">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedInt" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Info" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="Error" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoRisultato" nillable="true" type="tns:TipoRisultato" />
+  <xs:complexType name="BEBaseOfAttoBc_P2sb70">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/CommonLibrary" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="Atto" Namespace="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" minOccurs="0" name="Result" nillable="true" type="q2:Atto" />
+      <xs:element minOccurs="0" name="ResultInfo" nillable="true" type="tns:ResultInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfAttoBc_P2sb70" nillable="true" type="tns:BEBaseOfAttoBc_P2sb70" />
+  <xs:complexType name="BEBaseOfFile4ik9mXKc">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/CommonLibrary" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="File" Namespace="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="Result" nillable="true" type="q3:File" />
+      <xs:element minOccurs="0" name="ResultInfo" nillable="true" type="tns:ResultInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfFile4ik9mXKc" nillable="true" type="tns:BEBaseOfFile4ik9mXKc" />
+  <xs:complexType name="BEBaseOfArrayOfTaskInfoBc_P2sb70">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/CommonLibrary" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfTaskInfo" Namespace="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" minOccurs="0" name="Result" nillable="true" type="q4:ArrayOfTaskInfo" />
+      <xs:element minOccurs="0" name="ResultInfo" nillable="true" type="tns:ResultInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfArrayOfTaskInfoBc_P2sb70" nillable="true" type="tns:BEBaseOfArrayOfTaskInfoBc_P2sb70" />
+  <xs:complexType name="BEBaseOfAttoDaFirmareBc_P2sb70">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/CommonLibrary" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="AttoDaFirmare" Namespace="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" minOccurs="0" name="Result" nillable="true" type="q5:AttoDaFirmare" />
+      <xs:element minOccurs="0" name="ResultInfo" nillable="true" type="tns:ResultInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfAttoDaFirmareBc_P2sb70" nillable="true" type="tns:BEBaseOfAttoDaFirmareBc_P2sb70" />
+  <xs:complexType name="BEBaseOfstring">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/CommonLibrary" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="string" Namespace="http://www.w3.org/2001/XMLSchema" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Result" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultInfo" nillable="true" type="tns:ResultInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfstring" nillable="true" type="tns:BEBaseOfstring" />
+  <xs:complexType name="BEBaseOfArrayOfDeliberaInfoR4ik9mXKc">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/CommonLibrary" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfDeliberaInfoR" Namespace="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="Result" nillable="true" type="q6:ArrayOfDeliberaInfoR" />
+      <xs:element minOccurs="0" name="ResultInfo" nillable="true" type="tns:ResultInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfArrayOfDeliberaInfoR4ik9mXKc" nillable="true" type="tns:BEBaseOfArrayOfDeliberaInfoR4ik9mXKc" />
+  <xs:complexType name="BEBaseOfArrayOfTipologiaDelibera4ik9mXKc">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/CommonLibrary" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfTipologiaDelibera" Namespace="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="Result" nillable="true" type="q7:ArrayOfTipologiaDelibera" />
+      <xs:element minOccurs="0" name="ResultInfo" nillable="true" type="tns:ResultInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfArrayOfTipologiaDelibera4ik9mXKc" nillable="true" type="tns:BEBaseOfArrayOfTipologiaDelibera4ik9mXKc" />
+  <xs:complexType name="BEBaseOfArrayOfAssessore4ik9mXKc">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/CommonLibrary" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfAssessore" Namespace="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="Result" nillable="true" type="q8:ArrayOfAssessore" />
+      <xs:element minOccurs="0" name="ResultInfo" nillable="true" type="tns:ResultInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfArrayOfAssessore4ik9mXKc" nillable="true" type="tns:BEBaseOfArrayOfAssessore4ik9mXKc" />
+  <xs:complexType name="BEBaseOfArrayOfstringuHEDJ7Dj">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="BEBaseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/CommonLibrary" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfstring" Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Result" nillable="true" type="q9:ArrayOfstring" />
+      <xs:element minOccurs="0" name="ResultInfo" nillable="true" type="tns:ResultInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BEBaseOfArrayOfstringuHEDJ7Dj" nillable="true" type="tns:BEBaseOfArrayOfstringuHEDJ7Dj" />
+</xs:schema>

@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[TIPO_DUG] (
+    [ID_DUG]      SMALLINT     IDENTITY (1, 1) NOT NULL,
+    [Descrizione] VARCHAR (20) NOT NULL,
+    [ID_QSN]      CHAR (2)     NOT NULL,
+    [ATTIVO]      BIT          CONSTRAINT [DF_TIPO_DUG_ATTIVO] DEFAULT ((1)) NOT NULL,
+    [Ordine]      INT          CONSTRAINT [DF_TIPO_DUG_Ordine] DEFAULT ((0)) NOT NULL,
+    CONSTRAINT [PK_TIPO_DUG] PRIMARY KEY CLUSTERED ([ID_DUG] ASC)
+);
+

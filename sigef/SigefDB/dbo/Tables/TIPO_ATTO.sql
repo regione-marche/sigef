@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[TIPO_ATTO] (
+    [CODICE]      CHAR (1)                  NOT NULL,
+    [DESCRIZIONE] [dbo].[DESCRIZIONE_BREVE] NOT NULL,
+    [ATTIVO]      BIT                       NOT NULL,
+    CONSTRAINT [PK_TIPO_ATTO] PRIMARY KEY CLUSTERED ([CODICE] ASC) WITH (FILLFACTOR = 100)
+);
+

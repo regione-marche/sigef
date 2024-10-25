@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{453F80C4-1553-4B57-AC77-58CEDE9F11CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SiarLibrary</RootNamespace>
+    <AssemblyName>SiarLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ateco2007.cs" />
+    <Compile Include="BandoRequisitiPagamento.cs" />
+    <Compile Include="BandoRequisitiPagamentoCollection.cs" />
+    <Compile Include="BandoRequisitiVariante.cs" />
+    <Compile Include="BandoRequisitiVarianteCollection.cs" />
+    <Compile Include="BandoTipoPagamento.cs" />
+    <Compile Include="BandoTipoPagamentoCollection.cs" />
+    <Compile Include="BandoTipoVarianti.cs" />
+    <Compile Include="BandoTipoVariantiCollection.cs" />
+    <Compile Include="BaseObject.cs" />
+    <Compile Include="Bilancio.cs" />
+    <Compile Include="BilancioAgricolo.cs" />
+    <Compile Include="BilancioAgricoloCollection.cs" />
+    <Compile Include="BilancioCollection.cs" />
+    <Compile Include="BilancioIndustriale.cs" />
+    <Compile Include="BilancioIndustrialeCollection.cs" />
+    <Compile Include="BilancioPrevisionale.cs" />
+    <Compile Include="BilancioPrevisionaleCollection.cs" />
+    <Compile Include="CalamaioUtility.cs" />
+    <Compile Include="CatalogoDichiarazioni.cs" />
+    <Compile Include="CatalogoDichiarazioniCollection.cs" />
+    <Compile Include="ControlliNaturaCup.cs" />
+    <Compile Include="CryptoUtility.cs" />
+    <Compile Include="DatiRiassuntiviRendicontazione.cs" />
+    <Compile Include="CheckList.cs" />
+    <Compile Include="CheckListCollection.cs" />
+    <Compile Include="CollaboratoriXBando.cs" />
+    <Compile Include="CollaboratoriXBandoCollection.cs" />
+    <Compile Include="CollaboratoriXManifestazione.cs" />
+    <Compile Include="CollaboratoriXManifestazioneCollection.cs" />
+    <Compile Include="ContoCorrente.cs" />
+    <Compile Include="ContoCorrenteCollection.cs" />
+    <Compile Include="ControlliDomandePagamento.cs" />
+    <Compile Include="ControlliDomandePagamentoCollection.cs" />
+    <Compile Include="ControlliParametriDiRischio.cs" />
+    <Compile Include="ControlliParametriDiRischioCollection.cs" />
+    <Compile Include="ControlliParametriXDomanda.cs" />
+    <Compile Include="ControlliParametriXDomandaCollection.cs" />
+    <Compile Include="ControlliParametriXLotto.cs" />
+    <Compile Include="ControlliParametriXLottoCollection.cs" />
+    <Compile Include="CUPCategoriaSoggetto.cs" />
+    <Compile Include="CUPCategoriaSoggettoCollection.cs" />
+    <Compile Include="CorrettivaRendicontazione.cs" />
+    <Compile Include="CorrettivaRendicontazioneCollection.cs" />
+    <Compile Include="CorrettivaRendicontazioneSpostamenti.cs" />
+    <Compile Include="CorrettivaRendicontazioneSpostamentiCollection.cs" />
+    <Compile Include="CUPCategoria.cs" />
+    <Compile Include="CUPCategoriaCollection.cs" />
+    <Compile Include="CustomCollection.cs" />
+    <Compile Include="DatiMonitoraggioFESR.cs" />
+    <Compile Include="DatiMonitoraggioFESRCollection.cs" />
+    <Compile Include="DbProvider.cs" />
+    <Compile Include="DichiarazioniXProgetto.cs" />
+    <Compile Include="DichiarazioniXProgettoCollection.cs" />
+    <Compile Include="Documenti.cs" />
+    <Compile Include="DocumentiCollection.cs" />
+    <Compile Include="DomandaDiPagamentoSegnature.cs" />
+    <Compile Include="DomandaDiPagamentoSegnatureCollection.cs" />
+    <Compile Include="DomandaPagamentoRequisiti.cs" />
+    <Compile Include="DomandaPagamentoRequisitiCollection.cs" />
+    <Compile Include="Email.cs" />
+    <Compile Include="Ente.cs" />
+    <Compile Include="EnteCollection.cs" />
+    <Compile Include="Exception.cs" />
+    <Compile Include="FatturatoAzienda.cs" />
+    <Compile Include="FatturatoAziendaCollection.cs" />
+    <Compile Include="FileDocumento.cs" />
+    <Compile Include="FileDocumentoCollection.cs" />
+    <Compile Include="Filiera.cs" />
+    <Compile Include="FilieraCollection.cs" />
+    <Compile Include="Filter.cs" />
+    <Compile Include="FormaGiuridica.cs" />
+    <Compile Include="FormaGiuridicaCollection.cs" />
+    <Compile Include="GraduatoriaProgettiFinanziabilita.cs" />
+    <Compile Include="GraduatoriaProgettiFinanziabilitaCollection.cs" />
+    <Compile Include="Indirizzo.cs" />
+    <Compile Include="IndirizzoCollection.cs" />
+    <Compile Include="IterProgetto.cs" />
+    <Compile Include="IterProgettoCollection.cs" />
+    <Compile Include="LocalizzazioneInvestimento.cs" />
+    <Compile Include="LocalizzazioneInvestimentoCollection.cs" />
+    <Compile Include="MandatiImpresa.cs" />
+    <Compile Include="MandatiImpresaCollection.cs" />
+    <Compile Include="ModelloDomanda.cs" />
+    <Compile Include="ModelloDomandaCollection.cs" />
+    <Compile Include="News.cs" />
+    <Compile Include="NewsCollection.cs" />
+    <Compile Include="NotAutogeneratedClasses\AnticipiRichiesti.cs" />
+    <Compile Include="NotAutogeneratedClasses\EsitiChecklistProgetto.cs" />
+    <Compile Include="NotAutogeneratedClasses\DatiGeneraliAzienda.cs" />
+    <Compile Include="NotAutogeneratedClasses\RiepilogoBandi.cs" />
+    <Compile Include="NotAutogeneratedClasses\RiepilogoCollaboratoriXBando.cs" />
+    <Compile Include="NotAutogeneratedClasses\RiepilogoDomandePagamenti.cs" />
+    <Compile Include="NotAutogeneratedClasses\RiepilogoImportiMisuraDomandaPagamento.cs" />
+    <Compile Include="Note.cs" />
+    <Compile Include="NoteCollection.cs" />
+    <Compile Include="NullTypes.cs" />
+    <Compile Include="ObjectComparer.cs" />
+    <Compile Include="PartecipanteRuolo.cs" />
+    <Compile Include="PartecipanteRuoloCollection.cs" />
+    <Compile Include="PartecipantiIndirettiFatturato.cs" />
+    <Compile Include="PartecipantiIndirettiFatturatoCollection.cs" />
+    <Compile Include="PartecipantiXFiliera.cs" />
+    <Compile Include="PartecipantiXFilieraCollection.cs" />
+    <Compile Include="PianoDiSviluppo.cs" />
+    <Compile Include="PianoDiSviluppoCollection.cs" />
+    <Compile Include="PianoDiSviluppoDomandaPagamento.cs" />
+    <Compile Include="PianoDiSviluppoDomandaPagamentoCollection.cs" />
+    <Compile Include="PrioritaSettoriali.cs" />
+    <Compile Include="PrioritaSettorialiCollection.cs" />
+    <Compile Include="PrioritaSpeciale.cs" />
+    <Compile Include="PrioritaSpecialeCollection.cs" />
+    <Compile Include="ProfiloXFunzioni.cs" />
+    <Compile Include="ProfiloXFunzioniCollection.cs" />
+    <Compile Include="ProgettoSegnature.cs" />
+    <Compile Include="ProgettoSegnatureCollection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuadroDomanda.cs" />
+    <Compile Include="QuadroDomandaCollection.cs" />
+    <Compile Include="RequisitiPagamento.cs" />
+    <Compile Include="RequisitiPagamentoCollection.cs" />
+    <Compile Include="RequisitiPagamentoPlurivalore.cs" />
+    <Compile Include="RequisitiPagamentoPlurivaloreCollection.cs" />
+    <Compile Include="RequisitiVariante.cs" />
+    <Compile Include="RequisitiVarianteCollection.cs" />
+    <Compile Include="SchedaValutazione.cs" />
+    <Compile Include="SchedaValutazioneCollection.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="SettoriProduttivi.cs" />
+    <Compile Include="SettoriProduttiviCollection.cs" />
+    <Compile Include="SiarExtensionMethods.cs" />
+    <Compile Include="Step.cs" />
+    <Compile Include="StepCollection.cs" />
+    <Compile Include="StepParametri.cs" />
+    <Compile Include="StepParametriCollection.cs" />
+    <Compile Include="StepXBando.cs" />
+    <Compile Include="StepXBandoCollection.cs" />
+    <Compile Include="TextProvider.cs" />
+    <Compile Include="TipoSanzioniParametri.cs" />
+    <Compile Include="TipoSanzioniParametriCollection.cs" />
+    <Compile Include="VariantiEsitiRequisiti.cs" />
+    <Compile Include="VariantiEsitiRequisitiCollection.cs" />
+    <Compile Include="VariantiSegnature.cs" />
+    <Compile Include="VariantiSegnatureCollection.cs" />
+    <Compile Include="VariantiXPriorita.cs" />
+    <Compile Include="VariantiXPrioritaCollection.cs" />
+    <Compile Include="VisiteAziendali.cs" />
+    <Compile Include="VisiteAziendaliCollection.cs" />
+    <Compile Include="VistruttoriaDomande.cs" />
+    <Compile Include="VistruttoriaDomandeCollection.cs" />
+    <Compile Include="VprioritaXPunteggio.cs" />
+    <Compile Include="VprioritaXPunteggioCollection.cs" />
+    <Compile Include="VstatiProcedurali.cs" />
+    <Compile Include="VstatiProceduraliCollection.cs" />
+    <Compile Include="VworkflowVarianteCollection.cs" />
+    <Compile Include="VworkflowVariante.cs" />
+    <Compile Include="VworkflowPagamento.cs" />
+    <Compile Include="VworkflowPagamentoCollection.cs" />
+    <Compile Include="WorkflowProcedure.cs" />
+    <Compile Include="WorkflowProcedureCollection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Externals\BouncyCastle.Crypto.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

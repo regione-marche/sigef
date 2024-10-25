@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="SIGEF">
+      <DataSourceReference>SIGEF</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>7368c79a-be87-40f2-a389-4a8846d22fc9</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dsProgettoNaturaSoggetto">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@ID_Domanda">
+            <Value>=Parameters!ID_Domanda.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT
+  PROGETTO_NATURA_SOGGETTO.ID_PROGETTO_NATURA_SOGGETTO
+  ,PROGETTO_NATURA_SOGGETTO.ID_PROGETTO
+  ,PROGETTO_NATURA_SOGGETTO.TIPO_NATURA_SOGGETTO
+  ,PROGETTO_NATURA_SOGGETTO.ID_AGGREGAZIONE
+  ,AGGREGAZIONE.ID
+  ,AGGREGAZIONE.DENOMINAZIONE
+  ,AGGREGAZIONE.COD_TIPO_AGGREGAZIONE
+  ,AGGREGAZIONE.DATA_INIZIO
+  ,AGGREGAZIONE.OPERATORE_INIZIO
+  ,AGGREGAZIONE.ATTIVO
+  ,AGGREGAZIONE.DATA_FINE
+  ,AGGREGAZIONE.OPERATORE_FINE
+FROM
+  PROGETTO_NATURA_SOGGETTO
+  LEFT OUTER JOIN AGGREGAZIONE
+    ON PROGETTO_NATURA_SOGGETTO.ID_AGGREGAZIONE = AGGREGAZIONE.ID
+WHERE PROGETTO_NATURA_SOGGETTO.ID_PROGETTO = @ID_Domanda</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational">
+            <AutoJoin>False</AutoJoin>
+            <SelectedColumns>
+              <ColumnExpression ColumnOwner="PROGETTO_NATURA_SOGGETTO" ColumnName="ID_PROGETTO_NATURA_SOGGETTO" />
+              <ColumnExpression ColumnOwner="PROGETTO_NATURA_SOGGETTO" ColumnName="ID_PROGETTO" />
+              <ColumnExpression ColumnOwner="PROGETTO_NATURA_SOGGETTO" ColumnName="TIPO_NATURA_SOGGETTO" />
+              <ColumnExpression ColumnOwner="PROGETTO_NATURA_SOGGETTO" ColumnName="ID_AGGREGAZIONE" />
+              <ColumnExpression ColumnOwner="AGGREGAZIONE" ColumnName="ID" />
+              <ColumnExpression ColumnOwner="AGGREGAZIONE" ColumnName="DENOMINAZIONE" />
+              <ColumnExpression ColumnOwner="AGGREGAZIONE" ColumnName="COD_TIPO_AGGREGAZIONE" />
+              <ColumnExpression ColumnOwner="AGGREGAZIONE" ColumnName="DATA_INIZIO" />
+              <ColumnExpression ColumnOwner="AGGREGAZIONE" ColumnName="OPERATORE_INIZIO" />
+              <ColumnExpression ColumnOwner="AGGREGAZIONE" ColumnName="ATTIVO" />
+              <ColumnExpression ColumnOwner="AGGREGAZIONE" ColumnName="DATA_FINE" />
+              <ColumnExpression ColumnOwner="AGGREGAZIONE" ColumnName="OPERATORE_FINE" />
+            </SelectedColumns>
+            <Joins>
+              <Join Type="CROSS JOIN" ColumnOwner="PROGETTO_NATURA_SOGGETTO" />
+              <Join Type="LEFT OUTER JOIN" ColumnOwner="AGGREGAZIONE">
+                <On>
+                  <From ColumnOwner="PROGETTO_NATURA_SOGGETTO" ColumnName="ID_AGGREGAZIONE" />
+                  <To ColumnOwner="AGGREGAZIONE" ColumnName="ID" />
+                </On>
+              </Join>
+            </Joins>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="ID_PROGETTO_NATURA_SOGGETTO">
+          <DataField>ID_PROGETTO_NATURA_SOGGETTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ID_PROGETTO">
+          <DataField>ID_PROGETTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TIPO_NATURA_SOGGETTO">
+          <DataField>TIPO_NATURA_SOGGETTO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ID_AGGREGAZIONE">
+          <DataField>ID_AGGREGAZIONE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ID">
+          <DataField>ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DENOMINAZIONE">
+          <DataField>DENOMINAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COD_TIPO_AGGREGAZIONE">
+          <DataField>COD_TIPO_AGGREGAZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_INIZIO">
+          <DataField>DATA_INIZIO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="OPERATORE_INIZIO">
+          <DataField>OPERATORE_INIZIO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ATTIVO">
+          <DataField>ATTIVO</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="DATA_FINE">
+          <DataField>DATA_FINE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="OPERATORE_FINE">
+          <DataField>OPERATORE_FINE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsImpreseAggregazione">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@ID_Domanda">
+            <Value>=Parameters!ID_Domanda.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT
+PROGETTO_NATURA_SOGGETTO.ID_AGGREGAZIONE AS [PROGETTO_NATURA_SOGGETTO ID_AGGREGAZIONE]
+
+  ,IMPRESA_AGGREGAZIONE.ATTIVO
+,IMPRESA_AGGREGAZIONE.COD_RUOLO
+  ,vIMPRESA.ID_IMPRESA AS [vIMPRESA ID_IMPRESA]
+  ,vIMPRESA.CUAA
+  ,vIMPRESA.CODICE_FISCALE
+  ,vIMPRESA.RAGIONE_SOCIALE
+
+FROM
+  PROGETTO_NATURA_SOGGETTO
+  INNER JOIN IMPRESA_AGGREGAZIONE
+    ON PROGETTO_NATURA_SOGGETTO.ID_AGGREGAZIONE = IMPRESA_AGGREGAZIONE.ID_AGGREGAZIONE
+  INNER JOIN vIMPRESA
+    ON IMPRESA_AGGREGAZIONE.ID_IMPRESA = vIMPRESA.ID_IMPRESA
+WHERE PROGETTO_NATURA_SOGGETTO.ID_PROGETTO = @ID_Domanda AND IMPRESA_AGGREGAZIONE.ATTIVO = 1 </CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational">
+            <AutoJoin>False</AutoJoin>
+            <SelectedColumns>
+              <ColumnExpression ColumnOwner="PROGETTO_NATURA_SOGGETTO" ColumnName="ID_PROGETTO_NATURA_SOGGETTO" />
+              <ColumnExpression ColumnOwner="PROGETTO_NATURA_SOGGETTO" ColumnName="ID_PROGETTO" />
+              <ColumnExpression ColumnOwner="PROGETTO_NATURA_SOGGETTO" ColumnName="TIPO_NATURA_SOGGETTO" />
+              <ColumnExpression ColumnOwner="PROGETTO_NATURA_SOGGETTO" ColumnName="ID_AGGREGAZIONE" />
+              <ColumnExpression ColumnOwner="IMPRESA_AGGREGAZIONE" ColumnName="ID" />
+              <ColumnExpression ColumnOwner="IMPRESA_AGGREGAZIONE" ColumnName="ID_AGGREGAZIONE" />
+              <ColumnExpression ColumnOwner="IMPRESA_AGGREGAZIONE" ColumnName="COD_RUOLO" />
+              <ColumnExpression ColumnOwner="IMPRESA_AGGREGAZIONE" ColumnName="ID_IMPRESA" />
+              <ColumnExpression ColumnOwner="IMPRESA_AGGREGAZIONE" ColumnName="PERCENTUALE" />
+              <ColumnExpression ColumnOwner="IMPRESA_AGGREGAZIONE" ColumnName="DATA_INIZIO" />
+              <ColumnExpression ColumnOwner="IMPRESA_AGGREGAZIONE" ColumnName="OPERATORE_INIZIO" />
+              <ColumnExpression ColumnOwner="IMPRESA_AGGREGAZIONE" ColumnName="ATTIVO" />
+              <ColumnExpression ColumnOwner="IMPRESA_AGGREGAZIONE" ColumnName="DATA_FINE" />
+              <ColumnExpression ColumnOwner="IMPRESA_AGGREGAZIONE" ColumnName="OPERATORE_FINE" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="ID_IMPRESA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="CUAA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="CODICE_FISCALE" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="ANNO_COSTITUZIONE" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="COD_ENTE" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="ISCRIZIONE_REGISTRO_IMPRESE" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="PRESENTAZIONE" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="DESCRIZIONE" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="ID_STORICO_IMPRESA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="DATA_INIZIO_VALIDITA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="DATA_FINE_VALIDITA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="RAGIONE_SOCIALE" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="CODICE_INPS" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="COD_FORMA_GIURIDICA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="ID_DIMENSIONE" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="DIMENSIONE_IMPRESA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="FORMA_GIURIDICA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="FOGLIA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="DATA_INIZIO_ATTIVITA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="REGISTRO_IMPRESE_NUMERO" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="REA_NUMERO" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="REA_ANNO" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="ID_STORICO_ULTIMO" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="ID_RAPPRLEGALE_ULTIMO" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="ID_CONTO_CORRENTE_ULTIMO" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="ID_SEDELEGALE_ULTIMO" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="COD_CLASSIFICAZIONE_UMA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="ATTIVA" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="DATA_CESSAZIONE" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="SEGNATURA_CESSAZIONE" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="COD_TIPO_CESSAZIONE" />
+              <ColumnExpression ColumnOwner="vIMPRESA" ColumnName="COD_ATECO2007" />
+            </SelectedColumns>
+            <Joins>
+              <Join Type="CROSS JOIN" ColumnOwner="PROGETTO_NATURA_SOGGETTO" />
+              <Join Type="INNER JOIN" ColumnOwner="IMPRESA_AGGREGAZIONE">
+                <On>
+                  <From ColumnOwner="PROGETTO_NATURA_SOGGETTO" ColumnName="ID_AGGREGAZIONE" />
+                  <To ColumnOwner="IMPRESA_AGGREGAZIONE" ColumnName="ID_AGGREGAZIONE" />
+                </On>
+              </Join>
+              <Join Type="INNER JOIN" ColumnOwner="vIMPRESA">
+                <On>
+                  <From ColumnOwner="IMPRESA_AGGREGAZIONE" ColumnName="ID_IMPRESA" />
+                  <To ColumnOwner="vIMPRESA" ColumnName="ID_IMPRESA" />
+                </On>
+              </Join>
+            </Joins>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="PROGETTO_NATURA_SOGGETTO_ID_AGGREGAZIONE">
+          <DataField>PROGETTO_NATURA_SOGGETTO ID_AGGREGAZIONE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ATTIVO">
+          <DataField>ATTIVO</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="COD_RUOLO">
+          <DataField>COD_RUOLO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="vIMPRESA_ID_IMPRESA">
+          <DataField>vIMPRESA ID_IMPRESA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CUAA">
+          <DataField>CUAA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CODICE_FISCALE">
+          <DataField>CODICE_FISCALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RAGIONE_SOCIALE">
+          <DataField>RAGIONE_SOCIALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="dsImpresaProgetto">
+      <Query>
+        <DataSourceName>SIGEF</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@ID_Domanda">
+            <Value>=Parameters!ID_Domanda.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT
+  PROGETTO.ID_PROGETTO
+  ,PROGETTO.ID_IMPRESA
+FROM
+  PROGETTO
+WHERE ID_PROGETTO = @ID_Domanda</CommandText>
+        <rd:DesignerState>
+          <QueryDefinition xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational">
+            <SelectedColumns>
+              <ColumnExpression ColumnOwner="PROGETTO" ColumnName="ID_PROGETTO" />
+              <ColumnExpression ColumnOwner="PROGETTO" ColumnName="ID_IMPRESA" />
+            </SelectedColumns>
+          </QueryDefinition>
+        </rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="ID_PROGETTO">
+          <DataField>ID_PROGETTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ID_IMPRESA">
+          <DataField>ID_IMPRESA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Rectangle Name="rectangle2">
+            <ReportItems>
+              <Textbox Name="textbox1">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>REQUISITI DI IMPRESA/AGGREGAZIONE DI IMPRESE</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Left>0.09cm</Left>
+                <Height>0.45cm</Height>
+                <Width>14.06116cm</Width>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <DataElementOutput>ContentsOnly</DataElementOutput>
+            <Height>0.577cm</Height>
+            <Width>18.7cm</Width>
+            <Style>
+              <BackgroundColor>Black</BackgroundColor>
+            </Style>
+          </Rectangle>
+          <Textbox Name="textbox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>DOMANDA PRESENTATA IN FORMA:</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox5</rd:DefaultName>
+            <Top>0.64798cm</Top>
+            <Left>0.10947cm</Left>
+            <Height>0.45cm</Height>
+            <Width>5.17046cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Color>White</Color>
+              </Border>
+              <BottomBorder>
+                <Color>White</Color>
+              </BottomBorder>
+              <LeftBorder>
+                <Color>White</Color>
+              </LeftBorder>
+              <RightBorder>
+                <Color>White</Color>
+              </RightBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox67">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=UCase(First(Fields!TIPO_NATURA_SOGGETTO.Value, "dsProgettoNaturaSoggetto"))</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.09798cm</Top>
+            <Left>0.09cm</Left>
+            <Height>0.52692cm</Height>
+            <Width>5.18993cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Width>0.5pt</Width>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>0.5pt</Width>
+              </BottomBorder>
+              <LeftBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>0.5pt</Width>
+              </LeftBorder>
+              <RightBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>0.5pt</Width>
+              </RightBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox6">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>AGGREGAZIONE:</Value>
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>textbox5</rd:DefaultName>
+            <Top>0.64798cm</Top>
+            <Left>6.7745cm</Left>
+            <Height>0.45cm</Height>
+            <Width>5.17046cm</Width>
+            <ZIndex>3</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(IsNothing(First(Fields!ID_AGGREGAZIONE.Value, "dsProgettoNaturaSoggetto")) ,True,False )</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Color>White</Color>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="textbox68">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!DENOMINAZIONE.Value, "dsProgettoNaturaSoggetto")</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>1.09798cm</Top>
+            <Left>6.75504cm</Left>
+            <Height>0.52692cm</Height>
+            <Width>11.51347cm</Width>
+            <ZIndex>4</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(IsNothing(First(Fields!ID_AGGREGAZIONE.Value, "dsProgettoNaturaSoggetto")) ,True,False )</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Width>0.5pt</Width>
+              </Border>
+              <BottomBorder>
+                <Style>Solid</Style>
+              </BottomBorder>
+              <LeftBorder>
+                <Style>Solid</Style>
+              </LeftBorder>
+              <RightBorder>
+                <Style>Solid</Style>
+              </RightBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Rectangle Name="Rectangle4">
+            <ReportItems>
+              <Tablix Name="Tablix1">
+                <TablixBody>
+                  <TablixColumns>
+                    <TablixColumn>
+                      <Width>13.40245cm</Width>
+                    </TablixColumn>
+                    <TablixColumn>
+                      <Width>3.6266cm</Width>
+                    </TablixColumn>
+                    <TablixColumn>
+                      <Width>1.60042cm</Width>
+                    </TablixColumn>
+                  </TablixColumns>
+                  <TablixRows>
+                    <TablixRow>
+                      <Height>0.6cm</Height>
+                      <TablixCells>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Textbox2">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value> RAGIONE SOCIALE</Value>
+                                      <Style>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox2</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Textbox4">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value> P.IVA</Value>
+                                      <Style>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox4</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="Textbox7">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>RUOLO</Value>
+                                      <Style>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox7</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                      </TablixCells>
+                    </TablixRow>
+                    <TablixRow>
+                      <Height>0.6cm</Height>
+                      <TablixCells>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="RAGIONE_SOCIALE">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!RAGIONE_SOCIALE.Value</Value>
+                                      <Style>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>RAGIONE_SOCIALE</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="CODICE_FISCALE">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!CODICE_FISCALE.Value</Value>
+                                      <Style>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>CODICE_FISCALE</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="COD_RUOLO">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!COD_RUOLO.Value</Value>
+                                      <Style>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>COD_RUOLO</rd:DefaultName>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </CellContents>
+                        </TablixCell>
+                      </TablixCells>
+                    </TablixRow>
+                  </TablixRows>
+                </TablixBody>
+                <TablixColumnHierarchy>
+                  <TablixMembers>
+                    <TablixMember />
+                    <TablixMember />
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixColumnHierarchy>
+                <TablixRowHierarchy>
+                  <TablixMembers>
+                    <TablixMember>
+                      <KeepWithGroup>After</KeepWithGroup>
+                    </TablixMember>
+                    <TablixMember>
+                      <Group Name="Details" />
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixRowHierarchy>
+                <DataSetName>dsImpreseAggregazione</DataSetName>
+                <Top>0.79502cm</Top>
+                <Left>0.07053cm</Left>
+                <Height>1.2cm</Height>
+                <Width>18.62947cm</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+              </Tablix>
+              <Rectangle Name="rectangle3">
+                <ReportItems>
+                  <Textbox Name="textbox3">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>IMPRESE DELL'AGGREGAZIONE</Value>
+                            <Style>
+                              <FontSize>9pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Left>0.09cm</Left>
+                    <Height>0.45231cm</Height>
+                    <Width>14.06116cm</Width>
+                    <Style>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </ReportItems>
+                <DataElementOutput>ContentsOnly</DataElementOutput>
+                <Top>0.10811cm</Top>
+                <Height>0.48406cm</Height>
+                <Width>18.7cm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                  <BackgroundColor>LightGrey</BackgroundColor>
+                </Style>
+              </Rectangle>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>1.96003cm</Top>
+            <Height>2.07667cm</Height>
+            <Width>18.85971cm</Width>
+            <ZIndex>5</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(IsNothing(First(Fields!ID_AGGREGAZIONE.Value, "dsProgettoNaturaSoggetto")) ,True,False )</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Tablix Name="Tablix2">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>18.7cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>1.2489cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Subreport Name="Subreport2">
+                          <ReportName>rptQuadroRIsub</ReportName>
+                          <Parameters>
+                            <Parameter Name="ID_Domanda">
+                              <Value>=Parameters!ID_Domanda.Value</Value>
+                            </Parameter>
+                            <Parameter Name="ID_Impresa">
+                              <Value>=Fields!vIMPRESA_ID_IMPRESA.Value</Value>
+                            </Parameter>
+                          </Parameters>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Subreport>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Details1" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>dsImpreseAggregazione</DataSetName>
+            <Top>4.97297cm</Top>
+            <Height>1.2489cm</Height>
+            <Width>18.7cm</Width>
+            <ZIndex>6</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(IsNothing(First(Fields!ID_AGGREGAZIONE.Value, "dsProgettoNaturaSoggetto")) ,True,False )</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Rectangle Name="rectangle4">
+            <ReportItems>
+              <Textbox Name="textbox2">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>REQUISITI  IMPRESA</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <Left>0.06079cm</Left>
+                <Height>0.5135cm</Height>
+                <Width>14.06116cm</Width>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <DataElementOutput>ContentsOnly</DataElementOutput>
+            <Top>4.34658cm</Top>
+            <Left>0.00974cm</Left>
+            <Height>0.54525cm</Height>
+            <Width>18.7cm</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+              <BackgroundColor>LightGrey</BackgroundColor>
+            </Style>
+          </Rectangle>
+          <Subreport Name="Subreport3">
+            <ReportName>rptQuadroRIsub</ReportName>
+            <Parameters>
+              <Parameter Name="ID_Domanda">
+                <Value>=First(Fields!ID_PROGETTO.Value, "dsImpresaProgetto")</Value>
+              </Parameter>
+              <Parameter Name="ID_Impresa">
+                <Value>=First(Fields!ID_IMPRESA.Value, "dsImpresaProgetto")</Value>
+              </Parameter>
+            </Parameters>
+            <Top>6.36298cm</Top>
+            <Height>1.17062cm</Height>
+            <Width>18.7cm</Width>
+            <ZIndex>8</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(Not(IsNothing(First(Fields!ID_AGGREGAZIONE.Value, "dsProgettoNaturaSoggetto"))) ,True,False )</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
+        </ReportItems>
+        <Height>7.53361cm</Height>
+        <Style />
+      </Body>
+      <Width>18.85971cm</Width>
+      <Page>
+        <PageHeight>21cm</PageHeight>
+        <PageWidth>19cm</PageWidth>
+        <InteractiveHeight>0cm</InteractiveHeight>
+        <InteractiveWidth>0cm</InteractiveWidth>
+        <LeftMargin>1cm</LeftMargin>
+        <RightMargin>1cm</RightMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
+        <ColumnSpacing>1cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="ID_Domanda">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+        </Values>
+      </DefaultValue>
+      <Prompt>ID_Domanda</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>1</NumberOfColumns>
+      <NumberOfRows>1</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ID_Domanda</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <Language>it-IT</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>54d7e81d-ef84-49d0-8de8-bc9405046452</rd:ReportID>
+</Report>

@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="SIGEF_SVIL">
+      <DataSourceReference>SIGEF_SVIL</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>cf5d464d-4cc7-4af7-a5b9-343a956f2efe</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dsCovidMarcaDaBollo">
+      <Query>
+        <DataSourceName>SIGEF_SVIL</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@IdAutodichiarazione">
+            <Value>=Parameters!IdAutodichiarazione.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT CA.*,
+	DI.DESCRIZIONE AS DIMENSIONE_IMPRESA_DESCRIZIONE,
+	UT.NOMINATIVO AS OPERATORE_INSERIMENTO_DESCRIZIONE,
+	FG.DESCRIZIONE AS FORMA_GIURIDICA_DESCRIZIONE,
+	ISNULL(CA.CONTATTO_NOMINATIVO, CA.NOMINATIVO_RAPPRESENTANTE_LEGALE) AS CONTATTO_NOMINATIVO_REALE,
+	ISNULL(CA.CONTATTO_TELEFONO, CA.TELEFONO) AS CONTATTO_TELEFONO_REALE,
+	ISNULL(CA.CONTATTO_EMAIL, CA.EMAIL) AS CONTATTO_EMAIL_REALE,
+	ISNULL(CA.CONTATTO_PEC, CA.PEC) AS CONTATTO_PEC_REALE,
+	CO.DENOMINAZIONE AS LOCALIZZAZIONE_COMUNE_REALE
+FROM COVID_AUTODICHIARAZIONE CA
+	JOIN DIMENSIONE_IMPRESA DI ON CA.DIMENSIONE_IMPRESA = DI.ID_DIMENSIONE
+	JOIN vUTENTI UT ON CA.OPERATORE_INSERIMENTO = UT.ID_UTENTE
+	JOIN FORMA_GIURIDICA FG ON CA.FORMA_GIURIDICA = FG.COD_ISTAT
+	JOIN COMUNI CO ON CA.LOCALIZZAZIONE_COMUNE = CO.ID_COMUNE
+WHERE 1 = 1
+	AND CA.ID = @IdAutodichiarazione</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="ID">
+          <DataField>ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="OPERATORE_INSERIMENTO">
+          <DataField>OPERATORE_INSERIMENTO</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DATA_INSERIMENTO">
+          <DataField>DATA_INSERIMENTO</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="DATA_MODIFICA">
+          <DataField>DATA_MODIFICA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CODICE_FISCALE">
+          <DataField>CODICE_FISCALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PARTITA_IVA">
+          <DataField>PARTITA_IVA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_INIZIO_ATTIVITA">
+          <DataField>DATA_INIZIO_ATTIVITA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RAGIONE_SOCIALE">
+          <DataField>RAGIONE_SOCIALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FORMA_GIURIDICA">
+          <DataField>FORMA_GIURIDICA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CODICE_ATECO">
+          <DataField>CODICE_ATECO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DIMENSIONE_IMPRESA">
+          <DataField>DIMENSIONE_IMPRESA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="NUMERO_REGISTRO_IMPRESE">
+          <DataField>NUMERO_REGISTRO_IMPRESE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NUMERO_REA">
+          <DataField>NUMERO_REA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ANNO_REA">
+          <DataField>ANNO_REA</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="INDIRIZZO_SEDE_LEGALE">
+          <DataField>INDIRIZZO_SEDE_LEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COMUNE">
+          <DataField>COMUNE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DENOMINAZIONE_COMUNE">
+          <DataField>DENOMINAZIONE_COMUNE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROVINCIA">
+          <DataField>PROVINCIA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CAP">
+          <DataField>CAP</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TELEFONO">
+          <DataField>TELEFONO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EMAIL">
+          <DataField>EMAIL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PEC">
+          <DataField>PEC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NOMINATIVO_RAPPRESENTANTE_LEGALE">
+          <DataField>NOMINATIVO_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CF_RAPPRESENTANTE_LEGALE">
+          <DataField>CF_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DATA_DI_NASCITA_RAPPRESENTANTE_LEGALE">
+          <DataField>DATA_DI_NASCITA_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="COMUNE_NASCITA_RAPPRESENTANTE_LEGALE">
+          <DataField>COMUNE_NASCITA_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DENOMINAZIONE_COMUNE_NASCITA_RAPPRESENTANTE_LEGALE">
+          <DataField>DENOMINAZIONE_COMUNE_NASCITA_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PROVINCIA_NASCITA_RAPPRESENTANTE_LEGALE">
+          <DataField>PROVINCIA_NASCITA_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CAP_COMUNE_NASCITA_RAPPRESENTANTE_LEGALE">
+          <DataField>CAP_COMUNE_NASCITA_RAPPRESENTANTE_LEGALE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="IBAN">
+          <DataField>IBAN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_NOMINATIVO">
+          <DataField>CONTATTO_NOMINATIVO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_EMAIL">
+          <DataField>CONTATTO_EMAIL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_PEC">
+          <DataField>CONTATTO_PEC</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_TELEFONO">
+          <DataField>CONTATTO_TELEFONO</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_SITO_WEB">
+          <DataField>CONTATTO_SITO_WEB</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LOCALIZZAZIONE_COMUNE">
+          <DataField>LOCALIZZAZIONE_COMUNE</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LOCALIZZAZIONE_PROVINCIA">
+          <DataField>LOCALIZZAZIONE_PROVINCIA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LOCALIZZAZIONE_CAP">
+          <DataField>LOCALIZZAZIONE_CAP</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LOCALIZZAZIONE_VIA">
+          <DataField>LOCALIZZAZIONE_VIA</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="MARCA_BOLLO_DATA">
+          <DataField>MARCA_BOLLO_DATA</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="MARCA_BOLLO_ESTREMI">
+          <DataField>MARCA_BOLLO_ESTREMI</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DEFINITIVA">
+          <DataField>DEFINITIVA</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="DIMENSIONE_IMPRESA_DESCRIZIONE">
+          <DataField>DIMENSIONE_IMPRESA_DESCRIZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OPERATORE_INSERIMENTO_DESCRIZIONE">
+          <DataField>OPERATORE_INSERIMENTO_DESCRIZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FORMA_GIURIDICA_DESCRIZIONE">
+          <DataField>FORMA_GIURIDICA_DESCRIZIONE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_NOMINATIVO_REALE">
+          <DataField>CONTATTO_NOMINATIVO_REALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_TELEFONO_REALE">
+          <DataField>CONTATTO_TELEFONO_REALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_EMAIL_REALE">
+          <DataField>CONTATTO_EMAIL_REALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CONTATTO_PEC_REALE">
+          <DataField>CONTATTO_PEC_REALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LOCALIZZAZIONE_COMUNE_REALE">
+          <DataField>LOCALIZZAZIONE_COMUNE_REALE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Rectangle Name="Rectangle1">
+            <ReportItems>
+              <Rectangle Name="rectangle2">
+                <ReportItems>
+                  <Textbox Name="textbox4">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>ESTREMI MARCA DA BOLLO</Value>
+                            <Style>
+                              <FontSize>9pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                              <Color>White</Color>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <Height>0.52937cm</Height>
+                    <Width>14.00825cm</Width>
+                    <Style>
+                      <BackgroundColor>Black</BackgroundColor>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </ReportItems>
+                <DataElementOutput>ContentsOnly</DataElementOutput>
+                <Left>0.03218cm</Left>
+                <Height>0.52937cm</Height>
+                <Width>18.61342cm</Width>
+                <Style>
+                  <BackgroundColor>Black</BackgroundColor>
+                </Style>
+              </Rectangle>
+              <Textbox Name="CF_TIT">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!MARCA_BOLLO_ESTREMI.Value, "dsCovidMarcaDaBollo")</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>CF_TIT</rd:DefaultName>
+                <Top>1.56633cm</Top>
+                <Left>0.03218cm</Left>
+                <Height>0.66167cm</Height>
+                <Width>8.30426cm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <Border>
+                    <Width>0.5pt</Width>
+                  </Border>
+                  <BottomBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>0.5pt</Width>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>0.5pt</Width>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                    <Width>0.5pt</Width>
+                  </RightBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox6">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Numero marca da bollo</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox6</rd:DefaultName>
+                <Top>0.73532cm</Top>
+                <Left>0.03218cm</Left>
+                <Height>0.61933cm</Height>
+                <Width>8.30426cm</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="CF_TIT2">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!MARCA_BOLLO_DATA.Value, "dsCovidMarcaDaBollo")</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <Format>d</Format>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>CF_TIT</rd:DefaultName>
+                <Top>1.56633cm</Top>
+                <Left>10.56833cm</Left>
+                <Height>0.66167cm</Height>
+                <Width>3.4721cm</Width>
+                <ZIndex>3</ZIndex>
+                <Style>
+                  <Border>
+                    <Width>0.5pt</Width>
+                  </Border>
+                  <BottomBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                  </BottomBorder>
+                  <LeftBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                  </LeftBorder>
+                  <RightBorder>
+                    <Color>Black</Color>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="textbox7">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Data marca da bollo</Value>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>textbox6</rd:DefaultName>
+                <Top>0.7706cm</Top>
+                <Left>10.53615cm</Left>
+                <Height>0.61933cm</Height>
+                <Width>3.4721cm</Width>
+                <ZIndex>4</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>0.3175cm</Top>
+            <Left>0.11046cm</Left>
+            <Height>2.33067cm</Height>
+            <Width>18.6456cm</Width>
+            <Visibility>
+              <Hidden>=IIF(
+IsNothing(First(Fields!MARCA_BOLLO_DATA.Value, "dsCovidMarcaDaBollo")) And IsNothing(First(Fields!MARCA_BOLLO_ESTREMI.Value, "dsCovidMarcaDaBollo")),
+True,
+False)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+        </ReportItems>
+        <Height>3.02683cm</Height>
+        <Style />
+      </Body>
+      <Width>18.94945cm</Width>
+      <Page>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>19cm</PageWidth>
+        <LeftMargin>0cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
+        <TopMargin>0cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
+        <ColumnSpacing>1.27cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="IdAutodichiarazione">
+      <DataType>String</DataType>
+      <Prompt>Id Autodichiarazione</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>1</NumberOfColumns>
+      <NumberOfRows>1</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>IdAutodichiarazione</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <Language>it-IT</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>ec2e4937-6de8-4723-b63f-e836eb3a8a74</rd:ReportID>
+</Report>

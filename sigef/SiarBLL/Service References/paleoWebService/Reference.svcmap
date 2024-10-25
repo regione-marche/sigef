@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cb4cd5cb-cc18-4572-9c05-8abc48d2f048" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://paleotest2020.regione.marche.it/Paleowebservices2020R_MARCHE/paleowebservice2.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PaleoWebService21.xsd" MetadataType="Schema" ID="8c25fd5e-a786-4b5d-a6d5-05dad7425f8f" SourceId="1" SourceUrl="https://paleotest2020.regione.marche.it/PaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd3" />
+    <MetadataFile FileName="PaleoWebService211.xsd" MetadataType="Schema" ID="4e3ff873-d042-4537-ba8e-d00c9cb55762" SourceId="1" SourceUrl="https://paleotest2020.regione.marche.it/PaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd2" />
+    <MetadataFile FileName="PaleoWebService212.xsd" MetadataType="Schema" ID="ec65a9b8-05a6-4e1a-9c66-d32abb7bf5f5" SourceId="1" SourceUrl="https://paleotest2020.regione.marche.it/PaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd5" />
+    <MetadataFile FileName="PaleoWebService213.xsd" MetadataType="Schema" ID="32d30435-1222-46e8-82b8-15952d624389" SourceId="1" SourceUrl="https://paleotest2020.regione.marche.it/PaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd1" />
+    <MetadataFile FileName="PaleoService2.wsdl" MetadataType="Wsdl" ID="2ff5fc6c-41de-45d2-8088-45bfbab80978" SourceId="1" SourceUrl="https://paleotest2020.regione.marche.it/PaleoWebServices2020R_MARCHE/PaleoWebService2.svc?wsdl" />
+    <MetadataFile FileName="PaleoWebService2.wsdl" MetadataType="Wsdl" ID="7c2b6ee7-a83d-4221-b2fc-966b7853377a" SourceId="1" SourceUrl="https://paleotest2020.regione.marche.it/PaleoWebServices2020R_MARCHE/PaleoWebService2.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="PaleoWebService214.xsd" MetadataType="Schema" ID="d9990837-4ac5-4af4-9830-dc3018bfa826" SourceId="1" SourceUrl="https://paleotest2020.regione.marche.it/PaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd4" />
+    <MetadataFile FileName="PaleoWebService215.xsd" MetadataType="Schema" ID="a4e7d07f-c457-4c29-a31b-699e31f7ba48" SourceId="1" SourceUrl="https://paleotest2020.regione.marche.it/PaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd6" />
+    <MetadataFile FileName="PaleoWebService2.disco" MetadataType="Disco" ID="860d3b9b-860e-4fb8-9581-669180b1dd98" SourceId="1" SourceUrl="https://paleotest2020.regione.marche.it/PaleoWebServices2020R_MARCHE/PaleoWebService2.svc?disco" />
+    <MetadataFile FileName="PaleoWebService216.xsd" MetadataType="Schema" ID="1538f16c-e83d-427f-9f7e-663585259ea3" SourceId="1" SourceUrl="https://paleotest2020.regione.marche.it/PaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

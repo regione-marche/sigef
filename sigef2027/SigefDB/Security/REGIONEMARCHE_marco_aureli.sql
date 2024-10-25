@@ -1,0 +1,2 @@
+﻿CREATE USER [REGIONEMARCHE\marco_aureli] FOR LOGIN [REGIONEMARCHE\marco_aureli];
+

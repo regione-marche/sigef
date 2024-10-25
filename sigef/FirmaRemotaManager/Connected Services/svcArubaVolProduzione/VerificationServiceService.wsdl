@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://actalisVol/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="VerificationServiceService" targetNamespace="http://actalisVol/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="VerificationServiceSOAPBinding_MTOM_Policy-VerificationServiceSOAPBinding_MTOM_Policy">
+    <ns1:OptimizedMimeSerialization xmlns:ns1="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" wsp:Optional="true" />
+  </wsp:Policy>
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="verificationService.xsd" namespace="http://actalisVol/" />
+    </xsd:schema>
+  </types>
+  <message name="Verification">
+    <part name="parameters" element="tns:Verification" />
+  </message>
+  <message name="VerificationResponse">
+    <part name="parameters" element="tns:VerificationResponse" />
+  </message>
+  <message name="VerificationV2">
+    <part name="parameters" element="tns:VerificationV2" />
+  </message>
+  <message name="VerificationV2Response">
+    <part name="parameters" element="tns:VerificationV2Response" />
+  </message>
+  <message name="VerificationV3">
+    <part name="parameters" element="tns:VerificationV3" />
+  </message>
+  <message name="VerificationV3Response">
+    <part name="parameters" element="tns:VerificationV3Response" />
+  </message>
+  <message name="VerificationV3Local">
+    <part name="parameters" element="tns:VerificationV3Local" />
+  </message>
+  <message name="VerificationV3LocalResponse">
+    <part name="parameters" element="tns:VerificationV3LocalResponse" />
+  </message>
+  <message name="VerificationV3Transient">
+    <part name="parameters" element="tns:VerificationV3Transient" />
+  </message>
+  <message name="VerificationV3TransientResponse">
+    <part name="parameters" element="tns:VerificationV3TransientResponse" />
+  </message>
+  <message name="VerificationV2Local">
+    <part name="parameters" element="tns:VerificationV2Local" />
+  </message>
+  <message name="VerificationV2LocalResponse">
+    <part name="parameters" element="tns:VerificationV2LocalResponse" />
+  </message>
+  <message name="VerifyTimeStampToken">
+    <part name="parameters" element="tns:VerifyTimeStampToken" />
+  </message>
+  <message name="VerifyTimeStampTokenResponse">
+    <part name="parameters" element="tns:VerifyTimeStampTokenResponse" />
+  </message>
+  <message name="VerifyTimeStampTokenV2">
+    <part name="parameters" element="tns:VerifyTimeStampTokenV2" />
+  </message>
+  <message name="VerifyTimeStampTokenV2Response">
+    <part name="parameters" element="tns:VerifyTimeStampTokenResponseV2" />
+  </message>
+  <message name="VerifyTimeStampTokenV2Local">
+    <part name="parameters" element="tns:VerifyTimeStampTokenV2Local" />
+  </message>
+  <message name="VerifyTimeStampTokenV2LocalResponse">
+    <part name="parameters" element="tns:VerifyTimeStampTokenV2LocalResponse" />
+  </message>
+  <message name="VerifyTimeStampData">
+    <part name="parameters" element="tns:VerifyTimeStampData" />
+  </message>
+  <message name="VerifyTimeStampDataResponse">
+    <part name="parameters" element="tns:VerifyTimeStampDataResponse" />
+  </message>
+  <message name="VerifyTimeStampDataV2">
+    <part name="parameters" element="tns:VerifyTimeStampDataV2" />
+  </message>
+  <message name="VerifyTimeStampDataV2Response">
+    <part name="parameters" element="tns:VerifyTimeStampDataResponseV2" />
+  </message>
+  <message name="VerifyCertificate">
+    <part name="parameters" element="tns:VerifyCertificate" />
+  </message>
+  <message name="VerifyCertificateResponse">
+    <part name="parameters" element="tns:VerifyCertificateResponse" />
+  </message>
+  <message name="VerifyP7M">
+    <part name="parameters" element="tns:VerifyP7M" />
+  </message>
+  <message name="VerifyP7MResponse">
+    <part name="parameters" element="tns:VerifyP7MResponse" />
+  </message>
+  <message name="VerifyP7MSubLevel">
+    <part name="parameters" element="tns:VerifyP7MSubLevel" />
+  </message>
+  <message name="VerifyP7MSubLevelResponse">
+    <part name="parameters" element="tns:VerifyP7MSubLevelResponse" />
+  </message>
+  <message name="VerifyP7MDetached">
+    <part name="parameters" element="tns:VerifyP7MDetached" />
+  </message>
+  <message name="VerifyP7MDetachedResponse">
+    <part name="parameters" element="tns:VerifyP7MDetachedResponse" />
+  </message>
+  <message name="VerifyPDF">
+    <part name="parameters" element="tns:VerifyPDF" />
+  </message>
+  <message name="VerifyPDFResponse">
+    <part name="parameters" element="tns:VerifyPDFResponse" />
+  </message>
+  <message name="VerifyXML">
+    <part name="parameters" element="tns:VerifyXML" />
+  </message>
+  <message name="VerifyXMLResponse">
+    <part name="parameters" element="tns:VerifyXMLResponse" />
+  </message>
+  <message name="VerifyRevocation">
+    <part name="parameters" element="tns:VerifyRevocation" />
+  </message>
+  <message name="VerifyRevocationResponse">
+    <part name="parameters" element="tns:VerifyRevocationResponse" />
+  </message>
+  <portType name="VerificationService">
+    <operation name="Verification">
+      <input wsam:Action="http://actalisVol.it/actalisVol/services/Verification" message="tns:Verification" />
+      <output wsam:Action="http://actalisVol.it/actalisVol/services/Verification" message="tns:VerificationResponse" />
+    </operation>
+    <operation name="VerificationV2">
+      <input wsam:Action="http://actalisVol.it/actalisVol/services/VerificationV2" message="tns:VerificationV2" />
+      <output wsam:Action="http://actalisVol.it/actalisVol/services/VerificationV2" message="tns:VerificationV2Response" />
+    </operation>
+    <operation name="VerificationV3">
+      <input wsam:Action="http://actalisVol.it/actalisVol/services/VerificationV3" message="tns:VerificationV3" />
+      <output wsam:Action="http://actalisVol.it/actalisVol/services/VerificationV3" message="tns:VerificationV3Response" />
+    </operation>
+    <operation name="VerificationV3Local">
+      <input wsam:Action="http://actalisVol.it/actalisVol/services/VerificationV3Local" message="tns:VerificationV3Local" />
+      <output wsam:Action="http://actalisVol.it/actalisVol/services/VerificationV3Local" message="tns:VerificationV3LocalResponse" />
+    </operation>
+    <operation name="VerificationV3Transient">
+      <input wsam:Action="http://actalisVol.it/actalisVol/services/VerificationV3Transient" message="tns:VerificationV3Transient" />
+      <output wsam:Action="http://actalisVol.it/actalisVol/services/VerificationV3Transient" message="tns:VerificationV3TransientResponse" />
+    </operation>
+    <operation name="VerificationV2Local">
+      <input wsam:Action="http://actalisVol.it/actalisVol/services/VerificationV2Local" message="tns:VerificationV2Local" />
+      <output wsam:Action="http://actalisVol.it/actalisVol/services/VerificationV2Local" message="tns:VerificationV2LocalResponse" />
+    </operation>
+    <operation name="VerifyTimeStampToken">
+      <input wsam:Action="http://actalisVol.it/actalisVol/services/VerifyTimeStampToken" message="tns:VerifyTimeStampToken" />
+      <output wsam:Action="http://actalisVol.it/actalisVol/services/VerifyTimeStampToken" message="tns:VerifyTimeStampTokenResponse" />
+    </operation>
+    <operation name="VerifyTimeStampTokenV2">
+      <input wsam:Action="http://actalisVol.it/actalisVol/services/VerifyTimeStampTokenV2" message="tns:VerifyTimeStampTokenV2" />
+      <output wsam:Action="http://actalisVol.it/actalisVol/services/VerifyTimeStampTokenV2" message="tns:VerifyTimeStampTokenV2Response" />
+    </operation>
+    <operation name="VerifyTimeStampTokenV2Local">
+      <input wsam:Action="http://actalisVol.it/actalisVol/services/VerifyTimeStampTokenV2Local" message="tns:VerifyTimeStampTokenV2Local" />
+      <output wsam:Action="http://actalisVol.it/actalisVol/services/VerifyTimeStampTokenV2Local" message="tns:VerifyTimeStampTokenV2LocalResponse" />
+    </operation>
+    <operation name="VerifyTimeStampData">
+      <input wsam:Action="http://actalisVol/VerificationService/VerifyTimeStampDataRequest" message="tns:VerifyTimeStampData" />
+      <output wsam:Action="http://actalisVol/VerificationService/VerifyTimeStampDataResponse" message="tns:VerifyTimeStampDataResponse" />
+    </operation>
+    <operation name="VerifyTimeStampDataV2">
+      <input wsam:Action="http://actalisVol/VerificationService/VerifyTimeStampDataV2Request" message="tns:VerifyTimeStampDataV2" />
+      <output wsam:Action="http://actalisVol/VerificationService/VerifyTimeStampDataV2Response" message="tns:VerifyTimeStampDataV2Response" />
+    </operation>
+    <operation name="VerifyCertificate">
+      <input wsam:Action="http://actalisVol/VerificationService/VerifyCertificateRequest" message="tns:VerifyCertificate" />
+      <output wsam:Action="http://actalisVol/VerificationService/VerifyCertificateResponse" message="tns:VerifyCertificateResponse" />
+    </operation>
+    <operation name="VerifyP7M">
+      <input wsam:Action="http://actalisVol/VerificationService/VerifyP7MRequest" message="tns:VerifyP7M" />
+      <output wsam:Action="http://actalisVol/VerificationService/VerifyP7MResponse" message="tns:VerifyP7MResponse" />
+    </operation>
+    <operation name="VerifyP7MSubLevel">
+      <input wsam:Action="http://actalisVol/VerificationService/VerifyP7MSubLevelRequest" message="tns:VerifyP7MSubLevel" />
+      <output wsam:Action="http://actalisVol/VerificationService/VerifyP7MSubLevelResponse" message="tns:VerifyP7MSubLevelResponse" />
+    </operation>
+    <operation name="VerifyP7MDetached">
+      <input wsam:Action="http://actalisVol/VerificationService/VerifyP7MDetachedRequest" message="tns:VerifyP7MDetached" />
+      <output wsam:Action="http://actalisVol/VerificationService/VerifyP7MDetachedResponse" message="tns:VerifyP7MDetachedResponse" />
+    </operation>
+    <operation name="VerifyPDF">
+      <input wsam:Action="http://actalisVol/VerificationService/VerifyPDFRequest" message="tns:VerifyPDF" />
+      <output wsam:Action="http://actalisVol/VerificationService/VerifyPDFResponse" message="tns:VerifyPDFResponse" />
+    </operation>
+    <operation name="VerifyXML">
+      <input wsam:Action="http://actalisVol/VerificationService/VerifyXMLRequest" message="tns:VerifyXML" />
+      <output wsam:Action="http://actalisVol/VerificationService/VerifyXMLResponse" message="tns:VerifyXMLResponse" />
+    </operation>
+    <operation name="VerifyRevocation">
+      <input wsam:Action="http://actalisVol/VerificationService/VerifyRevocationRequest" message="tns:VerifyRevocation" />
+      <output wsam:Action="http://actalisVol/VerificationService/VerifyRevocationResponse" message="tns:VerifyRevocationResponse" />
+    </operation>
+  </portType>
+  <binding name="VerificationServiceSOAPBinding" type="tns:VerificationService">
+    <wsp:PolicyReference URI="#VerificationServiceSOAPBinding_MTOM_Policy-VerificationServiceSOAPBinding_MTOM_Policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="Verification">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerificationV2">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerificationV3">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerificationV3Local">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerificationV3Transient">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerificationV2Local">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerifyTimeStampToken">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerifyTimeStampTokenV2">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerifyTimeStampTokenV2Local">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerifyTimeStampData">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerifyTimeStampDataV2">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerifyCertificate">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerifyP7M">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerifyP7MSubLevel">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerifyP7MDetached">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerifyPDF">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerifyXML">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="VerifyRevocation">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="VerificationServiceService">
+    <port name="VerificationServiceSOAP" binding="tns:VerificationServiceSOAPBinding">
+      <soap:address location="http://vol.regionemarche.intra:8081/actalisVol/services/VerificationServiceSOAP" />
+    </port>
+  </service>
+</definitions>

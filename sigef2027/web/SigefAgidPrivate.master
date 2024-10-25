@@ -1,0 +1,222 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="SigefAgidPrivate" CodeBehind="SigefAgidPrivate.master.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="it" xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link rel="stylesheet" href="<%= Page.ResolveUrl("~/bootstrap-italia/css/bootstrap-italia.min.css")%>" />
+
+    <link href="<%= Page.ResolveUrl("~/css/AgidStyle.css")%>" type="text/css" rel="stylesheet" />
+
+    <link rel="icon" href="<%= Page.ResolveUrl("~/images/favicon.png")%>" type="image/png" />
+
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/bootstrap-italia/js/bootstrap-italia.bundle.min.js")%>"></script>
+
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/JsLibs/jquery.js")%>"></script>
+
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/JsLibs/jquery-ui.min.js")%>"></script>
+
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/JsLibs/Main.js?d="+System.IO.File.GetLastWriteTime(Server.MapPath("~/JsLibs/Main.js")).ToString("yyyyMMddHHmmss"))%>"></script>
+
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/JsLibs/textbox.js?d="+System.IO.File.GetLastWriteTime(Server.MapPath("~/JsLibs/textbox.js")).ToString("yyyyMMddHHmmss"))%>"></script>
+
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/JsLibs/combobox.js?d="+System.IO.File.GetLastWriteTime(Server.MapPath("~/JsLibs/combobox.js")).ToString("yyyyMMddHHmmss"))%>"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (!window.location.origin) {
+                window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+            }
+            var host = window.location.origin;
+            if (host.indexOf("sigeftest") > -1) {
+                //$('body').css('background-image', 'url(' + host + '/web/images/alert.gif)');
+                $('#divTest').show();
+            }
+            else {
+                $('#divTest').hide();
+            }
+        });
+        var oldMasterPage = false;
+    </script>
+
+</head>
+<body>
+    <form id="SigefForm" runat="server">
+        <asp:ScriptManager ID="ScriptManagerMaster" runat="server" AllowCustomErrorsRedirect="False"
+            AsyncPostBackTimeout="10000" EnableViewState="False">
+        </asp:ScriptManager>
+
+        <header>
+            <div id="title-bar" class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div id="titolo-rm" class="fw-semibold float-start py-2">
+                            <span>Regione Marche</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="row">
+                            <div id="loginSection" runat="server" class="py-2">
+                                <a onclick="location='private/welcome.aspx'" class="btn btn-primary py-1 float-end" type="button" id="button-3">
+                                    <svg class="icon icon-sm icon-white"><use href="/web/bootstrap-italia/svg/sprites.svg#it-user" xlink:href="/web/bootstrap-italia/svg/sprites.svg#it-user"></use></svg>
+                                    Accedi</a>
+                            </div>
+                            <div class="col-lg-1 userCount" id="divUser" style="float: left;" runat="server" clientidmode="Static">
+                                <img id="img_user_count" runat="server" src="images/multiple.png" alt="Utenti collegati" title="Utenti collegati" />
+                                <asp:Label ID="divCountUsers" runat="server" Visible="false"></asp:Label>
+                                <asp:Label ID="divCountUsersAccessi" runat="server"></asp:Label>                                
+                            </div>
+                            <div class="col-lg-2 userCount">
+                                <asp:Label ID="divNomeOperatore" runat="server">
+                                </asp:Label>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <Siar:Combo runat="server" CssClass="cmbRuoloUser" ID="ComboRuolo">
+                                        </Siar:Combo>
+                                    </div>
+                                    <div class="col-lg-6 btnRuoloUser">
+                                        <Siar:Button ID="btnRuolo" runat="server" OnClick="btnRuolo_Click" CssClass="btnRuoloUser" CausesValidation="false" Text="Imposta profilo" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div runat="server" visible="false" id="divManutenzione" class="container-fluid bg-danger">
+                <div id="scroll-container" class="col-sm-12">
+                    <h5 id="scroll-text" class="text-white manutenzione-banner">ATTENZIONE! IL SISTEMA SUBIRA' UNA INTERRUZIONE NELLA GIORNATA DI OGGI PER AGGIORNAMENTI. CONSULTARE LA PAGINA NEWS & COMUNICAZIONI PER I DETTAGLI</h5>
+                </div>
+            </div>
+            <div id="divTest" class="container-fluid bg-warning">
+                <div id="scroll-container" class="col-sm-12">
+                    <h5 id="scroll-text" class="text-white manutenzione-banner">AMBIENTE DI TEST</h5>
+                </div>
+            </div>
+            <div id="header-bar" class="container-fluid">
+                <div class="container">
+                    <a runat="server" class="navbar-brand py-2 text-decoration-none text-white" href="HomePageAgid.aspx" aria-label="Sistema Integrato GEstione Fondi" title="Sistema Integrato GEstione Fondi" data-focus-mouse="false">
+                      <div class="d-flex flex-row py-4">
+                        <img id="logo" runat="server" src="img/logo.png" class="img-fluid" alt="Sigef Regione Marche">
+                        <div class="d-flex flex-column ps-3 ps-sm-4">
+                          <h2 class="bd-logo-title">SIGEF</h2>
+                          <h6 class="bd-logo-subtitle">Sistema Integrato GEstione Fondi</h6>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="row">
+                        <nav class="navbar navbar-expand-lg has-megamenu">
+                          <button class="custom-navbar-toggler" type="button" aria-controls="nav3" aria-expanded="false" aria-label="Mostra/Nascondi la navigazione" data-bs-toggle="navbarcollapsible" data-bs-target="#nav3">
+                            <svg class="icon">
+                              <use href="/web/bootstrap-italia/svg/sprites.svg#it-burger"></use>
+                            </svg>
+                          </button>
+                          <div class="navbar-collapsable" id="nav3">
+                            <div class="overlay"></div>
+                            <div class="close-div">
+                              <button class="btn close-menu" type="button">
+                                <span class="visually-hidden">Nascondi la navigazione</span>
+                                <svg class="icon">
+                                  <use href="/web/bootstrap-italia/svg/sprites.svg#it-close-big"></use>
+                                </svg>
+                              </button>
+                            </div>
+                            <div class="menu-wrapper" id="divMegaMenu">
+                            </div>
+                          </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid container-no-margin">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="d-flex flex-row">
+                        <div class="box-menu">
+                            <div id="divMenu">
+                            </div>
+                            <div id="divLoading" style="display: none; width: 100%; font-weight: bold">
+                                loading menu...
+                            </div>
+                            <asp:HiddenField ID="hdnFunzioneMenuPagina" runat="server" />
+                            <asp:HiddenField ID="hdnCtrlUserSession" runat="server" />
+                            <input type="hidden" id="hdnInterruzioneSistema" runat="server" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-10">
+                    <div class="flex-column">
+                        <nav class="breadcrumb-container" aria-label="Percorso di navigazione" id="breadcrumbContainer"></nav>
+                        <asp:UpdatePanel ID="UpdatePanelMaster" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="True">
+                            <ContentTemplate>
+                                <asp:ContentPlaceHolder ID="cphContenuto" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div id="footer-bar" class="container-fluid">
+        <div class="container">
+            <a class="navbar-brand py-2 text-decoration-none" href="HomePageAgid.aspx" runat="server" aria-label="Sistema Integrato GEstione Fondi" title="Sistema Integrato GEstione Fondi" data-focus-mouse="false">
+                <div class="d-flex flex-row py-4">
+                    <img runat="server" id="logofooter" src="img/logo.png" class="img-fluid" alt="Sigef Regione Marche">
+                    <div class="d-flex flex-column ps-3 ps-sm-4 text-white">
+                        <h2 class="bd-logo-title">SIGEF</h2>
+                        <h6 class="bd-logo-subtitle">Sistema Integrato GEstione Fondi</h6>
+                    </div>
+                </div>
+            </a>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 py-2 px-4">
+                    <div class="border-bottom">
+                        <h6 class="text-white">INFORMAZIONI</h6>
+                    </div>
+                    <p class="text-white">
+                        Per informazioni in merito ai contenuti tematici di ciascun bando si rimanda al referente indicato nello stesso.
+                    </p>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-6 py-2 px-4">
+                    <div class="border-bottom">
+                        <h6 class="text-white">AVVERTENZE</h6>
+                    </div>
+                    <p class="text-white">
+                        La configurazione della postazione pc di lavoro da utilizzare per l’apposizione della firma digitale tramite smart-card deve avvenire con qualche giorno di anticipo rispetto alla data di scadenza del bando per non incorrere nella formazione di code di chiamata ai numeri sopra indicati. 
+                        Considerati I tempi usuali per le operazioni di assistenza necessarie, gli operatori di help desk non garantiscono la soluzione dei problemi relativi alla configurazione delle postazioni di lavoro nel giorno di scadenza del bando di interesse per l’utente.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 py-2 px-4">
+                    <div class="border-bottom">
+                        <h6 class="text-white">CONTATTI</h6>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 py-2 px-4">
+                    <p class="text-white fw-semibold p-0 m-0">Helpdesk SIGEF</p>
+                    <p class="fw-semibold text-white p-0 m-0">Abilitazioni</p>
+                    <p class="text-white p-0 m-0">Numero di telefono: 071 806 3995</p>
+                    <p class="text-white p-0 m-0">Email: <a class="text-white" href="mailto:helpdesk.sigef@regione.marche.it">helpdesk.sigef@regione.marche.it</a></p>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-6 py-2 px-4">
+                    <p class="text-white fw-semibold p-0 m-0">Carta Raffaello e autenticazione</p>
+                    <p class="text-white fw-semibold p-0 m-0">Autenticazione, firma digitale</p>
+                    <p class="text-white p-0 m-0">Numero di telefono: 071 806 6800 (int.  "3")</p>
+                    <p class="text-white p-0 m-0">Sito Web: <a class="text-white" href="https://cittadinanzadigitale.regione.marche.it" target="_blank">https://cittadinanzadigitale.regione.marche.it</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

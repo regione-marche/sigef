@@ -1,0 +1,125 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Table">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COD_BANDO" type="xs:int" minOccurs="0" />
+              <xs:element name="NOTIFICA_ELABORAZIONE_RICHIESTA" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Table1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_PROGETTO" type="xs:int" minOccurs="0" />
+              <xs:element name="ID_IMPRESA" type="xs:int" minOccurs="0" />
+              <xs:element name="INVIO_COD_BANDO" type="xs:int" minOccurs="0" />
+              <xs:element name="TITOLO_PROGETTO" type="xs:string" minOccurs="0" />
+              <xs:element name="DESCRIZIONE_PROGETTO" type="xs:string" minOccurs="0" />
+              <xs:element name="COD_TIPO_INIZIATIVA" type="xs:string" minOccurs="0" />
+              <xs:element name="CUP_CHECK_RICHIESTA" type="xs:int" minOccurs="0" />
+              <xs:element name="DATA_DOMANDA" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DATA_INIZIO_PROGETTO" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DATA_FINE_PROGETTO" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="LINK_TRASPARENZA" type="xs:string" minOccurs="0" />
+              <xs:element name="ID_CONCESSIONE_GEST" type="xs:string" minOccurs="0" />
+              <xs:element name="FLAG_ATTO_CONCESSIONE" type="xs:string" minOccurs="0" />
+              <xs:element name="DATA_CONCESSIONE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CODICE_LOCALE_PROGETTO" type="xs:string" minOccurs="0" />
+              <xs:element name="NOTE_CONCESSIONE" type="xs:string" minOccurs="0" />
+              <xs:element name="COD_STATO_CONCESSIONE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Table2">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_PROGETTO" type="xs:string" minOccurs="0" />
+              <xs:element name="ID_IMPRESA" type="xs:int" minOccurs="0" />
+              <xs:element name="COD_TIPO_SOGGETTO" type="xs:string" minOccurs="0" />
+              <xs:element name="CODICE_FISCALE" type="xs:string" minOccurs="0" />
+              <xs:element name="DENOMINAZIONE" type="xs:string" minOccurs="0" />
+              <xs:element name="FINE_ESERCIZIO_FINANZIARIO" type="xs:string" minOccurs="0" />
+              <xs:element name="COD_DIMENSIONE_IMPRESA" type="xs:int" minOccurs="0" />
+              <xs:element name="COD_TIPO_ATTIVITA_PREVALENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="COD_FORMA_GIURIDICA" type="xs:string" minOccurs="0" />
+              <xs:element name="INDIRIZZO" type="xs:string" minOccurs="0" />
+              <xs:element name="COD_NAZIONE" type="xs:string" minOccurs="0" />
+              <xs:element name="COD_COMUNE" type="xs:string" minOccurs="0" />
+              <xs:element name="COMUNE" type="xs:string" minOccurs="0" />
+              <xs:element name="CAP" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Table3">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_PROGETTO" type="xs:string" minOccurs="0" />
+              <xs:element name="ID_IMPRESA" type="xs:int" minOccurs="0" />
+              <xs:element name="ID_LOCA_GEST" type="xs:string" minOccurs="0" />
+              <xs:element name="COD_REGIONE" type="xs:string" minOccurs="0" />
+              <xs:element name="CHECK_LOCALIZZAZIONE" type="xs:string" minOccurs="0" />
+              <xs:element name="COD_COMUNE" type="xs:string" minOccurs="0" />
+              <xs:element name="COMUNE" type="xs:string" minOccurs="0" />
+              <xs:element name="CAP" type="xs:string" minOccurs="0" />
+              <xs:element name="INDIRIZZO" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Table4">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_PROGETTO" type="xs:string" minOccurs="0" />
+              <xs:element name="ID_IMPRESA" type="xs:int" minOccurs="0" />
+              <xs:element name="ID_COSTO_GEST" type="xs:string" minOccurs="0" />
+              <xs:element name="COD_TIPO_COSTO" type="xs:string" minOccurs="0" />
+              <xs:element name="IMPORTO_AMMESSO" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Table5">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_PROGETTO" type="xs:string" minOccurs="0" />
+              <xs:element name="ID_IMPRESA" type="xs:int" minOccurs="0" />
+              <xs:element name="ID_COMP_AIUTO_GEST" type="xs:string" minOccurs="0" />
+              <xs:element name="DESCR_BREVE" type="xs:string" minOccurs="0" />
+              <xs:element name="COD_TIPO_PROCEDIMENTO" type="xs:int" minOccurs="0" />
+              <xs:element name="CODICE_REGOLAMENTO" type="xs:string" minOccurs="0" />
+              <xs:element name="COD_OBIETTIVO" type="xs:string" minOccurs="0" />
+              <xs:element name="CODICE_SETTORE" type="xs:string" minOccurs="0" />
+              <xs:element name="CUMULABILITA" type="xs:string" minOccurs="0" />
+              <xs:element name="FLAG_CE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Table6">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_PROGETTO" type="xs:int" minOccurs="0" />
+              <xs:element name="ID_IMPRESA" type="xs:int" minOccurs="0" />
+              <xs:element name="COD_ATECO" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Table7">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_PROGETTO" type="xs:string" minOccurs="0" />
+              <xs:element name="COD_OBIETTIVO" type="xs:string" minOccurs="0" />
+              <xs:element name="ID_IMPRESA" type="xs:int" minOccurs="0" />
+              <xs:element name="ID_STRUM_AIUTO_GEST" type="xs:string" minOccurs="0" />
+              <xs:element name="COD_TIPO_STRUMENTO_AIUTO" type="xs:int" minOccurs="0" />
+              <xs:element name="IMPORTO_NOMINALE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="IMPORTO_AGEVOLAZIONE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="INTENSITA_AIUTO" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,99 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="SiarPage" CodeBehind="SiarPage.master.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <%--<meta http-equiv="Page-Enter" content="blendTrans(Duration=0.1)" />
+    <meta http-equiv="Page-Exit" content="blendTrans(Duration=0.1)" />--%>
+    <%--<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />--%>
+    <link href="<%= Page.ResolveUrl("~/SiarStyle.css")%>" type="text/css" rel="stylesheet" />
+    <link rel="icon" href="<%= Page.ResolveUrl("~/images/favicon.png")%>" type="image/png" />
+
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/JsLibs/jquery.js")%>"></script>
+
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/JsLibs/jquery-ui.min.js")%>"></script>
+
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/JsLibs/Main.js?d="+System.IO.File.GetLastWriteTime(Server.MapPath("~/JsLibs/Main.js")).ToString("yyyyMMddHHmmss"))%>"></script>
+
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/JsLibs/textbox.js?d="+System.IO.File.GetLastWriteTime(Server.MapPath("~/JsLibs/textbox.js")).ToString("yyyyMMddHHmmss"))%>"></script>
+
+    <script type="text/javascript" src="<%= Page.ResolveUrl("~/JsLibs/combobox.js?d="+System.IO.File.GetLastWriteTime(Server.MapPath("~/JsLibs/combobox.js")).ToString("yyyyMMddHHmmss"))%>"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if (!window.location.origin) {
+                window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+            }
+            var host = window.location.origin;
+            if (host.indexOf("sigeftest") > -1) {
+                $('body').css('background-image', 'url(' + host + '/web/images/alert.gif)');
+            }
+        });
+    </script>
+
+</head>
+<body style="margin: 0">
+    <div id="divBKGMessaggio" class="divBackGround">
+    </div>
+    <form id="siarForm" runat="server">
+    <asp:ScriptManager ID="ScriptManagerMaster" runat="server" AllowCustomErrorsRedirect="False"
+        AsyncPostBackTimeout="10000" EnableViewState="False">
+    </asp:ScriptManager>
+    <div style="border-style: none; clear: both; text-align: left;">
+        <img id="head_banner" runat="server" src="images/banner_siar.gif" alt="head" style="height: 76px" /></div>
+    <div style="width: 1063px;" align="right">
+        <div class="userCount" id="divUser" runat="server" clientidmode="Static">
+            <img id="img_user_count" runat="server" src="images/multiple.png" alt="Utenti collegati" title="Utenti collegati"/>
+            <asp:Label ID="divCountUsers" runat="server" class="count" Visible="false"></asp:Label>
+            <asp:Label ID="divCountUsersAccessi" runat="server" class="count"></asp:Label>
+        </div>
+        <asp:Label ID="divNomeOperatore" runat="server" Style="color: #142952; font-family: Verdana;
+            font-size: 11px; font-weight: bold;">
+        </asp:Label>
+        <Siar:Combo runat="server" ID="ComboRuolo" Width="300px">
+        </Siar:Combo>
+        &nbsp;&nbsp;
+        <Siar:Button ID="btnRuolo" runat="server" OnClick="btnRuolo_Click" CausesValidation="false" Text="Imposta profilo"
+            Width="150px" />
+    </div>
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td style="padding: 3px; width: 160px; vertical-align: top" align="center">
+                <div id="divMenu">
+                </div>
+                <div id="divLoading" style="display: none; width: 100%; font-weight: bold">
+                    loading menu...</div>
+                <asp:HiddenField ID="hdnFunzioneMenuPagina" runat="server" />
+                <asp:HiddenField ID="hdnCtrlUserSession" runat="server" />
+                <br />
+                <br />
+                <table id="tableNews" class="news" runat="server" cellpadding="0" cellspacing="0"
+                    width="160">
+                    <tr>
+                        <td class="newsHeader">
+                            ULTIME NOTIZIE
+                        </td>
+                    </tr>
+                </table>
+                <input type="hidden" id="hdnInterruzioneSistema" runat="server" />
+            </td>
+            <td style="padding: 3px; vertical-align: top" align="left">
+                <asp:UpdatePanel ID="UpdatePanelMaster" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="True">
+                    <ContentTemplate>
+                        <asp:ContentPlaceHolder ID="cphContenuto" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </td>
+        </tr>
+    </table>
+    </form>
+    <br />
+    <div id="divAvviso" style="position: absolute; top: 0; width: 100%; display: none;
+        font-family: Sans-Serif; font-size: 14px; text-align: center; background-color: White"
+        class="testoRosso">
+        **** ATTENZIONE! IL SISTEMA SUBIRA' UNA INTERRUZIONE NELLA GIORNATA DI OGGI PER
+        AGGIORNAMENTI. CONSULTARE LA PAGINA NEWS & COMUNICAZIONI PER I DETTAGLI. ****
+    </div>
+</body>
+</html>

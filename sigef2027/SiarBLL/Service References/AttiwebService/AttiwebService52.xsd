@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://regione.marche.it/DemaServices/Attiweb" elementFormDefault="qualified" targetNamespace="http://regione.marche.it/DemaServices/Attiweb" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" />
+  <xs:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/CommonLibrary" />
+  <xs:element name="SearchAtti">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" minOccurs="0" name="request" nillable="true" type="q1:SearchAttiReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchAttiResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/CommonLibrary" minOccurs="0" name="SearchAttiResult" nillable="true" type="q2:BEBaseOfArrayOfDecretoInfoR4ik9mXKc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAtto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="processId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="includeFileContent" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAttoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/CommonLibrary" minOccurs="0" name="GetAttoResult" nillable="true" type="q3:BEBaseOfAttoBc_P2sb70" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileAtto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idFile" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileAttoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/CommonLibrary" minOccurs="0" name="GetFileAttoResult" nillable="true" type="q4:BEBaseOfFile4ik9mXKc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAttiDaFirmare">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" minOccurs="0" name="request" nillable="true" type="q5:BaseReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAttiDaFirmareResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/CommonLibrary" minOccurs="0" name="GetAttiDaFirmareResult" nillable="true" type="q6:BEBaseOfArrayOfTaskInfoBc_P2sb70" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilesDaFirmare">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" minOccurs="0" name="request" nillable="true" type="q7:GetFilesReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilesDaFirmareResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/CommonLibrary" minOccurs="0" name="GetFilesDaFirmareResult" nillable="true" type="q8:BEBaseOfAttoDaFirmareBc_P2sb70" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompletaFirmaAtto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" minOccurs="0" name="request" nillable="true" type="q9:CompletaFirmaReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompletaFirmaAttoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/CommonLibrary" minOccurs="0" name="CompletaFirmaAttoResult" nillable="true" type="q10:BEBaseOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistraPubblicazioneBur">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" minOccurs="0" name="request" nillable="true" type="q11:RegistraBurReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistraPubblicazioneBurResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/CommonLibrary" minOccurs="0" name="RegistraPubblicazioneBurResult" nillable="true" type="q12:BEBaseOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreaProcesso">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" minOccurs="0" name="request" nillable="true" type="q13:CreaProcessoReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreaProcessoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/CommonLibrary" minOccurs="0" name="CreaProcessoResult" nillable="true" type="q14:BEBaseOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AggiornaProcesso">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" minOccurs="0" name="request" nillable="true" type="q15:AggiornaProcessoReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AggiornaProcessoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/CommonLibrary" minOccurs="0" name="AggiornaProcessoResult" nillable="true" type="q16:BEBaseOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchDelibere">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" minOccurs="0" name="request" nillable="true" type="q17:SearchDelibereReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchDelibereResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/CommonLibrary" minOccurs="0" name="SearchDelibereResult" nillable="true" type="q18:BEBaseOfArrayOfDeliberaInfoR4ik9mXKc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTipologieDelibera">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTipologieDeliberaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/CommonLibrary" minOccurs="0" name="GetTipologieDeliberaResult" nillable="true" type="q19:BEBaseOfArrayOfTipologiaDelibera4ik9mXKc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAssessori">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAssessoriResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/CommonLibrary" minOccurs="0" name="GetAssessoriResult" nillable="true" type="q20:BEBaseOfArrayOfAssessore4ik9mXKc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSeduteDelibere">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSeduteDelibereResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/CommonLibrary" minOccurs="0" name="GetSeduteDelibereResult" nillable="true" type="q21:BEBaseOfArrayOfstringuHEDJ7Dj" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

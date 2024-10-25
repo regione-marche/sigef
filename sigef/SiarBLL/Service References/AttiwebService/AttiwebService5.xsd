@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DemaServices.Attiweb" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" />
+  <xs:import schemaLocation="http://arturo2016.regionemarche.intra/DemaServicesTest/AttiwebService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="SearchAttiReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Annullati" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CodiceRepertorio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataPubblicazioneBur" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataRepA" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataRepDa" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FullText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastRecNo" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroBur" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroRep" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchAttiReq" nillable="true" type="tns:SearchAttiReq" />
+  <xs:complexType name="Atto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContieneDatiSensibili" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="DocumentiAllegati" nillable="true" type="q1:ArrayOfAllegato" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="DocumentoPrincipaleEstratto" nillable="true" type="q2:File" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="DocumentoPrincipaleIntegrale" nillable="true" type="q3:File" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ProcessId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="TipoPubblicazione" type="q4:TipoPubblicazione" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="TipoPubblicazioneNorme" nillable="true" type="q5:TipoPubblicazione" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Atto" nillable="true" type="tns:Atto" />
+  <xs:complexType name="BaseReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Operatore" nillable="true" type="tns:Operatore" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseReq" nillable="true" type="tns:BaseReq" />
+  <xs:complexType name="Operatore">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodiceRuolo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodiceUO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="groupId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Operatore" nillable="true" type="tns:Operatore" />
+  <xs:complexType name="ArrayOfTaskInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TaskInfo" nillable="true" type="tns:TaskInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTaskInfo" nillable="true" type="tns:ArrayOfTaskInfo" />
+  <xs:complexType name="TaskInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivitiProcessId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivitiTaskDescr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivitiTaskId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivitiTaskName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataCreazione" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Stato" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskInfo" nillable="true" type="tns:TaskInfo" />
+  <xs:complexType name="GetFilesReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActivitiProcessId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ActivitiTaskId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFilesReq" nillable="true" type="tns:GetFilesReq" />
+  <xs:complexType name="AttoDaFirmare">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivitiProcessId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="FileEstratto" nillable="true" type="q6:File" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="FileIntegrale" nillable="true" type="q7:File" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="FilesAllegati" nillable="true" type="q8:ArrayOfFile" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AttoDaFirmare" nillable="true" type="tns:AttoDaFirmare" />
+  <xs:complexType name="CompletaFirmaReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Accetta" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ActivitiProcessId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ActivitiTaskId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Attiweb.Library.Tipi" minOccurs="0" name="FilesFirmati" nillable="true" type="q9:ArrayOfFile" />
+          <xs:element minOccurs="0" name="IdDecreto" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CompletaFirmaReq" nillable="true" type="tns:CompletaFirmaReq" />
+  <xs:complexType name="RegistraBurReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ActivitiProcessIds" nillable="true" type="q10:ArrayOfstring" />
+          <xs:element minOccurs="0" name="Data" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Numero" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TipoPubblicazione" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegistraBurReq" nillable="true" type="tns:RegistraBurReq" />
+  <xs:complexType name="CreaProcessoReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CodiceTipoProcesso" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CodiceTipologiaAtto" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FileAllegati" nillable="true" type="tns:ArrayOfFileInput" />
+          <xs:element minOccurs="0" name="FilePrincipale" nillable="true" type="tns:FileInput" />
+          <xs:element minOccurs="0" name="FileVistoContabile" nillable="true" type="tns:FileInput" />
+          <xs:element minOccurs="0" name="IdVersioneDWH" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreaProcessoReq" nillable="true" type="tns:CreaProcessoReq" />
+  <xs:complexType name="ArrayOfFileInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FileInput" nillable="true" type="tns:FileInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFileInput" nillable="true" type="tns:ArrayOfFileInput" />
+  <xs:complexType name="FileInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Content" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Impronta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MediaType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomeCompleto" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FileInput" nillable="true" type="tns:FileInput" />
+  <xs:complexType name="AggiornaProcessoReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CreaProcessoReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActivitiProcessId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AggiornaProcessoReq" nillable="true" type="tns:AggiornaProcessoReq" />
+  <xs:complexType name="SearchDelibereReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodAssessore" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodiceUOPadreTipoProcesso" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataPubblicazioneBur" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataRepA" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataRepDa" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataSeduta" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FlagSoggettaAPubblicazione" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IdAssessore" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdTipologiaDelibera" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LastRecNo" type="xs:int" />
+      <xs:element minOccurs="0" name="NumeroBur" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroRep" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchDelibereReq" nillable="true" type="tns:SearchDelibereReq" />
+</xs:schema>

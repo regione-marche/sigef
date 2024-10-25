@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{992AFF8E-8685-4BDA-B52B-BE98AE58EBA8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SiarBLL</RootNamespace>
+    <AssemblyName>SiarBLL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccorpamentoInvestimentiCollectionProvider.cs" />
+    <Compile Include="AggregazioneCollectionProviderPartial.cs" />
+    <Compile Include="AggregazioneCollectionProvider.cs" />
+    <Compile Include="AllegatiCollectionProvider.cs" />
+    <Compile Include="AllegatiProtocollatiCollectionProvider.cs" />
+    <Compile Include="AllegatiProtocollatiCollectionProviderPartial.cs" />
+    <Compile Include="AllegatiProtocollatiModificheCollectionProvider.cs" />
+    <Compile Include="AllegatiXDomandaCollectionProvider.cs" />
+    <Compile Include="AllegatiXDomandaCollectionProviderPartial.cs" />
+    <Compile Include="AnticipiRichiestiCollectionProvider.cs" />
+    <Compile Include="ArchivioFileCollectionProvider.cs" />
+    <Compile Include="ArchivioFileCollectionProviderPartial.cs" />
+    <Compile Include="AssistenzaUtentiAllegatiCollectionProvider.cs" />
+    <Compile Include="AssistenzaUtentiCollectionProvider.cs" />
+    <Compile Include="AssociazioneDecertificazioniCertificazioneSpesaFittizieCollectionProvider.cs" />
+    <Compile Include="AttiCollectionProvider.cs" />
+    <Compile Include="AttiCollectionProviderPartial.cs" />
+    <Compile Include="AutModificaPercAiutoCollectionProvider.cs" />
+    <Compile Include="BackupCambioConsulenteCollectionProvider.cs" />
+    <Compile Include="BancheFilialiCollectionProvider.cs" />
+    <Compile Include="BancheIstitutiCollectionProvider.cs" />
+    <Compile Include="BandoComuniLocalizzazioniCollectionProviderPartial.cs" />
+    <Compile Include="BandoAteco2007CollectionProviderPartial.cs" />
+    <Compile Include="BandoAteco2007CollectionProvider.cs" />
+    <Compile Include="BandoCollectionProvider.cs" />
+    <Compile Include="BandoCollectionProviderPartial.cs" />
+    <Compile Include="BandoComunicazioniCollectionProvider.cs" />
+    <Compile Include="BandoComuniLocalizzazioniCollectionProvider.cs" />
+    <Compile Include="BandoConfigCollectionProvider.cs" />
+    <Compile Include="BandoConfigCollectionProviderPartial.cs" />
+    <Compile Include="BandoImpreseQuotaFissaCollectionProvider.cs" />
+    <Compile Include="BandoIntegrazioniCollectionProvider.cs" />
+    <Compile Include="BandoMassimaliCollectionProvider.cs" />
+    <Compile Include="BandoMassimaliCollectionProviderPartial.cs" />
+    <Compile Include="BandoProgrammazioneCollectionProvider.cs" />
+    <Compile Include="BandoProgrammazioneCollectionProviderPartial.cs" />
+    <Compile Include="BandoRelazioneTecnicaCollectionProvider.cs" />
+    <Compile Include="BandoRequisitiPagamentoCollectionProvider.cs" />
+    <Compile Include="BandoRequisitiVarianteCollectionProvider.cs" />
+    <Compile Include="BandoResponsabiliCollectionProvider.cs" />
+    <Compile Include="BandoStoricoCollectionProvider.cs" />
+    <Compile Include="BandoTipoInvestimentiCollectionProvider.cs" />
+    <Compile Include="BandoTipoInvestimentiCollectionProviderPartial.cs" />
+    <Compile Include="BandoTipoPagamentoCollectionProvider.cs" />
+    <Compile Include="BandoTipoVariantiCollectionProvider.cs" />
+    <Compile Include="BandoValidatoriCollectionProviderPartial.cs" />
+    <Compile Include="BandoValidatoriCollectionProvider.cs" />
+    <Compile Include="BandoValutatoriCollectionProvider.cs" />
+    <Compile Include="BandoXSettoreProduttivoCollectionProvider.cs" />
+    <Compile Include="BilancioAgricoloCollectionProvider.cs" />
+    <Compile Include="BilancioCollectionProvider.cs" />
+    <Compile Include="BilancioIndustrialeCollectionProvider.cs" />
+    <Compile Include="BilancioPrevisionaleCollectionProvider.cs" />
+    <Compile Include="BusinessPlanCollectionProvider.cs" />
+    <Compile Include="BusinessPlanCollectionProviderPartial.cs" />
+    <Compile Include="CaaOperatoriCollectionProvider.cs" />
+    <Compile Include="CaaOperatoriCollectionProviderPartial.cs" />
+    <Compile Include="CaaSportelloCollectionProvider.cs" />
+    <Compile Include="CaaStoricoOperatoriCollectionProvider.cs" />
+    <Compile Include="CaaStoricoSportelloCollectionProvider.cs" />
+    <Compile Include="CatalogoDichiarazioniCollectionProvider.cs" />
+    <Compile Include="CertDecertAzioneCollectionProvider.cs" />
+    <Compile Include="CertDecertificazioneCollectionProvider.cs" />
+    <Compile Include="CertDecertificazioneCollectionProviderPartial.cs" />
+    <Compile Include="CertificazioneContiCalcolataCollectionProvider.cs" />
+    <Compile Include="CertificazioneContiCollectionProvider.cs" />
+    <Compile Include="CertificazioneContiCollectionProviderPartial.cs" />
+    <Compile Include="CertspContiCollectionProvider.cs" />
+    <Compile Include="CertspContiCollectionProviderPartial.cs" />
+    <Compile Include="CertspDettaglioCollectionProvider.cs" />
+    <Compile Include="CertspDomandeCollectionProvider.cs" />
+    <Compile Include="CertspDomandePagamentoCollectionProvider.cs" />
+    <Compile Include="CertspLocoLottoCollectionProvider.cs" />
+    <Compile Include="CertspParametriDiRischioCollectionProvider.cs" />
+    <Compile Include="CertspParametriXDomandaCollectionProvider.cs" />
+    <Compile Include="CertspParametriXLottoCollectionProvider.cs" />
+    <Compile Include="CertspRecuperiCollectionProvider.cs" />
+    <Compile Include="CertspRecuperiCollectionProviderPartial.cs" />
+    <Compile Include="CertspTestaCollectionProvider.cs" />
+    <Compile Include="CheckListCollectionProvider.cs" />
+    <Compile Include="ChecklistGenericaCollectionProvider.cs" />
+    <Compile Include="ChecklistGenericaCollectionProviderPartial.cs" />
+    <Compile Include="ChecklistGenericaModificheCollectionProvider.cs" />
+    <Compile Include="CheckListXStepCollectionProvider.cs" />
+    <Compile Include="CheckListXStepCollectionProviderPartial.cs" />
+    <Compile Include="CertspParametriXLottoCollectionProviderPartial.cs" />
+    <Compile Include="CertspDomandePagamentoCollectionProviderPartial.cs" />
+    <Compile Include="CertspParametriXDomandaCollectionProviderPartial.cs" />
+    <Compile Include="CertspDomandeCollectionProviderPartial.cs" />
+    <Compile Include="CntrlocoDettaglioCollectionProvider.cs" />
+    <Compile Include="CntrlocoTestaCollectionProvider.cs" />
+    <Compile Include="CntrlocoTestaCollectionProviderPartial.cs" />
+    <Compile Include="CntrlocoDettaglioCollectionProviderPartial.cs" />
+    <Compile Include="CertspDettaglioCollectionProviderPartial.cs" />
+    <Compile Include="CertspTestaCollectionProviderPartial.cs" />
+    <Compile Include="CodificaGenericaCollectionProvider.cs" />
+    <Compile Include="CollaboratoriIstruttoriaBandoCollectionProvider.cs" />
+    <Compile Include="ComunicazioniMassiveCollectionProvider.cs" />
+    <Compile Include="ContrattiFemCollectionProvider.cs" />
+    <Compile Include="ContrattiFemCollectionProviderPartial.cs" />
+    <Compile Include="ContrattiFemPagamentiCollectionProvider.cs" />
+    <Compile Include="ContrattiFemPagamentiCollectionProviderPartial.cs" />
+    <Compile Include="ControlliSecondoLivelloCollectionProvider.cs" />
+    <Compile Include="ControlliStabilitaEstrazioneCollectionProvider.cs" />
+    <Compile Include="ControlliStabilitaEstrazioneProgettoCollectionProvider.cs" />
+    <Compile Include="CovidAutodichiarazioneCollectionProvider.cs" />
+    <Compile Include="CovidAutodichiarazioneCollectionProviderPartial.cs" />
+    <Compile Include="CovidAutodichiarazioneExportElencoCollectionProvider.cs" />
+    <Compile Include="CovidAutodichiarazioneRequisitiCollectionProvider.cs" />
+    <Compile Include="CovidCapitoliBandiCollectionProvider.cs" />
+    <Compile Include="CovidLiquidazioniCollectionProvider.cs" />
+    <Compile Include="CovidProgettoAutodichiarazioneCollectionProvider.cs" />
+    <Compile Include="AssociazioneDecertificazioniCertificazioneSpesaFittizieCollectionProviderPartial.cs" />
+    <Compile Include="DecretiXDomPagEsportazioneCollectionProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DecretiXDomPagEsportazioneModificheCollectionProvider.cs" />
+    <Compile Include="DisposizioneCollectionProvider.cs" />
+    <Compile Include="DomandaDiPagamentoEsportazioneCollectionProvider.cs" />
+    <Compile Include="DomandaDiPagamentoModificheCollectionProvider.cs" />
+    <Compile Include="DomandaPagamentoFidejussioneCollectionProvider.cs" />
+    <Compile Include="DomandaPagamentoFidejussioneImpresaCollectionProvider.cs" />
+    <Compile Include="DomandaPagamentoLiquidazioneModificheCollectionProvider.cs" />
+    <Compile Include="DownloadMassivoRichiesteCollectionProvider.cs" />
+    <Compile Include="EmailUtility.cs" />
+    <Compile Include="ErogazioneFemCollectionProvider.cs" />
+    <Compile Include="ErogazioneFemXDecretiCollectionProvider.cs" />
+    <Compile Include="ErogazioneLiquidazioniCollectionProvider.cs" />
+    <Compile Include="ErroreAllegatiCollectionProvider.cs" />
+    <Compile Include="ErroreCollectionProvider.cs" />
+    <Compile Include="ErroreCollectionProviderPartial.cs" />
+    <Compile Include="ErroriPecCollectionProvider.cs" />
+    <Compile Include="EsitoIstanzaChecklistGenericoCollectionProvider.cs" />
+    <Compile Include="EsitoIstanzaChecklistGenericoCollectionProviderPartial.cs" />
+    <Compile Include="EsitoIstanzaChecklistGenericoModificheCollectionProvider.cs" />
+    <Compile Include="FascicoloPaleoCollectionProvider.cs" />
+    <Compile Include="FiltroChecklistVoceCollectionProvider.cs" />
+    <Compile Include="GiustificativoXRegistroIrregolaritaCollectionProvider.cs" />
+    <Compile Include="GraduatoriaBandoScorrimentoCollectionProvider.cs" />
+    <Compile Include="GraduatoriaProgettiAttiCollectionProvider.cs" />
+    <Compile Include="GraduatoriaProgettiStoricoCollectionProvider.cs" />
+    <Compile Include="GraduatoriaProgettoModificheRupCollectionProvider.cs" />
+    <Compile Include="IgrueInvioCollectionProvider.cs" />
+    <Compile Include="IgrueInvioCollectionProviderPartial.cs" />
+    <Compile Include="IgrueLogErroriCollectionProvider.cs" />
+    <Compile Include="IgrueLogErroriCollectionProviderPartial.cs" />
+    <Compile Include="ImpresaDichiarazioneCollectionProvider.cs" />
+    <Compile Include="ImpresaVisuraCollectionProvider.cs" />
+    <Compile Include="ImpresaVisuraCollectionProviderPartial.cs" />
+    <Compile Include="InfocamereImpresaCollectionProvider.cs" />
+    <Compile Include="ImpostazioniCollectionProvider.cs" />
+    <Compile Include="ImpostazioniCollectionProviderPartial.cs" />
+    <Compile Include="IntegrazioneSingolaDiDomandaCollectionProvider.cs" />
+    <Compile Include="IntegrazioniDomandaPagamentoUtility.cs">
+    </Compile>
+    <Compile Include="IntegrazioniPerDomandaDiPagamentoCollectionProvider.cs" />
+    <Compile Include="IrregolaritaCollectionProvider.cs" />
+    <Compile Include="IrregolaritaCollectionProviderPartial.cs" />
+    <Compile Include="IstanzaCertificazioneConti.cs" />
+    <Compile Include="IstanzaChecklistGenericaCollectionProvider.cs" />
+    <Compile Include="IstanzaChecklistGenericaModificheCollectionProvider.cs" />
+    <Compile Include="IstanzaDomandaPagamento.cs" />
+    <Compile Include="IstanzaDomandaPagamentoRequisiti.cs" />
+    <Compile Include="IstanzaGraduatoriaProgetti.cs" />
+    <Compile Include="IstanzaPianoInvestimenti.cs" />
+    <Compile Include="IstanzaPrioritaXProgetto.cs" />
+    <Compile Include="IstanzaProgettoIndicatori.cs" />
+    <Compile Include="IterProgettoModificheCollectionProvider.cs" />
+    <Compile Include="Legenda.cs" />
+    <Compile Include="LocalizzazioneProgettoStoricoCollectionProvider.cs" />
+    <Compile Include="LogAccessiCollectionProvider.cs" />
+    <Compile Include="LogAccessiCollectionProviderPartial.cs" />
+    <Compile Include="LogTelegramCollectionProvider.cs" />
+    <Compile Include="ModificaDatiGeneraleCollectionProvider.cs" />
+    <Compile Include="ModificaDatiGeneraleCollectionProviderPartial.cs" />
+    <Compile Include="NewsCollectionProviderPartial.cs" />
+    <Compile Include="PagamentiErroreCollectionProvider.cs" />
+    <Compile Include="PagamentiIrregolaritaCollectionProvider.cs" />
+    <Compile Include="PagamentiBeneficiarioCollectionProviderPartial.cs" />
+    <Compile Include="PianoInvestimentiModificheCollectionProvider.cs" />
+    <Compile Include="PistaControlloFemCollectionProvider.cs" />
+    <Compile Include="PrioritaXImpresaCollectionProvider.cs" />
+    <Compile Include="PagamentiRichiestiFemCollectionProvider.cs" />
+    <Compile Include="PrioritaXInvestimentiModificheCollectionProvider.cs" />
+    <Compile Include="ProfiliCollectionProvider.cs" />
+    <Compile Include="ProgettiErroreFirmaMassivaOperatoriFirmaCollectionProvider.cs" />
+    <Compile Include="ProgettoAllegatiIstruttoriaCollectionProvider.cs" />
+    <Compile Include="ProgettoAllegatiIstruttoriaCollectionProviderPartial.cs" />
+    <Compile Include="ProgettoAttiAffidamentoAllegatiCollectionProvider.cs" />
+    <Compile Include="ProgettoAttiAffidamentoCollectionProvider.cs" />
+    <Compile Include="ProgettoComunicazioneAllegatoCollectionProvider.cs" />
+    <Compile Include="ProgettoComunicazioneCollectionProvider.cs" />
+    <Compile Include="ProgettoComunicazioneCollectionProviderPartial.cs" />
+    <Compile Include="ProgettoModificheCollectionProvider.cs" />
+    <Compile Include="ProgettoNaturaSoggettoCollectionProvider.cs" />
+    <Compile Include="ProgettoPecCollectionProvider.cs" />
+    <Compile Include="ProgettoSoggettoGestoreCollectionProvider.cs" />
+    <Compile Include="ProgettoSoggettoGestoreCollectionProviderPartial.cs" />
+    <Compile Include="ProgettoStoricoModificheCollectionProvider.cs" />
+    <Compile Include="ProgettoValutatoriCollectionProviderPartial.cs" />
+    <Compile Include="ProgettoValutazioneAllegatiCollectionProvider.cs" />
+    <Compile Include="ProgettoValutazioneCollectionProviderPartial.cs" />
+    <Compile Include="RataCollectionProvider.cs" />
+    <Compile Include="RecuperoBeneficiarioCollectionProvider.cs" />
+    <Compile Include="RecuperoBeneficiarioCollectionProviderPartial.cs" />
+    <Compile Include="RecuperoBeneficiarioOrdinativoIncassoCollectionProvider.cs" />
+    <Compile Include="RegistroIrregolaritaCollectionProvider.cs" />
+    <Compile Include="RegistroModificheAutorizzateCollectionProvider.cs" />
+    <Compile Include="RegistroModificheAutorizzateCollectionProviderPartial.cs" />
+    <Compile Include="RegistroRecuperoCollectionProvider.cs" />
+    <Compile Include="RegistroRecuperoCollectionProviderPartial.cs" />
+    <Compile Include="RevisioneDomandaPagamentoCollectionProviderPartial.cs" />
+    <Compile Include="RevisioneDpagamentoEsitoCollectionProvider.cs" />
+    <Compile Include="RevisioneDpagamentoEsitoCollectionProviderPartial.cs" />
+    <Compile Include="RevocaCollectionProvider.cs" />
+    <Compile Include="RevocaCollectionProviderPartial.cs" />
+    <Compile Include="RevocaOrdinativoIncassoCollectionProvider.cs" />
+    <Compile Include="RicercaAziendaSianCollectionProvider.cs" />
+    <Compile Include="RichiestaConsulenteAllegatoCollectionProvider.cs" />
+    <Compile Include="RichiestaConsulenteCollectionProviderPartial.cs" />
+    <Compile Include="RichiestaConsulenteCollectionProvider.cs" />
+    <Compile Include="RichiestaConsulenteProcuraAllegatoCollectionProvider.cs" />
+    <Compile Include="RichiestaConsulenteProcuraXBandoCollectionProvider.cs" />
+    <Compile Include="RichiestaProfilazioneCollectionProviderPartial.cs" />
+    <Compile Include="RichiestaProfilazioneCollectionProvider.cs" />
+    <Compile Include="RiepilogoPrevisioneProgettiCertificabili.cs" />
+    <Compile Include="RinunciaBeneficiarioCollectionProvider.cs" />
+    <Compile Include="RinunciaCollectionProvider.cs" />
+    <Compile Include="RinunciaProtocolloCollectionProvider.cs" />
+    <Compile Include="RnaBandoConfigCollectionProvider.cs" />
+    <Compile Include="RnaComponentiXCodificaCollectionProvider.cs" />
+    <Compile Include="RnaCostiXCodificaCollectionProvider.cs" />
+    <Compile Include="RnaEntiCollectionProvider.cs" />
+    <Compile Include="RnaLogConcessioniCollectionProvider.cs" />
+    <Compile Include="RnaLogVisureCollectionProvider.cs" />
+    <Compile Include="RnaObiettiviCollectionProvider.cs" />
+    <Compile Include="RnaProcedimentiERegolamentiCollectionProvider.cs" />
+    <Compile Include="RnaProgettoCorCollectionProvider.cs" />
+    <Compile Include="RnaStrumentiXComponentiCollectionProvider.cs" />
+    <Compile Include="SanzioniRecuperoCollectionProvider.cs" />
+    <Compile Include="ScaricamentoFirmaEsternaCollectionProvider.cs" />
+    <Compile Include="ScaricamentoFirmaEsternaCollectionProviderPartial.cs" />
+    <Compile Include="SchedaXChecklistModificheCollectionProvider.cs" />
+    <Compile Include="SegnatureMultipleCollectionProvider.cs" />
+    <Compile Include="SoggettoGestoreCollectionProvider.cs" />
+    <Compile Include="SoggettoGestoreCollectionProviderPartial.cs" />
+    <Compile Include="SpesaIrregolareCollectionProvider.cs" />
+    <Compile Include="SchedaXChecklistCollectionProvider.cs" />
+    <Compile Include="SpeseSostenuteFileCollectionProvider.cs" />
+    <Compile Include="StrumentiFinanziariUtility.cs" />
+    <Compile Include="TeamSigefCollectionProvider.cs" />
+    <Compile Include="TestataControlliLocoCollectionProvider.cs" />
+    <Compile Include="TestataControlliLocoCollectionProviderPartial.cs" />
+    <Compile Include="TestataValidazioneCollectionProvider.cs" />
+    <Compile Include="TestataValidazioneCollectionProviderPartial.cs" />
+    <Compile Include="TestataValidazioneModificheCollectionProvider.cs" />
+    <Compile Include="TestataValidazioneXIstanzaCollectionProvider.cs" />
+    <Compile Include="TestataValidazioneXIstanzaCollectionProviderPartial.cs" />
+    <Compile Include="TestataValidazioneXIstanzaModificheCollectionProvider.cs" />
+    <Compile Include="TipoAteco2007CollectionProvider.cs" />
+    <Compile Include="TipoChecklistCollectionProvider.cs" />
+    <Compile Include="TipoIntegrazioneDomandaCollectionProvider.cs" />
+    <Compile Include="TipoIrregolaritaCollectionProvider.cs" />
+    <Compile Include="TipoModificaGeneraleCollectionProvider.cs" />
+    <Compile Include="TipoPistaControlloCollectionProviderPartial.cs" />
+    <Compile Include="TipoPistaControlloCollectionProvider.cs" />
+    <Compile Include="TipoRataCollectionProvider.cs" />
+    <Compile Include="TrasferimentiCollectionProvider.cs" />
+    <Compile Include="TrasferimentiDettaglioCollectionProvider.cs" />
+    <Compile Include="TrasferimentiMandatoCollectionProvider.cs" />
+    <Compile Include="UlaCollectionProvider.cs" />
+    <Compile Include="UlaDipendentiCollectionProvider.cs" />
+    <Compile Include="UlaXDipendentiCollectionProvider.cs" />
+    <Compile Include="AccorpamentoInvestimentiUtility.cs" />
+    <Compile Include="VariantiModificheCollectionProvider.cs" />
+    <Compile Include="VariantiXPrioritaCollectionProviderPartial.cs" />
+    <Compile Include="UtentiCollectionProviderPartial.cs" />
+    <Compile Include="VcertrendicontazioneCollectionProvider.cs">
+    </Compile>
+    <Compile Include="VcertrendicontazioneCollectionProviderPartial.cs" />
+    <Compile Include="VcontrolliStabilitaCollectionProvider.cs" />
+    <Compile Include="VcovidConcessioneProgettiCollectionProvider.cs" />
+    <Compile Include="VcovidCruscottoClasseCollectionProvider.cs" />
+    <Compile Include="VcruscottoBandiProcAttivazioneCollectionProvider.cs" />
+    <Compile Include="VcruscottoBandiRupCollectionProvider.cs" />
+    <Compile Include="VcruscottoBandiRupCollectionProviderPartial.cs" />
+    <Compile Include="VcruscottoDomandeBeneficiarioCollectionProvider.cs" />
+    <Compile Include="VcruscottoDomandeCollectionProvider.cs" />
+    <Compile Include="VcruscottoDomandeCollectionProviderPartial.cs" />
+    <Compile Include="VcruscottoDomandeConsulenteCollectionProvider.cs" />
+    <Compile Include="VcruscottoDomandeRappresentanteLegaleCollectionProvider.cs" />
+    <Compile Include="VcruscottoLottiRevisioneCollectionProvider.cs" />
+    <Compile Include="VcruscottoVariantiCollectionProvider.cs" />
+    <Compile Include="VcruscottoVariantiCollectionProviderPartial.cs" />
+    <Compile Include="VelencoControlliLocoCollectionProvider.cs" />
+    <Compile Include="VerificaAmministrativaDettaglioCollectionProvider.cs" />
+    <Compile Include="VerificaAmministrativaDettaglioCollectionProviderPartial.cs" />
+    <Compile Include="VerificaAmministrativaTestaCollectionProvider.cs" />
+    <Compile Include="VerificaAmministrativaTestaCollectionProviderPartial.cs" />
+    <Compile Include="VestrazioneXAsseCollectionProvider.cs" />
+    <Compile Include="VestrazioneXAsseCollectionProviderPartial.cs" />
+    <Compile Include="VimpreseXProgettoCollectionProvider.cs" />
+    <Compile Include="VistruttoriaDomandeAiutoCollectionProvider.cs" />
+    <Compile Include="VldCheckListCollectionProvider.cs" />
+    <Compile Include="VldCheckListStepCollectionProvider.cs" />
+    <Compile Include="VldCheckListStepCollectionProviderPartial.cs" />
+    <Compile Include="VldStepCollectionProvider.cs" />
+    <Compile Include="VoceGenericaCollectionProvider.cs" />
+    <Compile Include="VoceGenericaCollectionProviderPartial.cs" />
+    <Compile Include="VoceXChecklistGenericaCollectionProvider.cs" />
+    <Compile Include="VpagamentiBeneficiarioCollectionProvider.cs" />
+    <Compile Include="VpianoInvestimentiAggregazioneDettaglioCollectionProvider.cs" />
+    <Compile Include="VpianoInvestimentiInterventoCollectionProviderPartial.cs" />
+    <Compile Include="VpianoInvestimentiAggregazioneDettaglioPartial.cs" />
+    <Compile Include="VpianoInvestimentiCodificaCollectionProvider.cs" />
+    <Compile Include="VpianoInvestimentiCodificaCollectionProviderPartial.cs" />
+    <Compile Include="VpianoInvestimentiInterventoCollectionProvider.cs" />
+    <Compile Include="VpistaControlloCollectionProvider.cs" />
+    <Compile Include="VpistaControlloCollectionProviderPartial.cs" />
+    <Compile Include="VprogettoComunicazioniMassiveCollectionProvider.cs" />
+    <Compile Include="VregistroRitiriRecuperiCollectionProviderPartial.cs" />
+    <Compile Include="VregistroRitiriRecuperiCollectionProvider.cs" />
+    <Compile Include="VricercaProgModificabiliCollectionProvider.cs" />
+    <Compile Include="VriepilogoDomandeAiutoDownloadMassivoCollectionProvider.cs" />
+    <Compile Include="VriepilogoDomandeAiutoDownloadMassivoCollectionProviderPartial.cs" />
+    <Compile Include="VriepilogoIntegrazioniDownloadMassivoCollectionProviderPartial.cs" />
+    <Compile Include="VriepilogoIntegrazioniDownloadMassivoCollectionProvider.cs" />
+    <Compile Include="VritiriRecuperiCollectionProvider.cs" />
+    <Compile Include="VrnaComponentiXCodificaCollectionProvider.cs" />
+    <Compile Include="VrnaCostiXCodificaCollectionProvider.cs" />
+    <Compile Include="VrnaCovidEsitoConcessioneCollaudoCollectionProvider.cs" />
+    <Compile Include="VrnaCovidEsitoConcessioneCollectionProvider.cs" />
+    <Compile Include="VrnaEntiCollectionProvider.cs" />
+    <Compile Include="VrnaEsitoConcessioneCollectionProvider.cs" />
+    <Compile Include="VrnaEsitoVisureCollectionProvider.cs" />
+    <Compile Include="VrnaStrumentiXComponentiCollectionProvider.cs" />
+    <Compile Include="VricercaSpeseIrregolariCollectionProvider.cs" />
+    <Compile Include="ZdimensioniEstrazioniIoCollectionProviderPartial.cs" />
+    <Compile Include="DettaglioInvestimentiCollectionProviderPartial.cs" />
+    <Compile Include="DomandaPagamentoLiquidazioneCollectionProvider.cs" />
+    <Compile Include="ProgettoIndicatoriCollectionProvider.cs" />
+    <Compile Include="ProgettoIndicatoriCollectionProviderPartial.cs" />
+    <Compile Include="SpecificaInvestimentiCollectionProviderPartial.cs" />
+    <Compile Include="ZdimensioniCollectionProvider.cs" />
+    <Compile Include="ZdimensioniCollectionProviderPartial.cs" />
+    <Compile Include="ZdimensioniEstrazioniIoCollectionProvider.cs" />
+    <Compile Include="ZdimensioniEstrazioniIrCollectionProvider.cs" />
+    <Compile Include="ZdimensioniEstrazioniIrCollectionProviderPartial.cs" />
+    <Compile Include="ZdimensioniEstrazioniTCollectionProvider.cs" />
+    <Compile Include="ZdimensioniXProgrammazioneCollectionProvider.cs" />
+    <Compile Include="ZdimensioniXProgrammazioneCollectionProviderPartial.cs" />
+    <Compile Include="ZprogrammazioneFontiCollectionProviderPartial.cs" />
+    <Compile Include="CodificaInvestimentoCollectionProvider.cs" />
+    <Compile Include="CollaboratoriXBandoCollectionProvider.cs" />
+    <Compile Include="CollaboratoriXManifestazioneCollectionProvider.cs" />
+    <Compile Include="ComuniCollectionProvider.cs" />
+    <Compile Include="ContoCorrenteCollectionProvider.cs" />
+    <Compile Include="ControlliDomandePagamentoCollectionProvider.cs" />
+    <Compile Include="ControlliLocoLottoCollectionProvider.cs" />
+    <Compile Include="ControlliParametriDiRischioCollectionProvider.cs" />
+    <Compile Include="ControlliParametriXDomandaCollectionProvider.cs" />
+    <Compile Include="ControlliParametriXLottoCollectionProvider.cs" />
+    <Compile Include="ComuniCollectionProviderPartial.cs" />
+    <Compile Include="GiustificativiCollectionProviderPartial.cs" />
+    <Compile Include="ImpresaAggregazioneCollectionProvider.cs" />
+    <Compile Include="GraduatoriaProgettiDettaglioCollectionProviderPartial.cs" />
+    <Compile Include="ImpresaCollectionProviderPartial.cs" />
+    <Compile Include="ProgettoComunicazioniCollectionProviderPartial.cs" />
+    <Compile Include="FunzionalitaCollectionProviderPartial.cs" />
+    <Compile Include="PageHelpCollectionProvider.cs" />
+    <Compile Include="ProgettoAllegatiCollectionProvider.cs" />
+    <Compile Include="ProgettoComunicazioniAllegatiCollectionProvider.cs" />
+    <Compile Include="ProgettoComunicazioniCollectionProvider.cs" />
+    <Compile Include="ProgettoComunicazioniDocumentiCollectionProvider.cs" />
+    <Compile Include="ProgettoValutatoriCollectionProvider.cs" />
+    <Compile Include="ProgettoValutazioneCollectionProvider.cs" />
+    <Compile Include="QuadriXDomandaCollectionProviderPartial.cs" />
+    <Compile Include="DichiarazioniXDomandaCollectionProviderPartial.cs" />
+    <Compile Include="ImpresaSociCollectionProvider.cs" />
+    <Compile Include="ImpresaSociCollectionProviderPartial.cs" />
+    <Compile Include="Ateco2007CollectionProvider.cs" />
+    <Compile Include="LocalizzazioneProgettoCollectionProvider.cs" />
+    <Compile Include="CUPCategoriaSoggettoCollectionProvider.cs" />
+    <Compile Include="CUPCategoriaCollectionProvider.cs" />
+    <Compile Include="LottoDiRevisioneCollectionProviderPartial.cs" />
+    <Compile Include="DomandaDiPagamentoCollectionProviderPartial.cs" />
+    <Compile Include="GraduatoriaProgettiCollectionProviderPartial.cs" />
+    <Compile Include="ImpresaCertificazioneAntimafiaCollectionProviderPartial.cs" />
+    <Compile Include="PianoInvestimentiCollectionProviderPartial.cs" />
+    <Compile Include="ProgettoCollectionProviderPartial.cs" />
+    <Compile Include="Operatore.cs" />
+    <Compile Include="PrioritaXProgettoCollectionProviderPartial.cs" />
+    <Compile Include="SanzioniCollectionProviderPartial.cs" />
+    <Compile Include="SchedaXPrioritaCollectionProviderPartial.cs" />
+    <Compile Include="TipoDocumentoCollectionProvider.cs" />
+    <Compile Include="ValoriPrioritaCollectionProviderPartial.cs" />
+    <Compile Include="VariantiCollectionProviderPartial.cs" />
+    <Compile Include="CorrettivaRendicontazioneCollectionProvider.cs" />
+    <Compile Include="CorrettivaRendicontazioneSpostamentiCollectionProvider.cs" />
+    <Compile Include="DatiMonitoraggioFESRCollectionProvider.cs" />
+    <Compile Include="DbStaticProvider.cs" />
+    <Compile Include="DettaglioInvestimentiCollectionProvider.cs" />
+    <Compile Include="DichiarazioniXDomandaCollectionProvider.cs" />
+    <Compile Include="DichiarazioniXProgettoCollectionProvider.cs" />
+    <Compile Include="DocumentiCollectionProvider.cs" />
+    <Compile Include="DomandaDiPagamentoCollectionProvider.cs" />
+    <Compile Include="DomandaDiPagamentoSegnatureCollectionProvider.cs" />
+    <Compile Include="DomandaPagamentoAllegatiCollectionProvider.cs" />
+    <Compile Include="DomandaPagamentoRequisitiCollectionProvider.cs" />
+    <Compile Include="EnteCollectionProvider.cs" />
+    <Compile Include="FatturatoAziendaCollectionProvider.cs" />
+    <Compile Include="FidejussioniCollectionProvider.cs" />
+    <Compile Include="FileDocumentoCollectionProvider.cs" />
+    <Compile Include="FilieraCollectionProvider.cs" />
+    <Compile Include="FontiFinanziarieCollectionProvider.cs" />
+    <Compile Include="FormaGiuridicaCollectionProvider.cs" />
+    <Compile Include="FunzionalitaCollectionProvider.cs" />
+    <Compile Include="GiustificativiCollectionProvider.cs" />
+    <Compile Include="GraduatoriaProgettiCollectionProvider.cs" />
+    <Compile Include="GraduatoriaProgettiDettaglioCollectionProvider.cs" />
+    <Compile Include="GraduatoriaProgettiFinanziabilitaCollectionProvider.cs" />
+    <Compile Include="ImpresaCertificazioneAntimafiaCollectionProvider.cs" />
+    <Compile Include="ImpresaCollectionProvider.cs" />
+    <Compile Include="ImpresaStoricoCollectionProvider.cs" />
+    <Compile Include="ImpresaXFilieraCollectionProvider.cs" />
+    <Compile Include="IndirizzarioCollectionProvider.cs" />
+    <Compile Include="IndirizzoCollectionProvider.cs" />
+    <Compile Include="IterProgettoCollectionProvider.cs" />
+    <Compile Include="LocalizzazioneInvestimentoCollectionProvider.cs" />
+    <Compile Include="LottoDiRevisioneCollectionProvider.cs" />
+    <Compile Include="MandatiImpresaCollectionProvider.cs" />
+    <Compile Include="ModelloDomandaCollectionProvider.cs" />
+    <Compile Include="NewsCollectionProvider.cs" />
+    <Compile Include="NoteCollectionProvider.cs" />
+    <Compile Include="PagamentiBeneficiarioCollectionProvider.cs" />
+    <Compile Include="PagamentiRichiestiCollectionProvider.cs" />
+    <Compile Include="PartecipanteRuoloCollectionProvider.cs" />
+    <Compile Include="PartecipantiIndirettiFatturatoCollectionProvider.cs" />
+    <Compile Include="PartecipantiXFilieraCollectionProvider.cs" />
+    <Compile Include="PersonaFisicaCollectionProvider.cs" />
+    <Compile Include="PersoneXImpreseCollectionProvider.cs" />
+    <Compile Include="PianoDiSviluppoCollectionProvider.cs" />
+    <Compile Include="PianoDiSviluppoDomandaPagamentoCollectionProvider.cs" />
+    <Compile Include="PianoInvestimentiCollectionProvider.cs" />
+    <Compile Include="PrioritaCollectionProvider.cs" />
+    <Compile Include="PrioritaSettorialiCollectionProvider.cs" />
+    <Compile Include="PrioritaSpecialeCollectionProvider.cs" />
+    <Compile Include="PrioritaXInvestimentiCollectionProvider.cs" />
+    <Compile Include="PrioritaXProgettoCollectionProvider.cs" />
+    <Compile Include="ProfiloXFunzioniCollectionProvider.cs" />
+    <Compile Include="ProgettoCollectionProvider.cs" />
+    <Compile Include="ProgettoRelazioneTecnicaCollectionProvider.cs" />
+    <Compile Include="ProgettoSegnatureCollectionProvider.cs" />
+    <Compile Include="ProgettoStoricoCollectionProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protocollo.cs" />
+    <Compile Include="QuadriXDomandaCollectionProvider.cs" />
+    <Compile Include="QuadroDomandaCollectionProvider.cs" />
+    <Compile Include="RequisitiPagamentoCollectionProvider.cs" />
+    <Compile Include="RequisitiPagamentoPlurivaloreCollectionProvider.cs" />
+    <Compile Include="RequisitiVarianteCollectionProvider.cs" />
+    <Compile Include="RevisioneDomandaPagamentoCollectionProvider.cs" />
+    <Compile Include="SanzioniCollectionProvider.cs" />
+    <Compile Include="SchedaValutazioneCollectionProvider.cs" />
+    <Compile Include="SchedaXPrioritaCollectionProvider.cs" />
+    <Compile Include="Service References\AttiwebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\paleoWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SettoriProduttiviCollectionProvider.cs" />
+    <Compile Include="SpecificaInvestimentiCollectionProvider.cs" />
+    <Compile Include="SpeseSostenuteCollectionProvider.cs" />
+    <Compile Include="SpeseSostenuteCollectionProviderPartial.cs" />
+    <Compile Include="StepCollectionProvider.cs" />
+    <Compile Include="StepXBandoCollectionProvider.cs" />
+    <Compile Include="TipoSanzioniParametriCollectionProvider.cs" />
+    <Compile Include="UtentiCollectionProvider.cs" />
+    <Compile Include="UtentiStoricoCollectionProvider.cs" />
+    <Compile Include="ValoriPrioritaCollectionProvider.cs" />
+    <Compile Include="VariantiAllegatiCollectionProvider.cs" />
+    <Compile Include="VariantiCollectionProvider.cs" />
+    <Compile Include="VariantiEsitiRequisitiCollectionProvider.cs" />
+    <Compile Include="VariantiSegnatureCollectionProvider.cs" />
+    <Compile Include="VariantiXPrioritaCollectionProvider.cs" />
+    <Compile Include="VisiteAziendaliCollectionProvider.cs" />
+    <Compile Include="VistruttoriaDomandeCollectionProvider.cs" />
+    <Compile Include="VstatiProceduraliCollectionProvider.cs" />
+    <Compile Include="VworkflowPagamentoCollectionProvider.cs" />
+    <Compile Include="WebService.cs" />
+    <Compile Include="WorkflowProcedureCollectionProvider.cs" />
+    <Compile Include="XconfigCollectionProvider.cs" />
+    <Compile Include="ZfocusAreaCollectionProvider.cs" />
+    <Compile Include="ZobMisuraCollectionProvider.cs" />
+    <Compile Include="ZprogFaCollectionProvider.cs" />
+    <Compile Include="ZprogFaCollectionProviderPartial.cs" />
+    <Compile Include="ZprogrammazioneCollectionProvider.cs" />
+    <Compile Include="ZprogrammazioneCollectionProviderPartial.cs" />
+    <Compile Include="ZprogrammazioneFontiCollectionProvider.cs" />
+    <Compile Include="ZprogrammazioneSanzioniCollectionProvider.cs" />
+    <Compile Include="ZprogrammazioneSanzioniCollectionProviderPartial.cs" />
+    <Compile Include="ZpsrAlberoCollectionProvider.cs" />
+    <Compile Include="ZpsrCollectionProvider.cs" />
+    <Compile Include="ZquerySqlCollectionProvider.cs" />
+    <Compile Include="ZstpCollectionProvider.cs" />
+    <Compile Include="ZtipoDimensioneCollectionProvider.cs" />
+    <Compile Include="ZtipoDimensioneCollectionProviderPartial.cs" />
+    <Compile Include="ZtpCollectionProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CupManager\CupManager.csproj">
+      <Project>{13D384B6-807C-4D50-9A95-BAADDE0FED59}</Project>
+      <Name>CupManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SiarDAL\SiarDAL.csproj">
+      <Project>{61E62134-7D9B-4700-8DCF-9BAB5AA6ACF4}</Project>
+      <Name>SiarDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SiarLibrary\SiarLibrary.csproj">
+      <Project>{453F80C4-1553-4B57-AC77-58CEDE9F11CC}</Project>
+      <Name>SiarLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\AttiwebService\AttiwebService2.wsdl" />
+    <None Include="Service References\AttiwebService\AttiwebService21.wsdl" />
+    <None Include="Service References\AttiwebService\AttiwebService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AttiwebService\AttiwebService51.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AttiwebService\AttiwebService52.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AttiwebService\AttiwebService53.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AttiwebService\AttiwebService54.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AttiwebService\AttiwebService55.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AttiwebService\SiarBLL.AttiwebService.BEBaseOfArrayOfAssessore4ik9mXKc.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AttiwebService\SiarBLL.AttiwebService.BEBaseOfArrayOfDeliberaInfoR4ik9mXKc.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AttiwebService\SiarBLL.AttiwebService.BEBaseOfArrayOfstringuHEDJ7Dj.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AttiwebService\SiarBLL.AttiwebService.BEBaseOfArrayOfTipologiaDelibera4ik9mXKc.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\PaleoService2.wsdl" />
+    <None Include="Service References\paleoWebService\PaleoWebService2.wsdl" />
+    <None Include="Service References\paleoWebService\PaleoWebService21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\paleoWebService\PaleoWebService211.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\paleoWebService\PaleoWebService212.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\paleoWebService\PaleoWebService213.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\paleoWebService\PaleoWebService214.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\paleoWebService\PaleoWebService215.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\paleoWebService\PaleoWebService216.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEBaseOfFascicoloInfoc14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEBaseOfFilec14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEBaseOfrespAddAllegatic14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEBaseOfRespAddVersionec14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEBaseOfrespDocumentoc14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEBaseOfRespDocumentoExtc14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEBaseOfrespProtocolloArrivoc14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEBaseOfrespProtocolloPartenzac14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEBaseOfrespSpedisciProtocolloc14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEBaseOfRubricaZA0hwLp5.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfOperatorePaleoc14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfRagioneInfoZA0hwLp5.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfRegistroInfoZA0hwLp5.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfrespDocProtocolliInfoc14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfrespProtocolloInfoc14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfRubricaZA0hwLp5.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfSerieArchivisticaZA0hwLp5.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfTipoDatiFascicoloZA0hwLp5.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfTitolarioInfoc14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfUOInfoZA0hwLp51.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfUtentePaleoc14f1rMd.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AttiwebService\" />
+    <WCFMetadataStorage Include="Service References\paleoWebService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\paleoWebService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\paleoWebService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\paleoWebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AttiwebService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AttiwebService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AttiwebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\AttiwebService\SiarBLL.AttiwebService.BEBaseOfArrayOfDecretoInfoR4ik9mXKc.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AttiwebService\SiarBLL.AttiwebService.BEBaseOfArrayOfTaskInfoBc_P2sb70.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AttiwebService\SiarBLL.AttiwebService.BEBaseOfAttoBc_P2sb70.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AttiwebService\SiarBLL.AttiwebService.BEBaseOfAttoDaFirmareBc_P2sb70.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AttiwebService\SiarBLL.AttiwebService.BEBaseOfFile4ik9mXKc.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AttiwebService\SiarBLL.AttiwebService.BEBaseOfstring.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfIpaEntryRz2BRIZ51.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfstring.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfstring1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\paleoWebService\SiarBLL.paleoWebService.BEListOfUOInfoZA0hwLp52.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AttiwebService\AttiwebService1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\paleoWebService\PaleoWebService2.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

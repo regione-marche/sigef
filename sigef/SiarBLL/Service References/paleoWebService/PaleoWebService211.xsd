@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://paleo.regione.marche.it/services/" elementFormDefault="qualified" targetNamespace="http://paleo.regione.marche.it/services/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://paleotest2020.regione.marche.it/PaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.TipiInterop" />
+  <xs:import schemaLocation="https://paleotest2020.regione.marche.it/PaleoWebServices2020R_MARCHE/PaleoWebService2.svc?xsd=xsd0" namespace="http://paleo.regione.marche.it/services2/" />
+  <xs:simpleType name="TipoOriginale">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NonDefinito" />
+      <xs:enumeration value="Digitale" />
+      <xs:enumeration value="Cartaceo" />
+      <xs:enumeration value="a" />
+      <xs:enumeration value="c" />
+      <xs:enumeration value="d" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoOriginale" nillable="true" type="tns:TipoOriginale" />
+  <xs:complexType name="DatiEmergenza">
+    <xs:sequence>
+      <xs:element name="Data" type="xs:dateTime" />
+      <xs:element name="DataCreazioneEmergenza" type="xs:dateTime" />
+      <xs:element name="IdProfiloProtocollo" type="xs:int" />
+      <xs:element name="IdProtocolloEmergenza" type="xs:int" />
+      <xs:element name="Numero" type="xs:int" />
+      <xs:element name="Segnatura" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DatiEmergenza" nillable="true" type="tns:DatiEmergenza" />
+  <xs:simpleType name="TipoRisultato">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedInt" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Info" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="Error" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoRisultato" nillable="true" type="tns:TipoRisultato" />
+  <xs:simpleType name="TipoVoceRubrica">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Indefinito" />
+      <xs:enumeration value="PAI" />
+      <xs:enumeration value="PAE" />
+      <xs:enumeration value="PF" />
+      <xs:enumeration value="PG" />
+      <xs:enumeration value="Amministrazione" />
+      <xs:enumeration value="AOO" />
+      <xs:enumeration value="UO" />
+      <xs:enumeration value="Persona" />
+      <xs:enumeration value="Altro" />
+      <xs:enumeration value="Impresa" />
+      <xs:enumeration value="Gruppo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoVoceRubrica" nillable="true" type="tns:TipoVoceRubrica" />
+  <xs:complexType name="ArrayOfMessaggioInteropInfo2">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MessaggioInteropInfo2" nillable="true" type="tns:MessaggioInteropInfo2" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessaggioInteropInfo2" nillable="true" type="tns:ArrayOfMessaggioInteropInfo2" />
+  <xs:complexType name="MessaggioInteropInfo2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataOraInvioRicezione" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Direzione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPeo" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MessaggiPosta" nillable="true" type="tns:ArrayOfMessaggioPostaInfo2" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.TipiInterop" minOccurs="0" name="StatoSpedizione" nillable="true" type="q1:TipoStatoSpedizione" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.TipiInterop" minOccurs="0" name="Tipo" type="q2:TipoMessaggioInterop" />
+      <xs:element minOccurs="0" name="Versione" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessaggioInteropInfo2" nillable="true" type="tns:MessaggioInteropInfo2" />
+  <xs:complexType name="ArrayOfMessaggioPostaInfo2">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MessaggioPostaInfo2" nillable="true" type="tns:MessaggioPostaInfo2" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessaggioPostaInfo2" nillable="true" type="tns:ArrayOfMessaggioPostaInfo2" />
+  <xs:complexType name="MessaggioPostaInfo2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataOra" type="xs:dateTime" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RegioneMarche.Protocollo.Common.TipiInterop" minOccurs="0" name="Direzione" type="q3:TipoDirezioneMessaggio" />
+      <xs:element minOccurs="0" name="IdCasellaPosta" type="xs:int" />
+      <xs:element minOccurs="0" name="IndirizzoCasella" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessaggioPostaInfo2" nillable="true" type="tns:MessaggioPostaInfo2" />
+  <xs:complexType name="ArrayOfRagioneInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RagioneInfo" nillable="true" type="tns:RagioneInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRagioneInfo" nillable="true" type="tns:ArrayOfRagioneInfo" />
+  <xs:complexType name="RagioneInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CanWrite" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanWriteMittente" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Codice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstendeVisibilita" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GiorniScadenza" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PrevistaApprovazione" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PrevistaPresaInCarico" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PrevistaRisposta" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PrevistaVisioneMassiva" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TipoDestinatario" type="tns:TipoDestinatarioTrasmissione" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RagioneInfo" nillable="true" type="tns:RagioneInfo" />
+  <xs:simpleType name="TipoDestinatarioTrasmissione">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Utente" />
+      <xs:enumeration value="Ruolo" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoDestinatarioTrasmissione" nillable="true" type="tns:TipoDestinatarioTrasmissione" />
+  <xs:complexType name="ArrayOfRegistroInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RegistroInfo" nillable="true" type="tns:RegistroInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRegistroInfo" nillable="true" type="tns:ArrayOfRegistroInfo" />
+  <xs:complexType name="RegistroInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistroInfo" nillable="true" type="tns:RegistroInfo" />
+  <xs:complexType name="ArrayOfRubrica">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Rubrica" nillable="true" type="tns:Rubrica" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRubrica" nillable="true" type="tns:ArrayOfRubrica" />
+  <xs:complexType name="Rubrica">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cap" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodiceRubrica" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Comune" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nazione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Oggetto" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="Provincia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" type="tns:TipoVoceRubrica" />
+      <xs:element minOccurs="0" name="Toponimo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Rubrica" nillable="true" type="tns:Rubrica" />
+  <xs:complexType name="ArrayOfTipoDatiFascicolo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TipoDatiFascicolo" nillable="true" type="tns:TipoDatiFascicolo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTipoDatiFascicolo" nillable="true" type="tns:ArrayOfTipoDatiFascicolo" />
+  <xs:complexType name="TipoDatiFascicolo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdTipoDatiFascicolo" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TipoDatiFascicolo" nillable="true" type="tns:TipoDatiFascicolo" />
+  <xs:complexType name="ArrayOfSerieArchivistica">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SerieArchivistica" nillable="true" type="tns:SerieArchivistica" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSerieArchivistica" nillable="true" type="tns:ArrayOfSerieArchivistica" />
+  <xs:complexType name="SerieArchivistica">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdSerieArchivistica" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SerieArchivistica" nillable="true" type="tns:SerieArchivistica" />
+  <xs:complexType name="ArrayOfUOInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UOInfo" nillable="true" type="tns:UOInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUOInfo" nillable="true" type="tns:ArrayOfUOInfo" />
+  <xs:complexType name="UOInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Codice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descrizione" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UOInfo" nillable="true" type="tns:UOInfo" />
+  <xs:complexType name="Classificazione2">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://paleo.regione.marche.it/services2/" base="q4:Classificazione">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Principale" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Classificazione2" nillable="true" type="tns:Classificazione2" />
+</xs:schema>

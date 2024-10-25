@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns="http://www.rna.gov.it/rendicontazione"
+            xmlns:dett="http://www.rna.gov.it/rendicontazione_dettaglio"
+            targetNamespace="http://www.rna.gov.it/rendicontazione" 
+            elementFormDefault="qualified">
+  <xsd:import schemaLocation="rendicontazione_dettaglio.xsd" namespace="http://www.rna.gov.it/rendicontazione_dettaglio"/>
+  <xsd:complexType name="RENDICONTAZIONE_TYPE">
+    <xsd:sequence>
+      
+      <xsd:element name="ID_REND_GEST" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="NUMERO_FATTURA" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="30"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="DATA_FATTURA" type="xsd:date" minOccurs="1"/>
+      <xsd:element name="PARTITA_IVA_FORNITORE" minOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="11"/>
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="NOME_FORNITORE" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="255"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="IMPORTO_TOTALE" type="xsd:double" minOccurs="0"/>
+      <xsd:element name="IMPORTO_IMPONIBILE" type="xsd:double" minOccurs="0"/>
+      <xsd:element name="STATO_FATTURA" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="5"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <!-- <xsd:element name="COR_REND" type="xsd:integer" minOccurs="0"/> -->
+
+      <xsd:element name="RENDICONTAZIONE_DETTAGLI" type="RENDICONTAZIONE_DETTAGLI_TYPE"/>
+  
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RENDICONTAZIONE_DETTAGLI_TYPE">
+    <xsd:sequence>
+      <xsd:element name="RENDICONTAZIONE_DETTAGLIO" type="dett:RENDICONTAZIONE_DETTAGLIO_TYPE" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>
